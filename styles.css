@@ -261,6 +261,10 @@ body::after{
   border-color: rgba(214,41,118,.6);
 }
 
+.card.ig:hover{
+  border-color: rgba(214,41,118,.6);
+}
+
 .card.ig:hover .cardIcon{
   color: #ffffff;
   background: linear-gradient(

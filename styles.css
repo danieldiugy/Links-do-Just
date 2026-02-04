@@ -115,6 +115,19 @@ body::after{
 .socialIcon{
   width: 42px;            /* botão maior */
   height: 42px;
+  display: grid;
+  place-items: center;
+   color: rgba(255,255,255,.95); /* 👈 força branco */
+  text-decoration: none;        /* 👈 tira sublinhado/link style */
+  opacity: 1;
+}
+
+.socialIcon:visited{
+  color: rgba(255,255,255,.95);
+}
+
+.socialIcon:hover{
+  color: rgba(255,255,255,1);
 }
 
 .socialIcon svg{

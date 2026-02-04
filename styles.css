@@ -99,13 +99,13 @@ body::after{
   opacity: .95;
 }
 
+/* ===== Social icons (debaxo do avatar) ===== */
+
 .socialRow{
   display:flex;
   justify-content:center;
-  gap: 6px;          /* 👈 menos espaço entre ícones */
-  margin: 10px 0 36px; /* mantém bom espaço até aos botões */
-}
-
+  gap: 8px;
+  margin: 10px 0 36px;
 }
 
 .socialIcon{
@@ -113,44 +113,69 @@ body::after{
   height: 42px;
   display: grid;
   place-items: center;
-  color: white;              /* cor do ícone (SVG usa currentColor) */
-  text-decoration: none;     /* remove sublinhado */
-  opacity: 1;
-}
+  text-decoration: none;
 
-.socialIcon,
-.socialIcon:visited,
-.socialIcon:hover,
-.socialIcon:active {
-  color: white;
-}
-
-
-/* impede azul depois de clicar */
-.socialIcon:visited{
+  /* normalização */
+  --icon-size: 26px;     /* tamanho base */
+  --icon-scale: 1;       /* ajusta por rede */
   color: rgba(255,255,255,.95);
-}
 
-/* hover clean */
-.socialIcon:hover{
-  color: rgba(255,255,255,1);
+  border-radius: 12px;
+  transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
 }
-
 
 .socialIcon svg{
-  width: 30px;
-  height: 30px;
+  width: var(--icon-size);
+  height: var(--icon-size);
   display:block;
-  
-  .socialRow a{
-  color: rgba(255,255,255,.95);
-  text-decoration: none;
+  transform: scale(var(--icon-scale));
+  transform-origin: 50% 50%;
 }
-.socialRow a:visited{
+
+/* impede azul do browser (link states) */
+.socialIcon:link,
+.socialIcon:visited,
+.socialIcon:hover,
+.socialIcon:active{
   color: rgba(255,255,255,.95);
 }
 
+/* ===== Ajuste fino para "mesmo tamanho visual" ===== */
+/* (estes valores compensam diferenças de viewBox/peso dos paths) */
+.socialIcon.ig{ --icon-scale: 1.05; }
+.socialIcon.yt{ --icon-scale: 0.98; }
+.socialIcon.tt{ --icon-scale: 0.96; }
+.socialIcon.tw{ --icon-scale: 1.00; }
+
+/* ===== Hover individual por rede ===== */
+.socialIcon.ig:hover{
+  color: #ff4fd8;
+  background: rgba(255,79,216,.10);
+  box-shadow: 0 10px 24px rgba(255,79,216,.18);
+  transform: translateY(-1px);
 }
+
+.socialIcon.yt:hover{
+  color: #ff2a2a;
+  background: rgba(255,42,42,.10);
+  box-shadow: 0 10px 24px rgba(255,42,42,.18);
+  transform: translateY(-1px);
+}
+
+.socialIcon.tt:hover{
+  color: #25f4ee;
+  background: rgba(37,244,238,.10);
+  box-shadow: 0 10px 24px rgba(37,244,238,.18);
+  transform: translateY(-1px);
+}
+
+.socialIcon.tw:hover{
+  color: #9146ff;
+  background: rgba(145,70,255,.12);
+  box-shadow: 0 10px 24px rgba(145,70,255,.20);
+  transform: translateY(-1px);
+}
+
 
 
 /* Links list */
@@ -212,9 +237,22 @@ body::after{
   width: 26px;
   height: 26px;
   display:block;
-  filter: brightness(0) invert(1); /* força branco */
-  color: rgba(255,255,255,.95);
+  filter: none;               /* remove o "força branco" */
+  fill: currentColor;         /* herda cor do .cardIcon */
 }
+
+
+}
+
+/* default (branco) */
+.cardIcon{ color: rgba(255,255,255,.92); transition: color .18s ease; }
+
+/* hover por rede */
+.card.ig:hover .cardIcon{ color: #ff4fd8; }
+.card.yt:hover .cardIcon{ color: #ff2a2a; }
+.card.tt:hover .cardIcon{ color: #25f4ee; }
+.card.tw:hover .cardIcon{ color: #9146ff; }
+
 
 .cardText{
   grid-column: 2;

@@ -3,107 +3,115 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>linksdojust</title>
+  <title>just</title>
   <meta name="description" content="Links do just" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <main class="wrap">
-    <!-- top corner buttons (decorativos) -->
-    <button class="topBtn left" type="button" aria-label="Opções">✳︎</button>
-    <button class="topBtn right" type="button" aria-label="Partilhar">⤴︎</button>
+  <main class="screen">
+    <div class="bgGlow"></div>
 
-    <section class="hero" aria-label="Perfil">
-      <img class="avatar" src="assets/avatar.jpg" alt="Avatar" />
-      <h1 class="name">just99c</h1>
-      <div class="sig" aria-hidden="true">♎︎</div>
+    <section class="top">
+      <div class="avatarWrap" aria-hidden="true">
+        <div class="avatarRing"></div>
+        <img class="avatar" src="assets/avatar.png" alt="Foto de perfil de just" />
+      </div>
 
-      <nav class="socialRow" aria-label="Redes sociais">
-        <a class="socialIcon" href="https://instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M7.5 2.75h9A4.75 4.75 0 0 1 21.25 7.5v9A4.75 4.75 0 0 1 16.5 21.25h-9A4.75 4.75 0 0 1 2.75 16.5v-9A4.75 4.75 0 0 1 7.5 2.75Z" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M12 16.15A4.15 4.15 0 1 0 12 7.85a4.15 4.15 0 0 0 0 8.3Z" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M17.2 6.8h.01" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
-          </svg>
-        </a>
-
-        <a class="socialIcon" href="https://tiktok.com/" target="_blank" rel="noreferrer" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M21 7.2c-1.6 0-3.2-.5-4.5-1.5v7.1a6.6 6.6 0 1 1-6.6-6.6c.4 0 .8 0 1.2.1v3.6a3 3 0 1 0 2.1 2.9V2.5h3.3c.3 2.2 1.7 4.2 4.5 4.6v.1Z"/>
-          </svg>
-        </a>
-
-        <a class="socialIcon" href="https://twitch.tv/" target="_blank" rel="noreferrer" aria-label="Twitch">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M4 3h16v10l-4 4h-4l-2 2h-3v-2H4V3Zm14 9V5H6v10h3v2.2L11.2 15H16l2-2Zm-8-4h2v4h-2V8Zm5 0h2v4h-2V8Z"/>
-          </svg>
-        </a>
-
-        <a class="socialIcon" href="https://youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M21 12s0-3.1-.4-4.5c-.2-.8-.8-1.4-1.6-1.6C17.6 5.5 12 5.5 12 5.5s-5.6 0-7 .4c-.8.2-1.4.8-1.6 1.6C3 8.9 3 12 3 12s0 3.1.4 4.5c.2.8.8 1.4 1.6 1.6 1.4.4 7 .4 7 .4s5.6 0 7-.4c.8-.2 1.4-.8 1.6-1.6.4-1.4.4-4.5.4-4.5Z" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M10.4 9.6v4.8L15 12l-4.6-2.4Z" fill="currentColor"/>
-          </svg>
-        </a>
-      </nav>
+      <h1 class="name">just</h1>
     </section>
 
-    <section class="list" aria-label="Links">
-      <a class="card" href="https://twitch.tv/" target="_blank" rel="noreferrer">
-        <span class="cardIcon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M4 3h16v10l-4 4h-4l-2 2h-3v-2H4V3Zm14 9V5H6v10h3v2.2L11.2 15H16l2-2Zm-8-4h2v4h-2V8Zm5 0h2v4h-2V8Z"/>
-          </svg>
-        </span>
-        <span class="cardText">Twitch (🔴 Live - 21:30)</span>
-        <button class="dots" type="button" aria-label="Mais opções">⋮</button>
+    <section class="cards" aria-label="Redes sociais">
+
+      <!-- Instagram -->
+      <a class="linkCard" href="https://instagram.com/just99c" target="_blank" rel="noreferrer">
+        <div class="left">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7.5 2.75h9A4.75 4.75 0 0 1 21.25 7.5v9A4.75 4.75 0 0 1 16.5 21.25h-9A4.75 4.75 0 0 1 2.75 16.5v-9A4.75 4.75 0 0 1 7.5 2.75Z" stroke="currentColor" stroke-width="1.7"/>
+              <path d="M12 16.15A4.15 4.15 0 1 0 12 7.85a4.15 4.15 0 0 0 0 8.3Z" stroke="currentColor" stroke-width="1.7"/>
+              <path d="M17.2 6.8h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div class="texts">
+            <div class="primary">Instagram</div>
+            <div class="secondary"></div>
+          </div>
+        </div>
+        <div class="right" aria-hidden="true">↗</div>
+      </a>
+	  
+	     <!-- Twitch -->
+      <a class="linkCard" href="https://www.twitch.tv/just99c" target="_blank" rel="noreferrer">
+        <div class="left">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+  <path d="M4 3h16v10l-4 4h-4l-2 2h-3v-2H4V3Zm14 9V5H6v10h3v2.2L11.2 15H16l2-2Zm-8-4h2v4h-2V8Zm5 0h2v4h-2V8Z"/>
+</svg>
+
+          </span>
+          <div class="texts">
+            <div class="primary">Twitch (Live às 21:30)</div>
+            <div class="secondary"></div>
+          </div>
+        </div>
+        <div class="right" aria-hidden="true">↗</div>
       </a>
 
-      <a class="card" href="https://instagram.com/" target="_blank" rel="noreferrer">
-        <span class="cardIcon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M7.5 2.75h9A4.75 4.75 0 0 1 21.25 7.5v9A4.75 4.75 0 0 1 16.5 21.25h-9A4.75 4.75 0 0 1 2.75 16.5v-9A4.75 4.75 0 0 1 7.5 2.75Z" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M12 16.15A4.15 4.15 0 1 0 12 7.85a4.15 4.15 0 0 0 0 8.3Z" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M17.2 6.8h.01" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="cardText">Instagram</span>
-        <button class="dots" type="button" aria-label="Mais opções">⋮</button>
+      <!-- TikTok -->
+      <a class="linkCard" href="https://www.tiktok.com/@just99c" target="_blank" rel="noreferrer">
+        <div class="left">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+  <path d="M21 7.2c-1.6 0-3.2-.5-4.5-1.5v7.1a6.6 6.6 0 1 1-6.6-6.6c.4 0 .8 0 1.2.1v3.6a3 3 0 1 0 2.1 2.9V2.5h3.3c.3 2.2 1.7 4.2 4.5 4.6v.1Z"/>
+</svg>
+
+          </span>
+          <div class="texts">
+            <div class="primary">TikTok</div>
+            <div class="secondary"></div>
+          </div>
+        </div>
+        <div class="right" aria-hidden="true">↗</div>
       </a>
 
-      <a class="card" href="https://tiktok.com/" target="_blank" rel="noreferrer">
-        <span class="cardIcon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M21 7.2c-1.6 0-3.2-.5-4.5-1.5v7.1a6.6 6.6 0 1 1-6.6-6.6c.4 0 .8 0 1.2.1v3.6a3 3 0 1 0 2.1 2.9V2.5h3.3c.3 2.2 1.7 4.2 4.5 4.6v.1Z"/>
-          </svg>
-        </span>
-        <span class="cardText">TikTok</span>
-        <button class="dots" type="button" aria-label="Mais opções">⋮</button>
+      <!-- TikTok Secundário -->
+      <a class="linkCard" href="https://www.tiktok.com/@maisdojust" target="_blank" rel="noreferrer">
+        <div class="left">
+          <span class="icon" aria-hidden="true">
+           <svg viewBox="0 0 24 24" fill="currentColor">
+  <path d="M21 7.2c-1.6 0-3.2-.5-4.5-1.5v7.1a6.6 6.6 0 1 1-6.6-6.6c.4 0 .8 0 1.2.1v3.6a3 3 0 1 0 2.1 2.9V2.5h3.3c.3 2.2 1.7 4.2 4.5 4.6v.1Z"/>
+</svg>
+
+          </span>
+          <div class="texts">
+            <div class="primary">TikTok Secundário</div>
+            <div class="secondary"></div>
+          </div>
+        </div>
+        <div class="right" aria-hidden="true">↗</div>
       </a>
 
-      <a class="card" href="https://tiktok.com/" target="_blank" rel="noreferrer">
-        <span class="cardIcon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M21 7.2c-1.6 0-3.2-.5-4.5-1.5v7.1a6.6 6.6 0 1 1-6.6-6.6c.4 0 .8 0 1.2.1v3.6a3 3 0 1 0 2.1 2.9V2.5h3.3c.3 2.2 1.7 4.2 4.5 4.6v.1Z"/>
-          </svg>
-        </span>
-        <span class="cardText">TikTok (maisdojust)</span>
-        <button class="dots" type="button" aria-label="Mais opções">⋮</button>
+      <!-- YouTube -->
+      <a class="linkCard" href="https://www.youtube.com/@just95500" target="_blank" rel="noreferrer">
+        <div class="left">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M21 12s0-3.1-.4-4.5c-.2-.8-.8-1.4-1.6-1.6C17.6 5.5 12 5.5 12 5.5s-5.6 0-7 .4c-.8.2-1.4.8-1.6 1.6C3 8.9 3 12 3 12s0 3.1.4 4.5c.2.8.8 1.4 1.6 1.6 1.4.4 7 .4 7 .4s5.6 0 7-.4c.8-.2 1.4-.8 1.6-1.6.4-1.4.4-4.5.4-4.5Z" stroke="currentColor" stroke-width="1.7"/>
+              <path d="M10.4 9.6v4.8L15 12l-4.6-2.4Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <div class="texts">
+            <div class="primary">YouTube</div>
+            <div class="secondary"></div>
+          </div>
+        </div>
+        <div class="right" aria-hidden="true">↗</div>
       </a>
 
-      <a class="card" href="https://youtube.com/" target="_blank" rel="noreferrer">
-        <span class="cardIcon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M21 12s0-3.1-.4-4.5c-.2-.8-.8-1.4-1.6-1.6C17.6 5.5 12 5.5 12 5.5s-5.6 0-7 .4c-.8.2-1.4.8-1.6 1.6C3 8.9 3 12 3 12s0 3.1.4 4.5c.2.8.8 1.4 1.6 1.6 1.4.4 7 .4 7 .4s5.6 0 7-.4c.8-.2 1.4-.8 1.6-1.6.4-1.4.4-4.5.4-4.5Z" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M10.4 9.6v4.8L15 12l-4.6-2.4Z" fill="currentColor"/>
-          </svg>
-        </span>
-        <span class="cardText">YouTube</span>
-        <button class="dots" type="button" aria-label="Mais opções">⋮</button>
-      </a>
     </section>
 
-    <footer class="foot">
+    <footer class="footer">
       <small>© <span id="year"></span> just</small>
     </footer>
   </main>

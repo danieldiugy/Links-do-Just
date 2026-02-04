@@ -165,10 +165,10 @@ body::after{
 }
 
 .card:hover{
-  border-color: rgba(140, 20, 20, .70);
-  box-shadow:
-    0 12px 26px rgba(0,0,0,.6),
-    inset 0 0 0 1px rgba(255,255,255,.035);
+border-color: rgba(140, 20, 20, .75);
+box-shadow:0 12px 26px rgba(0,0,0,.6),
+inset 0 0 0 1px rgba(255,255,255,.04);
+ transform: translateY(-1px);
 }
 
 .cardIcon{
@@ -181,6 +181,9 @@ body::after{
   opacity: .95;
 }
 .cardIcon svg{ width: 22px; height: 22px; display:block; }
+
+.card:active{
+  transform: translateY(0px) scale(.99);
 
 .cardText{
   flex: 1 1 auto;

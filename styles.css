@@ -201,10 +201,11 @@ body::after{
   color: rgba(255,255,255,.92);
 }
 
-.cardIcon svg{
+.cardIcon img{
   width: 26px;
   height: 26px;
   display:block;
+   filter: brightness(0) invert(1); /* força branco */
 }
 
 .cardText{

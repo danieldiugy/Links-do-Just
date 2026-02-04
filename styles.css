@@ -113,8 +113,8 @@ body::after{
 }
 
 .socialIcon{
-  width: 42px;            /* botão maior */
-  height: 42px;
+  width: 35px;            /* botão maior */
+  height: 35px;
   display: grid;
   place-items: center;
    color: rgba(255,255,255,.95); /* 👈 força branco */
@@ -129,11 +129,6 @@ body::after{
 .socialIcon:hover{
   color: var(--gold);
 }
-}
-
-.socialIcon svg{
-  width: 40px;            /* ícone maior */
-  height: 40px;
 }
 
 

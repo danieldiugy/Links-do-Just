@@ -1,10 +1,3 @@
-// ano no footer
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// impede que clicar nos ⋮ abra o link
-document.querySelectorAll(".dots").forEach(btn => {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-  });
-});
+// safe small helpers (optional)
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();

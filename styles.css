@@ -311,3 +311,24 @@ body::after{
   width: 100%;
   color: rgba(255,255,255,.42);
 }
+
+/* Instagram: troca layer branco -> gradient dentro do SVG */
+.socialIcon.ig svg .ig-grad,
+.card.ig svg .ig-grad{
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+.socialIcon.ig svg .ig-solid,
+.card.ig svg .ig-solid{
+  opacity: 1;
+  transition: opacity .18s ease;
+}
+
+.socialIcon.ig:hover svg .ig-grad,
+.card.ig:hover svg .ig-grad{
+  opacity: 1;
+}
+.socialIcon.ig:hover svg .ig-solid,
+.card.ig:hover svg .ig-solid{
+  opacity: 0;
+}

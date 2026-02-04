@@ -82,8 +82,8 @@ body::after{
 }
 
 .avatar{
-  width: 86px;
-  height: 86px;
+  width: 140px;
+  height: 140px;
   border-radius: 999px;
   object-fit: cover;
   border: 2px solid rgba(255,255,255,.12);
@@ -108,21 +108,20 @@ body::after{
 .socialRow{
   display:flex;
   justify-content:center;
-  gap: 18px;
-  margin: 8px 0 18px;
+  gap: 12px;              /* menos espaço entre ícones */
+  margin: 10px 0 22px;
 }
+
 .socialIcon{
-  width: 34px;
-  height: 34px;
-  display:grid;
-  place-items:center;
-  color: rgba(255,255,255,.92);
-  text-decoration:none;
-  opacity:.95;
-  transition: opacity .25s ease;
+  width: 42px;            /* botão maior */
+  height: 42px;
 }
-.socialIcon:hover{ opacity:1; }
-.socialIcon svg{ width: 22px; height: 22px; display:block; }
+
+.socialIcon svg{
+  width: 26px;            /* ícone maior */
+  height: 26px;
+}
+
 
 /* list/cards */
 .list{

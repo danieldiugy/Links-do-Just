@@ -99,12 +99,13 @@ body::after{
   opacity: .95;
 }
 
-/* Social icons under avatar */
 .socialRow{
   display:flex;
   justify-content:center;
-  gap: 10px;            /* menos spacing entre ícones */
-  margin: 10px 0 30px;  /* mais espaço até aos botões */
+  gap: 6px;          /* 👈 menos espaço entre ícones */
+  margin: 10px 0 36px; /* mantém bom espaço até aos botões */
+}
+
 }
 
 .socialIcon{
@@ -180,8 +181,8 @@ body::after{
 .cardIcon{
   grid-column: 1;
 
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   display:grid;
   place-items:center;
   opacity:.95;
@@ -189,8 +190,8 @@ body::after{
 }
 
 .cardIcon svg{
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   display:block;
 }
 

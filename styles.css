@@ -103,8 +103,8 @@ body::after{
 .socialRow{
   display:flex;
   justify-content:center;
-  gap: 12px;            /* tighter */
-  margin: 10px 0 22px;
+  gap: 10px;            /* menos spacing entre ícones */
+  margin: 10px 0 30px;  /* mais espaço até aos botões */
 }
 
 .socialIcon{
@@ -138,13 +138,13 @@ body::after{
   display:flex;
   flex-direction:column;
   gap: 14px;
-  margin-top: 6px;
+  margin-top: 0;        /* espaçamento consistente */
 }
 
 /* Card: icon left, text perfectly centered */
 .card{
   display:grid;
-  grid-template-columns: 34px 1fr;
+  grid-template-columns: 34px 1fr 34px;
   align-items:center;
 
   padding: 16px 16px;
@@ -164,6 +164,9 @@ body::after{
     background .35s cubic-bezier(.22,.61,.36,1);
 }
 
+.card::after{
+  content:"";
+}
 .card:hover{
   border-color: rgba(140,20,20,.78);
   box-shadow: 0 12px 26px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.04);
@@ -175,6 +178,8 @@ body::after{
 }
 
 .cardIcon{
+  grid-column: 1;
+
   width: 34px;
   height: 34px;
   display:grid;
@@ -190,6 +195,8 @@ body::after{
 }
 
 .cardText{
+  grid-column: 2;
+
   text-align:center;
   font-weight: 600;
   letter-spacing: .01em;
@@ -206,5 +213,16 @@ body::after{
   .wrap{ padding: 18px 16px 20px; }
   .avatar{ width: 112px; height: 112px; }
   .card{ padding: 14px 14px; }
-  .cardText{ font-size: 15.5px; }
+  .cardText{
+  grid-column: 2;
+ font-size: 15.5px; }
+}
+
+
+/* Footer */
+.foot{
+  margin-top: 18px;
+  text-align: center;   /* centro */
+  width: 100%;
+  color: rgba(255,255,255,.42);
 }

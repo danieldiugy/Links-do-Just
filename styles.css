@@ -113,11 +113,18 @@ body::after{
   height: 42px;
   display: grid;
   place-items: center;
-
-  color: rgba(255,255,255,.95); /* 👈 força branco */
-  text-decoration: none;
+  color: white;              /* cor do ícone (SVG usa currentColor) */
+  text-decoration: none;     /* remove sublinhado */
   opacity: 1;
 }
+
+.socialIcon,
+.socialIcon:visited,
+.socialIcon:hover,
+.socialIcon:active {
+  color: white;
+}
+
 
 /* impede azul depois de clicar */
 .socialIcon:visited{

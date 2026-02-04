@@ -147,13 +147,22 @@ body::after{
 .socialIcon.tt{ --icon-scale: 0.96; }
 .socialIcon.tw{ --icon-scale: 1.00; }
 
-/* ===== Hover individual por rede ===== */
 .socialIcon.ig:hover{
-  color: #ff4fd8;
-  background: rgba(255,79,216,.10);
-  box-shadow: 0 10px 24px rgba(255,79,216,.18);
-  transform: translateY(-1px);
+  color: #ffffff; /* ícone fica branco */
+  background: linear-gradient(
+    135deg,
+    #feda75 0%,
+    #fa7e1e 25%,
+    #d62976 50%,
+    #962fbf 75%,
+    #4f5bd5 100%
+  );
+  box-shadow:
+    0 10px 26px rgba(214,41,118,.35),
+    0 4px 12px rgba(79,91,213,.25);
+  transform: translateY(-1px) scale(1.02);
 }
+
 
 .socialIcon.yt:hover{
   color: #ff2a2a;
@@ -248,7 +257,23 @@ body::after{
 .cardIcon{ color: rgba(255,255,255,.92); transition: color .18s ease; }
 
 /* hover por rede */
-.card.ig:hover .cardIcon{ color: #ff4fd8; }
+.card.ig:hover{
+  border-color: rgba(214,41,118,.6);
+}
+
+.card.ig:hover .cardIcon{
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
+  border-radius: 8px;
+}
+
 .card.yt:hover .cardIcon{ color: #ff2a2a; }
 .card.tt:hover .cardIcon{ color: #25f4ee; }
 .card.tw:hover .cardIcon{ color: #9146ff; }

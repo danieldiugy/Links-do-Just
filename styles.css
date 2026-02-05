@@ -1,3 +1,8 @@
+html{
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 :root{
   --bg0:#040404;
   --bg1:#090909;

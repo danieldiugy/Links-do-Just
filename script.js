@@ -15,29 +15,43 @@ async function updateTwitchCard() {
 
   try {
     // DecAPI: retorna "OFFLINE" ou um texto com o uptime
-    const res = await fetch(`https://decapi.me/twitch/uptime/${encodeURIComponent(channel)}`, {
-      cache: "no-store",
-    });
-    const t = (await res.text()).trim().toLowerCase();
+    const res = await fetch(
+      `https://decapi.me/twitch/uptime/${encodeURIComponent(channel)}`,
+      { cache: "no-store" }
+    );
 
+    const t = (await res.text()).trim().toLowerCase();
     const isLive = t !== "offline" && !t.includes("offline");
 
     if (isLive) {
       textEl.textContent = liveText;
+
+      // ex: "12 minutes", "1 hour, 5 minutes" → "há 12min", "há 1h 5min"
+      card.dataset.uptime =
+        "há " +
+        t
+          .replace("hours", "h")
+          .replace("hour", "h")
+          .replace("minutes", "min")
+          .replace("minute", "min")
+          .replace(",", "");
+
       card.classList.add("is-live");
     } else {
       textEl.textContent = offlineText;
       card.classList.remove("is-live");
+      delete card.dataset.uptime;
     }
   } catch (e) {
-    // Se falhar, mantém o texto normal
+    // fallback seguro
     textEl.textContent = offlineText;
     card.classList.remove("is-live");
+    delete card.dataset.uptime;
   }
 }
 
 updateTwitchCard();
-setInterval(updateTwitchCard, 60_000); // atualiza a cada 60s
+setInterval(updateTwitchCard, 60_000); // 1 minuto
 
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden) updateTwitchCard();

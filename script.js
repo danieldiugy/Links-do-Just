@@ -22,19 +22,19 @@ async function updateTwitchCard() {
 
     const t = (await res.text()).trim().toLowerCase();
     const isLive = t !== "offline" && !t.includes("offline");
+let label = "";
 
-    if (isLive) {
-      textEl.textContent = liveText;
+if (t.includes("hour")) {
+  // horas → por extenso, ignora minutos
+  const h = t.match(/(\d+)\s*hour/)?.[1];
+  label = h === "1" ? "há 1 hora" : `há ${h} horas`;
+} else if (t.includes("minute")) {
+  // só minutos → curto
+  const m = t.match(/(\d+)\s*minute/)?.[1];
+  label = `há ${m}min`;
+}
 
-      // ex: "12 minutes", "1 hour, 5 minutes" → "há 12min", "há 1h 5min"
-      card.dataset.uptime =
-        "há " +
-        t
-          .replace("hours", "h")
-          .replace("hour", "h")
-          .replace("minutes", "min")
-          .replace("minute", "min")
-          .replace(",", "");
+card.dataset.uptime = label;
 
       card.classList.add("is-live");
     } else {

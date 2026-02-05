@@ -11,7 +11,7 @@ async function updateTwitchCard() {
 
   const channel = "just99c";
   const offlineText = "Twitch (Live às 21:30)";
-  const liveText = "Twitch (🔴 LIVE)";
+  const liveHtml = 'Twitch (<span class="live-dot pulse"></span> AO VIVO)';
 
   try {
     const res = await fetch(
@@ -23,7 +23,8 @@ async function updateTwitchCard() {
     const isLive = t !== "offline" && !t.includes("offline");
 
     if (isLive) {
-      textEl.textContent = liveText;
+      // LIVE
+      textEl.innerHTML = liveHtml;
 
       let label = "";
       if (t.includes("hour")) {
@@ -37,17 +38,20 @@ async function updateTwitchCard() {
       card.dataset.uptime = label;
       card.classList.add("is-live");
     } else {
+      // OFFLINE
       textEl.textContent = offlineText;
       card.classList.remove("is-live");
       delete card.dataset.uptime;
     }
   } catch (e) {
+    // ERROR fallback
     textEl.textContent = offlineText;
     card.classList.remove("is-live");
     delete card.dataset.uptime;
   }
 }
 
+// initial + auto updates
 updateTwitchCard();
 setInterval(updateTwitchCard, 60_000);
 

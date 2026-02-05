@@ -252,8 +252,6 @@ body::after{
 }
 
 
-}
-
 /* default (branco) */
 .cardIcon{ color: rgba(255,255,255,.92); transition: color .18s ease; }
 

@@ -201,8 +201,8 @@ body::after{
   grid-template-columns: 26px 1fr 26px;
   align-items:center;
 
-  padding: 8px 10px;
-  min-height: 44px;
+  padding: 10px 12px;
+  min-height: 48px;
 
   border-radius: 10px;
   background: var(--cardBg);

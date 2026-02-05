@@ -38,3 +38,7 @@ async function updateTwitchCard() {
 
 updateTwitchCard();
 setInterval(updateTwitchCard, 60_000); // atualiza a cada 60s
+
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) updateTwitchCard();
+});

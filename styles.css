@@ -301,10 +301,12 @@ body::after{
   .wrap{ padding: 18px 16px 20px; }
   .avatar{ width: 112px; height: 112px; }
   .card{ padding: 10px 12px; }
+
   .cardText{
-  grid-column: 2;
- font-size: 4px; }
+    font-size: 14.5px;
+  }
 }
+
 
 
 /* Footer */

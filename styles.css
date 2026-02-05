@@ -352,14 +352,15 @@ body::after{
   content: attr(data-uptime);
   justify-self: end;
 
-  font-size: 12px;
-  font-weight: 600;
-  opacity: .85;
+  font-size: 13.5px;
+  font-weight: 700;
+  opacity: .95;
 
-  padding: 4px 8px;
+  padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(255, 0, 0, .10);
-  border: 1px solid rgba(255, 0, 0, .25);
+
+  background: rgba(255, 0, 0, .14);
+  border: 1px solid rgba(255, 0, 0, .30);
 }
 
 

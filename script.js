@@ -11,7 +11,7 @@ async function updateTwitchCard() {
 
   const channel = "just99c";
   const offlineText = "Twitch (Live às 21:30)";
-  const liveText = "Twitch (🔴 AO VIVO AGORA)";
+  const liveText = "Twitch (🔴 AO VIVO)";
 
   try {
     // DecAPI: retorna "OFFLINE" ou um texto com o uptime

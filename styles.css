@@ -235,8 +235,8 @@ body::after{
 
 .cardIcon{
   grid-column: 1;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   display:grid;
   place-items:center;
   opacity:.95;
@@ -244,8 +244,8 @@ body::after{
 }
 
 .cardIcon svg{
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   display:block;
   filter: none;               /* remove o "força branco" */
   fill: currentColor;         /* herda cor do .cardIcon */

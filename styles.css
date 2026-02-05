@@ -358,6 +358,8 @@ body::after{
 
   padding: 6px 10px;
   border-radius: 999px;
+  white-space: nowrap;
+
 
   background: rgba(255, 0, 0, .14);
   border: 1px solid rgba(255, 0, 0, .30);

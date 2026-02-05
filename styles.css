@@ -348,3 +348,18 @@ body::after{
   animation: livePulse 1.8s infinite;
 }
 
+.card.is-live::after{
+  content: attr(data-uptime);
+  justify-self: end;
+
+  font-size: 12px;
+  font-weight: 600;
+  opacity: .85;
+
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255, 0, 0, .10);
+  border: 1px solid rgba(255, 0, 0, .25);
+}
+
+

@@ -26,15 +26,14 @@ async function updateTwitchCard() {
       // LIVE
       textEl.innerHTML = liveHtml;
 
- let label = "";
-if (t.includes("hour")) {
-  const h = t.match(/(\d+)\s*hour/)?.[1];
-  if (h) label = h === "1" ? "Há 1h" : `Há ${h} h`;
-} else if (t.includes("minute")) {
-  const m = t.match(/(\d+)\s*minute/)?.[1];
-  if (m) label = m === "1" ? "Há 1min" : `Há ${m}min`;
-}
-
+      let label = "";
+      if (t.includes("hour")) {
+        const h = t.match(/(\d+)\s*hour/)?.[1];
+        if (h) label = h === "1" ? "há 1 hora" : `há ${h} horas`;
+      } else if (t.includes("minute")) {
+        const m = t.match(/(\d+)\s*minute/)?.[1];
+        if (m) label = `há ${m}min`;
+      }
 
       card.dataset.uptime = label;
       card.classList.add("is-live");
@@ -50,7 +49,6 @@ if (t.includes("hour")) {
     card.classList.remove("is-live");
     delete card.dataset.uptime;
   }
-}
 }
 
 // initial + auto updates

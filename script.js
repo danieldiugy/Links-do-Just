@@ -29,10 +29,10 @@ async function updateTwitchCard() {
  let label = "";
 if (t.includes("hour")) {
   const h = t.match(/(\d+)\s*hour/)?.[1];
-  if (h) label = h === "1" ? "Há 1 hora" : `Há ${h} horas`;
+  if (h) label = h === "1" ? "Há 1h" : `Há ${h} h`;
 } else if (t.includes("minute")) {
   const m = t.match(/(\d+)\s*minute/)?.[1];
-  if (m) label = m === "1" ? "Há 1 minuto" : `Há ${m} minutos`;
+  if (m) label = m === "1" ? "Há 1min" : `Há ${m}min`;
 }
 
 

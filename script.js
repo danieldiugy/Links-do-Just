@@ -11,7 +11,7 @@ async function updateTwitchCard() {
 
   const channel = "just99c";
   const offlineText = "Live às 21:30";
-  const liveHtml = 'Twitch (<span class="live-dot pulse"></span>EM LIVE)';
+  const liveHtml = '(<span class="live-dot pulse"></span>EM LIVE)';
 
   try {
     const res = await fetch(

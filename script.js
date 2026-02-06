@@ -51,6 +51,7 @@ if (t.includes("hour")) {
     delete card.dataset.uptime;
   }
 }
+}
 
 // initial + auto updates
 updateTwitchCard();

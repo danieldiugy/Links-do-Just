@@ -146,28 +146,25 @@ body::after{
 }
 
 /* ===== Ajuste fino para "mesmo tamanho visual" ===== */
-/* (estes valores compensam diferenças de viewBox/peso dos paths) */
 .socialIcon.ig{ --icon-scale: 1.05; }
 .socialIcon.yt{ --icon-scale: 0.98; }
 .socialIcon.tt{ --icon-scale: 0.96; }
 .socialIcon.tw{ --icon-scale: 1.00; }
 
+/* ✅ Instagram: SEM hover no botão (só no SVG) */
 .socialIcon.ig:hover{
-  color: #ffffff; /* ícone fica branco */
-  background: linear-gradient(
-    135deg,
-    #feda75 0%,
-    #fa7e1e 25%,
-    #d62976 50%,
-    #962fbf 75%,
-    #4f5bd5 100%
-  );
-  box-shadow:
-    0 10px 26px rgba(214,41,118,.35),
-    0 4px 12px rgba(79,91,213,.25);
-  transform: translateY(-1px) scale(1.02);
+  background: none;
+  box-shadow: none;
+  transform: none;
 }
 
+/* ✅ Instagram: hover só no SVG */
+.socialIcon.ig svg{
+  transition: transform .18s ease;
+}
+.socialIcon.ig:hover svg{
+  transform: scale(var(--icon-scale)) scale(1.08);
+}
 
 .socialIcon.yt:hover{
   color: #ff2a2a;
@@ -190,14 +187,12 @@ body::after{
   transform: translateY(-1px);
 }
 
-
-
 /* Links list */
 .list{
   display:flex;
   flex-direction:column;
   gap: 14px;
-  margin-top: 0;        /* espaçamento consistente */
+  margin-top: 0;
 }
 
 /* Card: icon left, text perfectly centered */
@@ -222,12 +217,11 @@ body::after{
     box-shadow .25s ease,
     transform .25s ease,
     background .25s ease;
+
+  position: relative; /* ✅ necessário para a seta overlay */
 }
 
-
-.card::after{
-  content:"";
-}
+/* hover geral (verde #18f5ba) */
 .card:hover{
   border-color: rgba(24, 245, 186, .65);
   box-shadow: 0 12px 26px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.04);
@@ -248,19 +242,18 @@ body::after{
   color: rgba(255,255,255,.92);
 }
 
+/* default (branco) */
+.cardIcon{ color: rgba(255,255,255,.92); transition: color .18s ease; }
+
 .cardIcon svg{
   width: 25px;
   height: 25px;
   display:block;
-  filter: none;               /* remove o "força branco" */
-  fill: currentColor;         /* herda cor do .cardIcon */
+  filter: none;
+  fill: currentColor;
 }
 
-
-/* default (branco) */
-.cardIcon{ color: rgba(255,255,255,.92); transition: color .18s ease; }
-
-/* hover por rede */
+/* hover por rede (cards) */
 .card.ig:hover{
   border-color: rgba(214,41,118,.6);
 }
@@ -282,7 +275,6 @@ body::after{
 .card.tt:hover .cardIcon{ color: #25f4ee; }
 .card.tw:hover .cardIcon{ color: #9146ff; }
 
-
 .cardText{
   grid-column: 2;
   text-align:center;
@@ -295,23 +287,18 @@ body::after{
   text-overflow: ellipsis;
 }
 
-/* Mobile: closer to screenshot */
+/* Mobile */
 @media (max-width: 420px){
   .wrap{ padding: 18px 16px 20px; }
   .avatar{ width: 112px; height: 112px; }
   .card{ padding: 10px 12px; }
-
-  .cardText{
-    font-size: 14.5px;
-  }
+  .cardText{ font-size: 14.5px; }
 }
-
-
 
 /* Footer */
 .foot{
   margin-top: 18px;
-  text-align: center;   /* centro */
+  text-align: center;
   width: 100%;
   color: rgba(255,255,255,.42);
 }
@@ -327,7 +314,6 @@ body::after{
   opacity: 1;
   transition: opacity .18s ease;
 }
-
 .socialIcon.ig:hover svg .ig-grad,
 .card.ig:hover svg .ig-grad{
   opacity: 1;
@@ -337,6 +323,7 @@ body::after{
   opacity: 0;
 }
 
+/* LIVE pulse */
 @keyframes livePulse {
   0%   { box-shadow: 0 0 0 0 rgba(255,0,0,.35); }
   70%  { box-shadow: 0 0 0 10px rgba(255,0,0,0); }
@@ -348,9 +335,13 @@ body::after{
   animation: livePulse 1.8s infinite;
 }
 
+/* badge live (usa ::after — mantém) */
 .card.is-live::after{
   content: attr(data-uptime);
-  justify-self: end;
+  position: absolute;
+  right: 40px;        /* ✅ deixa espaço para a seta */
+  top: 50%;
+  transform: translateY(-50%);
 
   font-size: 13.5px;
   font-weight: 700;
@@ -359,15 +350,13 @@ body::after{
   padding: 6px 10px;
   border-radius: 999px;
   white-space: nowrap;
-  align-self: center;
-
 
   background: rgba(255, 0, 0, .14);
   border: 1px solid rgba(255, 0, 0, .30);
 }
 
 /* 🔴 Twitch LIVE dot */
-.live-dot {
+.live-dot{
   width: 8px;
   height: 8px;
   background: #e10600;
@@ -376,47 +365,35 @@ body::after{
   margin: 0 6px 1px 6px;
 }
 
-.pulse {
-  animation: pulse 1.4s infinite;
+.pulse{ animation: pulse 1.4s infinite; }
+
+@keyframes pulse{
+  0%   { box-shadow: 0 0 0 0 rgba(225, 6, 0, 0.7); }
+  70%  { box-shadow: 0 0 0 6px rgba(225, 6, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(225, 6, 0, 0); }
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(225, 6, 0, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 6px rgba(225, 6, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(225, 6, 0, 0);
-  }
-}
-
-/* ➜ seta indicadora de link */
+/* ➜ seta indicadora de link (overlay, não mexe no layout) */
 .card::before{
   content: "→";
-  grid-column: 3;
-  justify-self: end;
-  align-self: center;
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
 
   font-size: 16px;
   font-weight: 600;
   opacity: .35;
+  pointer-events: none;
 
-  transform: translateX(0);
   transition: opacity .2s ease, transform .2s ease;
 }
 
-/* hover: seta mais visível */
 .card:hover::before{
   opacity: .7;
-  transform: translateX(2px);
+  transform: translateY(-50%) translateX(2px);
 }
 
-/* quando LIVE, a seta fica discreta (badge já chama atenção) */
 .card.is-live::before{
   opacity: .25;
 }
-
-
-

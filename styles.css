@@ -392,5 +392,31 @@ body::after{
   }
 }
 
+/* ➜ seta indicadora de link */
+.card::before{
+  content: "→";
+  grid-column: 3;
+  justify-self: end;
+  align-self: center;
+
+  font-size: 16px;
+  font-weight: 600;
+  opacity: .35;
+
+  transform: translateX(0);
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+/* hover: seta mais visível */
+.card:hover::before{
+  opacity: .7;
+  transform: translateX(2px);
+}
+
+/* quando LIVE, a seta fica discreta (badge já chama atenção) */
+.card.is-live::before{
+  opacity: .25;
+}
+
 
 

@@ -7,66 +7,79 @@
   <meta name="description" content="Links do just" />
   <link rel="stylesheet" href="styles.css?v=19" />
 </head>
+
 <body>
   <main class="wrap">
 
+    <!-- PERFIL -->
     <section class="hero" aria-label="Perfil">
       <img class="avatar" src="assets/avatar.webp" alt="Avatar" />
       <h1 class="name">just</h1>
-
-      <!-- Se quiseres voltar a usar a sig:
-      <div class="sig" aria-hidden="true">🔱</div>
-      -->
-
-      <!-- Se quiseres voltar a usar as redes sociais:
-      <nav class="socialRow" aria-label="Redes sociais">
-        ...
-      </nav>
-      -->
     </section>
 
+    <!-- LINKS -->
     <section class="list" aria-label="Links">
+
+      <!-- TWITCH -->
       <a id="twitchCard" class="card tw" href="https://twitch.tv/just99c" target="_blank" rel="noreferrer">
         <span class="cardIcon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path fill="currentColor" fill-rule="evenodd" d="M3 1 1.5 5v15H7v3h3l3 -3h4l5.5 -5.5V1H3Zm2 2h15.5v10.5L17 17h-5l-2.5 2.5V17H5V3Zm5 9.5V7h2v5.5h-2ZM15 7v5.5h2V7h-2Z" clip-rule="evenodd"></path>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+            <path fill="currentColor" fill-rule="evenodd"
+              d="M3 1 1.5 5v15H7v3h3l3-3h4l5.5-5.5V1H3Zm2 2h15.5v10.5L17 17h-5l-2.5 2.5V17H5V3Zm5 9.5V7h2v5.5h-2ZM15 7v5.5h2V7h-2Z"
+              clip-rule="evenodd" />
           </svg>
         </span>
         <span class="cardText">Live às 21:30</span>
       </a>
 
+      <!-- INSTAGRAM (SVG LIMPO) -->
       <a class="card ig" href="https://instagram.com/just99c" target="_blank" rel="noreferrer">
         <span class="cardIcon" aria-hidden="true">
-          <!-- (mantive o teu SVG tal como está, mas atenção: tens <svg> duplicado aí dentro) -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 169.063 169.063" aria-hidden="true">
-            <!-- ... o teu conteúdo do SVG ... -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="4" width="16" height="16" rx="4"
+              stroke="currentColor" stroke-width="2" />
+            <circle cx="12" cy="12" r="3.5"
+              stroke="currentColor" stroke-width="2" />
+            <circle cx="17.2" cy="6.8" r="1" fill="currentColor" />
           </svg>
         </span>
         <span class="cardText">Instagram</span>
       </a>
 
+      <!-- TIKTOK -->
       <a class="card tt" href="https://tiktok.com/@just99c" target="_blank" rel="noreferrer">
         <span class="cardIcon" aria-hidden="true">
           <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-            <path d="M168 0c7 43 32 69 64 71v43c-26 1-50-7-71-21v81c0 41-33 74-74 74s-74-33-74-74 33-74 74-74c5 0 10 1 14 2v45c-4-1-9-2-14-2-17 0-31 14-31 31s14 31 31 31 31-14 31-31V0h50z"/>
+            <path d="M168 0c7 43 32 69 64 71v43c-26 1-50-7-71-21v81
+              c0 41-33 74-74 74s-74-33-74-74 33-74 74-74
+              c5 0 10 1 14 2v45c-4-1-9-2-14-2-17 0-31 14-31 31
+              s14 31 31 31 31-14 31-31V0h50z"/>
           </svg>
         </span>
         <span class="cardText">TikTok</span>
       </a>
 
+      <!-- MAIS DO JUST -->
       <a class="card tt" href="https://tiktok.com/@maisdojust" target="_blank" rel="noreferrer">
         <span class="cardIcon" aria-hidden="true">
           <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-            <path d="M168 0c7 43 32 69 64 71v43c-26 1-50-7-71-21v81c0 41-33 74-74 74s-74-33-74-74 33-74 74-74c5 0 10 1 14 2v45c-4-1-9-2-14-2-17 0-31 14-31 31s14 31 31 31 31-14 31-31V0h50z"/>
+            <path d="M168 0c7 43 32 69 64 71v43c-26 1-50-7-71-21v81
+              c0 41-33 74-74 74s-74-33-74-74 33-74 74-74
+              c5 0 10 1 14 2v45c-4-1-9-2-14-2-17 0-31 14-31 31
+              s14 31 31 31 31-14 31-31V0h50z"/>
           </svg>
         </span>
         <span class="cardText">Mais do Just</span>
       </a>
 
+      <!-- CLIPS -->
       <a class="card tt" href="https://tiktok.com/@livesdojust" target="_blank" rel="noreferrer">
         <span class="cardIcon" aria-hidden="true">
           <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-            <path d="M168 0c7 43 32 69 64 71v43c-26 1-50-7-71-21v81c0 41-33 74-74 74s-74-33-74-74 33-74 74-74c5 0 10 1 14 2v45c-4-1-9-2-14-2-17 0-31 14-31 31s14 31 31 31 31-14 31-31V0h50z"/>
+            <path d="M168 0c7 43 32 69 64 71v43c-26 1-50-7-71-21v81
+              c0 41-33 74-74 74s-74-33-74-74 33-74 74-74
+              c5 0 10 1 14 2v45c-4-1-9-2-14-2-17 0-31 14-31 31
+              s14 31 31 31 31-14 31-31V0h50z"/>
           </svg>
         </span>
         <span class="cardText">Clips das Lives</span>
@@ -74,6 +87,7 @@
 
     </section>
 
+    <!-- FOOTER -->
     <footer class="foot">
       <small>© <span id="year"></span> just</small>
     </footer>

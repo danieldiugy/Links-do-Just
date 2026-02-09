@@ -300,6 +300,8 @@ body::after{
   .avatar{ width: 112px; height: 112px; }
   .card{ padding: 10px 12px; }
   .cardText{ font-size: 14.5px; }
+    /* 🔽 menos espaço entre nome e cards no mobile */
+  .name{ margin-bottom: 36px; }
 }
 
 /* Footer */

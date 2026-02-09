@@ -279,6 +279,12 @@ body::after{
   border-radius: 8px;
 }
 
+/* Ajuste fino: Instagram ligeiramente maior (outline pesa menos) */
+.card.ig .cardIcon svg{
+  transform: scale(1.08);
+}
+
+
 .card.yt:hover .cardIcon{ color: #ff2a2a; }
 .card.tt:hover .cardIcon{ color: #25f4ee; }
 .card.tw:hover .cardIcon{ color: #9146ff; }

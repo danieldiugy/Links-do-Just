@@ -239,24 +239,31 @@ body::after{
   height: 35px;
   display:grid;
   place-items:center;
-  opacity:.95;
-  color: rgba(255,255,255,.92);
+  opacity: 1; /* ✅ evita "lavado" */
+  color: rgba(255,255,255,.95); /* ✅ mais sólido */
 }
 
 /* default (branco) */
-.cardIcon{ color: rgba(255,255,255,.92); transition: color .18s ease; }
+.cardIcon{ transition: color .18s ease; }
 
+/* ✅ Normalização correta para SVGs (fill vs stroke) */
 .cardIcon svg{
   width: 25px;
   height: 25px;
   display:block;
   filter: none;
+}
+
+/* Para ícones preenchidos (Twitch/TikTok etc.) */
+.cardIcon svg[fill="currentColor"],
+.cardIcon svg:not([stroke]){
   fill: currentColor;
 }
 
-/* hover por rede (cards) */
-.card.ig:hover{
-  border-color: rgba(214,41,118,.6);
+/* Para ícones outline (Instagram novo com stroke) */
+.cardIcon svg[stroke="currentColor"]{
+  stroke: currentColor;
+  fill: none;
 }
 
 .card.ig:hover .cardIcon{
@@ -304,25 +311,7 @@ body::after{
   color: rgba(255,255,255,.42);
 }
 
-/* Instagram: troca layer branco -> gradient dentro do SVG */
-.socialIcon.ig svg .ig-grad,
-.card.ig svg .ig-grad{
-  opacity: 0;
-  transition: opacity .18s ease;
-}
-.socialIcon.ig svg .ig-solid,
-.card.ig svg .ig-solid{
-  opacity: 1;
-  transition: opacity .18s ease;
-}
-.socialIcon.ig:hover svg .ig-grad,
-.card.ig:hover svg .ig-grad{
-  opacity: 1;
-}
-.socialIcon.ig:hover svg .ig-solid,
-.card.ig:hover svg .ig-solid{
-  opacity: 0;
-}
+/* ❌ Removido: regras antigas ig-solid/ig-grad (já não se aplicam ao novo SVG) */
 
 /* LIVE pulse */
 @keyframes livePulse {

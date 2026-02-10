@@ -44,7 +44,6 @@ body::before{
   z-index:0;
 }
 
-/* subtle grain/noise (seguro) */
 body::after{
   content:"";
   position:fixed;
@@ -52,13 +51,13 @@ body::after{
   pointer-events:none;
   z-index:1;
   background-image:
-    radial-gradient(circle at 12% 18%, rgba(255,255,255,.05) 0 1px, transparent 1px 100%),
-    radial-gradient(circle at 32% 82%, rgba(255,255,255,.04) 0 1px, transparent 1px 100%),
-    radial-gradient(circle at 68% 32%, rgba(255,255,255,.05) 0 1px, transparent 1px 100%),
-    radial-gradient(circle at 88% 70%, rgba(255,255,255,.04) 0 1px, transparent 1px 100%),
-    repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 3px);
-  background-size: 160px 160px, 180px 180px, 200px 200px, 220px 220px, 4px 4px;
-  opacity: .16;
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.07) 0 1px, transparent 1px 100%),
+    radial-gradient(circle at 32% 82%, rgba(255,255,255,.06) 0 1px, transparent 1px 100%),
+    radial-gradient(circle at 68% 32%, rgba(255,255,255,.07) 0 1px, transparent 1px 100%),
+    radial-gradient(circle at 88% 70%, rgba(255,255,255,.06) 0 1px, transparent 1px 100%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 3px);
+  background-size: 120px 120px, 140px 140px, 160px 160px, 180px 180px, 3px 3px;
+  opacity: .22;
   mix-blend-mode: overlay;
 }
 

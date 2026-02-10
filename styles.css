@@ -27,7 +27,7 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 
   background-color: #050505; /* fundo base */
-  background-image: url("./assets/noise.png"); /* imagem 4K */
+  background-image: url("./assets/noise1080.png"); /* imagem 4K */
   background-repeat: no-repeat;
   background-size: contain;   /* 👈 mantém proporção */
   background-position: center;

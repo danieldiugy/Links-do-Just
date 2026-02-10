@@ -31,17 +31,7 @@ body{
 }
 
 
-/* subtle blur glow */
-body::before{
-  content:"";
-  position:fixed;
-  inset:-40px;
-  pointer-events:none;
-  background: radial-gradient(620px 420px at 50% 10%, rgba(212,175,55,.06), transparent 72%);
-  filter: blur(34px);
-  opacity:.32;
-  z-index:0;
-}
+
 
 body::after{
   content:"";

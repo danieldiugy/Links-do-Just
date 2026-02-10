@@ -51,7 +51,7 @@ body::after{
   background-size: cover;
   background-position: center;
 
-  opacity: .07;
+  opacity: .40;
   mix-blend-mode: soft-light;
 }
 

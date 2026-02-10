@@ -29,8 +29,8 @@ body{
   background-color: #050505; /* fundo base */
   background-image: url("./assets/noise1080.png"); /* imagem 4K */
   background-repeat: no-repeat;
-  background-size: contain;   /* 👈 mantém proporção */
-  background-position: center;
+  background-size: cover;   /* 👈 mantém proporção */
+  background-position: cover;
 
   overflow-x:hidden;
   position:relative;

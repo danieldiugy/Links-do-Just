@@ -44,350 +44,179 @@ body::before{
   z-index:0;
 }
 
-/* light grain/noise (orgânico e subtil) */
+/* subtle grain/noise (seguro) */
 body::after{
   content:"";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-
-  /* SVG noise via feTurbulence (data URI) */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
-
-  opacity: .10;              /* 🔧 aumenta/diminui aqui */
-  mix-blend-mode: overlay;   /* podes trocar para soft-light */
-}
-
-
-  opacity: .25;
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.05) 0 1px, transparent 1px 100%),
+    radial-gradient(circle at 32% 82%, rgba(255,255,255,.04) 0 1px, transparent 1px 100%),
+    radial-gradient(circle at 68% 32%, rgba(255,255,255,.05) 0 1px, transparent 1px 100%),
+    radial-gradient(circle at 88% 70%, rgba(255,255,255,.04) 0 1px, transparent 1px 100%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 3px);
+  background-size: 160px 160px, 180px 180px, 200px 200px, 220px 220px, 4px 4px;
+  opacity: .16;
   mix-blend-mode: overlay;
 }
 
 .wrap{
   position:relative;
   z-index:2;
-  max-width: 560px;
-  margin: 0 auto;
-  padding: 22px 18px 22px;
-  min-height: 100vh;
-
+  max-width:560px;
+  margin:0 auto;
+  padding:22px 18px 22px;
+  min-height:100vh;
   display:flex;
   flex-direction:column;
-  justify-content:flex-start;
 }
 
 .hero{
-  padding-top: 22px;
+  padding-top:22px;
   text-align:center;
 }
 
 .avatar{
-  width: 110px;
-  height: 110px;
-  border-radius: 999px;
-  object-fit: cover;
-  border: 2px solid rgba(255,255,255,.12);
-  box-shadow: 0 10px 28px rgba(0,0,0,.45);
-  background: rgba(255,255,255,.04);
+  width:110px;
+  height:110px;
+  border-radius:999px;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,.12);
+  box-shadow:0 10px 28px rgba(0,0,0,.45);
+  background:rgba(255,255,255,.04);
 }
 
 .name{
-  margin: 14px 0 6px;
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: .02em;
-  margin-bottom: 85px;
-}
-
-.sig{
-  color: var(--gold);
-  font-size: 18px;
-  margin-bottom: 10px;
-  opacity: .95;
-}
-
-/* ===== Social icons (debaxo do avatar) ===== */
-
-.socialRow{
-  display:flex;
-  justify-content:center;
-  gap: 8px;
-  margin: 10px 0 36px;
-}
-
-.socialIcon{
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  text-decoration: none;
-
-  /* normalização */
-  --icon-size: 26px;     /* tamanho base */
-  --icon-scale: 1;       /* ajusta por rede */
-  color: rgba(255,255,255,.95);
-
-  border-radius: 12px;
-  transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
-}
-
-.socialIcon svg{
-  width: var(--icon-size);
-  height: var(--icon-size);
-  display:block;
-  transform: scale(var(--icon-scale));
-  transform-origin: 50% 50%;
-}
-
-/* impede azul do browser (link states) */
-.socialIcon:link,
-.socialIcon:visited,
-.socialIcon:hover,
-.socialIcon:active{
-  color: rgba(255,255,255,.95);
-}
-
-/* ===== Ajuste fino para "mesmo tamanho visual" ===== */
-.socialIcon.ig{ --icon-scale: 1.05; }
-.socialIcon.yt{ --icon-scale: 0.98; }
-.socialIcon.tt{ --icon-scale: 0.96; }
-.socialIcon.tw{ --icon-scale: 1.00; }
-
-/* ✅ Instagram: SEM hover no botão (só no SVG) */
-.socialIcon.ig:hover{
-  background: none;
-  box-shadow: none;
-  transform: none;
-}
-
-/* ✅ Instagram: hover só no SVG */
-.socialIcon.ig svg{
-  transition: transform .18s ease;
-}
-.socialIcon.ig:hover svg{
-  transform: scale(var(--icon-scale)) scale(1.08);
-}
-
-.socialIcon.yt:hover{
-  color: #ff2a2a;
-  background: rgba(255,42,42,.10);
-  box-shadow: 0 10px 24px rgba(255,42,42,.18);
-  transform: translateY(-1px);
-}
-
-.socialIcon.tt:hover{
-  color: #25f4ee;
-  background: rgba(37,244,238,.10);
-  box-shadow: 0 10px 24px rgba(37,244,238,.18);
-  transform: translateY(-1px);
-}
-
-.socialIcon.tw:hover{
-  color: #9146ff;
-  background: rgba(145,70,255,.12);
-  box-shadow: 0 10px 24px rgba(145,70,255,.20);
-  transform: translateY(-1px);
+  margin:14px 0 6px;
+  font-size:24px;
+  font-weight:600;
+  letter-spacing:.02em;
+  margin-bottom:85px;
 }
 
 /* Links list */
 .list{
   display:flex;
   flex-direction:column;
-  gap: 14px;
-  margin-top: 0;
+  gap:14px;
 }
 
-/* Card: icon left, text perfectly centered */
+/* Card */
 .card{
   display:grid;
-  grid-template-columns: 26px 1fr 26px;
+  grid-template-columns:26px 1fr 26px;
   align-items:center;
-
-  padding: 12px 14px;
-  min-height: 52px;
-
-  border-radius: 10px;
-  background: var(--cardBg);
-  border: 2px solid rgba(255, 215, 0, .35);
-
-  box-shadow: var(--shadow), inset 0 0 0 1px rgba(255,255,255,.03);
+  padding:12px 14px;
+  min-height:52px;
+  border-radius:10px;
+  background:var(--cardBg);
+  border:1px solid rgba(212,175,55,.35);
+  box-shadow:var(--shadow), inset 0 0 0 1px rgba(255,255,255,.03);
   text-decoration:none;
-  color: var(--text);
-
-  transition:
-    border-color .25s ease,
-    box-shadow .25s ease,
-    transform .25s ease,
-    background .25s ease;
-
-  position: relative; /* ✅ necessário para a seta overlay */
+  color:var(--text);
+  position:relative;
+  transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
 }
 
-/* hover geral (verde #18f5ba) */
 .card:hover{
-  border-color: rgba(24, 245, 186, .65);
-  box-shadow: 0 12px 26px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.04);
-  transform: translateY(-1px);
+  border-color:rgba(24,245,186,.65);
+  box-shadow:0 12px 26px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.04);
+  transform:translateY(-1px);
 }
 
-.card:active{
-  transform: translateY(0px) scale(.99);
-}
+.card:active{ transform:scale(.99); }
 
 .cardIcon{
-  grid-column: 1;
-  width: 35px;
-  height: 35px;
+  width:35px;
+  height:35px;
   display:grid;
   place-items:center;
-  opacity: 1; /* ✅ evita "lavado" */
-  color: rgba(255,255,255,.95); /* ✅ mais sólido */
+  color:#fff;
 }
 
-/* default (branco) */
-.cardIcon{ transition: color .18s ease; }
-
-/* ✅ Normalização correta para SVGs (fill vs stroke) */
 .cardIcon svg{
-  width: 25px;
-  height: 25px;
+  width:25px;
+  height:25px;
   display:block;
-  filter: none;
 }
 
-/* Para ícones preenchidos (Twitch/TikTok etc.) */
-.cardIcon svg[fill="currentColor"],
-.cardIcon svg:not([stroke]){
-  fill: currentColor;
-}
+/* hover colors */
+.card.yt:hover .cardIcon{ color:#ff2a2a; }
+.card.tt:hover .cardIcon{ color:#25f4ee; }
+.card.tw:hover .cardIcon{ color:#9146ff; }
 
-/* Para ícones outline (Instagram novo com stroke) */
-.cardIcon svg[stroke="currentColor"]{
-  stroke: currentColor;
-  fill: none;
-}
+/* Instagram outline adjustment */
+.card.ig .cardIcon svg{ transform:scale(1.08); }
 
-
-/* Ajuste fino: Instagram ligeiramente maior (outline pesa menos) */
-.card.ig .cardIcon svg{
-  transform: scale(1.08);
-}
-
-/* Instagram hover — gradient no ícone (consistente com outras redes) */
 .card.ig:hover .cardIcon svg{
-  stroke: url(#igGradient);
+  stroke:url(#igGradient);
 }
 
-
-.card.yt:hover .cardIcon{ color: #ff2a2a; }
-.card.tt:hover .cardIcon{ color: #25f4ee; }
-.card.tw:hover .cardIcon{ color: #9146ff; }
-
+/* Card text */
 .cardText{
-  grid-column: 2;
   text-align:center;
-  font-weight: 500;
-  letter-spacing: .01em;
-  font-size: 14.5px;
-  padding: 0 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight:500;
+  font-size:14.5px;
+  padding:0 10px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-/* Mobile */
-@media (max-width: 420px){
-  .wrap{ padding: 18px 16px 20px; }
-  .avatar{ width: 112px; height: 112px; }
-  .card{ padding: 10px 12px; }
-  .cardText{ font-size: 14.5px; }
-    /* 🔽 menos espaço entre nome e cards no mobile */
-  .name{ margin-bottom: 36px; }
-}
-
-/* Footer */
-.foot{
-  margin-top: 18px;
-  text-align: center;
-  width: 100%;
-  color: rgba(255,255,255,.42);
-}
-
-/* ❌ Removido: regras antigas ig-solid/ig-grad (já não se aplicam ao novo SVG) */
-
-/* LIVE pulse */
-@keyframes livePulse {
-  0%   { box-shadow: 0 0 0 0 rgba(255,0,0,.35); }
-  70%  { box-shadow: 0 0 0 10px rgba(255,0,0,0); }
-  100% { box-shadow: 0 0 0 0 rgba(255,0,0,0); }
+/* Live state */
+@keyframes livePulse{
+  0%{ box-shadow:0 0 0 0 rgba(255,0,0,.35); }
+  70%{ box-shadow:0 0 0 10px rgba(255,0,0,0); }
+  100%{ box-shadow:0 0 0 0 rgba(255,0,0,0); }
 }
 
 .card.is-live{
-  border-color: rgba(255,0,0,.7);
-  animation: livePulse 1.8s infinite;
+  border-color:rgba(255,0,0,.7);
+  animation:livePulse 1.8s infinite;
 }
 
-/* badge live (usa ::after — mantém) */
 .card.is-live::after{
-  content: attr(data-uptime);
-  position: absolute;
-  right: 40px;        /* ✅ deixa espaço para a seta */
-  top: 50%;
-  transform: translateY(-50%);
-
-  font-size: 13.5px;
-  font-weight: 700;
-  opacity: .95;
-
-  padding: 6px 10px;
-  border-radius: 999px;
-  white-space: nowrap;
-
-  background: rgba(255, 0, 0, .14);
-  border: 1px solid rgba(255, 0, 0, .30);
+  content:attr(data-uptime);
+  position:absolute;
+  right:40px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:13.5px;
+  font-weight:700;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,0,0,.14);
+  border:1px solid rgba(255,0,0,.30);
 }
 
-/* 🔴 Twitch LIVE dot */
-.live-dot{
-  width: 8px;
-  height: 8px;
-  background: #e10600;
-  border-radius: 50%;
-  display: inline-block;
-  margin: 0 6px 1px 6px;
-}
-
-.pulse{ animation: pulse 1.4s infinite; }
-
-@keyframes pulse{
-  0%   { box-shadow: 0 0 0 0 rgba(225, 6, 0, 0.7); }
-  70%  { box-shadow: 0 0 0 6px rgba(225, 6, 0, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(225, 6, 0, 0); }
-}
-
-/* ➜ seta indicadora de link (overlay, não mexe no layout) */
+/* arrow */
 .card::before{
-  content: "→";
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-
-  font-size: 16px;
-  font-weight: 600;
-  opacity: .35;
-  pointer-events: none;
-
-  transition: opacity .2s ease, transform .2s ease;
+  content:"→";
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:16px;
+  opacity:.35;
 }
 
 .card:hover::before{
-  opacity: .7;
-  transform: translateY(-50%) translateX(2px);
+  opacity:.7;
+  transform:translateY(-50%) translateX(2px);
 }
 
-.card.is-live::before{
-  opacity: .25;
+/* mobile */
+@media (max-width:420px){
+  .wrap{ padding:18px 16px 20px; }
+  .avatar{ width:112px; height:112px; }
+  .name{ margin-bottom:36px; }
+}
+
+/* footer */
+.foot{
+  margin-top:18px;
+  text-align:center;
+  color:rgba(255,255,255,.42);
 }

@@ -33,24 +33,6 @@ body{
 
 
 
-body::after{
-  content:"";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-
-  background-image: url("assets/noise.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-
-  opacity: 1;
-  mix-blend-mode: soft-light;
-}
-
-
-
 .wrap{
   position:relative;
   z-index:2;

@@ -10,7 +10,7 @@ async function updateTwitchCard() {
   if (!textEl) return;
 
   const channel = "just99c";
-  const offlineText = "Live às 21:30";
+  const offlineText = "Live às 22h";
   const liveHtml = '<span class="live-dot pulse"></span>EM LIVE';
 
   try {

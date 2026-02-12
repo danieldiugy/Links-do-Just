@@ -96,7 +96,7 @@ h1 {
 .btn:hover {
   background: rgba(40, 40, 40, 0.8);
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
   border-color: #ffd700;
 }
 

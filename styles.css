@@ -203,7 +203,7 @@ footer {
 }
 @media (max-width: 768px) {
   .btn {
-    font-size: 0.9rem;   /* diminui só no mobile */
+    font-size: 1.0rem;   /* diminui só no mobile */
   }
 }
 

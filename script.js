@@ -44,7 +44,7 @@ async function checkTwitchLive() {
       twitchText.textContent = `há ${uptime}`;
       twitchButton.classList.add('live-pulse', 'live-text');
     } else {
-      twitchText.textContent = 'live às 22h';
+      twitchText.textContent = 'Live às 22h';
       twitchButton.classList.remove('live-pulse', 'live-text');
     }
 

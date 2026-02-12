@@ -1,60 +1,59 @@
-// year
-const yearEl = document.getElementById("year");
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+// Partículas douradas
+const particlesContainer = document.getElementById('particles');
+const numParticles = 60;
 
-async function updateTwitchCard() {
-  const card = document.getElementById("twitchCard");
-  if (!card) return;
+for (let i = 0; i < numParticles; i++) {
+  const particle = document.createElement('div');
+  particle.classList.add('particle');
+  
+  const size = Math.random() * 5 + 1.5;
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+  
+  particle.style.left = `${Math.random() * 100}vw`;
+  
+  const duration = Math.random() * 30 + 25;
+  const delay = Math.random() * 25;
+  particle.style.animationDuration = `${duration}s`;
+  particle.style.animationDelay = `-${delay}s`;
+  
+  particlesContainer.appendChild(particle);
+}
 
-  const textEl = card.querySelector(".cardText");
-  if (!textEl) return;
-
-  const channel = "just99c";
-  const offlineText = "Live às 22h";
-  const liveHtml = '<span class="live-dot pulse"></span>EM LIVE';
+// Verificação de live na Twitch
+async function checkTwitchLive() {
+  const twitchButton = document.getElementById('twitch-btn');
+  if (!twitchButton) return;
 
   try {
-    const res = await fetch(
-      `https://decapi.me/twitch/uptime/${encodeURIComponent(channel)}`,
-      { cache: "no-store" }
-    );
+    const statusRes = await fetch('https://decapi.me/twitch/status/just99c');
+    const status = (await statusRes.text()).trim();
 
-    const t = (await res.text()).trim().toLowerCase();
-    const isLive = t !== "offline" && !t.includes("offline");
+    if (status === 'LIVE') {
+      const uptimeRes = await fetch('https://decapi.me/twitch/uptime/just99c');
+      let uptime = (await uptimeRes.text()).trim();
 
-    if (isLive) {
-      // LIVE
-      textEl.innerHTML = liveHtml;
+      uptime = uptime
+        .replace('minutes', 'min')
+        .replace('minute', 'min')
+        .replace('hours', 'horas')
+        .replace('hour', 'hora')
+        .replace('and', 'e')
+        .trim();
 
-      let label = "";
-      if (t.includes("hour")) {
-        const h = t.match(/(\d+)\s*hour/)?.[1];
-        if (h) label = h === "1" ? "há 1 hora" : `há ${h} horas`;
-      } else if (t.includes("minute")) {
-        const m = t.match(/(\d+)\s*minute/)?.[1];
-        if (m) label = `há ${m}min`;
-      }
-
-      card.dataset.uptime = label;
-      card.classList.add("is-live");
+      twitchButton.textContent = `há ${uptime}`;
+      
+      twitchButton.classList.add('live-pulse');
+      twitchButton.classList.add('live-text');
     } else {
-      // OFFLINE
-      textEl.textContent = offlineText;
-      card.classList.remove("is-live");
-      delete card.dataset.uptime;
+      twitchButton.textContent = 'live às 22h';
+      twitchButton.classList.remove('live-pulse');
+      twitchButton.classList.remove('live-text');
     }
-  } catch (e) {
-    // ERROR fallback
-    textEl.textContent = offlineText;
-    card.classList.remove("is-live");
-    delete card.dataset.uptime;
+  } catch (error) {
+    console.error('Erro ao verificar live/uptime:', error);
   }
 }
 
-// initial + auto updates
-updateTwitchCard();
-setInterval(updateTwitchCard, 60_000);
-
-document.addEventListener("visibilitychange", () => {
-  if (!document.hidden) updateTwitchCard();
-});
+document.addEventListener('DOMContentLoaded', checkTwitchLive);
+setInterval(checkTwitchLive, 60000);

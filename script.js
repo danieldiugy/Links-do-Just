@@ -46,7 +46,7 @@ async function checkTwitchLive() {
       twitchButton.classList.add('live-pulse');
       twitchButton.classList.add('live-text');
     } else {
-      twitchButton.textContent = 'live às 22h';
+      twitchButton.textContent = 'Live às 22h';
       twitchButton.classList.remove('live-pulse');
       twitchButton.classList.remove('live-text');
     }

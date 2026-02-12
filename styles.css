@@ -144,10 +144,3 @@ footer {
   height: 22px;
   fill: #ffffff;
 }
-
-
-.icon svg {
-  width: 22px;       /* mesmo tamanho para todos */
-  height: 22px;
-  fill: #ffffff;     /* todos brancos */
-}

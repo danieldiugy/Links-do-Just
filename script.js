@@ -46,10 +46,9 @@ async function checkTwitchLive() {
         badgeText = `Há ${hours} hora${hours > 1 ? "s" : ""}`;
       }
 
-      twitchText.innerHTML = `
-        <span class="live-dot"></span>
-        EM LIVE
-      `;
+twitchText.innerHTML =
+  '<span class="live-dot"></span>EM LIVE';
+
 
       liveBadge.textContent = badgeText;
 

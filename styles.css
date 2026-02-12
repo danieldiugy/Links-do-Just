@@ -133,11 +133,12 @@ footer {
 }
 
 .icon {
-  width: 24px;          /* largura fixa */
+  position: absolute;
+  left: 20px;          /* distância da borda */
+  width: 24px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-shrink: 0;
+  justify-content: center;
 }
 
 .icon svg {

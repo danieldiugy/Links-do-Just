@@ -148,3 +148,40 @@ footer {
   display: block;
   color: #ffffff; /* importante para currentColor */
 }
+
+/* Texto central */
+.btn-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Bolinha vermelha */
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background: #ff0000;
+  border-radius: 50%;
+  display: none;
+  animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(1); opacity: 1; }
+  70% { transform: scale(1.6); opacity: 0.3; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Badge direita */
+.live-badge {
+  position: absolute;
+  right: 18px;
+  background: rgba(255, 0, 0, 0.15);
+  border: 1px solid #ff0000;
+  color: #ffffff;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: none;
+}
+

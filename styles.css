@@ -139,10 +139,19 @@ footer {
 }
 
 .icon {
+  width: 24px;          /* largura fixa */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
 }
+
+.icon svg {
+  width: 22px;
+  height: 22px;
+  fill: #ffffff;
+}
+
 
 .icon svg {
   width: 22px;       /* mesmo tamanho para todos */

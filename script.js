@@ -55,3 +55,9 @@ async function checkTwitchLive() {
 
 document.addEventListener('DOMContentLoaded', checkTwitchLive);
 setInterval(checkTwitchLive, 60000);
+
+// Atualizar ano automaticamente
+const yearSpan = document.getElementById("year");
+if (yearSpan) {
+  yearSpan.textContent = new Date().getFullYear();
+}

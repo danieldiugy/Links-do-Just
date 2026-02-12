@@ -131,13 +131,6 @@ footer {
   text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
 }
 
-.btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
 .icon {
   width: 24px;          /* largura fixa */
   display: flex;

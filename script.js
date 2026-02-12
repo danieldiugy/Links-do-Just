@@ -40,10 +40,10 @@ async function checkTwitchLive() {
 
       if (uptime.includes("minute")) {
         const minutes = uptime.match(/\d+/)?.[0];
-        badgeText = `Há ${minutes}min`;
+        badgeText = `há ${minutes}min`;
       } else if (uptime.includes("hour")) {
         const hours = uptime.match(/\d+/)?.[0];
-        badgeText = `Há ${hours} hora${hours > 1 ? "s" : ""}`;
+        badgeText = `há ${hours} hora${hours > 1 ? "s" : ""}`;
       }
 
 twitchText.innerHTML =

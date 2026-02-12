@@ -140,16 +140,16 @@ footer {
 .icon {
   position: absolute;
   left: 20px;
-  width: 26px;      /* um pouco maior */
-  height: 26px;
+  width: 30px;      /* um pouco maior */
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .icon svg {
-  width: 120%;
-  height: 120%;
+  width: 100%;
+  height: 100%;
   display: block;
   color: #ffffff; /* importante para currentColor */
 }

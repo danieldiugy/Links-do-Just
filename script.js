@@ -19,39 +19,56 @@ for (let i = 0; i < numParticles; i++) {
   particlesContainer.appendChild(particle);
 }
 
-// Twitch Live Check
 async function checkTwitchLive() {
   const twitchButton = document.getElementById('twitch-btn');
   const twitchText = twitchButton?.querySelector('.btn-text');
-  if (!twitchButton || !twitchText) return;
+  const liveBadge = document.getElementById('live-badge');
+  const liveDot = twitchButton?.querySelector('.live-dot');
+
+  if (!twitchButton || !twitchText || !liveBadge || !liveDot) return;
 
   try {
     const statusRes = await fetch('https://decapi.me/twitch/status/just99c');
     const status = (await statusRes.text()).trim();
 
     if (status === 'LIVE') {
+
       const uptimeRes = await fetch('https://decapi.me/twitch/uptime/just99c');
       let uptime = (await uptimeRes.text()).trim();
 
-      uptime = uptime
-        .replace('minutes', 'min')
-        .replace('minute', 'min')
-        .replace('hours', 'horas')
-        .replace('hour', 'hora')
-        .replace('and', 'e')
-        .trim();
+      let badgeText = "";
 
-      twitchText.textContent = `há ${uptime}`;
-      twitchButton.classList.add('live-pulse', 'live-text');
+      if (uptime.includes("minute")) {
+        const minutes = uptime.match(/\d+/)?.[0];
+        badgeText = `Há ${minutes}min`;
+      } else if (uptime.includes("hour")) {
+        const hours = uptime.match(/\d+/)?.[0];
+        badgeText = `Há ${hours} hora${hours > 1 ? "s" : ""}`;
+      }
+
+      twitchText.innerHTML = `
+        <span class="live-dot"></span>
+        EM LIVE
+      `;
+
+      liveBadge.textContent = badgeText;
+
+      liveDot.style.display = "inline-block";
+      liveBadge.style.display = "inline-block";
+
+      twitchButton.classList.add("live-pulse");
+
     } else {
-      twitchText.textContent = 'Live às 22h';
-      twitchButton.classList.remove('live-pulse', 'live-text');
+      twitchText.innerHTML = "Live às 22h";
+      liveBadge.style.display = "none";
+      twitchButton.classList.remove("live-pulse");
     }
 
   } catch (error) {
     console.error('Erro Twitch:', error);
   }
 }
+
 
 document.addEventListener('DOMContentLoaded', checkTwitchLive);
 setInterval(checkTwitchLive, 60000);

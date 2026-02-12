@@ -190,3 +190,16 @@ footer {
   display: none;
 }
 
+@media (max-width: 768px) {
+
+  h1 {
+    margin-bottom: 25px; /* era 40/60 */
+  }
+
+  .links {
+    margin-top: 20px; /* se estiveres a usar margin-top */
+  }
+
+}
+
+

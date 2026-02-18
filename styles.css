@@ -93,19 +93,9 @@ h1 {
   box-shadow: 0 4px 20px rgba(0,0,0,0.6);
 }
 
-.btn:hover {
-  background: rgba(40, 40, 40, 0.8);
-  transform: translateY(-4px);
-  box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
-  border-color: #ffd700;
-}
-
-footer {
-  text-align: center;
-  margin-top: 48px;
-  font-size: 0.85rem;
-  color: #777777;
-}
+/* ========================= */
+/* ICONES */
+/* ========================= */
 
 .icon {
   position: absolute;
@@ -124,6 +114,20 @@ footer {
   color: #ffffff;
 }
 
+
+.btn:hover {
+  background: rgba(40, 40, 40, 0.8);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
+  border-color: #ffd700;
+}
+
+footer {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 0.85rem;
+  color: #777777;
+}
 
 /* ========================= */
 /* PARCERIAS - TEMA AZUL */

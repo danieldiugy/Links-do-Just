@@ -6,15 +6,14 @@
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  height: 100vh;                 /* ocupa exatamente o ecrã */
+  min-height: 100vh;
   color: #ffffff;
   background: linear-gradient(135deg, #000000 0%, #0d0d0d 100%);
-  overflow: hidden;              /* remove scroll */
+  overflow: hidden; /* remove scroll */
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
+
+/* Partículas */
 
 .particles {
   position: fixed;
@@ -32,7 +31,8 @@ body {
   border-radius: 50%;
   pointer-events: none;
   animation: float linear infinite;
-  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5),
+              0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 @keyframes float {
@@ -42,45 +42,56 @@ body {
   100% { transform: translateY(-20vh) scale(0.4); opacity: 0; }
 }
 
+/* Container normal */
+
 .container {
-  width: 100%;
   max-width: 600px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 95vh;                  /* controla tudo dentro do ecrã */
+  margin: 0 auto;
+  padding: 20px 20px 10px 20px; /* menos padding */
+  position: relative;
+  z-index: 1;
 }
 
+/* Avatar */
+
 .avatar {
-  width: 90px;                   /* ligeiramente menor */
-  height: 90px;
+  width: 85px;   /* ligeiramente menor */
+  height: 85px;
   border-radius: 50%;
   border: 2px solid #1e90ff;
   object-fit: cover;
+  display: block;
   margin: 0 auto 10px;
   box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
 }
 
+/* Título */
+
 h1 {
   font-size: 1.6rem;
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* muito menor */
+  color: #ffffff;
   text-shadow: 0 2px 12px rgba(30, 144, 255, 0.5);
 }
+
+/* Links */
 
 .links {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
+/* ========================= */
 /* GIVEAWAY CARDS */
+/* ========================= */
 
 .giveaway-card {
   position: relative;
   display: block;
-  height: 200px;                 /* menor para caber tudo */
+  height: 200px; /* mais compacto */
   border: 1px solid #1e90ff;
   border-radius: 10px;
   overflow: hidden;
@@ -90,7 +101,7 @@ h1 {
 }
 
 .giveaway-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(30,144,255,0.4);
 }
 
@@ -113,6 +124,8 @@ h1 {
   font-size: 0.85rem;
   pointer-events: none;
 }
+
+/* Badges */
 
 .badge {
   position: absolute;
@@ -140,6 +153,7 @@ h1 {
 }
 
 /* Partículas azuis */
+
 .parcerias-page .particle {
   background: rgba(30, 144, 255, 0.6);
   box-shadow:
@@ -147,7 +161,8 @@ h1 {
     0 0 20px rgba(30, 144, 255, 0.4);
 }
 
-/* Remove footer porque já não precisamos */
+/* Footer removido */
+
 footer {
   display: none;
 }

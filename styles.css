@@ -265,6 +265,61 @@ footer {
     0 0 20px rgba(30, 144, 255, 0.4);
 }
 
+/* ========================= */
+/* GIVEAWAYS TAMANHO FIXO */
+/* ========================= */
+
+.giveaway-btn {
+  position: relative;
+  padding: 0;
+  height: 260px;          /* TAMANHO FIXO */
+  overflow: hidden;
+  display: block;
+}
+
+.giveaway-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* mantém proporção e preenche */
+  display: block;
+}
+
+/* Overlay texto */
+.giveaway-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Badge ATIVO */
+.badge-ativo {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #1e90ff;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  letter-spacing: 1px;
+  z-index: 3;
+  box-shadow: 0 0 12px rgba(30,144,255,0.6);
+}
+
+/* Partículas azuis */
+.parcerias-page .particle {
+  background: rgba(30, 144, 255, 0.6);
+  box-shadow:
+    0 0 12px rgba(30, 144, 255, 0.6),
+    0 0 20px rgba(30, 144, 255, 0.4);
+}
+
 
 
 

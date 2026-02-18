@@ -167,6 +167,7 @@ h1 {
   color: #ffffff;
 }
 
+
 /* ========================= */
 /* GIVEAWAY CARDS */
 /* ========================= */
@@ -180,7 +181,23 @@ h1 {
   overflow: hidden;
   background: #0f0f0f;
   text-decoration: none;
+  color: #ffffff;                 /* força texto branco */
   transition: 0.3s ease;
+}
+
+/* Impede roxo após visitar */
+.giveaway-card:visited {
+  color: #ffffff;
+}
+
+.giveaway-card:hover {
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(30,144,255,0.4);
+}
+
+.giveaway-card:active {
+  color: #ffffff;
 }
 
 .giveaway-card:hover {

@@ -231,60 +231,29 @@ footer {
 }
 
 /* ========================= */
-/* GIVEAWAY LIMPO E CORRETO */
-/* ========================= */
-
-.giveaway-btn {
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-  display: block;          /* remove comportamento flex padrão */
-}
-
-.giveaway-btn img {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.giveaway-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 18px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
-  text-align: center;
-  font-weight: 700;
-}
-
-/* Azul só na página parcerias */
-.parcerias-page .particle {
-  background: rgba(30, 144, 255, 0.6);
-  box-shadow:
-    0 0 12px rgba(30, 144, 255, 0.6),
-    0 0 20px rgba(30, 144, 255, 0.4);
-}
-
-/* ========================= */
 /* GIVEAWAYS TAMANHO FIXO */
 /* ========================= */
 
 .giveaway-btn {
   position: relative;
   padding: 0;
-  height: 260px;          /* TAMANHO FIXO */
+  height: 260px;
   overflow: hidden;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f0f0f;
+  text-decoration: none;
 }
 
 .giveaway-btn img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;      /* mantém proporção e preenche */
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
   display: block;
 }
 
-/* Overlay texto */
+/* Overlay */
 .giveaway-overlay {
   position: absolute;
   bottom: 0;
@@ -301,65 +270,7 @@ footer {
   position: absolute;
   top: 12px;
   left: 12px;
-  background: #1e90ff;
-  color: white;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 6px 10px;
-  border-radius: 999px;
-  letter-spacing: 1px;
-  z-index: 3;
-  box-shadow: 0 0 12px rgba(30,144,255,0.6);
-}
-
-/* Partículas azuis */
-.parcerias-page .particle {
-  background: rgba(30, 144, 255, 0.6);
-  box-shadow:
-    0 0 12px rgba(30, 144, 255, 0.6),
-    0 0 20px rgba(30, 144, 255, 0.4);
-}
-
-/* ========================= */
-/* GIVEAWAYS TAMANHO FIXO SEM CORTAR IMAGEM */
-/* ========================= */
-
-.giveaway-btn {
-  position: relative;
-  padding: 0;
-  height: 260px;              /* tamanho fixo */
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #0f0f0f;        /* fundo elegante atrás da imagem */
-}
-
-.giveaway-btn img {
-  width: 90%;                 /* ligeiramente menor */
-  height: 90%;
-  object-fit: contain;        /* NÃO corta a imagem */
-  display: block;
-}
-
-/* Overlay texto */
-.giveaway-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 16px;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
-  text-align: center;
-  font-weight: 700;
-  font-size: 0.95rem;
-}
-
-/* Badge VERDE */
-.badge-ativo {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #00c853;              /* verde premium */
+  background: #00c853;
   color: white;
   font-size: 0.7rem;
   font-weight: 700;
@@ -370,16 +281,28 @@ footer {
   box-shadow: 0 0 12px rgba(0, 200, 83, 0.6);
 }
 
-/* Partículas azuis continuam */
+/* Badge ACABOU */
+.badge-acabou {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #d50000;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  letter-spacing: 1px;
+  z-index: 3;
+  box-shadow: 0 0 12px rgba(213, 0, 0, 0.6);
+}
+
+/* Partículas azuis */
 .parcerias-page .particle {
   background: rgba(30, 144, 255, 0.6);
   box-shadow:
     0 0 12px rgba(30, 144, 255, 0.6),
     0 0 20px rgba(30, 144, 255, 0.4);
 }
-
-
-
-
 
 

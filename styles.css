@@ -207,5 +207,29 @@ footer {
   }
 }
 
+/* ========================= */
+/* PARCERIAS - TEMA AZUL */
+/* ========================= */
+
+.parcerias-page .avatar {
+  border: 2px solid #1e90ff;
+  box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
+}
+
+.parcerias-page .btn {
+  border: 1px solid #1e90ff;
+}
+
+.parcerias-page .btn:hover {
+  border-color: #3aa0ff;
+  box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
+}
+
+.parcerias-page .giveaway-btn img {
+  border: 1px solid #1e90ff;
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+}
+
+
 
 

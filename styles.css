@@ -13,6 +13,10 @@ body {
   position: relative;
 }
 
+/* ========================= */
+/* PARTÍCULAS */
+/* ========================= */
+
 .particles {
   position: fixed;
   top: 0;
@@ -29,7 +33,9 @@ body {
   border-radius: 50%;
   pointer-events: none;
   animation: float linear infinite;
-  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+  box-shadow:
+    0 0 12px rgba(255, 215, 0, 0.5),
+    0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 @keyframes float {
@@ -39,6 +45,10 @@ body {
   100% { transform: translateY(-20vh) scale(0.4); opacity: 0; }
 }
 
+/* ========================= */
+/* CONTAINER */
+/* ========================= */
+
 .container {
   max-width: 600px;
   margin: 0 auto;
@@ -46,6 +56,10 @@ body {
   position: relative;
   z-index: 1;
 }
+
+/* ========================= */
+/* AVATAR */
+/* ========================= */
 
 .avatar {
   width: 110px;
@@ -58,14 +72,32 @@ body {
   box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
 }
 
+/* Azul apenas na página parcerias */
+.parcerias-page .avatar {
+  border: 2px solid #1e90ff;
+  box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
+}
+
+/* ========================= */
+/* TÍTULO */
+/* ========================= */
+
 h1 {
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 90px;
+  margin-bottom: 60px;
   color: #ffffff;
   text-shadow: 0 2px 12px rgba(212, 175, 55, 0.5);
 }
+
+.parcerias-page h1 {
+  text-shadow: 0 2px 12px rgba(30, 144, 255, 0.5);
+}
+
+/* ========================= */
+/* LINKS */
+/* ========================= */
 
 .links {
   display: flex;
@@ -73,8 +105,10 @@ h1 {
   gap: 16px;
 }
 
-
+/* ========================= */
 /* BOTÕES NORMAIS */
+/* ========================= */
+
 .btn {
   position: relative;
   display: flex;
@@ -92,6 +126,22 @@ h1 {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+.btn:hover {
+  background: rgba(40, 40, 40, 0.8);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
+  border-color: #ffd700;
+}
+
+.parcerias-page .btn {
+  border: 1px solid #1e90ff;
+}
+
+.parcerias-page .btn:hover {
+  border-color: #3aa0ff;
+  box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
 }
 
 /* ========================= */
@@ -115,13 +165,77 @@ h1 {
   color: #ffffff;
 }
 
+/* ========================= */
+/* GIVEAWAY CARDS */
+/* ========================= */
 
-.btn:hover {
-  background: rgba(40, 40, 40, 0.8);
-  transform: translateY(-4px);
-  box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
-  border-color: #ffd700;
+.giveaway-card {
+  position: relative;
+  display: block;
+  height: 220px;
+  border: 1px solid #1e90ff;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0f0f0f;
+  text-decoration: none;
+  transition: 0.3s ease;
 }
+
+.giveaway-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(30,144,255,0.4);
+}
+
+.giveaway-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 20px;
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+/* BADGES */
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  letter-spacing: 1px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.badge.ativo {
+  background: #00c853;
+  box-shadow: 0 0 12px rgba(0,200,83,0.6);
+  color: white;
+}
+
+.badge.acabado {
+  background: #d50000;
+  box-shadow: 0 0 12px rgba(213,0,0,0.6);
+  color: white;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
 
 footer {
   text-align: center;
@@ -131,104 +245,12 @@ footer {
 }
 
 /* ========================= */
-/* PARCERIAS - TEMA AZUL */
+/* RESPONSIVO */
 /* ========================= */
-
-.parcerias-page .avatar {
-  border: 2px solid #1e90ff;
-  box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
-}
-
-.parcerias-page .btn {
-  border: 1px solid #1e90ff;
-}
-
-.parcerias-page .btn:hover {
-  border-color: #3aa0ff;
-  box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
-}
-
-/* Partículas azuis */
-.parcerias-page .particle {
-  background: rgba(30, 144, 255, 0.6);
-  box-shadow:
-    0 0 12px rgba(30, 144, 255, 0.6),
-    0 0 20px rgba(30, 144, 255, 0.4);
-}
-
-/* ========================= */
-/* GIVEAWAY BUTTONS FIXOS */
-/* ========================= */
-
-.giveaway-btn {
-  position: relative;
-  padding: 0 !important;   /* remove padding da .btn */
-  height: 260px;
-  overflow: hidden;
-  background: #0f0f0f;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.giveaway-btn img {
-  width: 85%;
-  height: 85%;
-  object-fit: contain;
-  display: block;
-  pointer-events: none;   /* garante que o link funciona */
-}
-
-.giveaway-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 16px;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
-  text-align: center;
-  font-weight: 700;
-  font-size: 0.95rem;
-  pointer-events: none;
-}
-
-/* BADGE ATIVO */
-.badge-ativo {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #00c853;
-  color: white;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 6px 10px;
-  border-radius: 999px;
-  letter-spacing: 1px;
-  z-index: 3;
-  box-shadow: 0 0 12px rgba(0, 200, 83, 0.6);
-  pointer-events: none;
-}
-
-/* BADGE ACABOU */
-.badge-acabou {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #d50000;
-  color: white;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 6px 10px;
-  border-radius: 999px;
-  letter-spacing: 1px;
-  z-index: 3;
-  box-shadow: 0 0 12px rgba(213, 0, 0, 0.6);
-  pointer-events: none;
-}
 
 @media (max-width: 768px) {
   h1 {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
 
   .btn {

@@ -402,3 +402,15 @@ footer {
   background: #555;
 }
 
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0,200,83,0.8);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(0,200,83,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0,200,83,0);
+  }
+}
+

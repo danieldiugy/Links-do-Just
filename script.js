@@ -75,7 +75,7 @@ document.addEventListener("keydown", function(e) {
 });
 
 // ==========================
-// SISTEMA AUTOMÁTICO GIVEAWAYS
+// GIVEAWAY ATIVO
 // ==========================
 
 const giveaways = [
@@ -89,6 +89,12 @@ const giveaways = [
     imagem: "assets/testegiveaway.png",
     link: "https://linksdojust.com"
   },
+
+  // ==========================
+ // GIVEAWAY ACABADO
+// ==========================
+
+  
   {
     id: 2,
     titulo: "Butterfly Vanilla",

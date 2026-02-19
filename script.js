@@ -56,7 +56,6 @@ function closeModal(id) {
   document.body.style.overflow = "auto";
 }
 
-// Fechar ao clicar fora
 window.addEventListener("click", function(e) {
   document.querySelectorAll(".modal").forEach(modal => {
     if (e.target === modal) {
@@ -66,7 +65,6 @@ window.addEventListener("click", function(e) {
   });
 });
 
-// Fechar com ESC
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") {
     document.querySelectorAll(".modal").forEach(modal => {
@@ -98,6 +96,7 @@ const giveaways = [
     site: "OutroSite.com",
     deposito: "20€",
     vencedor: "André (Teste)",
+    descricao: "Este giveaway já terminou.",
     imagem: "assets/butterflygiveawayteste.png",
     link: "https://linksdojust.com"
   }
@@ -107,7 +106,7 @@ function criarGiveaways() {
   const container = document.getElementById("giveaways-container");
   if (!container) return;
 
-  container.innerHTML = ""; // limpa antes de gerar
+  container.innerHTML = "";
 
   giveaways.forEach(g => {
 
@@ -121,7 +120,7 @@ function criarGiveaways() {
     badge.textContent = g.status === "ativo" ? "ATIVO" : "ACABADO";
     card.appendChild(badge);
 
-    // BOTÃO INFO
+    // INFO BUTTON
     const infoBtn = document.createElement("div");
     infoBtn.className = "info-btn";
     infoBtn.textContent = "i";
@@ -131,7 +130,7 @@ function criarGiveaways() {
     // IMAGEM
     const img = document.createElement("img");
     img.src = g.imagem;
-    img.alt = g.site;
+    img.alt = g.titulo;
 
     if (g.status === "ativo") {
       const link = document.createElement("a");
@@ -159,28 +158,48 @@ function criarGiveaways() {
     modal.className = "modal";
     modal.id = `modal-${g.id}`;
 
-    modal.innerHTML = `
-      <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('modal-${g.id}')">&times;</span>
+    if (g.status === "ativo") {
 
-        <img src="${g.imagem}" alt="Imagem Giveaway" class="modal-img">
+      modal.innerHTML = `
+        <div class="modal-content">
+          <span class="close-modal" onclick="closeModal('modal-${g.id}')">&times;</span>
 
-        <h2>${g.titulo}</h2>
+          <img src="${g.imagem}" alt="Imagem Giveaway" class="modal-img">
 
+          <h2>${g.titulo}</h2>
 
-        <p><strong>Site:</strong> ${g.site}</p>
-        <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>
+          <p><strong>Site:</strong> ${g.site}</p>
+          <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>
+          <p><strong>Requisitos:</strong> ${g.requisitos}</p>
 
-        ${
-          g.status === "ativo"
-            ? `<p><strong>Requisitos:</strong> ${g.requisitos}</p>
-               <a href="${g.link}" target="_blank" class="participar-btn">Participar</a>`
-            : `<p><strong>Vencedor:</strong> ${g.vencedor}</p>
-               <p>Este giveaway já acabou.</p>
-               <button class="participar-btn disabled" disabled>Participar</button>`
-        }
-      </div>
-    `;
+          <a href="${g.link}" target="_blank" class="participar-btn">
+            Participar
+          </a>
+        </div>
+      `;
+
+    } else {
+
+      modal.innerHTML = `
+        <div class="modal-content">
+          <span class="close-modal" onclick="closeModal('modal-${g.id}')">&times;</span>
+
+          <img src="${g.imagem}" alt="Imagem Giveaway" class="modal-img">
+
+          <h2>${g.titulo}</h2>
+
+          <p><strong>Vencedor:</strong> ${g.vencedor}</p>
+          <p>${g.descricao}</p>
+
+          <p><strong>Site:</strong> ${g.site}</p>
+          <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>
+
+          <button class="participar-btn disabled" disabled>
+            Participar
+          </button>
+        </div>
+      `;
+    }
 
     document.body.appendChild(modal);
   });

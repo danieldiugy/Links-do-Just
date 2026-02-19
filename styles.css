@@ -401,4 +401,52 @@ footer {
   background: #555;
 }
 
+/* BADGES */
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  letter-spacing: 1px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ========================= */
+/* BADGE ATIVO (PULSAR) */
+/* ========================= */
+
+.badge.ativo {
+  background: #00c853;
+  color: white;
+  box-shadow: 0 0 12px rgba(0,200,83,0.6);
+  animation: pulse-green 2s infinite ease-in-out;
+}
+
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 12px rgba(0,200,83,0.6);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(0,255,120,0.9);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(0,200,83,0.6);
+  }
+}
+
+/* ========================= */
+/* BADGE ACABADO */
+/* ========================= */
+
+.badge.acabado {
+  background: #d50000;
+  box-shadow: 0 0 12px rgba(213,0,0,0.6);
+  color: white;
+}
+
 

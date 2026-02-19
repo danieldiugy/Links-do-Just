@@ -79,21 +79,44 @@ if (yearSpan) {
 }
 
 function openModal(event, id) {
-  event.preventDefault(); // impede o link de abrir
+  event.preventDefault();
   event.stopPropagation();
-  document.getElementById(id).style.display = "flex";
+
+  const modal = document.getElementById(id);
+  modal.style.display = "flex";
+
+  // bloquear scroll
+  document.body.style.overflow = "hidden";
 }
 
 function closeModal(id) {
-  document.getElementById(id).style.display = "none";
+  const modal = document.getElementById(id);
+  modal.style.display = "none";
+
+  // restaurar scroll
+  document.body.style.overflow = "auto";
 }
 
+// fechar ao clicar fora
 window.addEventListener("click", function(e) {
   const modals = document.querySelectorAll(".modal");
   modals.forEach(modal => {
     if (e.target === modal) {
       modal.style.display = "none";
+      document.body.style.overflow = "auto";
     }
   });
 });
 
+// fechar com ESC
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") {
+    const modals = document.querySelectorAll(".modal");
+    modals.forEach(modal => {
+      if (modal.style.display === "flex") {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+    });
+  }
+});

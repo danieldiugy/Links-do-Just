@@ -77,3 +77,23 @@ const yearSpan = document.getElementById("year");
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
+
+function openModal(event, id) {
+  event.preventDefault(); // impede o link de abrir
+  event.stopPropagation();
+  document.getElementById(id).style.display = "flex";
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+window.addEventListener("click", function(e) {
+  const modals = document.querySelectorAll(".modal");
+  modals.forEach(modal => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+});
+

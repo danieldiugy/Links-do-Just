@@ -439,5 +439,20 @@ footer {
   border-radius: 8px;
 }
 
+.modal-content p {
+  margin: 6px 0;
+}
+
+.modal-content .winner {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.modal-content .descricao {
+  margin-top: 2px;
+  margin-bottom: 14px;
+  opacity: 0.85;
+}
+
 
 

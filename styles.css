@@ -381,3 +381,19 @@ footer {
   box-shadow: 0 0 15px rgba(0,200,83,0.6);
 }
 
+/* BOTÃO DESATIVADO */
+
+.participar-btn.disabled {
+  background: #555;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.participar-btn.disabled:hover {
+  transform: none;
+  background: #555;
+}
+
+

@@ -83,7 +83,7 @@ document.addEventListener("keydown", function(e) {
 const giveaways = [
   {
     id: 1,
-    titulo: "Karambit Doppler FN".
+    titulo: "Karambit Doppler FN",
     status: "ativo",
     site: "teste.com",
     deposito: "10€",

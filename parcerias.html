@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=72">
+  <link rel="stylesheet" href="styles.css?v=74">
   <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 
@@ -19,32 +19,39 @@
 <div class="container">
 
   <img class="avatar" src="assets/avatar.webp" alt="just">
-  <h1>just</h1>
+  <h1>Parcerias</h1>
 
   <div class="links">
 
     <!-- GIVEAWAY 1 - ATIVO -->
-    <a href="https://linksdojust.com" target="_blank" class="giveaway-card">
+    <div class="giveaway-card">
+
       <span class="badge ativo">ATIVO</span>
       <div class="info-btn" onclick="openModal(event, 'modal1')">i</div>
-      <img src="assets/testegiveaway.png" alt="Giveaway Ativo">
+
+      <a href="https://linksdojust.com" target="_blank">
+        <img src="assets/testegiveaway.png" alt="Giveaway Ativo">
+      </a>
+
       <div class="overlay">
         Site: teste.com | Depósito Mínimo: 10€
       </div>
-    </a>
+
+    </div>
 
     <!-- GIVEAWAY 2 - ACABADO -->
-<button class="participar-btn disabled" disabled>
-  Participar
-</button>
+    <div class="giveaway-card">
 
       <span class="badge acabado">ACABADO</span>
       <div class="info-btn" onclick="openModal(event, 'modal2')">i</div>
+
       <img src="assets/testegiveaway.png" alt="Giveaway Acabado">
+
       <div class="overlay">
         OutroSite.com | Depósito: 20€
       </div>
-    </a>
+
+    </div>
 
   </div>
 
@@ -58,9 +65,10 @@
 <div class="modal" id="modal1">
   <div class="modal-content">
     <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
-    <h2>Giveaway: Karambit Doppler (FN)</h2>
+    <h2>Informações do Giveaway</h2>
     <p><strong>Site:</strong> teste.com</p>
     <p><strong>Depósito mínimo:</strong> 10€</p>
+    <p><strong>Requisitos:</strong> Seguir o canal e estar presente na live.</p>
 
     <a href="https://linksdojust.com" target="_blank" class="participar-btn">
       Participar
@@ -77,12 +85,12 @@
     <p><strong>Depósito mínimo:</strong> 20€</p>
     <p>Este giveaway já terminou.</p>
 
-    <a href="https://linksdojust.com" target="_blank" class="participar-btn">
+    <button class="participar-btn disabled" disabled>
       Participar
-    </a>
+    </button>
   </div>
 </div>
 
-<script src="script.js?v=72"></script>
+<script src="script.js?v=74"></script>
 </body>
 </html>

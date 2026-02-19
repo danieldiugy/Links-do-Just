@@ -56,7 +56,6 @@ function closeModal(id) {
   document.body.style.overflow = "auto";
 }
 
-// Fechar ao clicar fora
 window.addEventListener("click", function(e) {
   document.querySelectorAll(".modal").forEach(modal => {
     if (e.target === modal) {
@@ -66,7 +65,6 @@ window.addEventListener("click", function(e) {
   });
 });
 
-// Fechar com ESC
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") {
     document.querySelectorAll(".modal").forEach(modal => {
@@ -88,7 +86,6 @@ const giveaways = [
     site: "teste.com",
     deposito: "10€",
     requisitos: "Seguir o canal e estar presente na live.",
-    descricao: "Este giveaway está ativo. Participa já!",
     imagem: "assets/testegiveaway.png",
     link: "https://linksdojust.com"
   },
@@ -100,6 +97,7 @@ const giveaways = [
     deposito: "20€",
     vencedor: "André (Teste)",
     descricao: "Este giveaway já terminou.",
+    descricaoExtra: "",
     imagem: "assets/butterflygiveawayteste.png",
     link: "https://linksdojust.com"
   }
@@ -113,24 +111,20 @@ function criarGiveaways() {
 
   giveaways.forEach(g => {
 
-    // CARD
     const card = document.createElement("div");
     card.className = "giveaway-card";
 
-    // BADGE
     const badge = document.createElement("span");
     badge.className = `badge ${g.status}`;
     badge.textContent = g.status === "ativo" ? "ATIVO" : "ACABADO";
     card.appendChild(badge);
 
-    // BOTÃO INFO
     const infoBtn = document.createElement("div");
     infoBtn.className = "info-btn";
     infoBtn.textContent = "i";
     infoBtn.onclick = (e) => openModal(e, `modal-${g.id}`);
     card.appendChild(infoBtn);
 
-    // IMAGEM
     const img = document.createElement("img");
     img.src = g.imagem;
     img.alt = g.titulo;
@@ -145,17 +139,12 @@ function criarGiveaways() {
       card.appendChild(img);
     }
 
-    // OVERLAY
     const overlay = document.createElement("div");
     overlay.className = "overlay";
     overlay.textContent = `Site: ${g.site} | Depósito: ${g.deposito}`;
     card.appendChild(overlay);
 
     container.appendChild(card);
-
-    // ==========================
-    // MODAL
-    // ==========================
 
     const modal = document.createElement("div");
     modal.className = "modal";
@@ -188,9 +177,11 @@ function criarGiveaways() {
 
           <h2>${g.titulo}</h2>
 
-          <p class="winner"><strong>Vencedor:</strong> ${g.vencedor}</p>
+          <p><strong>Vencedor:</strong> ${g.vencedor}</p>
 
-          <p class="descricao">${g.descricao}</p>
+          <p>${g.descricao}</p>
+
+          <p>${g.descricaoExtra}</p>
 
           <p><strong>Site:</strong> ${g.site}</p>
           <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>

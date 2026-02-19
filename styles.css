@@ -329,9 +329,15 @@ footer {
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  display: none;
+}
+
+.modal.active {
+  display: flex;
 }
 
 .modal-content {
+  position: relative;   /* <<< ADICIONA ISTO */
   background: #111;
   padding: 30px;
   border-radius: 12px;
@@ -341,6 +347,7 @@ footer {
   box-shadow: 0 0 25px rgba(30,144,255,0.4);
   animation: fadeIn 0.3s ease;
 }
+
 
 .modal-content h2 {
   margin-bottom: 15px;

@@ -251,9 +251,10 @@ h1 {
 
 .badge.ativo {
   background: #00c853;
-  box-shadow: 0 0 12px rgba(0,200,83,0.6);
   color: white;
+  animation: pulse-green 1.8s infinite ease-out;
 }
+
 
 .badge.acabado {
   background: #d50000;

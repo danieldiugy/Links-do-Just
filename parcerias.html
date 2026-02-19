@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=74">
+  <link rel="stylesheet" href="styles.css?v=75">
   <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 
@@ -21,39 +21,8 @@
   <img class="avatar" src="assets/avatar.webp" alt="just">
   <h1>just</h1>
 
-  <div class="links">
-
-    <!-- GIVEAWAY 1 - ATIVO -->
-    <div class="giveaway-card">
-
-      <span class="badge ativo">ATIVO</span>
-      <div class="info-btn" onclick="openModal(event, 'modal1')">i</div>
-
-      <a href="https://linksdojust.com" target="_blank">
-        <img src="assets/testegiveaway.png" alt="Giveaway Ativo">
-      </a>
-
-      <div class="overlay">
-        Site: teste.com | Depósito Mínimo: 10€
-      </div>
-
-    </div>
-
-    <!-- GIVEAWAY 2 - ACABADO -->
-    <div class="giveaway-card">
-
-      <span class="badge acabado">ACABADO</span>
-      <div class="info-btn" onclick="openModal(event, 'modal2')">i</div>
-
-      <img src="assets/butterflygiveawayteste.png" alt="Giveaway Acabado">
-
-      <div class="overlay">
-        Site: teste.com | Depósito Mínimo: 10€
-      </div>
-
-    </div>
-
-  </div>
+  <!-- GIVEAWAYS AUTOMÁTICOS -->
+  <div class="links" id="giveaways-container"></div>
 
   <footer class="foot">
     <small>© <span id="year"></span> just</small>
@@ -61,36 +30,6 @@
 
 </div>
 
-<!-- MODAL 1 -->
-<div class="modal" id="modal1">
-  <div class="modal-content">
-    <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
-    <h2>Informações do Giveaway</h2>
-    <p><strong>Site:</strong> teste.com</p>
-    <p><strong>Depósito mínimo:</strong> 10€</p>
-
-    <a href="https://linksdojust.com" target="_blank" class="participar-btn">
-      Participar
-    </a>
-  </div>
-</div>
-
-<!-- MODAL 2 -->
-<div class="modal" id="modal2">
-  <div class="modal-content">
-    <span class="close-modal" onclick="closeModal('modal2')">&times;</span>
-    <h2>Butterfly Vanilla</h2>
-    <p><strong>Site:</strong> OutroSite.com</p>
-    <p><strong>Depósito mínimo:</strong> 20€</p>
-     <p><strong>Vencedor:</strong> André (Teste)</p>
-    <p>Este giveaway já acabou.</p>
-
-    <button class="participar-btn disabled" disabled>
-      Participar
-    </button>
-  </div>
-</div>
-
-<script src="script.js?v=74"></script>
+<script src="script.js?v=75"></script>
 </body>
 </html>

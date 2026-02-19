@@ -56,6 +56,7 @@ function closeModal(id) {
   document.body.style.overflow = "auto";
 }
 
+// Fechar ao clicar fora
 window.addEventListener("click", function(e) {
   document.querySelectorAll(".modal").forEach(modal => {
     if (e.target === modal) {
@@ -65,6 +66,7 @@ window.addEventListener("click", function(e) {
   });
 });
 
+// Fechar com ESC
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") {
     document.querySelectorAll(".modal").forEach(modal => {
@@ -86,6 +88,7 @@ const giveaways = [
     site: "teste.com",
     deposito: "10€",
     requisitos: "Seguir o canal e estar presente na live.",
+    descricao: "Este giveaway está ativo. Participa já!",
     imagem: "assets/testegiveaway.png",
     link: "https://linksdojust.com"
   },
@@ -120,7 +123,7 @@ function criarGiveaways() {
     badge.textContent = g.status === "ativo" ? "ATIVO" : "ACABADO";
     card.appendChild(badge);
 
-    // INFO BUTTON
+    // BOTÃO INFO
     const infoBtn = document.createElement("div");
     infoBtn.className = "info-btn";
     infoBtn.textContent = "i";
@@ -159,7 +162,6 @@ function criarGiveaways() {
     modal.id = `modal-${g.id}`;
 
     if (g.status === "ativo") {
-
       modal.innerHTML = `
         <div class="modal-content">
           <span class="close-modal" onclick="closeModal('modal-${g.id}')">&times;</span>
@@ -177,9 +179,7 @@ function criarGiveaways() {
           </a>
         </div>
       `;
-
     } else {
-
       modal.innerHTML = `
         <div class="modal-content">
           <span class="close-modal" onclick="closeModal('modal-${g.id}')">&times;</span>
@@ -188,8 +188,9 @@ function criarGiveaways() {
 
           <h2>${g.titulo}</h2>
 
-          <p><strong>Vencedor:</strong> ${g.vencedor}</p>
-          <p>${g.descricao}</p>
+          <p class="winner"><strong>Vencedor:</strong> ${g.vencedor}</p>
+
+          <p class="descricao">${g.descricao}</p>
 
           <p><strong>Site:</strong> ${g.site}</p>
           <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>

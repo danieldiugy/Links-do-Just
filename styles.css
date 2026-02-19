@@ -252,8 +252,9 @@ h1 {
 .badge.ativo {
   background: #00c853;
   color: white;
-  animation: pulse-green 1.8s infinite ease-out;
+  animation: pulse-soft 3s infinite ease-in-out;
 }
+
 
 
 .badge.acabado {
@@ -413,4 +414,17 @@ footer {
     box-shadow: 0 0 0 0 rgba(0,200,83,0);
   }
 }
+
+@keyframes pulse-soft {
+  0% {
+    box-shadow: 0 0 8px rgba(0,200,83,0.4);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(0,255,120,0.7);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(0,200,83,0.4);
+  }
+}
+
 

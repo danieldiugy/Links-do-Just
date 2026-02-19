@@ -142,14 +142,14 @@ function criarGiveaways() {
         <h2>${g.status === "ativo" ? "Informações do Giveaway" : "Giveaway Acabado"}</h2>
         <p><strong>Site:</strong> ${g.site}</p>
         <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>
-        ${
-          g.status === "ativo"
-          ? `<p><strong>Requisitos:</strong> ${g.requisitos}</p>
-               <a href="${g.link}" target="_blank" class="participar-btn">Participar</a>`
-            : `<p><strong>Vencedor:</strong> ${g.vencedor}</p>
-               <p>Este giveaway já acabou.</p>
-               <button class="participar-btn disabled" disabled>Participar</button>`
-        }
+       ${
+  g.status === "ativo"
+    ? `<a href="${g.link}" target="_blank" class="participar-btn">Participar</a>`
+    : `<p><strong>Vencedor:</strong> ${g.vencedor}</p>
+       <p>Este giveaway já acabou.</p>
+       <button class="participar-btn disabled" disabled>Participar</button>`
+}
+
       </div>
     `;
 

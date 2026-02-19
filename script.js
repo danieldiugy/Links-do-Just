@@ -156,24 +156,30 @@ function criarGiveaways() {
     modal.className = "modal";
     modal.id = `modal-${g.id}`;
 
-    if (g.status === "ativo") {
-      modal.innerHTML = `
-        <div class="modal-content">
-          <span class="close-modal" onclick="closeModal('modal-${g.id}')">&times;</span>
+ if (g.status === "ativo") {
 
-          <img src="${g.imagem}" alt="Imagem Giveaway" class="modal-img">
+  const requisitosHTML = g.requisitos
+    ? `<p><strong>Requisitos:</strong> ${g.requisitos}</p>`
+    : "";
 
-          <h2>${g.titulo}</h2>
+  modal.innerHTML = `
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-${g.id}')">&times;</span>
 
-          <p><strong>Site:</strong> ${g.site}</p>
-          <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>
-          <p><strong>Requisitos:</strong> ${g.requisitos}</p>
+      <img src="${g.imagem}" alt="Imagem Giveaway" class="modal-img">
 
-          <a href="${g.link}" target="_blank" class="participar-btn">
-            Participar
-          </a>
-        </div>
-      `;
+      <h2>${g.titulo}</h2>
+
+      <p><strong>Site:</strong> ${g.site}</p>
+      <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>
+
+      ${requisitosHTML}
+
+      <a href="${g.link}" target="_blank" class="participar-btn">
+        Participar
+      </a>
+    </div>
+  `;
     } else {
       modal.innerHTML = `
         <div class="modal-content">

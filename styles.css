@@ -358,3 +358,26 @@ footer {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
 }
+
+/* ========================= */
+/* BOTÃO PARTICIPAR */
+/* ========================= */
+
+.participar-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #00c853;
+  color: white;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.participar-btn:hover {
+  background: #00e676;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(0,200,83,0.6);
+}
+

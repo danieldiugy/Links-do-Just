@@ -5,21 +5,23 @@
 const particlesContainer = document.getElementById('particles');
 const numParticles = 60;
 
-for (let i = 0; i < numParticles; i++) {
-  const particle = document.createElement('div');
-  particle.classList.add('particle');
+if (particlesContainer) {
+  for (let i = 0; i < numParticles; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
 
-  const size = Math.random() * 5 + 1.5;
-  particle.style.width = `${size}px`;
-  particle.style.height = `${size}px`;
-  particle.style.left = `${Math.random() * 100}vw`;
+    const size = Math.random() * 5 + 1.5;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${Math.random() * 100}vw`;
 
-  const duration = Math.random() * 30 + 25;
-  const delay = Math.random() * 25;
-  particle.style.animationDuration = `${duration}s`;
-  particle.style.animationDelay = `-${delay}s`;
+    const duration = Math.random() * 30 + 25;
+    const delay = Math.random() * 25;
+    particle.style.animationDuration = `${duration}s`;
+    particle.style.animationDelay = `-${delay}s`;
 
-  particlesContainer.appendChild(particle);
+    particlesContainer.appendChild(particle);
+  }
 }
 
 // ==========================
@@ -38,17 +40,23 @@ document.addEventListener("DOMContentLoaded", () => {
 function openModal(event, id) {
   event.preventDefault();
   event.stopPropagation();
+
   const modal = document.getElementById(id);
+  if (!modal) return;
+
   modal.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
 function closeModal(id) {
   const modal = document.getElementById(id);
+  if (!modal) return;
+
   modal.classList.remove("active");
   document.body.style.overflow = "auto";
 }
 
+// Fechar ao clicar fora
 window.addEventListener("click", function(e) {
   document.querySelectorAll(".modal").forEach(modal => {
     if (e.target === modal) {
@@ -58,6 +66,7 @@ window.addEventListener("click", function(e) {
   });
 });
 
+// Fechar com ESC
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") {
     document.querySelectorAll(".modal").forEach(modal => {
@@ -77,13 +86,14 @@ const giveaways = [
     status: "ativo",
     site: "teste.com",
     deposito: "10€",
+    requisitos: "Seguir o canal e estar presente na live.",
     imagem: "assets/testegiveaway.png",
     link: "https://linksdojust.com"
   },
   {
     id: 2,
     status: "acabado",
-    site: "teste.com",
+    site: "OutroSite.com",
     deposito: "20€",
     vencedor: "André (Teste)",
     imagem: "assets/butterflygiveawayteste.png",
@@ -95,24 +105,31 @@ function criarGiveaways() {
   const container = document.getElementById("giveaways-container");
   if (!container) return;
 
+  container.innerHTML = ""; // limpa antes de gerar
+
   giveaways.forEach(g => {
 
+    // CARD
     const card = document.createElement("div");
     card.className = "giveaway-card";
 
+    // BADGE
     const badge = document.createElement("span");
     badge.className = `badge ${g.status}`;
     badge.textContent = g.status === "ativo" ? "ATIVO" : "ACABADO";
     card.appendChild(badge);
 
+    // BOTÃO INFO
     const infoBtn = document.createElement("div");
     infoBtn.className = "info-btn";
     infoBtn.textContent = "i";
     infoBtn.onclick = (e) => openModal(e, `modal-${g.id}`);
     card.appendChild(infoBtn);
 
+    // IMAGEM
     const img = document.createElement("img");
     img.src = g.imagem;
+    img.alt = g.site;
 
     if (g.status === "ativo") {
       const link = document.createElement("a");
@@ -124,6 +141,7 @@ function criarGiveaways() {
       card.appendChild(img);
     }
 
+    // OVERLAY
     const overlay = document.createElement("div");
     overlay.className = "overlay";
     overlay.textContent = `Site: ${g.site} | Depósito: ${g.deposito}`;
@@ -131,7 +149,10 @@ function criarGiveaways() {
 
     container.appendChild(card);
 
-    // Criar modal
+    // ==========================
+    // MODAL
+    // ==========================
+
     const modal = document.createElement("div");
     modal.className = "modal";
     modal.id = `modal-${g.id}`;
@@ -139,17 +160,22 @@ function criarGiveaways() {
     modal.innerHTML = `
       <div class="modal-content">
         <span class="close-modal" onclick="closeModal('modal-${g.id}')">&times;</span>
+
+        <img src="${g.imagem}" alt="Imagem Giveaway" class="modal-img">
+
         <h2>${g.status === "ativo" ? "Informações do Giveaway" : "Giveaway Acabado"}</h2>
+
         <p><strong>Site:</strong> ${g.site}</p>
         <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>
-       ${
-  g.status === "ativo"
-    ? `<a href="${g.link}" target="_blank" class="participar-btn">Participar</a>`
-    : `<p><strong>Vencedor:</strong> ${g.vencedor}</p>
-       <p>Este giveaway já acabou.</p>
-       <button class="participar-btn disabled" disabled>Participar</button>`
-}
 
+        ${
+          g.status === "ativo"
+            ? `<p><strong>Requisitos:</strong> ${g.requisitos}</p>
+               <a href="${g.link}" target="_blank" class="participar-btn">Participar</a>`
+            : `<p><strong>Vencedor:</strong> ${g.vencedor}</p>
+               <p>Este giveaway já acabou.</p>
+               <button class="participar-btn disabled" disabled>Participar</button>`
+        }
       </div>
     `;
 

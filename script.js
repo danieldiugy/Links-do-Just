@@ -77,7 +77,6 @@ const giveaways = [
     status: "ativo",
     site: "teste.com",
     deposito: "10€",
-    requisitos: "Seguir o canal e estar presente na live.",
     imagem: "assets/testegiveaway.png",
     link: "https://linksdojust.com"
   },

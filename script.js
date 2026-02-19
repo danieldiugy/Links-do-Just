@@ -144,7 +144,6 @@ function criarGiveaways() {
         <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>
         ${
           g.status === "ativo"
-            ? `<p><strong>Requisitos:</strong> ${g.requisitos}</p>
                <a href="${g.link}" target="_blank" class="participar-btn">Participar</a>`
             : `<p><strong>Vencedor:</strong> ${g.vencedor}</p>
                <p>Este giveaway já acabou.</p>

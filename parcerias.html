@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Just - Parcerias</title>
+  <title>Parcerias - just</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=61">
+  <link rel="stylesheet" href="styles.css?v=70">
   <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 
@@ -19,29 +19,26 @@
 <div class="container">
 
   <img class="avatar" src="assets/avatar.webp" alt="just">
-  <h1>just</h1>
+  <h1>Parcerias</h1>
 
   <div class="links">
 
     <!-- GIVEAWAY ATIVO -->
     <a href="https://linksdojust.com" target="_blank" class="giveaway-card">
+      
       <span class="badge ativo">ATIVO</span>
+
+      <!-- Botão Info -->
+      <div class="info-btn" onclick="openModal(event, 'modal1')">i</div>
+
       <img src="assets/testegiveaway.png" alt="Giveaway Ativo">
+
       <div class="overlay">
         Site: teste.com | Depósito Mínimo: 10€
       </div>
     </a>
 
-    <!-- GIVEAWAY ACABADO -->
-    <a href="https://linksdojust.com" target="_blank" class="giveaway-card">
-      <span class="badge acabado">ACABADO</span>
-      <img src="assets/butterflygiveawayteste.png" alt="Giveaway Acabado">
-      <div class="overlay">
-        Site: teste2.com | Depósito Mínimo: 20€
-      </div>
-    </a>
-
-
+  </div>
 
   <footer class="foot">
     <small>© <span id="year"></span> just</small>
@@ -49,6 +46,17 @@
 
 </div>
 
-<script src="script.js?v=61"></script>
+<!-- MODAL -->
+<div class="modal" id="modal1">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
+    <h2>Informações do Giveaway</h2>
+    <p><strong>Site:</strong> teste.com</p>
+    <p><strong>Depósito mínimo:</strong> 10€</p>
+    <p><strong>Requisitos:</strong> Seguir o canal e estar presente na live.</p>
+  </div>
+</div>
+
+<script src="script.js?v=70"></script>
 </body>
 </html>

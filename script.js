@@ -83,7 +83,7 @@ const giveaways = [
   {
     id: 2,
     status: "acabado",
-    site: "OutroSite.com",
+    site: "teste.com",
     deposito: "20€",
     vencedor: "André (Teste)",
     imagem: "assets/butterflygiveawayteste.png",

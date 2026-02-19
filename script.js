@@ -83,6 +83,7 @@ document.addEventListener("keydown", function(e) {
 const giveaways = [
   {
     id: 1,
+    titulo: "Karambit Doppler FN".
     status: "ativo",
     site: "teste.com",
     deposito: "10€",
@@ -92,6 +93,7 @@ const giveaways = [
   },
   {
     id: 2,
+    titulo: "Butterfly Vanilla",
     status: "acabado",
     site: "OutroSite.com",
     deposito: "20€",
@@ -163,7 +165,8 @@ function criarGiveaways() {
 
         <img src="${g.imagem}" alt="Imagem Giveaway" class="modal-img">
 
-        <h2>${g.status === "ativo" ? "Informações do Giveaway" : "Giveaway Acabado"}</h2>
+        <h2>${g.titulo}</h2>
+
 
         <p><strong>Site:</strong> ${g.site}</p>
         <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>

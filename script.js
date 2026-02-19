@@ -87,7 +87,8 @@ const giveaways = [
     deposito: "10€",
     requisitos: "",
     imagem: "assets/testegiveaway.png",
-    link: "https://linksdojust.com"
+    link: "https://linksdojust.com",
+    overlayTexto: "🔥 Karambit Doppler Factory New"
   },
 
   // ==========================
@@ -147,7 +148,10 @@ function criarGiveaways() {
 
     const overlay = document.createElement("div");
     overlay.className = "overlay";
-    overlay.textContent = `Site: ${g.site} | Depósito: ${g.deposito}`;
+    overlay.textContent = g.overlayTexto 
+  ? g.overlayTexto 
+  : `Site: ${g.site} | Depósito: ${g.deposito}`;
+
     card.appendChild(overlay);
 
     container.appendChild(card);

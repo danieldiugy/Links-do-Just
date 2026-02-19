@@ -1,4 +1,7 @@
-// Partículas
+// ==========================
+// PARTÍCULAS
+// ==========================
+
 const particlesContainer = document.getElementById('particles');
 const numParticles = 60;
 
@@ -19,111 +22,54 @@ for (let i = 0; i < numParticles; i++) {
   particlesContainer.appendChild(particle);
 }
 
-async function checkTwitchLive() {
-  const twitchButton = document.getElementById('twitch-btn');
-  const twitchText = twitchButton?.querySelector('.btn-text');
-  const liveBadge = document.getElementById('live-badge');
-  const liveDot = twitchButton?.querySelector('.live-dot');
+// ==========================
+// ATUALIZAR ANO
+// ==========================
 
-  if (!twitchButton || !twitchText || !liveBadge || !liveDot) return;
+document.addEventListener("DOMContentLoaded", () => {
+  const yearSpan = document.getElementById("year");
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+});
 
-  try {
-    const statusRes = await fetch('https://decapi.me/twitch/status/just99c');
-    const status = (await statusRes.text()).trim();
-
-    if (status === 'LIVE') {
-
-      const uptimeRes = await fetch('https://decapi.me/twitch/uptime/just99c');
-      let uptime = (await uptimeRes.text()).trim();
-
-      let badgeText = "";
-
-      if (uptime.includes("minute")) {
-        const minutes = uptime.match(/\d+/)?.[0];
-        badgeText = `há ${minutes}min`;
-      } else if (uptime.includes("hour")) {
-        const hours = uptime.match(/\d+/)?.[0];
-        badgeText = `há ${hours} hora${hours > 1 ? "s" : ""}`;
-      }
-
-twitchText.innerHTML =
-  '<span class="live-dot"></span>EM LIVE';
-
-
-      liveBadge.textContent = badgeText;
-
-      liveDot.style.display = "inline-block";
-      liveBadge.style.display = "inline-block";
-
-      twitchButton.classList.add("live-pulse");
-
-    } else {
-      twitchText.innerHTML = "Live às 22h";
-      liveBadge.style.display = "none";
-      twitchButton.classList.remove("live-pulse");
-    }
-
-  } catch (error) {
-    console.error('Erro Twitch:', error);
-  }
-}
-
-
-document.addEventListener('DOMContentLoaded', checkTwitchLive);
-setInterval(checkTwitchLive, 60000);
-
-// Atualizar ano automaticamente
-const yearSpan = document.getElementById("year");
-if (yearSpan) {
-  yearSpan.textContent = new Date().getFullYear();
-}
+// ==========================
+// MODAL
+// ==========================
 
 function openModal(event, id) {
   event.preventDefault();
   event.stopPropagation();
-
   const modal = document.getElementById(id);
-  modal.style.display = "flex";
-
-  // bloquear scroll
+  modal.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
 function closeModal(id) {
   const modal = document.getElementById(id);
-  modal.style.display = "none";
-
-  // restaurar scroll
+  modal.classList.remove("active");
   document.body.style.overflow = "auto";
 }
 
-// fechar ao clicar fora
 window.addEventListener("click", function(e) {
-  const modals = document.querySelectorAll(".modal");
-  modals.forEach(modal => {
+  document.querySelectorAll(".modal").forEach(modal => {
     if (e.target === modal) {
-      modal.style.display = "none";
+      modal.classList.remove("active");
       document.body.style.overflow = "auto";
     }
   });
 });
 
-// fechar com ESC
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") {
-    const modals = document.querySelectorAll(".modal");
-    modals.forEach(modal => {
-      if (modal.style.display === "flex") {
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
-      }
+    document.querySelectorAll(".modal").forEach(modal => {
+      modal.classList.remove("active");
+      document.body.style.overflow = "auto";
     });
   }
 });
 
-/* ========================= */
-/* SISTEMA AUTOMÁTICO GIVEAWAYS */
-/* ========================= */
+// ==========================
+// SISTEMA AUTOMÁTICO GIVEAWAYS
+// ==========================
 
 const giveaways = [
   {
@@ -141,7 +87,7 @@ const giveaways = [
     site: "OutroSite.com",
     deposito: "20€",
     vencedor: "André (Teste)",
-    imagem: "assets/testegiveaway.png",
+    imagem: "assets/butterflygiveawayteste.png",
     link: "https://linksdojust.com"
   }
 ];
@@ -152,40 +98,33 @@ function criarGiveaways() {
 
   giveaways.forEach(g => {
 
-    // Criar card
     const card = document.createElement("div");
     card.className = "giveaway-card";
 
-    // Badge
     const badge = document.createElement("span");
     badge.className = `badge ${g.status}`;
     badge.textContent = g.status === "ativo" ? "ATIVO" : "ACABADO";
     card.appendChild(badge);
 
-    // Botão info
     const infoBtn = document.createElement("div");
     infoBtn.className = "info-btn";
     infoBtn.textContent = "i";
     infoBtn.onclick = (e) => openModal(e, `modal-${g.id}`);
     card.appendChild(infoBtn);
 
-    // Imagem
+    const img = document.createElement("img");
+    img.src = g.imagem;
+
     if (g.status === "ativo") {
       const link = document.createElement("a");
       link.href = g.link;
       link.target = "_blank";
-
-      const img = document.createElement("img");
-      img.src = g.imagem;
       link.appendChild(img);
       card.appendChild(link);
     } else {
-      const img = document.createElement("img");
-      img.src = g.imagem;
       card.appendChild(img);
     }
 
-    // Overlay
     const overlay = document.createElement("div");
     overlay.className = "overlay";
     overlay.textContent = `Site: ${g.site} | Depósito: ${g.deposito}`;
@@ -220,4 +159,3 @@ function criarGiveaways() {
 }
 
 document.addEventListener("DOMContentLoaded", criarGiveaways);
-

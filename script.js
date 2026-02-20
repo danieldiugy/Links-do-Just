@@ -1,209 +1,257 @@
-// ==========================
-// PARTÍCULAS
-// ==========================
-const particlesContainer = document.getElementById('particles');
-const numParticles = 60;
-if (particlesContainer) {
-  for (let i = 0; i < numParticles; i++) {
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-    const size = Math.random() * 5 + 1.5;
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.left = `${Math.random() * 100}vw`;
-    const duration = Math.random() * 30 + 25;
-    const delay = Math.random() * 25;
-    particle.style.animationDuration = `${duration}s`;
-    particle.style.animationDelay = `-${delay}s`;
-    particlesContainer.appendChild(particle);
-  }
-}
+// =============================================================================
+// ARQUIVO: script.js
+// Objetivo: Controlar partículas no fundo, atualizar o ano no footer,
+//           abrir/fechar modais e gerar os cartões + modais dos giveaways
+// =============================================================================
 
-// ==========================
-// ATUALIZAR ANO
-// ==========================
-document.addEventListener("DOMContentLoaded", () => {
-  const yearSpan = document.getElementById("year");
-  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-});
 
-// ==========================
-// MODAL FUNCTIONS
-// ==========================
-function openModal(id) {
-  const modal = document.getElementById(id);
-  if (!modal) {
-    console.warn(`Modal com id ${id} não encontrado`);
-    return;
-  }
-  modal.classList.add("active");
-  document.body.style.overflow = "hidden";
-}
+// ────────────────────────────────────────────────
+// 1. PARTÍCULAS NO FUNDO (efeito visual bonito)
+// ────────────────────────────────────────────────
+const particulasContainer = document.getElementById('particles');
+const quantidadeParticulas = 60;
 
-function closeModal(id) {
-  const modal = document.getElementById(id);
-  if (!modal) return;
-  modal.classList.remove("active");
-  document.body.style.overflow = "auto";
-}
+if (particulasContainer) {
+    // Criamos 60 partículas aleatórias que flutuam
+    for (let i = 0; i < quantidadeParticulas; i++) {
+        const particula = document.createElement('div');
+        particula.classList.add('particle');
 
-// Fechar ao clicar fora
-window.addEventListener("click", function(e) {
-  document.querySelectorAll(".modal").forEach(modal => {
-    if (e.target === modal) {
-      closeModal(modal.id);
+        // Tamanho aleatório pequeno (entre ~1.5px e 6.5px)
+        const tamanho = Math.random() * 5 + 1.5;
+        particula.style.width = `${tamanho}px`;
+        particula.style.height = `${tamanho}px`;
+
+        // Posição aleatória na largura da tela
+        particula.style.left = `${Math.random() * 100}vw`;
+
+        // Duração e atraso aleatórios para parecer natural
+        const duracao = Math.random() * 30 + 25;      // entre 25s e 55s
+        const atraso = Math.random() * 25;
+        particula.style.animationDuration = `${duracao}s`;
+        particula.style.animationDelay = `-${atraso}s`;
+
+        particulasContainer.appendChild(particula);
     }
-  });
+}
+
+
+// ────────────────────────────────────────────────
+// 2. ATUALIZAR O ANO NO FOOTER AUTOMATICAMENTE
+// ────────────────────────────────────────────────
+document.addEventListener("DOMContentLoaded", () => {
+    const elementoAno = document.getElementById("year");
+    if (elementoAno) {
+        elementoAno.textContent = new Date().getFullYear();
+    }
 });
 
-// Fechar com ESC
-document.addEventListener("keydown", function(e) {
-  if (e.key === "Escape") {
-    document.querySelectorAll(".modal.active").forEach(modal => {
-      closeModal(modal.id);
+
+// ────────────────────────────────────────────────
+// 3. FUNÇÕES PARA CONTROLAR OS MODAIS
+// ────────────────────────────────────────────────
+
+// Abre um modal específico
+function abrirModal(idDoModal) {
+    const modal = document.getElementById(idDoModal);
+    if (!modal) {
+        console.warn(`Não encontrei modal com id: ${idDoModal}`);
+        return;
+    }
+
+    modal.classList.add("active");
+    // Impede scroll da página enquanto modal está aberto
+    document.body.style.overflow = "hidden";
+}
+
+// Fecha um modal específico
+function fecharModal(idDoModal) {
+    const modal = document.getElementById(idDoModal);
+    if (!modal) return;
+
+    modal.classList.remove("active");
+    // Devolve o scroll normal à página
+    document.body.style.overflow = "auto";
+}
+
+// Fecha o modal se clicar fora da caixa (no fundo escuro)
+window.addEventListener("click", function(evento) {
+    document.querySelectorAll(".modal").forEach(modal => {
+        // Se clicou exatamente no fundo (não no conteúdo)
+        if (evento.target === modal) {
+            fecharModal(modal.id);
+        }
     });
-  }
 });
 
-// ==========================
-// DADOS DOS GIVEAWAYS
-// ==========================
-const giveaways = [
-  {
-    id: 1,
-    titulo: "Karambit Doppler FN",
-    status: "on",
-    site: "teste.com",
-    deposito: "10€",
-    codigo: "50JUST",
-    requisitos: "",
-    imagem: "assets/testegiveaway.png",
-    link: "https://linksdojust.com",
-    overlayTexto: "🔥 Karambit Doppler Factory New"
-  },
-  {
-    id: 2,
-    titulo: "Butterfly Vanilla",
-    status: "off",
-    site: "OutroSite.com",
-    deposito: "20€",
-    codigo: "50JUST",
-    vencedor: "André (Teste)",
-    descricao: "Este giveaway já terminou.",
-    descricaoExtra: "",
-    imagem: "assets/butterflygiveawayteste.png",
-    link: "https://linksdojust.com",
-    overlayTexto: "🏆 Terminado – Vencedor revelado"
-  }
-  // adiciona mais giveaways aqui quando quiseres
+// Fecha qualquer modal aberto ao pressionar a tecla ESC
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "Escape") {
+        document.querySelectorAll(".modal.active").forEach(modal => {
+            fecharModal(modal.id);
+        });
+    }
+});
+
+
+// ────────────────────────────────────────────────
+// 4. DADOS DOS GIVEAWAYS (aqui é onde colocas todos os sorteios)
+// ────────────────────────────────────────────────
+const listaDeGiveaways = [
+    {
+        id: 1,
+        titulo: "Karambit Doppler FN",
+        status: "on",               // "on" = ativo   /   "off" = terminado
+        site: "teste.com",
+        deposito: "10€",
+        codigo: "50JUST",
+        requisitos: "",
+        imagem: "assets/testegiveaway.png",
+        link: "https://linksdojust.com",
+        overlayTexto: "🔥 Karambit Doppler Factory New"
+    },
+    {
+        id: 2,
+        titulo: "Butterfly Vanilla",
+        status: "off",
+        site: "OutroSite.com",
+        deposito: "20€",
+        codigo: "50JUST",
+        vencedor: "André (Teste)",
+        descricao: "Este giveaway já terminou.",
+        descricaoExtra: "",
+        imagem: "assets/butterflygiveawayteste.png",
+        link: "https://linksdojust.com",
+        overlayTexto: "🏆 Terminado – Vencedor revelado"
+    }
+    // Podes adicionar mais objetos aqui no futuro
 ];
 
-// ==========================
-// GERAR CARDS + MODAIS
-// ==========================
-function criarGiveaways() {
-  const container = document.getElementById("giveaways-container");
-  if (!container) return;
-  container.innerHTML = "";
 
-  // Ordenar: "on" primeiro
-  const sorted = [...giveaways].sort((a, b) => {
-    if (a.status === "on" && b.status !== "on") return -1;
-    if (a.status !== "on" && b.status === "on") return 1;
-    return 0;
-  });
+// ────────────────────────────────────────────────
+// 5. FUNÇÃO PRINCIPAL: CRIA OS CARTÕES E OS MODAIS
+// ────────────────────────────────────────────────
+function gerarCartoesEModais() {
+    const container = document.getElementById("giveaways-container");
+    if (!container) return;
 
-  sorted.forEach(g => {
-    const card = document.createElement("div");
-    card.className = "giveaway-card";
+    // Limpa tudo que já estiver dentro do container
+    container.innerHTML = "";
 
-    // Badge
-    const badge = document.createElement("span");
-    badge.className = `badge ${g.status}`;
-    badge.textContent = g.status === "on" ? "ON" : "OFF";
-    card.appendChild(badge);
-
-    // Botão info (i)
-    const infoBtn = document.createElement("div");
-    infoBtn.className = "info-btn";
-    infoBtn.textContent = "i";
-    infoBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      openModal(`modal-${g.id}`);
-    });
-    card.appendChild(infoBtn);
-
-    // Imagem (com link se "on")
-    if (g.status === "on") {
-      const link = document.createElement("a");
-      link.href = g.link;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      const img = document.createElement("img");
-      img.src = g.imagem;
-      img.alt = `${g.titulo} - Participar`;
-      link.appendChild(img);
-      card.appendChild(link);
-    } else {
-      const img = document.createElement("img");
-      img.src = g.imagem;
-      img.alt = `${g.titulo} - Encerrado`;
-      card.appendChild(img);
-    }
-
-    // Overlay
-    const overlay = document.createElement("div");
-    overlay.className = "overlay";
-    overlay.textContent = g.overlayTexto || `${g.site} • ${g.deposito}`;
-    card.appendChild(overlay);
-
-    container.appendChild(card);
-
-    // ─── MODAL ───────────────────────────────────────
-    const modal = document.createElement("div");
-    modal.className = "modal";
-    modal.id = `modal-${g.id}`;
-
-    const requisitosHTML = g.requisitos?.trim() ? `<p><strong>Requisitos:</strong> ${g.requisitos}</p>` : "";
-    const vencedorHTML = g.vencedor && g.status === "off"
-      ? `<p><strong>Vencedor:</strong> ${g.vencedor}</p>` : "";
-    const descHTML = g.descricao?.trim() ? `<p>${g.descricao}</p>` : "";
-    const descExtraHTML = g.descricaoExtra?.trim() ? `<p>${g.descricaoExtra}</p>` : "";
-
-    // Alteração aqui: só "Código:" e sem <code>, mantém fonte normal
-    const codigoHTML = g.codigo?.trim()
-      ? `<p><strong>Código:</strong> ${g.codigo}</p>`
-      : "";
-
-    const botaoHTML = g.status === "on"
-      ? `<a href="${g.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar Agora</a>`
-      : `<button class="participar-btn disabled" disabled>Giveaway Encerrado</button>`;
-
-    modal.innerHTML = `
-      <div class="modal-content">
-        <span class="close-modal">×</span>
-        <img src="${g.imagem}" alt="${g.titulo}" class="modal-img">
-        <h2>${g.titulo}</h2>
-        ${vencedorHTML}
-        ${descHTML}
-        ${descExtraHTML}
-        <p><strong>Site:</strong> ${g.site}</p>
-        <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>
-        ${codigoHTML}
-        ${requisitosHTML}
-        <div style="margin-top: 24px;">
-          ${botaoHTML}
-        </div>
-      </div>
-    `;
-
-    // Evento de fechar no ×
-    modal.querySelector(".close-modal").addEventListener("click", () => {
-      closeModal(`modal-${g.id}`);
+    // Ordena a lista: giveaways ativos ("on") aparecem primeiro
+    const ordenados = [...listaDeGiveaways].sort((a, b) => {
+        if (a.status === "on" && b.status !== "on") return -1;
+        if (a.status !== "on" && b.status === "on") return 1;
+        return 0;
     });
 
-    document.body.appendChild(modal);
-  });
+    // Para cada giveaway, criamos um cartão + um modal
+    ordenados.forEach(giveaway => {
+        // ─── CRIAR O CARTÃO NA PÁGINA PRINCIPAL ───
+        const cartao = document.createElement("div");
+        cartao.className = "giveaway-card";
+
+        // Badge (ON ou OFF)
+        const badge = document.createElement("span");
+        badge.className = `badge ${giveaway.status}`;
+        badge.textContent = giveaway.status === "on" ? "ON" : "OFF";
+        cartao.appendChild(badge);
+
+        // Botão "i" de informação (abre o modal)
+        const botaoInfo = document.createElement("div");
+        botaoInfo.className = "info-btn";
+        botaoInfo.textContent = "i";
+        botaoInfo.addEventListener("click", (evento) => {
+            evento.stopPropagation();           // Evita propagar o clique
+            abrirModal(`modal-${giveaway.id}`);
+        });
+        cartao.appendChild(botaoInfo);
+
+        // Imagem (clicável apenas se estiver ativo)
+        if (giveaway.status === "on") {
+            const link = document.createElement("a");
+            link.href = giveaway.link;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+
+            const imagem = document.createElement("img");
+            imagem.src = giveaway.imagem;
+            imagem.alt = `${giveaway.titulo} - Participar`;
+            link.appendChild(imagem);
+            cartao.appendChild(link);
+        } else {
+            const imagem = document.createElement("img");
+            imagem.src = giveaway.imagem;
+            imagem.alt = `${giveaway.titulo} - Encerrado`;
+            cartao.appendChild(imagem);
+        }
+
+        // Texto na parte de baixo do cartão
+        const overlay = document.createElement("div");
+        overlay.className = "overlay";
+        overlay.textContent = giveaway.overlayTexto || `${giveaway.site} • ${giveaway.deposito}`;
+        cartao.appendChild(overlay);
+
+        container.appendChild(cartao);
+
+        // ─── CRIAR O MODAL (janela que abre ao clicar no "i") ───
+        const modal = document.createElement("div");
+        modal.className = "modal";
+        modal.id = `modal-${giveaway.id}`;
+
+        // Preparar cada parte do conteúdo do modal
+        const requisitosHTML = giveaway.requisitos?.trim()
+            ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>`
+            : "";
+
+        const vencedorHTML = giveaway.vencedor && giveaway.status === "off"
+            ? `<p><strong>Vencedor:</strong> ${giveaway.vencedor}</p>`
+            : "";
+
+        const descricaoHTML = giveaway.descricao?.trim()
+            ? `<p>${giveaway.descricao}</p>`
+            : "";
+
+        const descricaoExtraHTML = giveaway.descricaoExtra?.trim()
+            ? `<p>${giveaway.descricaoExtra}</p>`
+            : "";
+
+        const codigoHTML = giveaway.codigo?.trim()
+            ? `<p><strong>Código:</strong> ${giveaway.codigo}</p>`
+            : "";
+
+        const botaoParticiparHTML = giveaway.status === "on"
+            ? `<a href="${giveaway.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar Agora</a>`
+            : `<button class="participar-btn disabled" disabled>Giveaway Encerrado</button>`;
+
+        // Colar tudo dentro do modal
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close-modal">×</span>
+                <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
+                <h2>${giveaway.titulo}</h2>
+                ${vencedorHTML}
+                ${descricaoHTML}
+                ${descricaoExtraHTML}
+                <p><strong>Site:</strong> ${giveaway.site}</p>
+                <p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>
+                ${codigoHTML}
+                ${requisitosHTML}
+                <div style="margin-top: 24px;">
+                    ${botaoParticiparHTML}
+                </div>
+            </div>
+        `;
+
+        // Evento para fechar clicando no "×"
+        modal.querySelector(".close-modal").addEventListener("click", () => {
+            fecharModal(`modal-${giveaway.id}`);
+        });
+
+        // Adiciona o modal ao body (fica escondido até ser aberto)
+        document.body.appendChild(modal);
+    });
 }
 
-document.addEventListener("DOMContentLoaded", criarGiveaways);
+// Executa a função quando a página carrega completamente
+document.addEventListener("DOMContentLoaded", gerarCartoesEModais);

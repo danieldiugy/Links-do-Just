@@ -249,16 +249,14 @@ h1 {
   pointer-events: none;
 }
 
-.badge.ativo {
-  background: #00c853;
+.badge.on {
+  background: #00c853;           /* verde - ativo */
   color: white;
   animation: pulse-soft 3s infinite ease-in-out;
 }
 
-
-
-.badge.acabado {
-  background: #d50000;
+.badge.off {
+  background: #d50000;           /* vermelho - encerrado */
   box-shadow: 0 0 12px rgba(213,0,0,0.6);
   color: white;
 }

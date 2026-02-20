@@ -151,9 +151,9 @@ function gerarCartoesEModais() {
         const cartao = document.createElement("div");
         cartao.className = "giveaway-card";
 
-        // Badge (Ativo ou Acabado) – mudamos só o texto visível
+        // Badge (Ativo ou Acabado)
         const badge = document.createElement("span");
-        badge.className = `badge ${giveaway.status}`; // mantém "on" ou "off" na classe CSS
+        badge.className = `badge ${giveaway.status}`;
         badge.textContent = giveaway.status === "on" ? "Ativo" : "Acabado";
         cartao.appendChild(badge);
 
@@ -220,11 +220,16 @@ function gerarCartoesEModais() {
             ? `<p><strong>Código:</strong> ${giveaway.codigo}</p>`
             : "";
 
+        // Novo parágrafo inserido aqui, entre Site e Depósito mínimo
+        const paragrafoExtraHTML = `<p style="margin: 16px 0; font-style: italic; opacity: 0.9;">
+            Usa o código no depósito para entrares no sorteio!
+        </p>`;
+
         const botaoParticiparHTML = giveaway.status === "on"
             ? `<a href="${giveaway.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar Agora</a>`
             : `<button class="participar-btn disabled" disabled>Giveaway Encerrado</button>`;
 
-        // Colar tudo dentro do modal
+        // Colar tudo dentro do modal – nota a ordem: ... codigoHTML → paragrafoExtraHTML → site → deposito ...
         modal.innerHTML = `
             <div class="modal-content">
                 <span class="close-modal">×</span>
@@ -234,6 +239,7 @@ function gerarCartoesEModais() {
                 ${descricaoHTML}
                 ${descricaoExtraHTML}
                 <p><strong>Site:</strong> ${giveaway.site}</p>
+                ${paragrafoExtraHTML}
                 <p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>
                 ${codigoHTML}
                 ${requisitosHTML}

@@ -220,14 +220,14 @@ function gerarCartoesEModais() {
             ? `<p><strong>Código:</strong> ${giveaway.codigo}</p>`
             : "";
 
-        // Parágrafo vazio apenas para espaçamento entre "Site" e "Depósito mínimo"
+        // Parágrafo vazio apenas para espaçamento
         const paragrafoExtraHTML = `<p style="margin: 16px 0;"></p>`;
 
         const botaoParticiparHTML = giveaway.status === "on"
             ? `<a href="${giveaway.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar Agora</a>`
             : `<button class="participar-btn disabled" disabled>Giveaway Encerrado</button>`;
 
-        // Colar tudo dentro do modal
+        // Ordem alterada: Site → espaçamento → Código → Depósito mínimo
         modal.innerHTML = `
             <div class="modal-content">
                 <span class="close-modal">×</span>
@@ -238,8 +238,8 @@ function gerarCartoesEModais() {
                 ${descricaoExtraHTML}
                 <p><strong>Site:</strong> ${giveaway.site}</p>
                 ${paragrafoExtraHTML}
-                <p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>
                 ${codigoHTML}
+                <p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>
                 ${requisitosHTML}
                 <div style="margin-top: 24px;">
                     ${botaoParticiparHTML}

@@ -82,9 +82,10 @@ const giveaways = [
   {
     id: 1,
     titulo: "Karambit Doppler FN",
-    status: "on",                    // ← alterado
+    status: "on",
     site: "teste.com",
     deposito: "10€",
+    codigo: "50JUST",              // ← novo campo
     requisitos: "",
     imagem: "assets/testegiveaway.png",
     link: "https://linksdojust.com",
@@ -93,9 +94,10 @@ const giveaways = [
   {
     id: 2,
     titulo: "Butterfly Vanilla",
-    status: "off",                   // ← alterado
+    status: "off",
     site: "OutroSite.com",
     deposito: "20€",
+    codigo: "50JUST",              // ← novo campo
     vencedor: "André (Teste)",
     descricao: "Este giveaway já terminou.",
     descricaoExtra: "",
@@ -103,7 +105,7 @@ const giveaways = [
     link: "https://linksdojust.com",
     overlayTexto: "🏆 Terminado – Vencedor revelado"
   }
-  // adiciona mais aqui quando quiseres
+  // adiciona mais giveaways aqui quando quiseres
 ];
 
 // ==========================
@@ -129,7 +131,7 @@ function criarGiveaways() {
 
     // Badge
     const badge = document.createElement("span");
-    badge.className = `badge ${g.status}`;          // on ou off
+    badge.className = `badge ${g.status}`;
     badge.textContent = g.status === "on" ? "ON" : "OFF";
     card.appendChild(badge);
 
@@ -180,6 +182,11 @@ function criarGiveaways() {
     const descHTML         = g.descricao?.trim()      ? `<p>${g.descricao}</p>`          : "";
     const descExtraHTML    = g.descricaoExtra?.trim() ? `<p>${g.descricaoExtra}</p>`     : "";
 
+    // Novo: Código / Cupão
+    const codigoHTML = g.codigo?.trim()
+      ? `<p><strong>Código / Cupão:</strong> <code style="background:#222; padding:2px 6px; border-radius:4px;">${g.codigo}</code></p>`
+      : "";
+
     const botaoHTML = g.status === "on"
       ? `<a href="${g.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar Agora</a>`
       : `<button class="participar-btn disabled" disabled>Giveaway Encerrado</button>`;
@@ -194,6 +201,7 @@ function criarGiveaways() {
         ${descExtraHTML}
         <p><strong>Site:</strong> ${g.site}</p>
         <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>
+        ${codigoHTML}              <!-- ← aqui aparece o cupão -->
         ${requisitosHTML}
         <div style="margin-top: 24px;">
           ${botaoHTML}

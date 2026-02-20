@@ -199,15 +199,7 @@ function gerarCartoesEModais() {
         modal.className = "modal";
         modal.id = `modal-${giveaway.id}`;
 
-        // Preparar cada parte do conteúdo do modal
-        const requisitosHTML = giveaway.requisitos?.trim()
-            ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>`
-            : "";
-
-        const vencedorHTML = giveaway.vencedor && giveaway.status === "off"
-            ? `<p><strong>Vencedor:</strong> ${giveaway.vencedor}</p>`
-            : "";
-
+        // Preparar partes comuns
         const descricaoHTML = giveaway.descricao?.trim()
             ? `<p>${giveaway.descricao}</p>`
             : "";
@@ -216,34 +208,63 @@ function gerarCartoesEModais() {
             ? `<p>${giveaway.descricaoExtra}</p>`
             : "";
 
+        const requisitosHTML = giveaway.requisitos?.trim()
+            ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>`
+            : "";
+
+        const vencedorHTML = giveaway.vencedor && giveaway.status === "off"
+            ? `<p><strong>Vencedor:</strong> ${giveaway.vencedor}</p>`
+            : "";
+
         const codigoHTML = giveaway.codigo?.trim()
             ? `<p><strong>Código:</strong> ${giveaway.codigo}</p>`
             : "";
 
-        // Parágrafo vazio apenas para espaçamento
-        const paragrafoExtraHTML = `<p style="margin: 16px 0;"></p>`;
+        const siteHTML = `<p><strong>Site:</strong> ${giveaway.site}</p>`;
 
-        const botaoParticiparHTML = giveaway.status === "on"
-            ? `<a href="${giveaway.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar Agora</a>`
-            : `<button class="participar-btn disabled" disabled>Giveaway Encerrado</button>`;
+        const depositoHTML = `<p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>`;
 
-        // Ordem alterada: Site → espaçamento → Código → Depósito mínimo
-        modal.innerHTML = `
-            <div class="modal-content">
+        const paragrafoEspacamento = `<p style="margin: 16px 0;"></p>`;
+
+        let conteudoModal = "";
+
+        if (giveaway.status === "off") {
+            // Ordem exata para giveaways acabados
+            conteudoModal = `
                 <span class="close-modal">×</span>
                 <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
                 <h2>${giveaway.titulo}</h2>
                 ${vencedorHTML}
                 ${descricaoHTML}
                 ${descricaoExtraHTML}
-                <p><strong>Site:</strong> ${giveaway.site}</p>
-                ${paragrafoExtraHTML}
+                ${paragrafoEspacamento}
+                ${siteHTML}
                 ${codigoHTML}
-                <p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>
+                ${depositoHTML}
+                ${requisitosHTML}
+            `;
+        } else {
+            // Ordem para giveaways ativos (mantém a anterior)
+            conteudoModal = `
+                <span class="close-modal">×</span>
+                <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
+                <h2>${giveaway.titulo}</h2>
+                ${descricaoHTML}
+                ${descricaoExtraHTML}
+                ${siteHTML}
+                ${paragrafoEspacamento}
+                ${codigoHTML}
+                ${depositoHTML}
                 ${requisitosHTML}
                 <div style="margin-top: 24px;">
-                    ${botaoParticiparHTML}
+                    <a href="${giveaway.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar Agora</a>
                 </div>
+            `;
+        }
+
+        modal.innerHTML = `
+            <div class="modal-content">
+                ${conteudoModal}
             </div>
         `;
 

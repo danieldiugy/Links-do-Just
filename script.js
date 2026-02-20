@@ -34,15 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================
-// MODAL
+// MODAL FUNCTIONS
 // ==========================
 
-function openModal(event, id) {
-  event.preventDefault();
-  event.stopPropagation();
-
+function openModal(id) {
   const modal = document.getElementById(id);
-  if (!modal) return;
+  if (!modal) {
+    console.warn(`Modal com id ${id} não encontrado`);
+    return;
+  }
 
   modal.classList.add("active");
   document.body.style.overflow = "hidden";
@@ -56,20 +56,20 @@ function closeModal(id) {
   document.body.style.overflow = "auto";
 }
 
+// Fechar ao clicar fora
 window.addEventListener("click", function(e) {
   document.querySelectorAll(".modal").forEach(modal => {
     if (e.target === modal) {
-      modal.classList.remove("active");
-      document.body.style.overflow = "auto";
+      closeModal(modal.id);
     }
   });
 });
 
+// Fechar com ESC
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") {
-    document.querySelectorAll(".modal").forEach(modal => {
-      modal.classList.remove("active");
-      document.body.style.overflow = "auto";
+    document.querySelectorAll(".modal.active").forEach(modal => {
+      closeModal(modal.id);
     });
   }
 });
@@ -85,7 +85,7 @@ const giveaways = [
     status: "ativo",
     site: "teste.com",
     deposito: "10€",
-    requisitos: "",   // ← podes preencher quando quiseres
+    requisitos: "",
     imagem: "assets/testegiveaway.png",
     link: "https://linksdojust.com",
     overlayTexto: "🔥 Karambit Doppler Factory New"
@@ -100,14 +100,13 @@ const giveaways = [
     descricao: "Este giveaway já terminou.",
     descricaoExtra: "",
     imagem: "assets/butterflygiveawayteste.png",
-    link: "https://linksdojust.com",  // mantido mas não usado
+    link: "https://linksdojust.com",
     overlayTexto: "🏆 Terminado – Vencedor revelado"
   }
-  // Podes adicionar mais objetos aqui no futuro
 ];
 
 // ==========================
-// GERAR CARDS E MODAIS
+// GERAR CARDS + MODAIS
 // ==========================
 
 function criarGiveaways() {
@@ -117,14 +116,13 @@ function criarGiveaways() {
   container.innerHTML = "";
 
   // Ordenar: ativos primeiro
-  const sortedGiveaways = [...giveaways].sort((a, b) => {
+  const sorted = [...giveaways].sort((a, b) => {
     if (a.status === "ativo" && b.status !== "ativo") return -1;
     if (a.status !== "ativo" && b.status === "ativo") return 1;
     return 0;
   });
 
-  sortedGiveaways.forEach(g => {
-    // ─── CARD ────────────────────────────────────────────────
+  sorted.forEach(g => {
     const card = document.createElement("div");
     card.className = "giveaway-card";
 
@@ -138,10 +136,14 @@ function criarGiveaways() {
     const infoBtn = document.createElement("div");
     infoBtn.className = "info-btn";
     infoBtn.textContent = "i";
-    infoBtn.onclick = (e) => openModal(e, `modal-${g.id}`);
+    infoBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // só para não propagar para o card se quiseres
+      openModal(`modal-${g.id}`);
+      console.log(`Tentando abrir modal-${g.id}`); // ← debug temporário
+    });
     card.appendChild(infoBtn);
 
-    // Imagem (com link se ativo)
+    // Imagem (link se ativo)
     if (g.status === "ativo") {
       const link = document.createElement("a");
       link.href = g.link;
@@ -149,81 +151,59 @@ function criarGiveaways() {
       link.rel = "noopener noreferrer";
       const img = document.createElement("img");
       img.src = g.imagem;
-      img.alt = `${g.titulo} - Participar no giveaway`;
+      img.alt = `${g.titulo} - Participar`;
       link.appendChild(img);
       card.appendChild(link);
     } else {
       const img = document.createElement("img");
       img.src = g.imagem;
-      img.alt = `${g.titulo} - Giveaway terminado`;
+      img.alt = `${g.titulo} - Terminado`;
       card.appendChild(img);
     }
 
     // Overlay
     const overlay = document.createElement("div");
     overlay.className = "overlay";
-    overlay.textContent = g.overlayTexto || `${g.site} • Depósito ${g.deposito}`;
+    overlay.textContent = g.overlayTexto || `${g.site} • ${g.deposito}`;
     card.appendChild(overlay);
 
     container.appendChild(card);
 
-    // ─── MODAL ───────────────────────────────────────────────
+    // ─── MODAL ───────────────────────────────────────
     const modal = document.createElement("div");
     modal.className = "modal";
     modal.id = `modal-${g.id}`;
 
-    const requisitosHTML = g.requisitos.trim()
-      ? `<p><strong>Requisitos:</strong> ${g.requisitos}</p>`
-      : "";
+    const requisitosHTML = g.requisitos?.trim() ? `<p><strong>Requisitos:</strong> ${g.requisitos}</p>` : "";
+    const vencedorHTML   = g.vencedor   ? `<p><strong>Vencedor:</strong> ${g.vencedor}</p>` : "";
+    const descHTML       = g.descricao  ? `<p>${g.descricao}</p>` : "";
+    const descExtraHTML  = g.descricaoExtra ? `<p>${g.descricaoExtra}</p>` : "";
 
-    const descricaoHTML = g.descricao?.trim()
-      ? `<p>${g.descricao}</p>`
-      : "";
-
-    const descricaoExtraHTML = g.descricaoExtra?.trim()
-      ? `<p>${g.descricaoExtra}</p>`
-      : "";
-
-    const vencedorHTML = g.vencedor && g.status !== "ativo"
-      ? `<p><strong>Vencedor:</strong> ${g.vencedor}</p>`
-      : "";
-
-    let botaoHTML = "";
-    if (g.status === "ativo") {
-      botaoHTML = `
-        <a href="${g.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">
-          Participar Agora
-        </a>
-      `;
-    } else {
-      botaoHTML = `
-        <button class="participar-btn disabled" disabled>
-          Giveaway Terminado
-        </button>
-      `;
-    }
+    const botaoHTML = g.status === "ativo"
+      ? `<a href="${g.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar Agora</a>`
+      : `<button class="participar-btn disabled" disabled>Giveaway Terminado</button>`;
 
     modal.innerHTML = `
       <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('modal-${g.id}')">×</span>
-
+        <span class="close-modal">×</span>
         <img src="${g.imagem}" alt="${g.titulo}" class="modal-img">
-
         <h2>${g.titulo}</h2>
-
         ${vencedorHTML}
-        ${descricaoHTML}
-        ${descricaoExtraHTML}
-
+        ${descHTML}
+        ${descExtraHTML}
         <p><strong>Site:</strong> ${g.site}</p>
         <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>
         ${requisitosHTML}
-
         <div style="margin-top: 24px;">
           ${botaoHTML}
         </div>
       </div>
     `;
+
+    // Fechar modal ao clicar no × (usando addEventListener)
+    modal.querySelector(".close-modal").addEventListener("click", () => {
+      closeModal(`modal-${g.id}`);
+    });
 
     document.body.appendChild(modal);
   });

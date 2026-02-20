@@ -82,7 +82,7 @@ const giveaways = [
   {
     id: 1,
     titulo: "Karambit Doppler FN",
-    status: "ativo",
+    status: "on",                    // ← alterado
     site: "teste.com",
     deposito: "10€",
     requisitos: "",
@@ -93,7 +93,7 @@ const giveaways = [
   {
     id: 2,
     titulo: "Butterfly Vanilla",
-    status: "acabado",
+    status: "off",                   // ← alterado
     site: "OutroSite.com",
     deposito: "20€",
     vencedor: "André (Teste)",
@@ -103,6 +103,7 @@ const giveaways = [
     link: "https://linksdojust.com",
     overlayTexto: "🏆 Terminado – Vencedor revelado"
   }
+  // adiciona mais aqui quando quiseres
 ];
 
 // ==========================
@@ -115,10 +116,10 @@ function criarGiveaways() {
 
   container.innerHTML = "";
 
-  // Ordenar: ativos primeiro
+  // Ordenar: "on" primeiro
   const sorted = [...giveaways].sort((a, b) => {
-    if (a.status === "ativo" && b.status !== "ativo") return -1;
-    if (a.status !== "ativo" && b.status === "ativo") return 1;
+    if (a.status === "on" && b.status !== "on") return -1;
+    if (a.status !== "on" && b.status === "on") return 1;
     return 0;
   });
 
@@ -128,8 +129,8 @@ function criarGiveaways() {
 
     // Badge
     const badge = document.createElement("span");
-    badge.className = `badge ${g.status}`;
-    badge.textContent = g.status === "ativo" ? "ATIVO" : "ACABADO";
+    badge.className = `badge ${g.status}`;          // on ou off
+    badge.textContent = g.status === "on" ? "ON" : "OFF";
     card.appendChild(badge);
 
     // Botão info (i)
@@ -137,14 +138,13 @@ function criarGiveaways() {
     infoBtn.className = "info-btn";
     infoBtn.textContent = "i";
     infoBtn.addEventListener("click", (e) => {
-      e.stopPropagation(); // só para não propagar para o card se quiseres
+      e.stopPropagation();
       openModal(`modal-${g.id}`);
-      console.log(`Tentando abrir modal-${g.id}`); // ← debug temporário
     });
     card.appendChild(infoBtn);
 
-    // Imagem (link se ativo)
-    if (g.status === "ativo") {
+    // Imagem (com link se "on")
+    if (g.status === "on") {
       const link = document.createElement("a");
       link.href = g.link;
       link.target = "_blank";
@@ -157,7 +157,7 @@ function criarGiveaways() {
     } else {
       const img = document.createElement("img");
       img.src = g.imagem;
-      img.alt = `${g.titulo} - Terminado`;
+      img.alt = `${g.titulo} - Encerrado`;
       card.appendChild(img);
     }
 
@@ -174,14 +174,15 @@ function criarGiveaways() {
     modal.className = "modal";
     modal.id = `modal-${g.id}`;
 
-    const requisitosHTML = g.requisitos?.trim() ? `<p><strong>Requisitos:</strong> ${g.requisitos}</p>` : "";
-    const vencedorHTML   = g.vencedor   ? `<p><strong>Vencedor:</strong> ${g.vencedor}</p>` : "";
-    const descHTML       = g.descricao  ? `<p>${g.descricao}</p>` : "";
-    const descExtraHTML  = g.descricaoExtra ? `<p>${g.descricaoExtra}</p>` : "";
+    const requisitosHTML   = g.requisitos?.trim()     ? `<p><strong>Requisitos:</strong> ${g.requisitos}</p>`     : "";
+    const vencedorHTML     = g.vencedor && g.status === "off"
+      ? `<p><strong>Vencedor:</strong> ${g.vencedor}</p>` : "";
+    const descHTML         = g.descricao?.trim()      ? `<p>${g.descricao}</p>`          : "";
+    const descExtraHTML    = g.descricaoExtra?.trim() ? `<p>${g.descricaoExtra}</p>`     : "";
 
-    const botaoHTML = g.status === "ativo"
+    const botaoHTML = g.status === "on"
       ? `<a href="${g.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar Agora</a>`
-      : `<button class="participar-btn disabled" disabled>Giveaway Terminado</button>`;
+      : `<button class="participar-btn disabled" disabled>Giveaway Encerrado</button>`;
 
     modal.innerHTML = `
       <div class="modal-content">
@@ -200,7 +201,7 @@ function criarGiveaways() {
       </div>
     `;
 
-    // Fechar modal ao clicar no × (usando addEventListener)
+    // Evento de fechar no ×
     modal.querySelector(".close-modal").addEventListener("click", () => {
       closeModal(`modal-${g.id}`);
     });

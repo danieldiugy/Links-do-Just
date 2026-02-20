@@ -151,10 +151,10 @@ function gerarCartoesEModais() {
         const cartao = document.createElement("div");
         cartao.className = "giveaway-card";
 
-        // Badge (ON ou OFF)
+        // Badge (Ativo ou Acabado) – mudamos só o texto visível
         const badge = document.createElement("span");
-        badge.className = `badge ${giveaway.status}`;
-        badge.textContent = giveaway.status === "on" ? "ON" : "OFF";
+        badge.className = `badge ${giveaway.status}`; // mantém "on" ou "off" na classe CSS
+        badge.textContent = giveaway.status === "on" ? "Ativo" : "Acabado";
         cartao.appendChild(badge);
 
         // Botão "i" de informação (abre o modal)

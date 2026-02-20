@@ -1,25 +1,20 @@
 // ==========================
 // PARTÍCULAS
 // ==========================
-
 const particlesContainer = document.getElementById('particles');
 const numParticles = 60;
-
 if (particlesContainer) {
   for (let i = 0; i < numParticles; i++) {
     const particle = document.createElement('div');
     particle.classList.add('particle');
-
     const size = Math.random() * 5 + 1.5;
     particle.style.width = `${size}px`;
     particle.style.height = `${size}px`;
     particle.style.left = `${Math.random() * 100}vw`;
-
     const duration = Math.random() * 30 + 25;
     const delay = Math.random() * 25;
     particle.style.animationDuration = `${duration}s`;
     particle.style.animationDelay = `-${delay}s`;
-
     particlesContainer.appendChild(particle);
   }
 }
@@ -27,7 +22,6 @@ if (particlesContainer) {
 // ==========================
 // ATUALIZAR ANO
 // ==========================
-
 document.addEventListener("DOMContentLoaded", () => {
   const yearSpan = document.getElementById("year");
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
@@ -36,14 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================
 // MODAL FUNCTIONS
 // ==========================
-
 function openModal(id) {
   const modal = document.getElementById(id);
   if (!modal) {
     console.warn(`Modal com id ${id} não encontrado`);
     return;
   }
-
   modal.classList.add("active");
   document.body.style.overflow = "hidden";
 }
@@ -51,7 +43,6 @@ function openModal(id) {
 function closeModal(id) {
   const modal = document.getElementById(id);
   if (!modal) return;
-
   modal.classList.remove("active");
   document.body.style.overflow = "auto";
 }
@@ -77,7 +68,6 @@ document.addEventListener("keydown", function(e) {
 // ==========================
 // DADOS DOS GIVEAWAYS
 // ==========================
-
 const giveaways = [
   {
     id: 1,
@@ -85,7 +75,7 @@ const giveaways = [
     status: "on",
     site: "teste.com",
     deposito: "10€",
-    codigo: "50JUST",              // ← novo campo
+    codigo: "50JUST",
     requisitos: "",
     imagem: "assets/testegiveaway.png",
     link: "https://linksdojust.com",
@@ -97,7 +87,7 @@ const giveaways = [
     status: "off",
     site: "OutroSite.com",
     deposito: "20€",
-    codigo: "50JUST",              // ← novo campo
+    codigo: "50JUST",
     vencedor: "André (Teste)",
     descricao: "Este giveaway já terminou.",
     descricaoExtra: "",
@@ -111,11 +101,9 @@ const giveaways = [
 // ==========================
 // GERAR CARDS + MODAIS
 // ==========================
-
 function criarGiveaways() {
   const container = document.getElementById("giveaways-container");
   if (!container) return;
-
   container.innerHTML = "";
 
   // Ordenar: "on" primeiro
@@ -176,15 +164,15 @@ function criarGiveaways() {
     modal.className = "modal";
     modal.id = `modal-${g.id}`;
 
-    const requisitosHTML   = g.requisitos?.trim()     ? `<p><strong>Requisitos:</strong> ${g.requisitos}</p>`     : "";
-    const vencedorHTML     = g.vencedor && g.status === "off"
+    const requisitosHTML = g.requisitos?.trim() ? `<p><strong>Requisitos:</strong> ${g.requisitos}</p>` : "";
+    const vencedorHTML = g.vencedor && g.status === "off"
       ? `<p><strong>Vencedor:</strong> ${g.vencedor}</p>` : "";
-    const descHTML         = g.descricao?.trim()      ? `<p>${g.descricao}</p>`          : "";
-    const descExtraHTML    = g.descricaoExtra?.trim() ? `<p>${g.descricaoExtra}</p>`     : "";
+    const descHTML = g.descricao?.trim() ? `<p>${g.descricao}</p>` : "";
+    const descExtraHTML = g.descricaoExtra?.trim() ? `<p>${g.descricaoExtra}</p>` : "";
 
-    // Novo: Código / Cupão
+    // Alteração aqui: só "Código:" e sem <code>, mantém fonte normal
     const codigoHTML = g.codigo?.trim()
-      ? `<p><strong>Código / Cupão:</strong> <code style="background:#222; padding:2px 6px; border-radius:4px;">${g.codigo}</code></p>`
+      ? `<p><strong>Código:</strong> ${g.codigo}</p>`
       : "";
 
     const botaoHTML = g.status === "on"
@@ -201,7 +189,7 @@ function criarGiveaways() {
         ${descExtraHTML}
         <p><strong>Site:</strong> ${g.site}</p>
         <p><strong>Depósito mínimo:</strong> ${g.deposito}</p>
-        ${codigoHTML}              <!-- ← aqui aparece o cupão -->
+        ${codigoHTML}
         ${requisitosHTML}
         <div style="margin-top: 24px;">
           ${botaoHTML}

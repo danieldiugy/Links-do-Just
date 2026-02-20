@@ -118,7 +118,7 @@ const listaDeGiveaways = [
         deposito: "20€",
         codigo: "50JUST",
         vencedor: "André (Teste)",
-        descricao: "Este giveaway já terminou.",
+        descricao: "Este giveaway já terminou.",   // ← Este campo continua aqui, mas não é usado no modal "off"
         descricaoExtra: "",
         imagem: "assets/butterflygiveawayteste.png",
         link: "https://linksdojust.com",
@@ -200,18 +200,6 @@ function gerarCartoesEModais() {
         modal.id = `modal-${giveaway.id}`;
 
         // Preparar partes comuns
-        const descricaoHTML = giveaway.descricao?.trim()
-            ? `<p>${giveaway.descricao}</p>`
-            : "";
-
-        const descricaoExtraHTML = giveaway.descricaoExtra?.trim()
-            ? `<p>${giveaway.descricaoExtra}</p>`
-            : "";
-
-        const requisitosHTML = giveaway.requisitos?.trim()
-            ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>`
-            : "";
-
         const vencedorHTML = giveaway.vencedor && giveaway.status === "off"
             ? `<p><strong>Vencedor:</strong> ${giveaway.vencedor}</p>`
             : "";
@@ -224,19 +212,21 @@ function gerarCartoesEModais() {
 
         const depositoHTML = `<p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>`;
 
+        const requisitosHTML = giveaway.requisitos?.trim()
+            ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>`
+            : "";
+
         const paragrafoEspacamento = `<p style="margin: 16px 0;"></p>`;
 
         let conteudoModal = "";
 
         if (giveaway.status === "off") {
-            // Ordem exata para giveaways acabados
+            // Ordem exata para giveaways acabados (sem a descrição "Este giveaway já terminou.")
             conteudoModal = `
                 <span class="close-modal">×</span>
                 <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
                 <h2>${giveaway.titulo}</h2>
                 ${vencedorHTML}
-                ${descricaoHTML}
-                ${descricaoExtraHTML}
                 ${paragrafoEspacamento}
                 ${siteHTML}
                 ${codigoHTML}
@@ -249,9 +239,7 @@ function gerarCartoesEModais() {
                 <span class="close-modal">×</span>
                 <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
                 <h2>${giveaway.titulo}</h2>
-                ${descricaoHTML}
-                ${descricaoExtraHTML}
-                ${siteHTML}
+                <p><strong>Site:</strong> ${giveaway.site}</p>
                 ${paragrafoEspacamento}
                 ${codigoHTML}
                 ${depositoHTML}

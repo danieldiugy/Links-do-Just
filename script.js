@@ -78,11 +78,11 @@ function gerarCartoesEModais() {
     if (!container) return;
     container.innerHTML = "";
 
-    // Carrega os giveaways de um ficheiro JSON externo
-    fetch('giveaways.json')
+    // Carrega os giveaways do novo nome do ficheiro
+    fetch('gerirgiveaways.json')
         .then(response => {
             if (!response.ok) {
-                throw new Error('Não foi possível carregar giveaways.json');
+                throw new Error('Não foi possível carregar gerirgiveaways.json');
             }
             return response.json();
         })
@@ -212,7 +212,7 @@ function gerarCartoesEModais() {
             });
         })
         .catch(error => {
-            console.error('Erro ao carregar giveaways:', error);
+            console.error('Erro ao carregar gerirgiveaways.json:', error);
             container.innerHTML = '<p style="text-align:center; color:#ff4444;">Erro ao carregar os giveaways. Tenta recarregar a página.</p>';
         });
 }

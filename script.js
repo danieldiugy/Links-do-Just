@@ -100,9 +100,8 @@ function gerarCartoesEModais() {
                 cartao.className = "giveaway-card";
 
                 // Torna o card inteiro clicável para abrir o modal
-                cartao.style.cursor = "pointer"; // Muda o cursor para mão (opcional, mas melhora UX)
+                cartao.style.cursor = "pointer";
                 cartao.addEventListener("click", (evento) => {
-                    // Evita abrir o modal duas vezes se clicar no "i" ou na imagem/link
                     if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {
                         abrirModal(`modal-${giveaway.id}`);
                     }
@@ -117,7 +116,7 @@ function gerarCartoesEModais() {
                 botaoInfo.className = "info-btn";
                 botaoInfo.textContent = "i";
                 botaoInfo.addEventListener("click", (evento) => {
-                    evento.stopPropagation(); // Impede que o clique no "i" dispare o clique do card
+                    evento.stopPropagation();
                     abrirModal(`modal-${giveaway.id}`);
                 });
                 cartao.appendChild(botaoInfo);
@@ -128,7 +127,7 @@ function gerarCartoesEModais() {
                     link.target = "_blank";
                     link.rel = "noopener noreferrer";
                     link.addEventListener("click", (evento) => {
-                        evento.stopPropagation(); // Impede que clique na imagem/link abra o modal
+                        evento.stopPropagation();
                     });
                     const imagem = document.createElement("img");
                     imagem.src = giveaway.imagem;
@@ -149,7 +148,7 @@ function gerarCartoesEModais() {
 
                 container.appendChild(cartao);
 
-                // ─── MODAL ─── (permanece igual)
+                // ─── MODAL ───
                 const modal = document.createElement("div");
                 modal.className = "modal";
                 modal.id = `modal-${giveaway.id}`;
@@ -194,7 +193,7 @@ function gerarCartoesEModais() {
                         ${depositoHTML}
                         ${requisitosHTML}
                         <div style="margin-top: 24px;">
-                            <a href="${giveaway.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar Agora</a>
+                            <a href="${giveaway.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar</a>
                         </div>
                     `;
                 }

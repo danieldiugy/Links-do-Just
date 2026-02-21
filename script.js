@@ -1,7 +1,9 @@
 // =============================================================================
 // ARQUIVO: script.js
-// Objetivo: Controlar partículas, ano no footer, modais e gerar giveaways
 // =============================================================================
+
+// Variável para evitar execução múltipla
+let jaCarregado = false;
 
 // ────────────────────────────────────────────────
 // 1. PARTÍCULAS NO FUNDO
@@ -39,10 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ────────────────────────────────────────────────
 function abrirModal(idDoModal) {
     const modal = document.getElementById(idDoModal);
-    if (!modal) {
-        console.warn(`Não encontrei modal com id: ${idDoModal}`);
-        return;
-    }
+    if (!modal) return;
     modal.classList.add("active");
     document.body.style.overflow = "hidden";
 }
@@ -56,38 +55,38 @@ function fecharModal(idDoModal) {
 
 window.addEventListener("click", function(evento) {
     document.querySelectorAll(".modal").forEach(modal => {
-        if (evento.target === modal) {
-            fecharModal(modal.id);
-        }
+        if (evento.target === modal) fecharModal(modal.id);
     });
 });
 
 document.addEventListener("keydown", function(evento) {
     if (evento.key === "Escape") {
-        document.querySelectorAll(".modal.active").forEach(modal => {
-            fecharModal(modal.id);
-        });
+        document.querySelectorAll(".modal.active").forEach(modal => fecharModal(modal.id));
     }
 });
 
 // ────────────────────────────────────────────────
-// 4. FUNÇÃO PRINCIPAL: CARREGA DADOS + GERA CARTÕES E MODAIS
+// 4. FUNÇÃO PRINCIPAL (com proteção anti-duplicação)
 // ────────────────────────────────────────────────
 function gerarCartoesEModais() {
+    if (jaCarregado) return; // Evita executar 2x
+    jaCarregado = true;
+
     const container = document.getElementById("giveaways-container");
     if (!container) return;
-    container.innerHTML = "";
 
-    // Carrega o ficheiro com o nome correto
+    // Limpa tudo antes (cards + modais antigos)
+    container.innerHTML = "";
+    document.querySelectorAll('.modal').forEach(m => m.remove());
+
     fetch('gerirgiveaways.json')
         .then(response => {
             if (!response.ok) {
-                throw new Error(`Erro HTTP ${response.status}: ${response.statusText}. Verifica se "gerirgiveaways.json" existe na raiz do site.`);
+                throw new Error(`Erro ${response.status}: ${response.statusText}. Verifica "gerirgiveaways.json".`);
             }
             return response.json();
         })
         .then(listaDeGiveaways => {
-            // Ordena: ativos primeiro
             const ordenados = [...listaDeGiveaways].sort((a, b) => {
                 if (a.status === "on" && b.status !== "on") return -1;
                 if (a.status !== "on" && b.status === "on") return 1;
@@ -95,12 +94,12 @@ function gerarCartoesEModais() {
             });
 
             ordenados.forEach(giveaway => {
-                // ─── CARTÃO ───
+                // CARTÃO
                 const cartao = document.createElement("div");
                 cartao.className = "giveaway-card";
                 cartao.style.cursor = "pointer";
-                cartao.addEventListener("click", (evento) => {
-                    if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {
+                cartao.addEventListener("click", (e) => {
+                    if (!e.target.closest(".info-btn") && !e.target.closest("a") && !e.target.closest("img")) {
                         abrirModal(`modal-${giveaway.id}`);
                     }
                 });
@@ -113,8 +112,8 @@ function gerarCartoesEModais() {
                 const botaoInfo = document.createElement("div");
                 botaoInfo.className = "info-btn";
                 botaoInfo.textContent = "i";
-                botaoInfo.addEventListener("click", (evento) => {
-                    evento.stopPropagation();
+                botaoInfo.addEventListener("click", (e) => {
+                    e.stopPropagation();
                     abrirModal(`modal-${giveaway.id}`);
                 });
                 cartao.appendChild(botaoInfo);
@@ -124,19 +123,17 @@ function gerarCartoesEModais() {
                     link.href = giveaway.link;
                     link.target = "_blank";
                     link.rel = "noopener noreferrer";
-                    link.addEventListener("click", (evento) => {
-                        evento.stopPropagation();
-                    });
-                    const imagem = document.createElement("img");
-                    imagem.src = giveaway.imagem;
-                    imagem.alt = `${giveaway.titulo} - Participar`;
-                    link.appendChild(imagem);
+                    link.addEventListener("click", e => e.stopPropagation());
+                    const img = document.createElement("img");
+                    img.src = giveaway.imagem;
+                    img.alt = `${giveaway.titulo} - Participar`;
+                    link.appendChild(img);
                     cartao.appendChild(link);
                 } else {
-                    const imagem = document.createElement("img");
-                    imagem.src = giveaway.imagem;
-                    imagem.alt = `${giveaway.titulo} - Encerrado`;
-                    cartao.appendChild(imagem);
+                    const img = document.createElement("img");
+                    img.src = giveaway.imagem;
+                    img.alt = `${giveaway.titulo} - Encerrado`;
+                    cartao.appendChild(img);
                 }
 
                 const overlay = document.createElement("div");
@@ -146,47 +143,38 @@ function gerarCartoesEModais() {
 
                 container.appendChild(cartao);
 
-                // ─── MODAL ───
+                // MODAL
                 const modal = document.createElement("div");
                 modal.className = "modal";
                 modal.id = `modal-${giveaway.id}`;
 
-                const vencedorHTML = giveaway.vencedor && giveaway.status === "off"
-                    ? `<p><strong>Vencedor:</strong> ${giveaway.vencedor}</p>` : "";
-
-                const codigoHTML = giveaway.codigo?.trim()
-                    ? `<p><strong>Código:</strong> ${giveaway.codigo}</p>` : "";
-
+                const vencedorHTML = giveaway.vencedor && giveaway.status === "off" ? `<p><strong>Vencedor:</strong> ${giveaway.vencedor}</p>` : "";
+                const codigoHTML = giveaway.codigo?.trim() ? `<p><strong>Código:</strong> ${giveaway.codigo}</p>` : "";
                 const siteHTML = `<p><strong>Site:</strong> ${giveaway.site}</p>`;
-
                 const depositoHTML = `<p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>`;
+                const requisitosHTML = giveaway.requisitos?.trim() ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>` : "";
+                const espacamento = `<p style="margin: 16px 0;"></p>`;
 
-                const requisitosHTML = giveaway.requisitos?.trim()
-                    ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>` : "";
-
-                const paragrafoEspacamento = `<p style="margin: 16px 0;"></p>`;
-
-                let conteudoModal = "";
-
+                let conteudo = "";
                 if (giveaway.status === "off") {
-                    conteudoModal = `
+                    conteudo = `
                         <span class="close-modal">×</span>
                         <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
                         <h2>${giveaway.titulo}</h2>
                         ${vencedorHTML}
-                        ${paragrafoEspacamento}
+                        ${espacamento}
                         ${siteHTML}
                         ${codigoHTML}
                         ${depositoHTML}
                         ${requisitosHTML}
                     `;
                 } else {
-                    conteudoModal = `
+                    conteudo = `
                         <span class="close-modal">×</span>
                         <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
                         <h2>${giveaway.titulo}</h2>
                         ${siteHTML}
-                        ${paragrafoEspacamento}
+                        ${espacamento}
                         ${codigoHTML}
                         ${depositoHTML}
                         ${requisitosHTML}
@@ -196,28 +184,20 @@ function gerarCartoesEModais() {
                     `;
                 }
 
-                modal.innerHTML = `
-                    <div class="modal-content">
-                        ${conteudoModal}
-                    </div>
-                `;
+                modal.innerHTML = `<div class="modal-content">${conteudo}</div>`;
 
-                modal.querySelector(".close-modal").addEventListener("click", () => {
-                    fecharModal(`modal-${giveaway.id}`);
-                });
+                modal.querySelector(".close-modal").addEventListener("click", () => fecharModal(`modal-${giveaway.id}`));
 
                 document.body.appendChild(modal);
             });
         })
         .catch(error => {
-            console.error('Erro detalhado ao carregar gerirgiveaways.json:', error);
-            container.innerHTML = `<p style="text-align:center; color:#ff4444; padding:20px; font-size:1.1rem;">
-                Erro ao carregar os giveaways: ${error.message}<br><br>
-                Verifica se o ficheiro "gerirgiveaways.json" existe na raiz do site e foi enviado ao GitHub.<br>
-                Tenta abrir diretamente: teu-site.com/gerirgiveaways.json
+            console.error('Erro ao carregar:', error);
+            container.innerHTML = `<p style="text-align:center; color:#ff4444; padding:30px;">
+                Erro ao carregar gerirgiveaways.json: ${error.message}<br><br>
+                Verifica se o ficheiro existe na raiz e tem JSON válido.
             </p>`;
         });
 }
 
-// Inicia tudo quando a página carrega
 document.addEventListener("DOMContentLoaded", gerarCartoesEModais);

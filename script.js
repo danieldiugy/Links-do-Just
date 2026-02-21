@@ -3,32 +3,26 @@
 // Objetivo: Controlar partículas, ano no footer, modais e gerar giveaways
 // =============================================================================
 
-
 // ────────────────────────────────────────────────
 // 1. PARTÍCULAS NO FUNDO
 // ────────────────────────────────────────────────
 const particulasContainer = document.getElementById('particles');
 const quantidadeParticulas = 60;
-
 if (particulasContainer) {
     for (let i = 0; i < quantidadeParticulas; i++) {
         const particula = document.createElement('div');
         particula.classList.add('particle');
-
         const tamanho = Math.random() * 5 + 1.5;
         particula.style.width = `${tamanho}px`;
         particula.style.height = `${tamanho}px`;
         particula.style.left = `${Math.random() * 100}vw`;
-
         const duracao = Math.random() * 30 + 25;
         const atraso = Math.random() * 25;
         particula.style.animationDuration = `${duracao}s`;
         particula.style.animationDelay = `-${atraso}s`;
-
         particulasContainer.appendChild(particula);
     }
 }
-
 
 // ────────────────────────────────────────────────
 // 2. ATUALIZAR ANO NO FOOTER
@@ -39,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
         elementoAno.textContent = new Date().getFullYear();
     }
 });
-
 
 // ────────────────────────────────────────────────
 // 3. FUNÇÕES DOS MODAIS
@@ -77,14 +70,12 @@ document.addEventListener("keydown", function(evento) {
     }
 });
 
-
 // ────────────────────────────────────────────────
 // 4. FUNÇÃO PRINCIPAL: CARREGA DADOS + GERA CARTÕES E MODAIS
 // ────────────────────────────────────────────────
 function gerarCartoesEModais() {
     const container = document.getElementById("giveaways-container");
     if (!container) return;
-
     container.innerHTML = "";
 
     // Carrega os giveaways de um ficheiro JSON externo
@@ -108,6 +99,15 @@ function gerarCartoesEModais() {
                 const cartao = document.createElement("div");
                 cartao.className = "giveaway-card";
 
+                // Torna o card inteiro clicável para abrir o modal
+                cartao.style.cursor = "pointer"; // Muda o cursor para mão (opcional, mas melhora UX)
+                cartao.addEventListener("click", (evento) => {
+                    // Evita abrir o modal duas vezes se clicar no "i" ou na imagem/link
+                    if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {
+                        abrirModal(`modal-${giveaway.id}`);
+                    }
+                });
+
                 const badge = document.createElement("span");
                 badge.className = `badge ${giveaway.status}`;
                 badge.textContent = giveaway.status === "on" ? "Ativo" : "Acabado";
@@ -117,7 +117,7 @@ function gerarCartoesEModais() {
                 botaoInfo.className = "info-btn";
                 botaoInfo.textContent = "i";
                 botaoInfo.addEventListener("click", (evento) => {
-                    evento.stopPropagation();
+                    evento.stopPropagation(); // Impede que o clique no "i" dispare o clique do card
                     abrirModal(`modal-${giveaway.id}`);
                 });
                 cartao.appendChild(botaoInfo);
@@ -127,6 +127,9 @@ function gerarCartoesEModais() {
                     link.href = giveaway.link;
                     link.target = "_blank";
                     link.rel = "noopener noreferrer";
+                    link.addEventListener("click", (evento) => {
+                        evento.stopPropagation(); // Impede que clique na imagem/link abra o modal
+                    });
                     const imagem = document.createElement("img");
                     imagem.src = giveaway.imagem;
                     imagem.alt = `${giveaway.titulo} - Participar`;
@@ -146,7 +149,7 @@ function gerarCartoesEModais() {
 
                 container.appendChild(cartao);
 
-                // ─── MODAL ───
+                // ─── MODAL ─── (permanece igual)
                 const modal = document.createElement("div");
                 modal.className = "modal";
                 modal.id = `modal-${giveaway.id}`;

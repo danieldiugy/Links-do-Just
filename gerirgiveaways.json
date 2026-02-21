@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "titulo": "Karambit Doppler Factory New",
+    "status": "on",
+    "site": "teste.com",
+    "deposito": "10€",
+    "codigo": "50JUST",
+    "requisitos": "",
+    "imagem": "assets/testegiveaway.png",
+    "link": "https://linksdojust.com",
+    "overlayTexto": "🔥 Karambit Doppler Factory New"
+  },
+  {
+    "id": 2,
+    "titulo": "Butterfly Vanilla",
+    "status": "off",
+    "site": "OutroSite.com",
+    "deposito": "20€",
+    "codigo": "50JUST",
+    "vencedor": "André (Teste)",
+    "descricao": "Este giveaway já terminou.",
+    "descricaoExtra": "",
+    "imagem": "assets/butterflygiveawayteste.png",
+    "link": "https://linksdojust.com",
+    "overlayTexto": "🏆 Terminado – Vencedor revelado"
+  }
+]

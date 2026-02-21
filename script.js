@@ -78,11 +78,11 @@ function gerarCartoesEModais() {
     if (!container) return;
     container.innerHTML = "";
 
-    // Carrega os giveaways do novo nome do ficheiro
+    // Carrega o ficheiro com o nome correto
     fetch('gerirgiveaways.json')
         .then(response => {
             if (!response.ok) {
-                throw new Error('Não foi possível carregar gerirgiveaways.json');
+                throw new Error(`Erro HTTP ${response.status}: ${response.statusText}. Verifica se "gerirgiveaways.json" existe na raiz do site.`);
             }
             return response.json();
         })
@@ -98,8 +98,6 @@ function gerarCartoesEModais() {
                 // ─── CARTÃO ───
                 const cartao = document.createElement("div");
                 cartao.className = "giveaway-card";
-
-                // Torna o card inteiro clicável para abrir o modal
                 cartao.style.cursor = "pointer";
                 cartao.addEventListener("click", (evento) => {
                     if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {
@@ -212,8 +210,12 @@ function gerarCartoesEModais() {
             });
         })
         .catch(error => {
-            console.error('Erro ao carregar gerirgiveaways.json:', error);
-            container.innerHTML = '<p style="text-align:center; color:#ff4444;">Erro ao carregar os giveaways. Tenta recarregar a página.</p>';
+            console.error('Erro detalhado ao carregar gerirgiveaways.json:', error);
+            container.innerHTML = `<p style="text-align:center; color:#ff4444; padding:20px; font-size:1.1rem;">
+                Erro ao carregar os giveaways: ${error.message}<br><br>
+                Verifica se o ficheiro "gerirgiveaways.json" existe na raiz do site e foi enviado ao GitHub.<br>
+                Tenta abrir diretamente: teu-site.com/gerirgiveaways.json
+            </p>`;
         });
 }
 

@@ -87,174 +87,134 @@ function gerarCartoesEModais() {
             return response.json();
         })
         .then(listaDeGiveaways => {
-            // Separa em ativos e terminados
-            const ativos = listaDeGiveaways.filter(g => g.status === "on");
-            const terminados = listaDeGiveaways.filter(g => g.status === "off");
+            // Ordena: ativos primeiro
+            const ordenados = [...listaDeGiveaways].sort((a, b) => {
+                if (a.status === "on" && b.status !== "on") return -1;
+                if (a.status !== "on" && b.status === "on") return 1;
+                return 0;
+            });
 
-            // ─── TÍTULO ATIVOS ───
-            if (ativos.length > 0) {
-                const tituloAtivos = document.createElement("h2");
-                tituloAtivos.textContent = "Giveaways Ativos";
-                tituloAtivos.style.textAlign = "center";
-                tituloAtivos.style.margin = "40px 0 20px";
-                tituloAtivos.style.fontSize = "1.8rem";
-                tituloAtivos.style.color = "#00e676"; // verde para destacar
-                container.appendChild(tituloAtivos);
+            ordenados.forEach(giveaway => {
+                // ─── CARTÃO ───
+                const cartao = document.createElement("div");
+                cartao.className = "giveaway-card";
 
-                // Gera cards ativos
-                ativos.forEach(giveaway => criarCartao(giveaway, container));
-            }
+                // Torna o card inteiro clicável para abrir o modal
+                cartao.style.cursor = "pointer";
+                cartao.addEventListener("click", (evento) => {
+                    if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {
+                        abrirModal(`modal-${giveaway.id}`);
+                    }
+                });
 
-            // ─── DIVISÓRIA ───
-            if (ativos.length > 0 && terminados.length > 0) {
-                const divisoria = document.createElement("hr");
-                divisoria.style.border = "none";
-                divisoria.style.height = "2px";
-                divisoria.style.background = "linear-gradient(to right, transparent, #1e90ff, transparent)";
-                divisoria.style.margin = "40px 0";
-                container.appendChild(divisoria);
-            }
+                const badge = document.createElement("span");
+                badge.className = `badge ${giveaway.status}`;
+                badge.textContent = giveaway.status === "on" ? "Ativo" : "Acabado";
+                cartao.appendChild(badge);
 
-            // ─── TÍTULO ANTERIORES ───
-            if (terminados.length > 0) {
-                const tituloTerminados = document.createElement("h2");
-                tituloTerminados.textContent = "Giveaways Anteriores";
-                tituloTerminados.style.textAlign = "center";
-                tituloTerminados.style.margin = "40px 0 20px";
-                tituloTerminados.style.fontSize = "1.8rem";
-                tituloTerminados.style.color = "#ff4444"; // vermelho para encerrados
-                container.appendChild(tituloTerminados);
+                const botaoInfo = document.createElement("div");
+                botaoInfo.className = "info-btn";
+                botaoInfo.textContent = "i";
+                botaoInfo.addEventListener("click", (evento) => {
+                    evento.stopPropagation();
+                    abrirModal(`modal-${giveaway.id}`);
+                });
+                cartao.appendChild(botaoInfo);
 
-                // Gera cards terminados
-                terminados.forEach(giveaway => criarCartao(giveaway, container));
-            }
+                if (giveaway.status === "on") {
+                    const link = document.createElement("a");
+                    link.href = giveaway.link;
+                    link.target = "_blank";
+                    link.rel = "noopener noreferrer";
+                    link.addEventListener("click", (evento) => {
+                        evento.stopPropagation();
+                    });
+                    const imagem = document.createElement("img");
+                    imagem.src = giveaway.imagem;
+                    imagem.alt = `${giveaway.titulo} - Participar`;
+                    link.appendChild(imagem);
+                    cartao.appendChild(link);
+                } else {
+                    const imagem = document.createElement("img");
+                    imagem.src = giveaway.imagem;
+                    imagem.alt = `${giveaway.titulo} - Encerrado`;
+                    cartao.appendChild(imagem);
+                }
 
-            // Se não houver nenhum giveaway
-            if (ativos.length === 0 && terminados.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#777;">Nenhum giveaway disponível no momento.</p>';
-            }
+                const overlay = document.createElement("div");
+                overlay.className = "overlay";
+                overlay.textContent = giveaway.overlayTexto || `${giveaway.site} • ${giveaway.deposito}`;
+                cartao.appendChild(overlay);
+
+                container.appendChild(cartao);
+
+                // ─── MODAL ───
+                const modal = document.createElement("div");
+                modal.className = "modal";
+                modal.id = `modal-${giveaway.id}`;
+
+                const vencedorHTML = giveaway.vencedor && giveaway.status === "off"
+                    ? `<p><strong>Vencedor:</strong> ${giveaway.vencedor}</p>` : "";
+
+                const codigoHTML = giveaway.codigo?.trim()
+                    ? `<p><strong>Código:</strong> ${giveaway.codigo}</p>` : "";
+
+                const siteHTML = `<p><strong>Site:</strong> ${giveaway.site}</p>`;
+
+                const depositoHTML = `<p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>`;
+
+                const requisitosHTML = giveaway.requisitos?.trim()
+                    ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>` : "";
+
+                const paragrafoEspacamento = `<p style="margin: 16px 0;"></p>`;
+
+                let conteudoModal = "";
+
+                if (giveaway.status === "off") {
+                    conteudoModal = `
+                        <span class="close-modal">×</span>
+                        <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
+                        <h2>${giveaway.titulo}</h2>
+                        ${vencedorHTML}
+                        ${paragrafoEspacamento}
+                        ${siteHTML}
+                        ${codigoHTML}
+                        ${depositoHTML}
+                        ${requisitosHTML}
+                    `;
+                } else {
+                    conteudoModal = `
+                        <span class="close-modal">×</span>
+                        <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
+                        <h2>${giveaway.titulo}</h2>
+                        ${siteHTML}
+                        ${paragrafoEspacamento}
+                        ${codigoHTML}
+                        ${depositoHTML}
+                        ${requisitosHTML}
+                        <div style="margin-top: 24px;">
+                            <a href="${giveaway.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar</a>
+                        </div>
+                    `;
+                }
+
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        ${conteudoModal}
+                    </div>
+                `;
+
+                modal.querySelector(".close-modal").addEventListener("click", () => {
+                    fecharModal(`modal-${giveaway.id}`);
+                });
+
+                document.body.appendChild(modal);
+            });
         })
         .catch(error => {
             console.error('Erro ao carregar giveaways:', error);
             container.innerHTML = '<p style="text-align:center; color:#ff4444;">Erro ao carregar os giveaways. Tenta recarregar a página.</p>';
         });
-}
-
-// Função auxiliar para criar um único cartão + modal (reutilizada para ativos e terminados)
-function criarCartao(giveaway, container) {
-    const cartao = document.createElement("div");
-    cartao.className = "giveaway-card";
-
-    // Torna o card inteiro clicável para abrir o modal
-    cartao.style.cursor = "pointer";
-    cartao.addEventListener("click", (evento) => {
-        if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {
-            abrirModal(`modal-${giveaway.id}`);
-        }
-    });
-
-    const badge = document.createElement("span");
-    badge.className = `badge ${giveaway.status}`;
-    badge.textContent = giveaway.status === "on" ? "Ativo" : "Acabado";
-    cartao.appendChild(badge);
-
-    const botaoInfo = document.createElement("div");
-    botaoInfo.className = "info-btn";
-    botaoInfo.textContent = "i";
-    botaoInfo.addEventListener("click", (evento) => {
-        evento.stopPropagation();
-        abrirModal(`modal-${giveaway.id}`);
-    });
-    cartao.appendChild(botaoInfo);
-
-    if (giveaway.status === "on") {
-        const link = document.createElement("a");
-        link.href = giveaway.link;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.addEventListener("click", (evento) => {
-            evento.stopPropagation();
-        });
-        const imagem = document.createElement("img");
-        imagem.src = giveaway.imagem;
-        imagem.alt = `${giveaway.titulo} - Participar`;
-        link.appendChild(imagem);
-        cartao.appendChild(link);
-    } else {
-        const imagem = document.createElement("img");
-        imagem.src = giveaway.imagem;
-        imagem.alt = `${giveaway.titulo} - Encerrado`;
-        cartao.appendChild(imagem);
-    }
-
-    const overlay = document.createElement("div");
-    overlay.className = "overlay";
-    overlay.textContent = giveaway.overlayTexto || `${giveaway.site} • ${giveaway.deposito}`;
-    cartao.appendChild(overlay);
-
-    container.appendChild(cartao);
-
-    // ─── MODAL ─── (igual ao anterior)
-    const modal = document.createElement("div");
-    modal.className = "modal";
-    modal.id = `modal-${giveaway.id}`;
-
-    const vencedorHTML = giveaway.vencedor && giveaway.status === "off"
-        ? `<p><strong>Vencedor:</strong> ${giveaway.vencedor}</p>` : "";
-
-    const codigoHTML = giveaway.codigo?.trim()
-        ? `<p><strong>Código:</strong> ${giveaway.codigo}</p>` : "";
-
-    const siteHTML = `<p><strong>Site:</strong> ${giveaway.site}</p>`;
-
-    const depositoHTML = `<p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>`;
-
-    const requisitosHTML = giveaway.requisitos?.trim()
-        ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>` : "";
-
-    const paragrafoEspacamento = `<p style="margin: 16px 0;"></p>`;
-
-    let conteudoModal = "";
-
-    if (giveaway.status === "off") {
-        conteudoModal = `
-            <span class="close-modal">×</span>
-            <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
-            <h2>${giveaway.titulo}</h2>
-            ${vencedorHTML}
-            ${paragrafoEspacamento}
-            ${siteHTML}
-            ${codigoHTML}
-            ${depositoHTML}
-            ${requisitosHTML}
-        `;
-    } else {
-        conteudoModal = `
-            <span class="close-modal">×</span>
-            <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
-            <h2>${giveaway.titulo}</h2>
-            ${siteHTML}
-            ${paragrafoEspacamento}
-            ${codigoHTML}
-            ${depositoHTML}
-            ${requisitosHTML}
-            <div style="margin-top: 24px;">
-                <a href="${giveaway.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar</a>
-            </div>
-        `;
-    }
-
-    modal.innerHTML = `
-        <div class="modal-content">
-            ${conteudoModal}
-        </div>
-    `;
-
-    modal.querySelector(".close-modal").addEventListener("click", () => {
-        fecharModal(`modal-${giveaway.id}`);
-    });
-
-    document.body.appendChild(modal);
 }
 
 // Inicia tudo quando a página carrega

@@ -78,7 +78,6 @@ function gerarCartoesEModais() {
     if (!container) return;
     container.innerHTML = "";
 
-    // Carrega os giveaways do novo nome do ficheiro
     fetch('gerirgiveaways.json')
         .then(response => {
             if (!response.ok) {
@@ -87,7 +86,6 @@ function gerarCartoesEModais() {
             return response.json();
         })
         .then(listaDeGiveaways => {
-            // Ordena: ativos primeiro
             const ordenados = [...listaDeGiveaways].sort((a, b) => {
                 if (a.status === "on" && b.status !== "on") return -1;
                 if (a.status !== "on" && b.status === "on") return 1;
@@ -99,7 +97,6 @@ function gerarCartoesEModais() {
                 const cartao = document.createElement("div");
                 cartao.className = "giveaway-card";
 
-                // Torna o card inteiro clicável para abrir o modal
                 cartao.style.cursor = "pointer";
                 cartao.addEventListener("click", (evento) => {
                     if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {
@@ -109,7 +106,7 @@ function gerarCartoesEModais() {
 
                 const badge = document.createElement("span");
                 badge.className = `badge ${giveaway.status}`;
-                badge.textContent = giveaway.status === "on" ? "Ativo" : "Acabado";
+                badge.textContent = giveaway.status === "on" ? "ATIVO" : "TERMINADO"; // ← Alterado aqui
                 cartao.appendChild(badge);
 
                 const botaoInfo = document.createElement("div");

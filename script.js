@@ -163,8 +163,8 @@ function gerarCartoesEModais() {
                 const requisitosHTML = giveaway.requisitos?.trim()
                     ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>` : "";
 
-                const espacamentoSimples = `<p style="margin: 16px 0;"></p>`;
-                const doisEspacamentos = espacamentoSimples + espacamentoSimples; // 2 parágrafos vazios
+                const umEspacamento = `<p style="margin: 16px 0;"></p>`;
+                const doisEspacamentos = umEspacamento + umEspacamento; // 2 parágrafos vazios
 
                 let conteudoModal = "";
 
@@ -174,7 +174,7 @@ function gerarCartoesEModais() {
                         <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
                         <h2>${giveaway.titulo}</h2>
                         ${vencedorHTML}
-                        ${doisEspacamentos} <!-- 2 parágrafos depois do vencedor -->
+                        ${umEspacamento} <!-- Mantém apenas 1 para acabados, como antes -->
                         ${siteHTML}
                         ${codigoHTML}
                         ${depositoHTML}
@@ -186,7 +186,7 @@ function gerarCartoesEModais() {
                         <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
                         <h2>${giveaway.titulo}</h2>
                         ${siteHTML}
-                        ${doisEspacamentos} <!-- 2 parágrafos depois do site -->
+                        ${doisEspacamentos} <!-- Alterado para 2 parágrafos depois do site -->
                         ${codigoHTML}
                         ${depositoHTML}
                         ${requisitosHTML}

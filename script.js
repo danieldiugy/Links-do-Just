@@ -106,7 +106,7 @@ function gerarCartoesEModais() {
 
                 const badge = document.createElement("span");
                 badge.className = `badge ${giveaway.status}`;
-                badge.textContent = giveaway.status === "on" ? "ATIVO" : "TERMINADO"; // ← Alterado aqui
+                badge.textContent = giveaway.status === "on" ? "ATIVO" : "TERMINADO";
                 cartao.appendChild(badge);
 
                 const botaoInfo = document.createElement("div");
@@ -163,7 +163,8 @@ function gerarCartoesEModais() {
                 const requisitosHTML = giveaway.requisitos?.trim()
                     ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>` : "";
 
-                const paragrafoEspacamento = `<p style="margin: 16px 0;"></p>`;
+                const espacamentoSimples = `<p style="margin: 16px 0;"></p>`;
+                const doisEspacamentos = espacamentoSimples + espacamentoSimples; // 2 parágrafos vazios
 
                 let conteudoModal = "";
 
@@ -173,7 +174,7 @@ function gerarCartoesEModais() {
                         <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
                         <h2>${giveaway.titulo}</h2>
                         ${vencedorHTML}
-                        ${paragrafoEspacamento}
+                        ${doisEspacamentos} <!-- 2 parágrafos depois do vencedor -->
                         ${siteHTML}
                         ${codigoHTML}
                         ${depositoHTML}
@@ -185,7 +186,7 @@ function gerarCartoesEModais() {
                         <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
                         <h2>${giveaway.titulo}</h2>
                         ${siteHTML}
-                        ${paragrafoEspacamento}
+                        ${doisEspacamentos} <!-- 2 parágrafos depois do site -->
                         ${codigoHTML}
                         ${depositoHTML}
                         ${requisitosHTML}

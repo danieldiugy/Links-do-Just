@@ -25,19 +25,13 @@ if (particulasContainer) {
 }
 
 // ────────────────────────────────────────────────
-// 2. ATUALIZAR ANO NO FOOTER + DETECÇÃO LIVE TWITCH
+// 2. ATUALIZAR ANO NO FOOTER
 // ────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
     const elementoAno = document.getElementById("year");
     if (elementoAno) {
         elementoAno.textContent = new Date().getFullYear();
     }
-
-    // Verifica live na Twitch ao carregar
-    checkTwitchLiveDecapi();
-
-    // Verifica a cada 2 minutos
-    setInterval(checkTwitchLiveDecapi, 120000);
 });
 
 // ────────────────────────────────────────────────
@@ -99,8 +93,10 @@ function gerarCartoesEModais() {
             });
 
             ordenados.forEach(giveaway => {
+                // ─── CARTÃO ───
                 const cartao = document.createElement("div");
                 cartao.className = "giveaway-card";
+
                 cartao.style.cursor = "pointer";
                 cartao.addEventListener("click", (evento) => {
                     if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {
@@ -149,6 +145,7 @@ function gerarCartoesEModais() {
 
                 container.appendChild(cartao);
 
+                // ─── MODAL ───
                 const modal = document.createElement("div");
                 modal.className = "modal";
                 modal.id = `modal-${giveaway.id}`;
@@ -167,7 +164,7 @@ function gerarCartoesEModais() {
                     ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>` : "";
 
                 const umEspacamento = `<p style="margin: 16px 0;"></p>`;
-                const doisEspacamentos = umEspacamento + umEspacamento;
+                const doisEspacamentos = umEspacamento + umEspacamento; // Dois parágrafos vazios
 
                 let conteudoModal = "";
 
@@ -189,7 +186,7 @@ function gerarCartoesEModais() {
                         <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
                         <h2>${giveaway.titulo}</h2>
                         ${siteHTML}
-                        ${doisEspacamentos}
+                        ${doisEspacamentos} <!-- Dois parágrafos vazios debaixo do Site -->
                         ${codigoHTML}
                         ${depositoHTML}
                         ${requisitosHTML}
@@ -218,30 +215,5 @@ function gerarCartoesEModais() {
         });
 }
 
-// ────────────────────────────────────────────────
-// 5. DETECÇÃO DE LIVE NA TWITCH COM DECAPI
-// ────────────────────────────────────────────────
-function checkTwitchLiveDecapi() {
-  fetch('https://decapi.me/twitch/uptime/just99c')
-    .then(response => response.text())
-    .then(status => {
-      const liveText = document.querySelector('#twitch-btn .btn-text');
-      const liveDot = document.querySelector('#twitch-btn .live-dot');
-
-      if (status.trim() !== 'Offline' && status.trim() !== '') {
-        // Está em live
-        liveText.innerHTML = '<span class="live-dot"></span> EM LIVE';
-        liveDot.classList.add('pulse');
-      } else {
-        // Não está em live
-        liveText.innerHTML = '<span class="live-dot"></span> Live às 22h';
-        liveDot.classList.remove('pulse');
-      }
-    })
-    .catch(error => {
-      console.error('Erro ao verificar live com DecAPI:', error);
-    });
-}
-
-// Inicia tudo quando a página carrega (já inclui a chamada da live)
+// Inicia tudo quando a página carrega
 document.addEventListener("DOMContentLoaded", gerarCartoesEModais);

@@ -424,3 +424,36 @@ footer {
   50% { box-shadow: 0 0 14px rgba(255,0,0,0.9); }
   100% { box-shadow: 0 0 6px rgba(255,0,0,0.6); }
 }
+/* ========================= */
+/* LIVE RED DOT */
+/* ========================= */
+
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.live-circle {
+  width: 10px;
+  height: 10px;
+  background: #ff0000;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+  animation: live-dot-pulse 1.4s infinite;
+}
+
+@keyframes live-dot-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
+  }
+  50% {
+    transform: scale(1.3);
+    box-shadow: 0 0 14px rgba(255, 0, 0, 1);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
+  }
+}

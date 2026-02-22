@@ -25,18 +25,16 @@
     "link": "https://linksdojust.com",
     "overlayTexto": "🏆 Terminado – Vencedor revelado"
   }
-  {
+{
     "id": 3,
-    "titulo": "Survival",
+    "titulo": "Paracord",
     "status": "on",
     "site": "teste.com",
-    "deposito": "20€",
+    "deposito": "10€",
     "codigo": "50JUST",
-    "vencedor": "André (Teste)",
-    "descricao": "Este giveaway já terminou.",
-    "descricaoExtra": "",
-    "imagem": "assets/butterflygiveawayteste.png",
+    "requisitos": "",
+    "imagem": "assets/testegiveaway.png",
     "link": "https://linksdojust.com",
-    "overlayTexto": "🏆 Terminado – Vencedor revelado"
+    "overlayTexto": "🔥 Karambit Doppler Factory New"
   },
 ]

@@ -1,6 +1,5 @@
 // =============================================================================
 // ARQUIVO: script.js
-// Objetivo: Controlar partículas, ano no footer, modais e gerar giveaways
 // =============================================================================
 
 // ────────────────────────────────────────────────
@@ -32,17 +31,53 @@ document.addEventListener("DOMContentLoaded", () => {
     if (elementoAno) {
         elementoAno.textContent = new Date().getFullYear();
     }
+
+    verificarLiveTwitch();
+    setInterval(verificarLiveTwitch, 60000); // verifica a cada 60s
 });
 
 // ────────────────────────────────────────────────
-// 3. FUNÇÕES DOS MODAIS
+// 3. VERIFICAR LIVE NA TWITCH (DECAPI)
+// ────────────────────────────────────────────────
+async function verificarLiveTwitch() {
+    const twitchBtn = document.getElementById("twitch-btn");
+    const textoBtn = twitchBtn.querySelector(".btn-text");
+
+    try {
+        const response = await fetch("https://decapi.me/twitch/uptime/just99c");
+
+        const texto = await response.text();
+
+        // Quando está offline o DecAPI devolve:
+        // "just99c is offline"
+        if (texto.toLowerCase().includes("offline")) {
+
+            twitchBtn.classList.remove("live-active");
+            textoBtn.innerHTML = `
+                <span class="live-dot"></span>
+                Live às 22h
+            `;
+
+        } else {
+
+            twitchBtn.classList.add("live-active");
+            textoBtn.innerHTML = `
+                🔴 EM LIVE
+            `;
+
+        }
+
+    } catch (erro) {
+        console.error("Erro ao verificar live:", erro);
+    }
+}
+
+// ────────────────────────────────────────────────
+// 4. FUNÇÕES DOS MODAIS
 // ────────────────────────────────────────────────
 function abrirModal(idDoModal) {
     const modal = document.getElementById(idDoModal);
-    if (!modal) {
-        console.warn(`Não encontrei modal com id: ${idDoModal}`);
-        return;
-    }
+    if (!modal) return;
     modal.classList.add("active");
     document.body.style.overflow = "hidden";
 }
@@ -71,7 +106,7 @@ document.addEventListener("keydown", function(evento) {
 });
 
 // ────────────────────────────────────────────────
-// 4. FUNÇÃO PRINCIPAL: CARREGA DADOS + GERA CARTÕES E MODAIS
+// 5. GIVEAWAYS
 // ────────────────────────────────────────────────
 function gerarCartoesEModais() {
     const container = document.getElementById("giveaways-container");
@@ -86,6 +121,7 @@ function gerarCartoesEModais() {
             return response.json();
         })
         .then(listaDeGiveaways => {
+
             const ordenados = [...listaDeGiveaways].sort((a, b) => {
                 if (a.status === "on" && b.status !== "on") return -1;
                 if (a.status !== "on" && b.status === "on") return 1;
@@ -93,7 +129,7 @@ function gerarCartoesEModais() {
             });
 
             ordenados.forEach(giveaway => {
-                // ─── CARTÃO ───
+
                 const cartao = document.createElement("div");
                 cartao.className = "giveaway-card";
 
@@ -144,76 +180,12 @@ function gerarCartoesEModais() {
                 cartao.appendChild(overlay);
 
                 container.appendChild(cartao);
-
-                // ─── MODAL ───
-                const modal = document.createElement("div");
-                modal.className = "modal";
-                modal.id = `modal-${giveaway.id}`;
-
-                const vencedorHTML = giveaway.vencedor && giveaway.status === "off"
-                    ? `<p><strong>Vencedor:</strong> ${giveaway.vencedor}</p>` : "";
-
-                const codigoHTML = giveaway.codigo?.trim()
-                    ? `<p><strong>Código:</strong> ${giveaway.codigo}</p>` : "";
-
-                const siteHTML = `<p><strong>Site:</strong> ${giveaway.site}</p>`;
-
-                const depositoHTML = `<p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>`;
-
-                const requisitosHTML = giveaway.requisitos?.trim()
-                    ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>` : "";
-
-                const umEspacamento = `<p style="margin: 16px 0;"></p>`;
-                const doisEspacamentos = umEspacamento + umEspacamento; // Dois parágrafos vazios
-
-                let conteudoModal = "";
-
-                if (giveaway.status === "off") {
-                    conteudoModal = `
-                        <span class="close-modal">×</span>
-                        <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
-                        <h2>${giveaway.titulo}</h2>
-                        ${vencedorHTML}
-                        ${umEspacamento}
-                        ${siteHTML}
-                        ${codigoHTML}
-                        ${depositoHTML}
-                        ${requisitosHTML}
-                    `;
-                } else {
-                    conteudoModal = `
-                        <span class="close-modal">×</span>
-                        <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
-                        <h2>${giveaway.titulo}</h2>
-                        ${siteHTML}
-                        ${doisEspacamentos} <!-- Dois parágrafos vazios debaixo do Site -->
-                        ${codigoHTML}
-                        ${depositoHTML}
-                        ${requisitosHTML}
-                        <div style="margin-top: 24px;">
-                            <a href="${giveaway.link}" target="_blank" rel="noopener noreferrer" class="participar-btn">Participar</a>
-                        </div>
-                    `;
-                }
-
-                modal.innerHTML = `
-                    <div class="modal-content">
-                        ${conteudoModal}
-                    </div>
-                `;
-
-                modal.querySelector(".close-modal").addEventListener("click", () => {
-                    fecharModal(`modal-${giveaway.id}`);
-                });
-
-                document.body.appendChild(modal);
             });
+
         })
         .catch(error => {
             console.error('Erro ao carregar gerirgiveaways.json:', error);
-            container.innerHTML = '<p style="text-align:center; color:#ff4444;">Erro ao carregar os giveaways. Tenta recarregar a página.</p>';
         });
 }
 
-// Inicia tudo quando a página carrega
 document.addEventListener("DOMContentLoaded", gerarCartoesEModais);

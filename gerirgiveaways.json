@@ -15,7 +15,21 @@
     "id": 2,
     "titulo": "Butterfly Vanilla",
     "status": "off",
-    "site": "OutroSite.com",
+    "site": "teste.com",
+    "deposito": "20€",
+    "codigo": "50JUST",
+    "vencedor": "André (Teste)",
+    "descricao": "Este giveaway já terminou.",
+    "descricaoExtra": "",
+    "imagem": "assets/butterflygiveawayteste.png",
+    "link": "https://linksdojust.com",
+    "overlayTexto": "🏆 Terminado – Vencedor revelado"
+  }
+  {
+    "id": 3,
+    "titulo": "Survival",
+    "status": "on",
+    "site": "teste.com",
     "deposito": "20€",
     "codigo": "50JUST",
     "vencedor": "André (Teste)",

@@ -198,11 +198,11 @@ h1 {
   position: absolute;
   top: 12px;
   left: 12px;
-  font-size: 0.75rem;          /* Reduzido de 0.9rem para não ficar enorme */
+  font-size: 0.75rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 1.2px;       /* Menos espaçamento para caber melhor */
-  padding: 6px 12px;           /* Padding menor */
+  letter-spacing: 1.2px;
+  padding: 6px 12px;
   border-radius: 999px;
   color: white;
   text-shadow: 0 1px 4px rgba(0,0,0,0.7);
@@ -279,7 +279,7 @@ footer {
   transform: scale(1.1);
 }
 /* ========================= */
-/* MODAL */
+/* MODAL - Ajustes para imagem ficar dentro da box */
 /* ========================= */
 .modal {
   position: fixed;
@@ -300,10 +300,12 @@ footer {
 .modal-content {
   position: relative;
   background: #111;
-  padding: 30px;
+  padding: 30px 20px; /* Reduzi padding lateral para dar mais espaço */
   border-radius: 12px;
   width: 90%;
-  max-width: 400px;
+  max-width: 420px; /* Aumentei ligeiramente a largura máxima */
+  max-height: 90vh; /* Limita a altura total do modal */
+  overflow-y: auto; /* Scroll se o conteúdo for muito longo */
   text-align: center;
   box-shadow: 0 0 25px rgba(30,144,255,0.4);
   animation: fadeIn 0.3s ease;
@@ -321,6 +323,17 @@ footer {
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
+}
+/* IMAGEM NO MODAL - Corrigido para ficar dentro da box */
+.modal-img {
+  width: 100%;
+  max-height: 220px; /* Aumentado de 180px para caber melhor */
+  object-fit: contain; /* Mantém proporção sem distorcer */
+  margin-bottom: 20px;
+  border-radius: 8px;
+  display: block;
+  background: #222; /* Fundo escuro caso imagem não preencha */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 /* ========================= */
 /* BOTÃO PARTICIPAR */
@@ -355,4 +368,16 @@ footer {
   0% { box-shadow: 0 0 0 0 rgba(0,200,83,0.8); }
   70% { box-shadow: 0 0 0 15px rgba(0,200,83,0); }
   100% { box-shadow: 0 0 0 0 rgba(0,200,83,0); }
+}
+.modal-content p {
+  margin: 6px 0;
+}
+.modal-content .winner {
+  margin-top: 10px;
+  font-weight: 600;
+}
+.modal-content .descricao {
+  margin-top: 2px;
+  margin-bottom: 14px;
+  opacity: 0.85;
 }

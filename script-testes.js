@@ -1,5 +1,5 @@
 // =============================================================================
-// ARQUIVO: script.js
+// ARQUIVO: script-testes.js
 // =============================================================================
 
 // ────────────────────────────────────────────────
@@ -24,7 +24,7 @@ if (particulasContainer) {
 }
 
 // ────────────────────────────────────────────────
-// 2. DOM READY + LIVE CHECK + GIVEAWAYS
+// 2. DOM READY + ATUALIZA ANO + SEGUIDORES
 // ────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
     const elementoAno = document.getElementById("year");
@@ -32,110 +32,131 @@ document.addEventListener("DOMContentLoaded", () => {
         elementoAno.textContent = new Date().getFullYear();
     }
 
-    gerarCartoesEModais();
-    verificarLiveTwitch();
-    setInterval(verificarLiveTwitch, 60000);
+    // Atualiza seguidores em todas as redes
+    atualizarSeguidores();
 });
 
 // ────────────────────────────────────────────────
-// 3. VERIFICAR LIVE NA TWITCH + BADGE TEMPO (mantido)
+// 3. FUNÇÃO PARA ATUALIZAR SEGUIDORES COM SVG E NÚMERO
 // ────────────────────────────────────────────────
-async function verificarLiveTwitch() {
-    const twitchBtn = document.getElementById("twitch-btn");
-    if (!twitchBtn) return;
+async function atualizarSeguidores() {
+    // Twitch - Usa DecAPI para followers real-time
+    const twitchFollowers = await fetchFollowersTwitch();
+    adicionarSeguidores('twitch-followers', twitchFollowers);
 
-    const textoBtn = twitchBtn.querySelector(".btn-text");
+    // Instagram - Placeholder (não há API gratuita, substitui pelo teu número real)
+    const instagramFollowers = 12400; // Exemplo: muda para teu número
+    adicionarSeguidores('instagram-followers', instagramFollowers);
 
+    // TikTok just99c - Placeholder (muda para real)
+    const tiktok1Followers = 45200;
+    adicionarSeguidores('tiktok1-followers', tiktok1Followers);
+
+    // TikTok maisdojust - Placeholder
+    const tiktok2Followers = 10000;
+    adicionarSeguidores('tiktok2-followers', tiktok2Followers);
+
+    // TikTok livesdojust - Placeholder
+    const tiktok3Followers = 15000;
+    adicionarSeguidores('tiktok3-followers', tiktok3Followers);
+}
+
+// Fetch followers Twitch com DecAPI
+async function fetchFollowersTwitch() {
     try {
-        const response = await fetch("https://decapi.me/twitch/uptime/just99c");
-        const texto = await response.text();
-
-        if (texto.toLowerCase().includes("offline") || texto.trim() === "") {
-            twitchBtn.classList.remove("live-active");
-            textoBtn.innerHTML = `
-                <span class="live-dot"></span>
-                Live às 22h
-            `;
-            const badge = twitchBtn.querySelector(".live-time-badge");
-            if (badge) badge.remove();
-        } else {
-            twitchBtn.classList.add("live-active");
-            textoBtn.innerHTML = `
-                <span class="live-indicator">
-                    <span class="live-circle"></span>
-                    EM LIVE
-                </span>
-            `;
-
-            let textoFinal = "";
-            const horasMatch = texto.match(/(\d+)\s*hour/);
-            const minutosMatch = texto.match(/(\d+)\s*minute/);
-
-            if (horasMatch) {
-                const horas = parseInt(horasMatch[1]);
-                textoFinal = horas === 1 ? "há 1 hora" : `há ${horas} horas`;
-            } else if (minutosMatch) {
-                const minutos = parseInt(minutosMatch[1]);
-                textoFinal = `há ${minutos} min`;
-            }
-
-            let badge = twitchBtn.querySelector(".live-time-badge");
-            if (!badge) {
-                badge = document.createElement("span");
-                badge.classList.add("live-time-badge");
-                twitchBtn.appendChild(badge);
-            }
-            badge.textContent = textoFinal;
-        }
-    } catch (erro) {
-        console.error("Erro ao verificar live:", erro);
+        const response = await fetch('https://decapi.me/twitch/followcount/just99c');
+        const text = await response.text();
+        return parseInt(text.trim()) || 0;
+    } catch (error) {
+        console.error('Erro ao buscar followers Twitch:', error);
+        return 0;
     }
 }
 
+// Função para adicionar o bloco de seguidores (SVG + número)
+function adicionarSeguidores(id, count) {
+    const elemento = document.getElementById(id);
+    if (!elemento) return;
+
+    const formattedCount = formatNumber(count) + ' seguidores';
+
+    elemento.innerHTML = `
+        <svg class="followers-svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+        <span>${formattedCount}</span>
+    `;
+}
+
+// Formata número para K/M (ex: 12400 → 12.4K)
+function formatNumber(num) {
+    if (num >= 1000000) {
+        return (num / 1000000).toFixed(1) + 'M';
+    } if (num >= 1000) {
+        return (num / 1000).toFixed(1) + 'K';
+    }
+    return num;
+}
+
 // ────────────────────────────────────────────────
-// 4. GERA CARTÕES E MODAIS DE GIVEAWAYS (com 3 status)
+// RESTO DO TEU CÓDIGO (modais, live detection, giveaways, etc.)
 // ────────────────────────────────────────────────
+function abrirModal(idDoModal) {
+    const modal = document.getElementById(idDoModal);
+    if (!modal) {
+        console.warn(`Não encontrei modal com id: ${idDoModal}`);
+        return;
+    }
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+function fecharModal(idDoModal) {
+    const modal = document.getElementById(idDoModal);
+    if (!modal) return;
+    modal.classList.remove("active");
+    document.body.style.overflow = "auto";
+}
+
+window.addEventListener("click", function(evento) {
+    document.querySelectorAll(".modal").forEach(modal => {
+        if (evento.target === modal) {
+            fecharModal(modal.id);
+        }
+    });
+});
+
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "Escape") {
+        document.querySelectorAll(".modal.active").forEach(modal => {
+            fecharModal(modal.id);
+        });
+    }
+});
+
 function gerarCartoesEModais() {
     const container = document.getElementById("giveaways-container");
     if (!container) return;
-
-    container.innerHTML = '<p style="text-align:center; color:#aaa; padding:40px 0;">A carregar giveaways...</p>';
+    container.innerHTML = "";
 
     fetch('gerirgiveaways.json')
         .then(response => {
             if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
+                throw new Error('Não foi possível carregar gerirgiveaways.json');
             }
             return response.json();
         })
         .then(listaDeGiveaways => {
-            container.innerHTML = "";
-
-            // Filtra apenas os que devem aparecer: on ou off1
-            const visiveis = listaDeGiveaways.filter(g => 
-                g.status === "on" || g.status === "off1"
-            );
-
-            if (visiveis.length === 0) {
-                container.innerHTML = `
-                    <p style="text-align:center; color:#aaa; padding:60px 20px; font-size:1.2rem;">
-                        Não há giveaways neste momento
-                    </p>
-                `;
-                return;
-            }
-
-            // Ordena: ativos primeiro
-            const ordenados = [...visiveis].sort((a, b) => {
+            const ordenados = [...listaDeGiveaways].sort((a, b) => {
                 if (a.status === "on" && b.status !== "on") return -1;
                 if (a.status !== "on" && b.status === "on") return 1;
                 return 0;
             });
 
             ordenados.forEach(giveaway => {
-                // ─── CARTÃO ───
                 const cartao = document.createElement("div");
-                cartao.className = `giveaway-card ${giveaway.status === "off1" ? "terminated" : ""}`;
+                cartao.className = "giveaway-card";
+
                 cartao.style.cursor = "pointer";
                 cartao.addEventListener("click", (evento) => {
                     if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {
@@ -162,18 +183,19 @@ function gerarCartoesEModais() {
                     link.href = giveaway.link;
                     link.target = "_blank";
                     link.rel = "noopener noreferrer";
-                    link.addEventListener("click", (evento) => evento.stopPropagation());
-                    const img = document.createElement("img");
-                    img.src = giveaway.imagem;
-                    img.alt = `${giveaway.titulo} - Participar`;
-                    link.appendChild(img);
+                    link.addEventListener("click", (evento) => {
+                        evento.stopPropagation();
+                    });
+                    const imagem = document.createElement("img");
+                    imagem.src = giveaway.imagem;
+                    imagem.alt = `${giveaway.titulo} - Participar`;
+                    link.appendChild(imagem);
                     cartao.appendChild(link);
                 } else {
-                    const img = document.createElement("img");
-                    img.src = giveaway.imagem;
-                    img.alt = `${giveaway.titulo} - Encerrado`;
-                    img.style.filter = "grayscale(70%) contrast(80%)"; // Visual "terminado"
-                    cartao.appendChild(img);
+                    const imagem = document.createElement("img");
+                    imagem.src = giveaway.imagem;
+                    imagem.alt = `${giveaway.titulo} - Encerrado`;
+                    cartao.appendChild(imagem);
                 }
 
                 const overlay = document.createElement("div");
@@ -183,12 +205,11 @@ function gerarCartoesEModais() {
 
                 container.appendChild(cartao);
 
-                // ─── MODAL ───
                 const modal = document.createElement("div");
                 modal.className = "modal";
                 modal.id = `modal-${giveaway.id}`;
 
-                const vencedorHTML = giveaway.vencedor
+                const vencedorHTML = giveaway.vencedor && giveaway.status === "off"
                     ? `<p><strong>Vencedor:</strong> ${giveaway.vencedor}</p>` : "";
 
                 const codigoHTML = giveaway.codigo?.trim()
@@ -201,18 +222,17 @@ function gerarCartoesEModais() {
                 const requisitosHTML = giveaway.requisitos?.trim()
                     ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>` : "";
 
-                const umEspacamento = `<p style="margin: 16px 0;"></p>`;
-                const doisEspacamentos = umEspacamento + umEspacamento;
+                const paragrafoEspacamento = `<p style="margin: 16px 0;"></p>`;
 
                 let conteudoModal = "";
 
-                if (giveaway.status !== "on") {
+                if (giveaway.status === "off") {
                     conteudoModal = `
                         <span class="close-modal">×</span>
                         <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
                         <h2>${giveaway.titulo}</h2>
                         ${vencedorHTML}
-                        ${umEspacamento}
+                        ${paragrafoEspacamento}
                         ${siteHTML}
                         ${codigoHTML}
                         ${depositoHTML}
@@ -224,7 +244,7 @@ function gerarCartoesEModais() {
                         <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
                         <h2>${giveaway.titulo}</h2>
                         ${siteHTML}
-                        ${doisEspacamentos}
+                        ${paragrafoEspacamento}
                         ${codigoHTML}
                         ${depositoHTML}
                         ${requisitosHTML}
@@ -234,54 +254,47 @@ function gerarCartoesEModais() {
                     `;
                 }
 
-                modal.innerHTML = `<div class="modal-content">${conteudoModal}</div>`;
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        ${conteudoModal}
+                    </div>
+                `;
 
-                modal.querySelector(".close-modal").addEventListener("click", () => fecharModal(`modal-${giveaway.id}`));
+                modal.querySelector(".close-modal").addEventListener("click", () => {
+                    fecharModal(`modal-${giveaway.id}`);
+                });
 
                 document.body.appendChild(modal);
             });
         })
         .catch(error => {
-            console.error('Erro ao carregar giveaways:', error);
-            container.innerHTML = `<p style="text-align:center; color:#ff4444; padding:60px 20px;">
-                Erro ao carregar os giveaways: ${error.message}
-            </p>`;
+            console.error('Erro ao carregar gerirgiveaways.json:', error);
+            container.innerHTML = '<p style="text-align:center; color:#ff4444;">Erro ao carregar os giveaways. Tenta recarregar a página.</p>';
         });
 }
 
+// Inicia tudo quando a página carrega
+document.addEventListener("DOMContentLoaded", gerarCartoesEModais);
+
 // ────────────────────────────────────────────────
-// 5. FUNÇÕES DE MODAL
+// DETECÇÃO DE LIVE NA TWITCH COM DECAPI
 // ────────────────────────────────────────────────
-function abrirModal(idDoModal) {
-    const modal = document.getElementById(idDoModal);
-    if (!modal) return;
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
+function checkTwitchLiveDecapi() {
+  fetch('https://decapi.me/twitch/uptime/just99c')
+    .then(response => response.text())
+    .then(status => {
+      const liveText = document.querySelector('#twitch-btn .btn-text');
+      const liveDot = document.querySelector('#twitch-btn .live-dot');
+
+      if (status.trim() !== 'Offline' && status.trim() !== '') {
+        liveText.innerHTML = '<span class="live-dot"></span> EM LIVE';
+        liveDot.classList.add('pulse');
+      } else {
+        liveText.innerHTML = '<span class="live-dot"></span> Live às 22h';
+        liveDot.classList.remove('pulse');
+      }
+    })
+    .catch(error => {
+      console.error('Erro ao verificar live com DecAPI:', error);
+    });
 }
-
-function fecharModal(idDoModal) {
-    const modal = document.getElementById(idDoModal);
-    if (!modal) return;
-    modal.classList.remove("active");
-    document.body.style.overflow = "auto";
-}
-
-window.addEventListener("click", e => {
-    if (e.target.classList.contains("modal")) fecharModal(e.target.id);
-});
-
-document.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-        document.querySelectorAll(".modal.active").forEach(m => fecharModal(m.id));
-    }
-});
-// Atualiza contagem de seguidores (valores fixos para teste — depois podes usar API)
-document.addEventListener("DOMContentLoaded", () => {
-  // ... teu código atual ...
-
-  // Contagem de seguidores (exemplo fixo — muda para os teus números reais)
-  document.getElementById("twitch-followers").textContent = "12.4K";
-  document.getElementById("instagram-followers").textContent = "8.7K";
-  document.getElementById("tiktok-followers").textContent = "45.2K";
-  // Se tiveres mais TikTok, adiciona os IDs correspondentes
-});

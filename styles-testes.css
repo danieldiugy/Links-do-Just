@@ -88,15 +88,15 @@ h1 {
   gap: 10px;
 }
 
-/* Botões: ícone à esquerda, texto no centro vertical */
+/* Botões padrão (desktop) */
 .btn {
   position: relative;
   display: flex;
-  align-items: center; /* Alinha tudo verticalmente no centro */
+  align-items: center;
   justify-content: flex-start;
-  padding: 16px 25px;
+  padding: 12px 20px;
   background: rgba(20, 20, 20, 0.6);
-  border: 2px solid #d4af37;
+  border: 1px solid #d4af37;
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 600;
@@ -120,7 +120,7 @@ h1 {
 .icon {
   width: 28px;
   height: 28px;
-  margin-right: 12px; /* Espaço entre ícone e texto */
+  margin-right: 12px;
   flex-shrink: 0;
 }
 
@@ -131,14 +131,14 @@ h1 {
   color: #ffffff;
 }
 
-/* Texto no centro vertical (ao lado do ícone) */
-.btn > span:not(.icon):not(.followers) {
+/* Texto alinhado verticalmente no centro */
+.btn > span:not(.icon):not(.followers):not(.new-badge) {
   flex: 1;
   text-align: left;
 }
 
 /* ========================= */
-/* FOLLOWERS (pequeno e fino) */
+/* FOLLOWERS */
 /* ========================= */
 .followers {
   display: flex;
@@ -147,7 +147,7 @@ h1 {
   font-size: 0.7rem;
   font-weight: 500;
   color: #cccccc;
-  margin-left: auto; /* Alinha à direita */
+  margin-left: auto;
   opacity: 0.9;
 }
 
@@ -158,7 +158,7 @@ h1 {
 }
 
 /* ========================= */
-/* BADGE "NOVO" (dourada) */
+/* BADGE "NOVO" */
 /* ========================= */
 .new-badge-container {
   position: relative;
@@ -198,7 +198,7 @@ footer {
 }
 
 /* ========================= */
-/* RESPONSIVO */
+/* RESPONSIVO - MOBILE (botões mais curtos e compactos) */
 /* ========================= */
 @media (max-width: 480px) {
   .container {
@@ -211,9 +211,10 @@ footer {
   }
 
   .btn {
-    padding: 10px 14px;
+    padding: 10px 14px; /* Menos padding para botões mais curtos */
     font-size: 0.85rem;
-    min-height: 55px;
+    min-height: 52px; /* Altura reduzida para não ficar comprido */
+    line-height: 1.3; /* Melhor alinhamento vertical */
   }
 
   .icon {
@@ -234,5 +235,13 @@ footer {
 
   .links {
     gap: 8px;
+  }
+
+  /* Badge "NOVO" menor em mobile */
+  .new-badge {
+    font-size: 0.6rem;
+    padding: 2px 5px;
+    top: 4px;
+    right: 4px;
   }
 }

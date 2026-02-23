@@ -10,8 +10,7 @@ body {
   color: #ffffff;
   background: linear-gradient(135deg, #000000 0%, #0d0d0d 100%);
   overflow-x: hidden;
-  position: relative;
-  display: flex; /* Permite que o footer vá para o fundo */
+  display: flex;
   flex-direction: column;
 }
 
@@ -32,9 +31,9 @@ body {
   position: absolute;
   background: rgba(255, 215, 0, 0.6);
   border-radius: 50%;
-  pointer-events: none;
   animation: float linear infinite;
-  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5),
+              0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 @keyframes float {
@@ -45,82 +44,80 @@ body {
 }
 
 /* ========================= */
-/* CONTAINER (conteúdo principal) */
+/* CONTAINER */
 /* ========================= */
+
+/* AQUI ESTÁ A MUDANÇA IMPORTANTE */
 .container {
-  max-width: 500px;
+  width: 100%;
+  max-width: 800px; /* antes era 500px */
   margin: 0 auto;
-  padding: 30px 15px;
-  position: relative;
-  z-index: 1;
-  flex: 1; /* Faz o container crescer para empurrar o footer para baixo */
+  padding: 60px 30px;
+  flex: 1;
 }
 
 /* ========================= */
 /* AVATAR */
 /* ========================= */
 .avatar {
-  width: 90px;
-  height: 90px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   border: 2px solid #d4af37;
   object-fit: cover;
   display: block;
-  margin: 0 auto 12px;
-  box-shadow: 0 4px 6px rgba(212, 175, 55, 0.3);
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
 }
 
 /* ========================= */
 /* TÍTULO */
 /* ========================= */
 h1 {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 40px;
-  color: #ffffff;
-  text-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+  margin-bottom: 50px;
+  text-shadow: 0 2px 12px rgba(212, 175, 55, 0.4);
 }
 
 /* ========================= */
-/* LINKS (botões das redes sociais) */
+/* LINKS */
 /* ========================= */
 .links {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
 }
 
 .btn {
-  position: relative;
   display: flex;
   align-items: center;
-  padding: 14px 20px;
+  padding: 18px 28px; /* maior no desktop */
   background: rgba(20, 20, 20, 0.6);
   border: 1px solid #d4af37;
   color: #ffffff;
-  font-size: 0.95rem;
+  font-size: 1.05rem; /* maior no desktop */
   font-weight: 600;
-  border-radius: 12px;
+  border-radius: 14px;
   text-decoration: none;
   transition: all 0.25s ease;
   backdrop-filter: blur(8px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-  min-height: 60px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.6);
   width: 100%;
 }
 
 .btn:hover {
-  background: rgba(40, 40, 40, 0.8);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  background: rgba(40, 40, 40, 0.9);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
   border-color: #ffd700;
 }
 
 .icon {
-  width: 28px;
-  height: 28px;
-  margin-right: 14px;
+  width: 32px;
+  height: 32px;
+  margin-right: 18px;
   flex-shrink: 0;
 }
 
@@ -129,45 +126,28 @@ h1 {
   text-align: left;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .followers {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: #cccccc;
-  margin-left: 10px;
-}
-
-.followers-svg {
-  width: 12px;
-  height: 12px;
-  fill: #d4af37;
+  margin-left: 20px;
 }
 
 /* ========================= */
-/* BADGE "NOVO" */
+/* BADGE NOVO */
 /* ========================= */
-.new-badge-container {
-  position: relative;
-}
-
 .new-badge {
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 8px;
+  right: 10px;
   background: #d4af37;
-  color: #000000;
+  color: #000;
   font-size: 0.65rem;
   font-weight: 900;
-  padding: 2px 6px;
+  padding: 3px 8px;
   border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(212, 175, 55, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  z-index: 10;
   animation: pulse-badge 2s infinite;
 }
 
@@ -178,66 +158,45 @@ h1 {
 }
 
 /* ========================= */
-/* FOOTER - empurrado para o fundo */
+/* FOOTER */
 /* ========================= */
 footer {
   text-align: center;
-  margin-top: auto; /* Empurra o footer para o fundo quando o conteúdo é pequeno */
-  padding: 20px 0;
-  font-size: 0.75rem;
-  color: #777777;
+  margin-top: auto;
+  padding: 30px 0;
+  font-size: 0.8rem;
+  color: #777;
 }
 
 /* ========================= */
-/* RESPONSIVO - MOBILE (botões ocupam 100% da largura, altura compacta) */
+/* MOBILE */
 /* ========================= */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+
   .container {
-    padding: 20px 10px;
+    max-width: 500px;
+    padding: 30px 15px;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 30px;
   }
 
-  .links {
-    gap: 8px;
-  }
-
   .btn {
-    padding: 12px 16px; /* Padding equilibrado para mobile */
-    font-size: 0.85rem;
-    min-height: 54px; /* Altura reduzida para não ficar comprido */
-    width: 100%; /* Preenche toda a largura do ecrã */
-    max-width: none;
-    margin: 0;
+    padding: 14px 18px;
+    font-size: 0.9rem;
   }
 
   .icon {
     width: 24px;
     height: 24px;
-    margin-right: 10px;
+    margin-right: 12px;
   }
 
   .followers {
-    font-size: 0.65rem;
-    gap: 3px;
+    font-size: 0.7rem;
+    margin-left: 10px;
   }
 
-  .followers-svg {
-    width: 11px;
-    height: 11px;
-  }
-
-  .new-badge {
-    font-size: 0.6rem;
-    padding: 2px 5px;
-    top: 4px;
-    right: 4px;
-  }
-
-  footer {
-    padding: 15px 0;
-  }
 }

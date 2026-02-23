@@ -80,28 +80,26 @@ h1 {
 }
 
 /* ========================= */
-/* LINKS */
+/* LINKS (botões das redes sociais) */
 /* ========================= */
 .links {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px; /* Reduzido para caber melhor */
 }
 
-/* ========================= */
-/* BOTÕES NORMAIS */
-/* ========================= */
+/* Botões mais pequenos e compactos */
 .btn {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 30px;
+  padding: 18px 30px; /* Reduzido de 22px 50px */
   background: rgba(20, 20, 20, 0.6);
   border: 2px solid #d4af37;
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 0.95rem; /* Texto um pouco menor */
   font-weight: 700;
   border-radius: 10px;
   text-decoration: none;
@@ -110,6 +108,7 @@ h1 {
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(0,0,0,0.6);
   text-align: center;
+  min-height: 120px; /* Altura mínima para não ficar muito achatado */
 }
 
 .btn:hover {
@@ -119,12 +118,10 @@ h1 {
   border-color: #ffd700;
 }
 
-/* ========================= */
-/* ICONES */
-/* ========================= */
+/* Ícones menores e centralizados */
 .icon {
-  width: 40px;
-  height: 40px;
+  width: 36px; /* Reduzido de 40px */
+  height: 36px;
   margin-bottom: 8px;
 }
 
@@ -136,13 +133,13 @@ h1 {
 }
 
 /* ========================= */
-/* BLOCO DE SEGUIDORES */
+/* BLOCO DE SEGUIDORES (se já tiveres) */
 /* ========================= */
 .followers {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #cccccc;
   margin-top: 6px;
 }
@@ -154,53 +151,6 @@ h1 {
 }
 
 /* ========================= */
-/* MODAL LATERAL DIREITO */
-/* ========================= */
-.social-modal {
-  position: fixed;
-  top: 0;
-  right: -400px;
-  width: 400px;
-  height: 100%;
-  background: rgba(17, 17, 17, 0.95);
-  backdrop-filter: blur(10px);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  transition: right 0.4s ease;
-  z-index: 1000;
-  overflow-y: auto;
-}
-
-.social-modal.active {
-  right: 0;
-}
-
-.social-modal-content {
-  padding: 40px 30px;
-  position: relative;
-}
-
-.social-close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #ffffff;
-}
-
-.social-modal h2 {
-  margin-bottom: 20px;
-  font-size: 1.6rem;
-  text-align: center;
-}
-
-.social-modal p {
-  line-height: 1.6;
-  color: #dddddd;
-  margin-bottom: 20px;
-}
-
-/* ========================= */
 /* FOOTER */
 /* ========================= */
 footer {
@@ -208,4 +158,30 @@ footer {
   margin-top: 48px;
   font-size: 0.85rem;
   color: #777777;
+}
+
+/* ========================= */
+/* RESPONSIVO - botões ainda menores em mobile */
+/* ========================= */
+@media (max-width: 480px) {
+  .btn {
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    min-height: 100px;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 6px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+  }
+
+  .links {
+    gap: 10px;
+  }
 }

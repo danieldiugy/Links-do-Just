@@ -41,37 +41,50 @@ document.addEventListener("DOMContentLoaded", () => {
 // 3. ATUALIZAR SEGUIDORES (SVG + número com ponto + "+")
 // ────────────────────────────────────────────────
 function atualizarSeguidores() {
-    // Twitch (valor fixo aproximado - muda para o teu real)
-    const twitchFollowers = 29700; // 29.7K → "29.700+"
+    // Twitch
+    const twitchFollowers = 29700;
     adicionarSeguidores('twitch-followers', twitchFollowers);
 
-    // Instagram - Atualizado para 18.000+
+    // Instagram
     const instagramFollowers = 18000; // Mostra "18.000+"
     adicionarSeguidores('instagram-followers', instagramFollowers);
 
     // TikTok @just99c
-    const tiktok1Followers = 180000; // 181.9K → "181.900+"
+    const tiktok1Followers = 180000;
     adicionarSeguidores('tiktok1-followers', tiktok1Followers);
 
     // TikTok @maisdojust
-    const tiktok2Followers = 800; // 800 → "800+"
+    const tiktok2Followers = 800;
     adicionarSeguidores('tiktok2-followers', tiktok2Followers);
 
     // TikTok @livesdojust
-    const tiktok3Followers = 500; // 500 → "500+"
+    const tiktok3Followers = 500;
     adicionarSeguidores('tiktok3-followers', tiktok3Followers);
 
     // YouTube @just99500
-    const youtubeFollowers = 150000; // 150.000 → "150.000+"
+    const youtubeFollowers = 150000; // Mostra "150.000+"
     adicionarSeguidores('youtube-followers', youtubeFollowers);
 }
 
-// Formata número com ponto como separador + "+" (sem arredondar para baixo, mostra exato)
+// Formata número com ponto como separador + "+"
 function formatNumber(num) {
-    return num.toLocaleString('pt-PT') + '+';
+    // Converte para string e adiciona ponto a cada 3 dígitos da direita
+    let str = num.toString();
+    let result = '';
+    let count = 0;
+
+    for (let i = str.length - 1; i >= 0; i--) {
+        if (count > 0 && count % 3 === 0) {
+            result = '.' + result;
+        }
+        result = str[i] + result;
+        count++;
+    }
+
+    return result + '+';
 }
 
-// Adiciona o bloco SVG + número (SVG com cor da borda dos botões: #d4af37)
+// Adiciona o bloco SVG + número (SVG com cor da borda #d4af37)
 function adicionarSeguidores(id, count) {
     const elemento = document.getElementById(id);
     if (!elemento) return;

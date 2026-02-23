@@ -30,7 +30,7 @@
 {
    "id": 3,
     "titulo": "Butterfly Vanilla",
-    "status": "on",
+    "status": "off",
     "site": "teste.com",
     "deposito": "20€",
     "codigo": "50JUST",

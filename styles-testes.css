@@ -90,7 +90,7 @@ h1 {
 .btn {
   display: flex;
   align-items: center;
-  padding: 10px 14px; /* mais compacto */
+  padding: 8px 10px; /* mais compacto */
   background: rgba(20, 20, 20, 0.7);
   border: 1px solid #d4af37;
   color: #ffffff;

@@ -14,7 +14,7 @@
   {
     "id": 2,
     "titulo": "Butterfly Vanilla",
-    "status": "off_visible",
+    "status": "off1",
     "site": "OutroSite.com",
     "deposito": "20€",
     "codigo": "50JUST",
@@ -27,8 +27,8 @@
   },
   {
     "id": 3,
-    "titulo": "Paracord (não visível)",
-    "status": "off_hidden",
+    "titulo": "Paracord",
+    "status": "off0",
     "site": "teste.com",
     "deposito": "10€",
     "codigo": "50JUST",

@@ -24,7 +24,7 @@ if (particulasContainer) {
 }
 
 // ────────────────────────────────────────────────
-// 2. DOM READY + ATUALIZA ANO + SEGUIDORES + LIVE
+// 2. DOM READY + ANO + SEGUIDORES + LIVE
 // ────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
     const elementoAno = document.getElementById("year");
@@ -38,23 +38,23 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ────────────────────────────────────────────────
-// 3. ATUALIZAR SEGUIDORES (só SVG + número arredondado + "+")
+// 3. ATUALIZAR SEGUIDORES (SVG + número com ponto + "+")
 // ────────────────────────────────────────────────
 function atualizarSeguidores() {
-    // Twitch (valor fixo aproximado - muda para o teu real)
-    const twitchFollowers = 29700; // 29.7K → "29.000+"
+    // Twitch
+    const twitchFollowers = 29700; // 29.7K → "29.700+"
     adicionarSeguidores('twitch-followers', twitchFollowers);
 
     // Instagram
-    const instagramFollowers = 18000; // 184.525 → "184.000+"
+    const instagramFollowers = 184525; // 184.525 → "184.525+"
     adicionarSeguidores('instagram-followers', instagramFollowers);
 
     // TikTok @just99c
-    const tiktok1Followers = 181900; // 181.9K → "181.000+"
+    const tiktok1Followers = 181900; // 181.9K → "181.900+"
     adicionarSeguidores('tiktok1-followers', tiktok1Followers);
 
     // TikTok @maisdojust
-    const tiktok2Followers = 800; // 883 → "800+"
+    const tiktok2Followers = 883; // 883 → "883+"
     adicionarSeguidores('tiktok2-followers', tiktok2Followers);
 
     // TikTok @livesdojust
@@ -66,24 +66,12 @@ function atualizarSeguidores() {
     adicionarSeguidores('youtube-followers', youtubeFollowers);
 }
 
-// Formata número para o estilo que queres: arredondado para baixo + "+"
+// Formata número com ponto como separador + "+" (sem arredondar para baixo, mostra exato)
 function formatNumber(num) {
-    if (num >= 100000) {
-        // Para centenas de mil: ex: 184525 → 184.000+
-        const rounded = Math.floor(num / 1000) * 1000;
-        return rounded.toLocaleString('pt-PT') + '+';
-    }
-    if (num >= 1000) {
-        // Para milhares: ex: 12400 → 12.000+
-        const rounded = Math.floor(num / 1000) * 1000;
-        return rounded.toLocaleString('pt-PT') + '+';
-    }
-    // Para centenas ou menos: ex: 883 → 800+
-    const rounded = Math.floor(num / 100) * 100;
-    return rounded.toLocaleString('pt-PT') + '+';
+    return num.toLocaleString('pt-PT') + '+';
 }
 
-// Adiciona o bloco SVG + número (sem "seguidores")
+// Adiciona o bloco SVG + número (SVG com cor da borda dos botões: #d4af37)
 function adicionarSeguidores(id, count) {
     const elemento = document.getElementById(id);
     if (!elemento) return;
@@ -91,7 +79,7 @@ function adicionarSeguidores(id, count) {
     const formatted = formatNumber(count);
 
     elemento.innerHTML = `
-        <svg class="followers-svg" viewBox="0 0 24 24" fill="currentColor">
+        <svg class="followers-svg" viewBox="0 0 24 24" fill="#d4af37">
             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
         </svg>
         <span>${formatted}</span>
@@ -99,32 +87,27 @@ function adicionarSeguidores(id, count) {
 }
 
 // ────────────────────────────────────────────────
-// 4. DETECÇÃO DE LIVE NA TWITCH COM DECAPI (corrigida e com debug)
+// 4. DETECÇÃO DE LIVE NA TWITCH COM DECAPI
 // ────────────────────────────────────────────────
 function verificarLiveTwitch() {
   fetch('https://decapi.me/twitch/uptime/just99c')
     .then(response => response.text())
     .then(status => {
-      console.log('Resposta DecAPI (uptime):', status.trim()); // Debug para ver o que retorna
-
+      console.log('Resposta DecAPI (uptime):', status.trim());
       const liveText = document.querySelector('#twitch-btn .btn-text');
       const liveDot = document.querySelector('#twitch-btn .live-dot');
-
       const statusLower = status.trim().toLowerCase();
 
       if (statusLower.includes('offline') || statusLower === '') {
-        // Offline
         liveText.innerHTML = '<span class="live-dot"></span> Live às 22h';
         liveDot.classList.remove('pulse');
       } else {
-        // Online
         liveText.innerHTML = '<span class="live-dot"></span> EM LIVE';
         liveDot.classList.add('pulse');
       }
     })
     .catch(error => {
       console.error('Erro ao verificar live com DecAPI:', error);
-      // Fallback: mantém "Live às 22h" se der erro
       const liveText = document.querySelector('#twitch-btn .btn-text');
       const liveDot = document.querySelector('#twitch-btn .live-dot');
       liveText.innerHTML = '<span class="live-dot"></span> Live às 22h';

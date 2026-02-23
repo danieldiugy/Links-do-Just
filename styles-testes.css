@@ -154,7 +154,7 @@ h1 {
 .followers-svg {
   width: 16px;
   height: 16px;
-  opacity: 0.8;
+  fill: #d4af37; /* cor da borda dos botões */
 }
 
 /* ========================= */

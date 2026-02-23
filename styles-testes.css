@@ -57,13 +57,13 @@ body {
 /* AVATAR */
 /* ========================= */
 .avatar {
-  width: 110px;
-  height: 110px;
+  width: 100px; /* Reduzido um pouco para equilibrar */
+  height: 100px;
   border-radius: 50%;
   border: 2px solid #d4af37;
   object-fit: cover;
   display: block;
-  margin: 0 auto 20px;
+  margin: 0 auto 16px; /* Menos margem abaixo */
   box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
 }
 
@@ -71,10 +71,10 @@ body {
 /* TÍTULO */
 /* ========================= */
 h1 {
-  font-size: 2rem;
+  font-size: 1.8rem; /* Reduzido para caber melhor */
   font-weight: 700;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px; /* Menos margem abaixo */
   color: #ffffff;
   text-shadow: 0 2px 12px rgba(212, 175, 55, 0.5);
 }
@@ -85,44 +85,45 @@ h1 {
 .links {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Reduzido para caber melhor */
+  gap: 10px; /* Espaço pequeno entre botões */
 }
 
-/* Botões mais pequenos e compactos */
+/* Botões MUITO mais pequenos e compactos */
 .btn {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 18px 30px; /* Reduzido de 22px 50px */
+  padding: 12px 20px; /* Muito menor: antes era 22px 50px */
   background: rgba(20, 20, 20, 0.6);
-  border: 2px solid #d4af37;
+  border: 1px solid #d4af37; /* Borda mais fina */
   color: #ffffff;
-  font-size: 0.95rem; /* Texto um pouco menor */
-  font-weight: 700;
-  border-radius: 10px;
+  font-size: 0.9rem; /* Texto menor */
+  font-weight: 600;
+  border-radius: 12px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.5);
   text-align: center;
-  min-height: 120px; /* Altura mínima para não ficar muito achatado */
+  min-height: 90px; /* Altura mínima para não ficar achatado */
+  width: 100%; /* Ocupa toda a largura disponível */
 }
 
 .btn:hover {
   background: rgba(40, 40, 40, 0.8);
-  transform: translateY(-4px);
-  box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
   border-color: #ffd700;
 }
 
 /* Ícones menores e centralizados */
 .icon {
-  width: 36px; /* Reduzido de 40px */
-  height: 36px;
-  margin-bottom: 8px;
+  width: 32px; /* Reduzido de 40px */
+  height: 32px;
+  margin-bottom: 6px; /* Menos espaço entre ícone e texto */
 }
 
 .icon svg {
@@ -133,55 +134,41 @@ h1 {
 }
 
 /* ========================= */
-/* BLOCO DE SEGUIDORES (se já tiveres) */
-/* ========================= */
-.followers {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  color: #cccccc;
-  margin-top: 6px;
-}
-
-.followers svg {
-  width: 16px;
-  height: 16px;
-  opacity: 0.8;
-}
-
-/* ========================= */
 /* FOOTER */
 /* ========================= */
 footer {
   text-align: center;
-  margin-top: 48px;
-  font-size: 0.85rem;
+  margin-top: 40px; /* Menos margem acima */
+  font-size: 0.8rem;
   color: #777777;
 }
 
 /* ========================= */
-/* RESPONSIVO - botões ainda menores em mobile */
+/* RESPONSIVO - ainda mais compacto em mobile */
 /* ========================= */
 @media (max-width: 480px) {
-  .btn {
-    padding: 14px 20px;
-    font-size: 0.9rem;
-    min-height: 100px;
-  }
-
-  .icon {
-    width: 32px;
-    height: 32px;
-    margin-bottom: 6px;
+  .container {
+    padding: 30px 15px;
   }
 
   h1 {
-    font-size: 1.8rem;
-    margin-bottom: 40px;
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    min-height: 80px;
+  }
+
+  .icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 5px;
   }
 
   .links {
-    gap: 10px;
+    gap: 8px;
   }
 }

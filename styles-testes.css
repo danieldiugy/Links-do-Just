@@ -20,9 +20,9 @@ body {
 
 .container {
   width: 100%;
-  max-width: 500px;
+  max-width: 600px; /* ligeiramente mais largo */
   margin: 0 auto;
-  padding: 40px 18px;
+  padding: 40px 20px;
   flex: 1;
 }
 
@@ -61,13 +61,11 @@ h1 {
   gap: 10px;
 }
 
-/* 🔥 TODOS OS BOTÕES IGUAIS */
-
 .btn {
   display: flex;
   align-items: center;
-  height: 44px; /* ALTURA FIXA IGUAL PARA TODOS */
-  padding: 0 14px; /* só horizontal */
+  height: 44px;
+  padding: 0 16px;
   background: rgba(20, 20, 20, 0.75);
   border: 1px solid #d4af37;
   color: #ffffff;
@@ -81,14 +79,13 @@ h1 {
   width: 100%;
 }
 
-/* remove diferenças internas */
-.btn * {
-  line-height: 1;
-}
-
 .btn:hover {
   background: rgba(40, 40, 40, 0.9);
   transform: translateY(-1px);
+}
+
+.btn * {
+  line-height: 1;
 }
 
 .icon {
@@ -106,9 +103,19 @@ h1 {
 }
 
 .followers {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   font-size: 0.65rem;
   color: #bbbbbb;
-  margin-left: 8px;
+  margin-left: 10px;
+}
+
+/* 🔥 CORREÇÃO DO SVG DOS SEGUIDORES */
+.followers-svg {
+  width: 12px;
+  height: 12px;
+  fill: #d4af37;
 }
 
 /* ========================= */
@@ -150,7 +157,7 @@ footer {
   }
 
   .btn {
-    height: 42px; /* ligeiramente menor no mobile */
+    height: 42px;
     font-size: 0.8rem;
   }
 
@@ -161,5 +168,10 @@ footer {
 
   .followers {
     font-size: 0.6rem;
+  }
+
+  .followers-svg {
+    width: 11px;
+    height: 11px;
   }
 }

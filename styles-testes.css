@@ -57,13 +57,13 @@ body {
 /* AVATAR */
 /* ========================= */
 .avatar {
-  width: 100px; /* Reduzido um pouco para equilibrar */
-  height: 100px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   border: 2px solid #d4af37;
   object-fit: cover;
   display: block;
-  margin: 0 auto 16px; /* Menos margem abaixo */
+  margin: 0 auto 20px;
   box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
 }
 
@@ -71,59 +71,64 @@ body {
 /* TÍTULO */
 /* ========================= */
 h1 {
-  font-size: 1.8rem; /* Reduzido para caber melhor */
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 40px; /* Menos margem abaixo */
+  margin-bottom: 60px;
   color: #ffffff;
   text-shadow: 0 2px 12px rgba(212, 175, 55, 0.5);
 }
 
 /* ========================= */
-/* LINKS (botões das redes sociais) */
+/* LINKS */
 /* ========================= */
 .links {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Espaço pequeno entre botões */
+  gap: 16px;
 }
 
-/* Botões MUITO mais pequenos e compactos */
+/* ========================= */
+/* BOTÕES NORMAIS */
+/* ========================= */
 .btn {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px 20px; /* Muito menor: antes era 22px 50px */
+  padding: 18px 30px;
   background: rgba(20, 20, 20, 0.6);
-  border: 1px solid #d4af37; /* Borda mais fina */
+  border: 2px solid #d4af37;
   color: #ffffff;
-  font-size: 0.9rem; /* Texto menor */
-  font-weight: 600;
-  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 10px;
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 3px 12px rgba(0,0,0,0.5);
-  text-align: center;
-  min-height: 90px; /* Altura mínima para não ficar achatado */
-  width: 100%; /* Ocupa toda a largura disponível */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
 }
 
 .btn:hover {
   background: rgba(40, 40, 40, 0.8);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
   border-color: #ffd700;
 }
 
-/* Ícones menores e centralizados */
+/* ========================= */
+/* ICONES */
+/* ========================= */
 .icon {
-  width: 32px; /* Reduzido de 40px */
-  height: 32px;
-  margin-bottom: 6px; /* Menos espaço entre ícone e texto */
+  position: absolute;
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon svg {
@@ -134,44 +139,8 @@ h1 {
 }
 
 /* ========================= */
-/* FOOTER */
+/* FOLLOWERS (SVG + número apenas) */
 /* ========================= */
-footer {
-  text-align: center;
-  margin-top: 40px; /* Menos margem acima */
-  font-size: 0.8rem;
-  color: #777777;
-}
-
-/* ========================= */
-/* RESPONSIVO - ainda mais compacto em mobile */
-/* ========================= */
-@media (max-width: 480px) {
-  .container {
-    padding: 30px 15px;
-  }
-
-  h1 {
-    font-size: 1.6rem;
-    margin-bottom: 30px;
-  }
-
-  .btn {
-    padding: 10px 16px;
-    font-size: 0.85rem;
-    min-height: 80px;
-  }
-
-  .icon {
-    width: 28px;
-    height: 28px;
-    margin-bottom: 5px;
-  }
-
-  .links {
-    gap: 8px;
-  }
-}
 .followers {
   display: flex;
   align-items: center;
@@ -186,4 +155,26 @@ footer {
   width: 16px;
   height: 16px;
   opacity: 0.8;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+footer {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 0.85rem;
+  color: #777777;
+}
+
+/* ========================= */
+/* RESPONSIVO */
+/* ========================= */
+@media (max-width: 768px) {
+  h1 {
+    margin-bottom: 30px;
+  }
+  .btn {
+    font-size: 1rem;
+  }
 }

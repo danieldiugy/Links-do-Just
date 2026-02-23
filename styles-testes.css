@@ -172,3 +172,18 @@ footer {
     gap: 8px;
   }
 }
+.followers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #cccccc;
+  margin-top: 6px;
+  opacity: 0.9;
+}
+
+.followers-svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.8;
+}

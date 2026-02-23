@@ -32,108 +32,103 @@ document.addEventListener("DOMContentLoaded", () => {
         elementoAno.textContent = new Date().getFullYear();
     }
 
-    // Atualiza seguidores em todas as redes
+    // Carrega giveaways (se existir)
+    gerarCartoesEModais();
+
+    // Verifica live na Twitch
+    verificarLiveTwitch();
+    setInterval(verificarLiveTwitch, 60000);
+
+    // Atualiza número de seguidores em todas as redes
     atualizarSeguidores();
 });
 
 // ────────────────────────────────────────────────
-// 3. FUNÇÃO PARA ATUALIZAR SEGUIDORES COM SVG E NÚMERO
+// 3. ATUALIZAR NÚMERO DE SEGUIDORES COM SVG E FORMATO K/M
 // ────────────────────────────────────────────────
 async function atualizarSeguidores() {
-    // Twitch - Usa DecAPI para followers real-time
-    const twitchFollowers = await fetchFollowersTwitch();
+    // Twitch (real-time via DecAPI)
+    const twitchFollowers = await fetchTwitchFollowers();
     adicionarSeguidores('twitch-followers', twitchFollowers);
 
-    // Instagram - Placeholder (não há API gratuita, substitui pelo teu número real)
-    const instagramFollowers = 12400; // Exemplo: muda para teu número
+    // Instagram (valor fixo - muda para o teu real ou integra API)
+    const instagramFollowers = 12400; // Exemplo: 12.4K
     adicionarSeguidores('instagram-followers', instagramFollowers);
 
-    // TikTok just99c - Placeholder (muda para real)
+    // TikTok @just99c (valor fixo)
     const tiktok1Followers = 45200;
     adicionarSeguidores('tiktok1-followers', tiktok1Followers);
 
-    // TikTok maisdojust - Placeholder
+    // TikTok @maisdojust (valor fixo)
     const tiktok2Followers = 10000;
     adicionarSeguidores('tiktok2-followers', tiktok2Followers);
 
-    // TikTok livesdojust - Placeholder
+    // TikTok @livesdojust (valor fixo)
     const tiktok3Followers = 15000;
     adicionarSeguidores('tiktok3-followers', tiktok3Followers);
 }
 
-// Fetch followers Twitch com DecAPI
-async function fetchFollowersTwitch() {
+// Fetch followers do Twitch com DecAPI (real-time)
+async function fetchTwitchFollowers() {
     try {
         const response = await fetch('https://decapi.me/twitch/followcount/just99c');
         const text = await response.text();
-        return parseInt(text.trim()) || 0;
+        const num = parseInt(text.trim(), 10);
+        return isNaN(num) ? 0 : num;
     } catch (error) {
         console.error('Erro ao buscar followers Twitch:', error);
         return 0;
     }
 }
 
-// Função para adicionar o bloco de seguidores (SVG + número)
+// Formata número para K/M (ex: 12400 → "12.4K")
+function formatNumber(num) {
+    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+    if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+    return num.toString();
+}
+
+// Adiciona o bloco SVG + número debaixo do botão
 function adicionarSeguidores(id, count) {
     const elemento = document.getElementById(id);
     if (!elemento) return;
 
-    const formattedCount = formatNumber(count) + ' seguidores';
+    const formatted = formatNumber(count) + ' seguidores';
 
     elemento.innerHTML = `
         <svg class="followers-svg" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
         </svg>
-        <span>${formattedCount}</span>
+        <span>${formatted}</span>
     `;
 }
 
-// Formata número para K/M (ex: 12400 → 12.4K)
-function formatNumber(num) {
-    if (num >= 1000000) {
-        return (num / 1000000).toFixed(1) + 'M';
-    } if (num >= 1000) {
-        return (num / 1000).toFixed(1) + 'K';
-    }
-    return num;
-}
-
 // ────────────────────────────────────────────────
-// RESTO DO TEU CÓDIGO (modais, live detection, giveaways, etc.)
+// 4. DETECÇÃO DE LIVE NA TWITCH COM DECAPI (mantido)
 // ────────────────────────────────────────────────
-function abrirModal(idDoModal) {
-    const modal = document.getElementById(idDoModal);
-    if (!modal) {
-        console.warn(`Não encontrei modal com id: ${idDoModal}`);
-        return;
-    }
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
-}
+function verificarLiveTwitch() {
+  fetch('https://decapi.me/twitch/uptime/just99c')
+    .then(response => response.text())
+    .then(status => {
+      const liveText = document.querySelector('#twitch-btn .btn-text');
+      const liveDot = document.querySelector('#twitch-btn .live-dot');
 
-function fecharModal(idDoModal) {
-    const modal = document.getElementById(idDoModal);
-    if (!modal) return;
-    modal.classList.remove("active");
-    document.body.style.overflow = "auto";
-}
-
-window.addEventListener("click", function(evento) {
-    document.querySelectorAll(".modal").forEach(modal => {
-        if (evento.target === modal) {
-            fecharModal(modal.id);
-        }
+      if (status.trim() !== 'Offline' && status.trim() !== '') {
+        liveText.innerHTML = '<span class="live-dot"></span> EM LIVE';
+        liveDot.classList.add('pulse');
+      } else {
+        liveText.innerHTML = '<span class="live-dot"></span> Live às 22h';
+        liveDot.classList.remove('pulse');
+      }
+    })
+    .catch(error => {
+      console.error('Erro ao verificar live com DecAPI:', error);
     });
-});
+}
 
-document.addEventListener("keydown", function(evento) {
-    if (evento.key === "Escape") {
-        document.querySelectorAll(".modal.active").forEach(modal => {
-            fecharModal(modal.id);
-        });
-    }
-});
-
+// ────────────────────────────────────────────────
+// 5. GERA CARTÕES E MODAIS DE GIVEAWAYS (mantido)
+// ────────────────────────────────────────────────
 function gerarCartoesEModais() {
     const container = document.getElementById("giveaways-container");
     if (!container) return;
@@ -156,7 +151,6 @@ function gerarCartoesEModais() {
             ordenados.forEach(giveaway => {
                 const cartao = document.createElement("div");
                 cartao.className = "giveaway-card";
-
                 cartao.style.cursor = "pointer";
                 cartao.addEventListener("click", (evento) => {
                     if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {
@@ -275,26 +269,3 @@ function gerarCartoesEModais() {
 
 // Inicia tudo quando a página carrega
 document.addEventListener("DOMContentLoaded", gerarCartoesEModais);
-
-// ────────────────────────────────────────────────
-// DETECÇÃO DE LIVE NA TWITCH COM DECAPI
-// ────────────────────────────────────────────────
-function checkTwitchLiveDecapi() {
-  fetch('https://decapi.me/twitch/uptime/just99c')
-    .then(response => response.text())
-    .then(status => {
-      const liveText = document.querySelector('#twitch-btn .btn-text');
-      const liveDot = document.querySelector('#twitch-btn .live-dot');
-
-      if (status.trim() !== 'Offline' && status.trim() !== '') {
-        liveText.innerHTML = '<span class="live-dot"></span> EM LIVE';
-        liveDot.classList.add('pulse');
-      } else {
-        liveText.innerHTML = '<span class="live-dot"></span> Live às 22h';
-        liveDot.classList.remove('pulse');
-      }
-    })
-    .catch(error => {
-      console.error('Erro ao verificar live com DecAPI:', error);
-    });
-}

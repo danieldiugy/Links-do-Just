@@ -178,3 +178,30 @@ footer {
     font-size: 1rem;
   }
 }
+/* Badge "NOVO" nos últimos 2 botões */
+.new-badge-container {
+  position: relative;
+}
+
+.new-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #ff3366; /* Rosa/vermelho vibrante */
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(255, 51, 102, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: pulse-badge 2s infinite;
+  z-index: 10;
+}
+
+@keyframes pulse-badge {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}

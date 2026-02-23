@@ -457,3 +457,15 @@ footer {
     box-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
   }
 }
+.giveaway-card.terminated {
+  opacity: 0.85;
+  border-color: #ff3333;
+}
+
+.giveaway-card.terminated img {
+  filter: grayscale(70%) contrast(80%);
+}
+
+.giveaway-card.terminated .overlay {
+  background: linear-gradient(to top, rgba(255,0,0,0.4), rgba(0,0,0,0.85));
+}

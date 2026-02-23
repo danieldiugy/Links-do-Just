@@ -1,6 +1,5 @@
 // =============================================================================
 // ARQUIVO: script.js
-// Objetivo: Controlar partículas, ano no footer, modais e gerar giveaways
 // =============================================================================
 
 // ────────────────────────────────────────────────
@@ -33,16 +32,13 @@ document.addEventListener("DOMContentLoaded", () => {
         elementoAno.textContent = new Date().getFullYear();
     }
 
-    // Carrega giveaways
     gerarCartoesEModais();
-
-    // Verifica live na Twitch
     verificarLiveTwitch();
     setInterval(verificarLiveTwitch, 60000);
 });
 
 // ────────────────────────────────────────────────
-// 3. VERIFICAR LIVE NA TWITCH + BADGE TEMPO
+// 3. VERIFICAR LIVE NA TWITCH + BADGE TEMPO (mantido)
 // ────────────────────────────────────────────────
 async function verificarLiveTwitch() {
     const twitchBtn = document.getElementById("twitch-btn");
@@ -97,47 +93,49 @@ async function verificarLiveTwitch() {
 }
 
 // ────────────────────────────────────────────────
-// 4. GERA CARTÕES E MODAIS DE GIVEAWAYS
+// 4. GERA CARTÕES E MODAIS DE GIVEAWAYS (com 3 status)
 // ────────────────────────────────────────────────
 function gerarCartoesEModais() {
     const container = document.getElementById("giveaways-container");
     if (!container) return;
 
-    container.innerHTML = '<p style="text-align:center; color:#aaa; padding: 40px 0;">A carregar giveaways...</p>';
+    container.innerHTML = '<p style="text-align:center; color:#aaa; padding:40px 0;">A carregar giveaways...</p>';
 
     fetch('gerirgiveaways.json')
         .then(response => {
             if (!response.ok) {
-                throw new Error(`HTTP ${response.status} - ${response.statusText}`);
+                throw new Error(`HTTP ${response.status}`);
             }
             return response.json();
         })
         .then(listaDeGiveaways => {
-            container.innerHTML = ""; // Limpa o loading
+            container.innerHTML = "";
 
-            // Filtra apenas os ativos
-            const ativos = listaDeGiveaways.filter(g => g.status === "on");
+            // Filtra apenas os que devem aparecer: on ou off1
+            const visiveis = listaDeGiveaways.filter(g => 
+                g.status === "on" || g.status === "off1"
+            );
 
-            if (ativos.length === 0) {
-                // Nenhum giveaway ativo
+            if (visiveis.length === 0) {
                 container.innerHTML = `
-                    <p style="text-align:center; color:#aaa; padding: 60px 20px; font-size: 1.2rem;">
+                    <p style="text-align:center; color:#aaa; padding:60px 20px; font-size:1.2rem;">
                         Não há giveaways neste momento
                     </p>
                 `;
                 return;
             }
 
-            // Ordena só os ativos (não precisa ordenar terminados se não mostramos)
-            const ordenados = [...ativos].sort((a, b) => {
-                // Se quiseres ordenar por outro critério, adiciona aqui
+            // Ordena: ativos primeiro
+            const ordenados = [...visiveis].sort((a, b) => {
+                if (a.status === "on" && b.status !== "on") return -1;
+                if (a.status !== "on" && b.status === "on") return 1;
                 return 0;
             });
 
             ordenados.forEach(giveaway => {
-                // CARTÃO
+                // ─── CARTÃO ───
                 const cartao = document.createElement("div");
-                cartao.className = "giveaway-card";
+                cartao.className = `giveaway-card ${giveaway.status === "off1" ? "terminated" : ""}`;
                 cartao.style.cursor = "pointer";
                 cartao.addEventListener("click", (evento) => {
                     if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {
@@ -174,6 +172,7 @@ function gerarCartoesEModais() {
                     const img = document.createElement("img");
                     img.src = giveaway.imagem;
                     img.alt = `${giveaway.titulo} - Encerrado`;
+                    img.style.filter = "grayscale(70%) contrast(80%)"; // Visual "terminado"
                     cartao.appendChild(img);
                 }
 
@@ -184,12 +183,12 @@ function gerarCartoesEModais() {
 
                 container.appendChild(cartao);
 
-                // MODAL
+                // ─── MODAL ───
                 const modal = document.createElement("div");
                 modal.className = "modal";
                 modal.id = `modal-${giveaway.id}`;
 
-                const vencedorHTML = giveaway.vencedor && giveaway.status === "off"
+                const vencedorHTML = giveaway.vencedor
                     ? `<p><strong>Vencedor:</strong> ${giveaway.vencedor}</p>` : "";
 
                 const codigoHTML = giveaway.codigo?.trim()
@@ -207,7 +206,7 @@ function gerarCartoesEModais() {
 
                 let conteudoModal = "";
 
-                if (giveaway.status === "off") {
+                if (giveaway.status !== "on") {
                     conteudoModal = `
                         <span class="close-modal">×</span>
                         <img src="${giveaway.imagem}" alt="${giveaway.titulo}" class="modal-img">
@@ -237,16 +236,42 @@ function gerarCartoesEModais() {
 
                 modal.innerHTML = `<div class="modal-content">${conteudoModal}</div>`;
 
-                modal.querySelector(".close-modal").addEventListener("click", () => abrirModal(`modal-${giveaway.id}`));
+                modal.querySelector(".close-modal").addEventListener("click", () => fecharModal(`modal-${giveaway.id}`));
 
                 document.body.appendChild(modal);
             });
         })
         .catch(error => {
             console.error('Erro ao carregar giveaways:', error);
-            container.innerHTML = `<p style="text-align:center; color:#ff4444; padding:60px 20px; font-size:1.2rem;">
-                Erro ao carregar os giveaways: ${error.message}<br>
-                Verifica se "gerirgiveaways.json" existe e é válido.
+            container.innerHTML = `<p style="text-align:center; color:#ff4444; padding:60px 20px;">
+                Erro ao carregar os giveaways: ${error.message}
             </p>`;
         });
 }
+
+// ────────────────────────────────────────────────
+// 5. FUNÇÕES DE MODAL
+// ────────────────────────────────────────────────
+function abrirModal(idDoModal) {
+    const modal = document.getElementById(idDoModal);
+    if (!modal) return;
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+function fecharModal(idDoModal) {
+    const modal = document.getElementById(idDoModal);
+    if (!modal) return;
+    modal.classList.remove("active");
+    document.body.style.overflow = "auto";
+}
+
+window.addEventListener("click", e => {
+    if (e.target.classList.contains("modal")) fecharModal(e.target.id);
+});
+
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+        document.querySelectorAll(".modal.active").forEach(m => fecharModal(m.id));
+    }
+});

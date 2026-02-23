@@ -11,6 +11,8 @@ body {
   background: linear-gradient(135deg, #000000 0%, #0d0d0d 100%);
   overflow-x: hidden;
   position: relative;
+  display: flex; /* Permite que o footer vá para o fundo */
+  flex-direction: column;
 }
 
 /* ========================= */
@@ -43,7 +45,7 @@ body {
 }
 
 /* ========================= */
-/* CONTAINER */
+/* CONTAINER (conteúdo principal) */
 /* ========================= */
 .container {
   max-width: 500px;
@@ -51,6 +53,7 @@ body {
   padding: 30px 15px;
   position: relative;
   z-index: 1;
+  flex: 1; /* Faz o container crescer para empurrar o footer para baixo */
 }
 
 /* ========================= */
@@ -188,17 +191,18 @@ h1 {
 }
 
 /* ========================= */
-/* FOOTER */
+/* FOOTER - empurrado para o fundo */
 /* ========================= */
 footer {
   text-align: center;
-  margin-top: 30px;
+  margin-top: auto; /* Empurra o footer para o fundo quando o conteúdo é pequeno */
+  padding: 20px 0;
   font-size: 0.75rem;
   color: #777777;
 }
 
 /* ========================= */
-/* RESPONSIVO - MOBILE (botões ocupam 100% da largura, mas mais curtos verticalmente) */
+/* RESPONSIVO - MOBILE (botões ocupam 100% da largura, altura compacta) */
 /* ========================= */
 @media (max-width: 480px) {
   .container {
@@ -215,13 +219,12 @@ footer {
   }
 
   .btn {
-    padding: 10px 14px; /* Padding lateral reduzido para parecer menos largo */
+    padding: 12px 16px; /* Padding equilibrado para mobile */
     font-size: 0.85rem;
-    min-height: 52px; /* Altura vertical menor para não ficar comprido */
-    line-height: 1.3;
-    width: 100%; /* Ocupa 100% da largura do ecrã no mobile */
-    max-width: none; /* Remove qualquer limite */
-    margin: 0; /* Remove centralização extra */
+    min-height: 54px; /* Altura reduzida para não ficar comprido */
+    width: 100%; /* Preenche toda a largura do ecrã */
+    max-width: none;
+    margin: 0;
   }
 
   .icon {
@@ -245,5 +248,9 @@ footer {
     padding: 2px 5px;
     top: 4px;
     right: 4px;
+  }
+
+  footer {
+    padding: 15px 0;
   }
 }

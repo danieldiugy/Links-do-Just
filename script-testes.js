@@ -24,7 +24,7 @@ if (particulasContainer) {
 }
 
 // ────────────────────────────────────────────────
-// 2. DOM READY + ATUALIZA ANO + SEGUIDORES + LIVE
+// 2. DOM READY + ANO + SEGUIDORES + LIVE
 // ────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
     const elementoAno = document.getElementById("year");
@@ -38,68 +38,48 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ────────────────────────────────────────────────
-// 3. ATUALIZAR SEGUIDORES COM API REAL (SVG + número apenas)
+// 3. ATUALIZAR SEGUIDORES (só SVG + número arredondado + "+")
 // ────────────────────────────────────────────────
-async function atualizarSeguidores() {
-    // Twitch (real-time via DecAPI - se falhar, usa fallback)
-    let twitchFollowers = await fetchTwitchFollowers();
-    if (twitchFollowers === 0) twitchFollowers = 29700; // teu número real aproximado
-
+function atualizarSeguidores() {
+    // Twitch (valor fixo aproximado - muda para o teu real)
+    const twitchFollowers = 29700; // 29.7K → "29.000+"
     adicionarSeguidores('twitch-followers', twitchFollowers);
 
-    // Instagram (valor real - muda para o teu exato)
-    const instagramFollowers = 18400; // 18.4K - atualiza aqui
+    // Instagram (valor fixo aproximado - muda para o teu real)
+    const instagramFollowers = 184525; // 184.525 → "184.000+"
     adicionarSeguidores('instagram-followers', instagramFollowers);
 
-    // TikTok @just99c
-    const tiktok1Followers = 181900; // 181.9K - atualiza aqui
+    // TikTok @just99c (valor fixo aproximado)
+    const tiktok1Followers = 181900; // 181.9K → "181.000+"
     adicionarSeguidores('tiktok1-followers', tiktok1Followers);
 
-    // TikTok @maisdojust
-    const tiktok2Followers = 800; // 883 - atualiza aqui
+    // TikTok @maisdojust (valor fixo aproximado)
+    const tiktok2Followers = 883; // 883 → "800+"
     adicionarSeguidores('tiktok2-followers', tiktok2Followers);
 
-    // TikTok @livesdojust
-    const tiktok3Followers = 500; // não encontrado - atualiza se souberes
+    // TikTok @livesdojust (valor fixo aproximado)
+    const tiktok3Followers = 15000; // 15K → "15.000+"
     adicionarSeguidores('tiktok3-followers', tiktok3Followers);
 }
 
-// Fetch followers usando SocialBlade como API proxy (real-time aproximado)
-async function fetchFollowers(platform, username) {
-    try {
-        const response = await fetch(`https://socialblade.com/${platform}/user/${username}`);
-        const text = await response.text();
-        // Extrair número de followers do HTML (simplificado - ajusta se necessário)
-        const match = text.match(/followers"\s*>\s*([\d.KM+]+)/i);
-        if (match) {
-            return parseNumber(match[1]);
-        }
-        return 0;
-    } catch (error) {
-        console.error(`Erro ao buscar followers de ${platform}:`, error);
-        return 0;
-    }
-}
-
-// Converter string K/M para número (ex: "12.4K" → 12400)
-function parseNumber(str) {
-    str = str.replace(',', '');
-    if (str.endsWith('K')) {
-        return parseFloat(str.slice(0, -1)) * 1000;
-    } if (str.endsWith('M')) {
-        return parseFloat(str.slice(0, -1)) * 1000000;
-    }
-    return parseInt(str, 10);
-}
-
-// Formata número para K/M (ex: 12400 → "12.4K")
+// Formata número para o estilo que queres: arredondado para baixo + "+"
 function formatNumber(num) {
-    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-    if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-    return num.toString();
+    if (num >= 100000) {
+        // Para centenas de mil: ex: 184525 → 184.000+
+        const rounded = Math.floor(num / 1000) * 1000;
+        return rounded.toLocaleString('pt-PT') + '+';
+    }
+    if (num >= 1000) {
+        // Para milhares: ex: 12400 → 12.000+
+        const rounded = Math.floor(num / 1000) * 1000;
+        return rounded.toLocaleString('pt-PT') + '+';
+    }
+    // Para centenas ou menos: ex: 883 → 800+
+    const rounded = Math.floor(num / 100) * 100;
+    return rounded.toLocaleString('pt-PT') + '+';
 }
 
-// Adiciona o bloco SVG + número debaixo do botão
+// Adiciona o bloco SVG + número (sem "seguidores")
 function adicionarSeguidores(id, count) {
     const elemento = document.getElementById(id);
     if (!elemento) return;
@@ -138,40 +118,8 @@ function verificarLiveTwitch() {
 }
 
 // ────────────────────────────────────────────────
-/* Resto do teu código para modals e giveaways aqui, se necessário */
-function abrirModal(idDoModal) {
-    const modal = document.getElementById(idDoModal);
-    if (!modal) {
-        console.warn(`Não encontrei modal com id: ${idDoModal}`);
-        return;
-    }
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
-}
-
-function fecharModal(idDoModal) {
-    const modal = document.getElementById(idDoModal);
-    if (!modal) return;
-    modal.classList.remove("active");
-    document.body.style.overflow = "auto";
-}
-
-window.addEventListener("click", function(evento) {
-    document.querySelectorAll(".modal").forEach(modal => {
-        if (evento.target === modal) {
-            fecharModal(modal.id);
-        }
-    });
-});
-
-document.addEventListener("keydown", function(evento) {
-    if (evento.key === "Escape") {
-        document.querySelectorAll(".modal.active").forEach(modal => {
-            fecharModal(modal.id);
-        });
-    }
-});
-
+// 5. GERA CARTÕES E MODAIS DE GIVEAWAYS (mantido)
+// ────────────────────────────────────────────────
 function gerarCartoesEModais() {
     const container = document.getElementById("giveaways-container");
     if (!container) return;

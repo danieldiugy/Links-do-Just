@@ -86,7 +86,6 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-items: center; /* Centraliza os botões horizontalmente */
 }
 
 /* Botões padrão (desktop) */
@@ -107,8 +106,7 @@ h1 {
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 8px rgba(0,0,0,0.5);
   min-height: 60px;
-  width: 100%; /* 100% no desktop */
-  max-width: 400px; /* Limite máximo para não ficar largo demais */
+  width: 100%;
 }
 
 .btn:hover {
@@ -200,7 +198,7 @@ footer {
 }
 
 /* ========================= */
-/* RESPONSIVO - MOBILE (botões mais curtos e estreitos) */
+/* RESPONSIVO - MOBILE (botões ocupam 100% da largura, mas mais curtos verticalmente) */
 /* ========================= */
 @media (max-width: 480px) {
   .container {
@@ -214,16 +212,16 @@ footer {
 
   .links {
     gap: 8px;
-    align-items: center;
   }
 
   .btn {
-    padding: 10px 16px; /* Menos padding lateral para reduzir largura */
+    padding: 10px 14px; /* Padding lateral reduzido para parecer menos largo */
     font-size: 0.85rem;
-    min-height: 52px;
-    max-width: 70%; /* Apenas 70% da largura disponível no mobile */
-    width: 70%;
-    margin: 0 auto; /* Centraliza o botão */
+    min-height: 52px; /* Altura vertical menor para não ficar comprido */
+    line-height: 1.3;
+    width: 100%; /* Ocupa 100% da largura do ecrã no mobile */
+    max-width: none; /* Remove qualquer limite */
+    margin: 0; /* Remove centralização extra */
   }
 
   .icon {

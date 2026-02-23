@@ -24,7 +24,7 @@ if (particulasContainer) {
 }
 
 // ────────────────────────────────────────────────
-// 2. DOM READY + ATUALIZA ANO + SEGUIDORES
+// 2. DOM READY + ANO + SEGUIDORES + LIVE
 // ────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
     const elementoAno = document.getElementById("year");
@@ -32,43 +32,36 @@ document.addEventListener("DOMContentLoaded", () => {
         elementoAno.textContent = new Date().getFullYear();
     }
 
-    // Carrega giveaways (se existir)
-    gerarCartoesEModais();
-
-    // Verifica live na Twitch
+    atualizarSeguidores();
     verificarLiveTwitch();
     setInterval(verificarLiveTwitch, 60000);
-
-    // Atualiza número de seguidores em todas as redes
-    atualizarSeguidores();
 });
 
 // ────────────────────────────────────────────────
-// 3. ATUALIZAR NÚMERO DE SEGUIDORES COM SVG E FORMATO K/M
+// 3. ATUALIZAR SEGUIDORES (só SVG + número, sem "seguidores")
 // ────────────────────────────────────────────────
 async function atualizarSeguidores() {
-    // Twitch (real-time via DecAPI)
+    // Twitch (real-time)
     const twitchFollowers = await fetchTwitchFollowers();
     adicionarSeguidores('twitch-followers', twitchFollowers);
 
-    // Instagram (valor fixo - muda para o teu real ou integra API)
-    const instagramFollowers = 12400; // Exemplo: 12.4K
+    // Instagram (valor real corrigido - muda para o teu exato)
+    const instagramFollowers = 8700; // 8.7K
     adicionarSeguidores('instagram-followers', instagramFollowers);
 
-    // TikTok @just99c (valor fixo)
-    const tiktok1Followers = 45200;
+    // TikTok @just99c
+    const tiktok1Followers = 45200; // 45.2K
     adicionarSeguidores('tiktok1-followers', tiktok1Followers);
 
-    // TikTok @maisdojust (valor fixo)
-    const tiktok2Followers = 10000;
+    // TikTok @maisdojust
+    const tiktok2Followers = 28500; // 28.5K
     adicionarSeguidores('tiktok2-followers', tiktok2Followers);
 
-    // TikTok @livesdojust (valor fixo)
-    const tiktok3Followers = 15000;
+    // TikTok @livesdojust
+    const tiktok3Followers = 19800; // 19.8K
     adicionarSeguidores('tiktok3-followers', tiktok3Followers);
 }
 
-// Fetch followers do Twitch com DecAPI (real-time)
 async function fetchTwitchFollowers() {
     try {
         const response = await fetch('https://decapi.me/twitch/followcount/just99c');
@@ -81,19 +74,17 @@ async function fetchTwitchFollowers() {
     }
 }
 
-// Formata número para K/M (ex: 12400 → "12.4K")
 function formatNumber(num) {
     if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
     if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
     return num.toString();
 }
 
-// Adiciona o bloco SVG + número debaixo do botão
 function adicionarSeguidores(id, count) {
     const elemento = document.getElementById(id);
     if (!elemento) return;
 
-    const formatted = formatNumber(count) + ' seguidores';
+    const formatted = formatNumber(count);
 
     elemento.innerHTML = `
         <svg class="followers-svg" viewBox="0 0 24 24" fill="currentColor">
@@ -104,7 +95,7 @@ function adicionarSeguidores(id, count) {
 }
 
 // ────────────────────────────────────────────────
-// 4. DETECÇÃO DE LIVE NA TWITCH COM DECAPI (mantido)
+// 4. DETECÇÃO DE LIVE NA TWITCH COM DECAPI
 // ────────────────────────────────────────────────
 function verificarLiveTwitch() {
   fetch('https://decapi.me/twitch/uptime/just99c')

@@ -8,7 +8,7 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   min-height: 100vh;
   color: #ffffff;
-  background: linear-gradient(135deg, #000000 0%, #0d0d0d 100%) !important; /* Força o fundo escuro */
+  background: linear-gradient(135deg, #000000 0%, #0d0d0d 100%);
   overflow-x: hidden;
   position: relative;
 }
@@ -67,12 +67,6 @@ body {
   box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
 }
 
-/* Azul apenas na página giveaways */
-.giveaways-page .avatar {
-  border: 2px solid #1e90ff;
-  box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
-}
-
 /* ========================= */
 /* TÍTULO */
 /* ========================= */
@@ -83,10 +77,6 @@ h1 {
   margin-bottom: 60px;
   color: #ffffff;
   text-shadow: 0 2px 12px rgba(212, 175, 55, 0.5);
-}
-
-.giveaways-page h1 {
-  text-shadow: 0 2px 12px rgba(30, 144, 255, 0.5);
 }
 
 /* ========================= */
@@ -104,9 +94,10 @@ h1 {
 .btn {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 22px 50px;
+  padding: 20px 30px;
   background: rgba(20, 20, 20, 0.6);
   border: 2px solid #d4af37;
   color: #ffffff;
@@ -118,6 +109,7 @@ h1 {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  text-align: center;
 }
 
 .btn:hover {
@@ -127,32 +119,13 @@ h1 {
   border-color: #ffd700;
 }
 
-.giveaways-page .btn {
-  border: 1px solid #1e90ff;
-}
-
-/* Partículas azuis na página Giveaways */
-.giveaways-page .particle {
-  background: rgba(30, 144, 255, 0.8);
-  box-shadow: 0 0 20px rgba(30, 144, 255, 0.9), 0 0 40px rgba(30, 144, 255, 0.6), 0 0 60px rgba(30, 144, 255, 0.3);
-}
-
-.giveaways-page .btn:hover {
-  border-color: #3aa0ff;
-  box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
-}
-
 /* ========================= */
-/* ICONES (corrigido tamanho enorme) */
+/* ICONES */
 /* ========================= */
 .icon {
-  position: absolute;
-  left: 20px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
 }
 
 .icon svg {
@@ -163,94 +136,68 @@ h1 {
 }
 
 /* ========================= */
-/* GIVEAWAY CARDS */
+/* BLOCO DE SEGUIDORES */
 /* ========================= */
-.giveaway-card {
-  position: relative;
-  display: block;
-  height: 220px;
-  border: 2px solid #1e90ff;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #0f0f0f;
-  text-decoration: none;
-  color: #ffffff;
-  transition: 0.3s ease;
+.followers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #cccccc;
+  margin-top: 6px;
 }
 
-.giveaway-card:visited {
-  color: #ffffff;
+.followers svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.8;
 }
 
-.giveaway-card:hover {
-  color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(30,144,255,0.4);
-}
-
-.giveaway-card:active {
-  color: #ffffff;
-}
-
-.giveaway-card img {
-  width: 100%;
+/* ========================= */
+/* MODAL LATERAL DIREITO */
+/* ========================= */
+.social-modal {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
   height: 100%;
-  object-fit: contain;
-  padding: 20px;
-  pointer-events: none;
+  background: rgba(17, 17, 17, 0.95);
+  backdrop-filter: blur(10px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  transition: right 0.4s ease;
+  z-index: 1000;
+  overflow-y: auto;
 }
 
-.overlay {
+.social-modal.active {
+  right: 0;
+}
+
+.social-modal-content {
+  padding: 40px 30px;
+  position: relative;
+}
+
+.social-close {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.social-modal h2 {
+  margin-bottom: 20px;
+  font-size: 1.6rem;
   text-align: center;
-  font-weight: 700;
-  font-size: 0.9rem;
-  pointer-events: none;
 }
 
-/* BADGES - Destaque ajustado */
-.badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  font-size: 0.75rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  color: white;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
-  z-index: 5;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-}
-
-.giveaway-card:hover .badge {
-  transform: scale(1.08);
-  box-shadow: 0 6px 15px rgba(255,255,255,0.15);
-}
-
-.badge.on {
-  background: #00ff66;
-  animation: pulse-soft 2.5s infinite ease-in-out;
-  box-shadow: 0 0 18px rgba(0,255,102,0.7);
-}
-
-.badge.off {
-  background: #ff3333;
-  box-shadow: 0 0 22px rgba(255,51,51,0.8);
-}
-
-@keyframes pulse-soft {
-  0% { box-shadow: 0 0 8px rgba(0,255,102,0.5), 0 0 16px rgba(0,255,102,0.3); }
-  50% { box-shadow: 0 0 18px rgba(0,255,102,0.9), 0 0 28px rgba(0,255,102,0.6); }
-  100% { box-shadow: 0 0 8px rgba(0,255,102,0.5), 0 0 16px rgba(0,255,102,0.3); }
+.social-modal p {
+  line-height: 1.6;
+  color: #dddddd;
+  margin-bottom: 20px;
 }
 
 /* ========================= */
@@ -261,161 +208,4 @@ footer {
   margin-top: 48px;
   font-size: 0.85rem;
   color: #777777;
-}
-
-/* ========================= */
-/* RESPONSIVO */
-/* ========================= */
-@media (max-width: 768px) {
-  h1 {
-    margin-bottom: 30px;
-  }
-  .btn {
-    font-size: 1rem;
-  }
-}
-
-/* ========================= */
-/* INFO BUTTON */
-/* ========================= */
-.info-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 26px;
-  height: 26px;
-  background: #1e90ff;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.8rem;
-  cursor: pointer;
-  z-index: 5;
-  transition: 0.3s;
-}
-
-.info-btn:hover {
-  background: #3aa0ff;
-  transform: scale(1.1);
-}
-
-/* ========================= */
-/* MODAL */
-/* ========================= */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(8px);
-  background: rgba(0,0,0,0.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal.active {
-  display: flex;
-}
-
-.modal-content {
-  position: relative;
-  background: #111;
-  padding: 30px 20px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 420px;
-  max-height: 90vh;
-  overflow-y: auto;
-  text-align: center;
-  box-shadow: 0 0 25px rgba(30,144,255,0.4);
-  animation: fadeIn 0.3s ease;
-}
-
-.modal-content h2 {
-  margin-bottom: 15px;
-}
-
-.close-modal {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* IMAGEM NO MODAL */
-.modal-img {
-  width: 100%;
-  max-height: 220px;
-  object-fit: contain;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  display: block;
-  background: #222;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-}
-
-/* ========================= */
-/* BOTÃO PARTICIPAR */
-/* ========================= */
-.participar-btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: #00c853;
-  color: white;
-  font-weight: 700;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.participar-btn:hover {
-  background: #00e676;
-  transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(0,200,83,0.6);
-}
-
-.participar-btn.disabled {
-  background: #555;
-  cursor: not-allowed;
-  box-shadow: none;
-  opacity: 0.7;
-}
-
-.participar-btn.disabled:hover {
-  transform: none;
-  background: #555;
-}
-
-@keyframes pulse-green {
-  0% { box-shadow: 0 0 0 0 rgba(0,200,83,0.8); }
-  70% { box-shadow: 0 0 0 15px rgba(0,200,83,0); }
-  100% { box-shadow: 0 0 0 0 rgba(0,200,83,0); }
-}
-
-.modal-content p {
-  margin: 6px 0;
-}
-
-.modal-content .winner {
-  margin-top: 10px;
-  font-weight: 600;
-}
-
-.modal-content .descricao {
-  margin-top: 2px;
-  margin-bottom: 14px;
-  opacity: 0.85;
 }

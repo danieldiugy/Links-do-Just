@@ -85,17 +85,16 @@ h1 {
 .links {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Espaço bom entre botões */
+  gap: 10px;
 }
 
-/* Botões compactos mas legíveis */
+/* Botões compactos, ícone à esquerda, texto no meio */
 .btn {
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Alinha conteúdo ao topo */
-  padding: 12px 20px; /* Espaço interno equilibrado */
+  justify-content: flex-start;
+  padding: 12px 20px;
   background: rgba(20, 20, 20, 0.6);
   border: 1px solid #d4af37;
   color: #ffffff;
@@ -106,8 +105,7 @@ h1 {
   transition: all 0.25s ease;
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-  text-align: center;
-  min-height: 80px; /* Altura mínima confortável */
+  min-height: 60px;
   width: 100%;
 }
 
@@ -118,11 +116,12 @@ h1 {
   border-color: #ffd700;
 }
 
-/* Ícones no topo, centralizados */
+/* Ícone à esquerda */
 .icon {
-  width: 30px;
-  height: 30px;
-  margin-bottom: 6px; /* Espaço entre ícone e texto */
+  width: 28px;
+  height: 28px;
+  margin-right: 12px; /* Espaço entre ícone e texto */
+  flex-shrink: 0;
 }
 
 .icon svg {
@@ -132,9 +131,10 @@ h1 {
   color: #ffffff;
 }
 
-/* Texto principal logo abaixo do ícone */
+/* Texto centralizado verticalmente ao lado do ícone */
 .btn-text {
-  margin-top: 2px;
+  flex: 1;
+  text-align: left;
 }
 
 /* ========================= */
@@ -143,23 +143,22 @@ h1 {
 .followers {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 4px;
-  font-size: 0.7rem; /* Muito pequeno */
-  font-weight: 500; /* Fino */
+  font-size: 0.7rem;
+  font-weight: 500;
   color: #cccccc;
-  margin-top: 2px;
+  margin-left: auto; /* Alinha à direita, se quiseres; ou remove para ficar ao lado do texto */
   opacity: 0.9;
 }
 
 .followers-svg {
   width: 12px;
   height: 12px;
-  fill: #d4af37; /* Cor da borda dos botões */
+  fill: #d4af37;
 }
 
 /* ========================= */
-/* BADGE "NOVO" (amarela/dourada) */
+/* BADGE "NOVO" (dourada) */
 /* ========================= */
 .new-badge-container {
   position: relative;
@@ -169,8 +168,8 @@ h1 {
   position: absolute;
   top: 6px;
   right: 6px;
-  background: #d4af37; /* Dourado igual à borda */
-  color: #000000; /* Texto preto para contraste */
+  background: #d4af37;
+  color: #000000;
   font-size: 0.65rem;
   font-weight: 900;
   padding: 2px 6px;
@@ -214,13 +213,13 @@ footer {
   .btn {
     padding: 10px 14px;
     font-size: 0.85rem;
-    min-height: 70px;
+    min-height: 55px;
   }
 
   .icon {
-    width: 26px;
-    height: 26px;
-    margin-bottom: 4px;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
   }
 
   .followers {

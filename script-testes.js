@@ -50,11 +50,11 @@ function atualizarSeguidores() {
     adicionarSeguidores('instagram-followers', instagramFollowers);
 
     // TikTok @just99c
-    const tiktok1Followers = 181900; // 181.9K → "181.900+"
+    const tiktok1Followers = 180000; // 181.9K → "181.900+"
     adicionarSeguidores('tiktok1-followers', tiktok1Followers);
 
     // TikTok @maisdojust
-    const tiktok2Followers = 883; // 883 → "883+"
+    const tiktok2Followers = 800; // 800 → "800+"
     adicionarSeguidores('tiktok2-followers', tiktok2Followers);
 
     // TikTok @livesdojust

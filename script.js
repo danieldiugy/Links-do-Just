@@ -1,5 +1,6 @@
 // =============================================================================
 // ARQUIVO: script.js
+// Objetivo: Controlar partículas, ano no footer, modais e gerar giveaways
 // =============================================================================
 
 // ────────────────────────────────────────────────
@@ -27,7 +28,6 @@ if (particulasContainer) {
 // 2. DOM READY + LIVE CHECK + GIVEAWAYS
 // ────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
-    // Ano no footer
     const elementoAno = document.getElementById("year");
     if (elementoAno) {
         elementoAno.textContent = new Date().getFullYear();
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Verifica live na Twitch
     verificarLiveTwitch();
-    setInterval(verificarLiveTwitch, 60000); // 1 minuto
+    setInterval(verificarLiveTwitch, 60000);
 });
 
 // ────────────────────────────────────────────────
@@ -55,7 +55,6 @@ async function verificarLiveTwitch() {
         const texto = await response.text();
 
         if (texto.toLowerCase().includes("offline") || texto.trim() === "") {
-            // Offline
             twitchBtn.classList.remove("live-active");
             textoBtn.innerHTML = `
                 <span class="live-dot"></span>
@@ -64,7 +63,6 @@ async function verificarLiveTwitch() {
             const badge = twitchBtn.querySelector(".live-time-badge");
             if (badge) badge.remove();
         } else {
-            // Online
             twitchBtn.classList.add("live-active");
             textoBtn.innerHTML = `
                 <span class="live-indicator">
@@ -73,7 +71,6 @@ async function verificarLiveTwitch() {
                 </span>
             `;
 
-            // Extrai tempo (ex: "2 hours 14 minutes" → "há 2 horas")
             let textoFinal = "";
             const horasMatch = texto.match(/(\d+)\s*hour/);
             const minutosMatch = texto.match(/(\d+)\s*minute/);
@@ -106,7 +103,7 @@ function gerarCartoesEModais() {
     const container = document.getElementById("giveaways-container");
     if (!container) return;
 
-    container.innerHTML = '<p style="text-align:center; color:#aaa;">A carregar giveaways...</p>';
+    container.innerHTML = '<p style="text-align:center; color:#aaa; padding: 40px 0;">A carregar giveaways...</p>';
 
     fetch('gerirgiveaways.json')
         .then(response => {
@@ -118,14 +115,22 @@ function gerarCartoesEModais() {
         .then(listaDeGiveaways => {
             container.innerHTML = ""; // Limpa o loading
 
-            if (!Array.isArray(listaDeGiveaways) || listaDeGiveaways.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#aaa;">Nenhum giveaway disponível.</p>';
+            // Filtra apenas os ativos
+            const ativos = listaDeGiveaways.filter(g => g.status === "on");
+
+            if (ativos.length === 0) {
+                // Nenhum giveaway ativo
+                container.innerHTML = `
+                    <p style="text-align:center; color:#aaa; padding: 60px 20px; font-size: 1.2rem;">
+                        Não há giveaways neste momento
+                    </p>
+                `;
                 return;
             }
 
-            const ordenados = [...listaDeGiveaways].sort((a, b) => {
-                if (a.status === "on" && b.status !== "on") return -1;
-                if (a.status !== "on" && b.status === "on") return 1;
+            // Ordena só os ativos (não precisa ordenar terminados se não mostramos)
+            const ordenados = [...ativos].sort((a, b) => {
+                // Se quiseres ordenar por outro critério, adiciona aqui
                 return 0;
             });
 
@@ -232,43 +237,16 @@ function gerarCartoesEModais() {
 
                 modal.innerHTML = `<div class="modal-content">${conteudoModal}</div>`;
 
-                modal.querySelector(".close-modal").addEventListener("click", () => fecharModal(`modal-${giveaway.id}`));
+                modal.querySelector(".close-modal").addEventListener("click", () => abrirModal(`modal-${giveaway.id}`));
 
                 document.body.appendChild(modal);
             });
         })
         .catch(error => {
             console.error('Erro ao carregar giveaways:', error);
-            container.innerHTML = `<p style="text-align:center; color:#ff4444; padding:20px;">
+            container.innerHTML = `<p style="text-align:center; color:#ff4444; padding:60px 20px; font-size:1.2rem;">
                 Erro ao carregar os giveaways: ${error.message}<br>
-                Verifica se "gerirgiveaways.json" existe na raiz e é válido.
+                Verifica se "gerirgiveaways.json" existe e é válido.
             </p>`;
         });
 }
-
-// ────────────────────────────────────────────────
-// 6. FUNÇÕES DE MODAL (já tinhas, mantive)
-// ────────────────────────────────────────────────
-function abrirModal(idDoModal) {
-    const modal = document.getElementById(idDoModal);
-    if (!modal) return;
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
-}
-
-function fecharModal(idDoModal) {
-    const modal = document.getElementById(idDoModal);
-    if (!modal) return;
-    modal.classList.remove("active");
-    document.body.style.overflow = "auto";
-}
-
-window.addEventListener("click", e => {
-    if (e.target.classList.contains("modal")) fecharModal(e.target.id);
-});
-
-document.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-        document.querySelectorAll(".modal.active").forEach(m => fecharModal(m.id));
-    }
-});

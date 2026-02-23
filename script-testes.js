@@ -42,19 +42,19 @@ document.addEventListener("DOMContentLoaded", () => {
 // ────────────────────────────────────────────────
 function atualizarSeguidores() {
     // Twitch (valor fixo aproximado - muda para o teu real)
-    const twitchFollowers = 29700; // 29.7K → "29.000+"
+    const twitchFollowers = 29000; // 29.7K → "29.000+"
     adicionarSeguidores('twitch-followers', twitchFollowers);
 
     // Instagram (valor fixo aproximado - muda para o teu real)
-    const instagramFollowers = 184525; // 184.525 → "184.000+"
+    const instagramFollowers = 18000; // 184.525 → "184.000+"
     adicionarSeguidores('instagram-followers', instagramFollowers);
 
     // TikTok @just99c (valor fixo aproximado)
-    const tiktok1Followers = 181900; // 181.9K → "181.000+"
+    const tiktok1Followers = 181000; // 181.9K → "181.000+"
     adicionarSeguidores('tiktok1-followers', tiktok1Followers);
 
     // TikTok @maisdojust (valor fixo aproximado)
-    const tiktok2Followers = 883; // 883 → "800+"
+    const tiktok2Followers = 800; // 883 → "800+"
     adicionarSeguidores('tiktok2-followers', tiktok2Followers);
 
     // TikTok @livesdojust (valor fixo aproximado)

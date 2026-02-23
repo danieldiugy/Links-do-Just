@@ -60,6 +60,10 @@ function atualizarSeguidores() {
     // TikTok @livesdojust
     const tiktok3Followers = 15000; // 15K → "15.000+"
     adicionarSeguidores('tiktok3-followers', tiktok3Followers);
+
+    // YouTube @just99500
+    const youtubeFollowers = 150000; // 150.000 → "150.000+"
+    adicionarSeguidores('youtube-followers', youtubeFollowers);
 }
 
 // Formata número para o estilo que queres: arredondado para baixo + "+"

@@ -46,9 +46,9 @@ body {
 /* CONTAINER */
 /* ========================= */
 .container {
-  max-width: 500px; /* Reduzido para caber melhor */
+  max-width: 500px;
   margin: 0 auto;
-  padding: 30px 15px; /* Menos padding lateral e vertical */
+  padding: 30px 15px;
   position: relative;
   z-index: 1;
 }
@@ -57,7 +57,7 @@ body {
 /* AVATAR */
 /* ========================= */
 .avatar {
-  width: 90px; /* Menor para equilibrar */
+  width: 90px;
   height: 90px;
   border-radius: 50%;
   border: 2px solid #d4af37;
@@ -71,7 +71,7 @@ body {
 /* TÍTULO */
 /* ========================= */
 h1 {
-  font-size: 1.8rem; /* Reduzido */
+  font-size: 1.8rem;
   font-weight: 700;
   text-align: center;
   margin-bottom: 40px;
@@ -85,21 +85,21 @@ h1 {
 .links {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Espaço bem pequeno entre botões */
+  gap: 10px; /* Espaço bom entre botões */
 }
 
-/* Botões MUITO mais pequenos e compactos */
+/* Botões compactos mas legíveis */
 .btn {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 10px 16px; /* Muito menor */
+  justify-content: flex-start; /* Alinha conteúdo ao topo */
+  padding: 12px 20px; /* Espaço interno equilibrado */
   background: rgba(20, 20, 20, 0.6);
-  border: 1px solid #d4af37; /* Borda fina */
+  border: 1px solid #d4af37;
   color: #ffffff;
-  font-size: 0.85rem; /* Texto menor */
+  font-size: 0.9rem;
   font-weight: 600;
   border-radius: 10px;
   text-decoration: none;
@@ -107,7 +107,7 @@ h1 {
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 8px rgba(0,0,0,0.5);
   text-align: center;
-  min-height: 70px; /* Altura mínima reduzida */
+  min-height: 80px; /* Altura mínima confortável */
   width: 100%;
 }
 
@@ -118,11 +118,11 @@ h1 {
   border-color: #ffd700;
 }
 
-/* Ícones menores */
+/* Ícones no topo, centralizados */
 .icon {
-  width: 28px; /* Reduzido */
-  height: 28px;
-  margin-bottom: 4px;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 6px; /* Espaço entre ícone e texto */
 }
 
 .icon svg {
@@ -132,44 +132,60 @@ h1 {
   color: #ffffff;
 }
 
+/* Texto principal logo abaixo do ícone */
+.btn-text {
+  margin-top: 2px;
+}
+
 /* ========================= */
-/* FOLLOWERS (SVG + número pequeno e fino) */
+/* FOLLOWERS (pequeno e fino) */
 /* ========================= */
 .followers {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  font-size: 0.75rem; /* Números bem pequenos */
-  font-weight: 500; /* Mais fino */
+  font-size: 0.7rem; /* Muito pequeno */
+  font-weight: 500; /* Fino */
   color: #cccccc;
   margin-top: 2px;
   opacity: 0.9;
 }
 
 .followers-svg {
-  width: 14px; /* SVG pequeno, alinhado com texto fino */
-  height: 14px;
+  width: 12px;
+  height: 12px;
   fill: #d4af37; /* Cor da borda dos botões */
 }
 
 /* ========================= */
-/* BADGE "NOVO" (se tiveres) */
+/* BADGE "NOVO" (amarela/dourada) */
 /* ========================= */
+.new-badge-container {
+  position: relative;
+}
+
 .new-badge {
   position: absolute;
   top: 6px;
   right: 6px;
-  background: #ff3366;
-  color: white;
-  font-size: 0.6rem;
+  background: #d4af37; /* Dourado igual à borda */
+  color: #000000; /* Texto preto para contraste */
+  font-size: 0.65rem;
   font-weight: 900;
   padding: 2px 6px;
   border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(255, 51, 102, 0.5);
+  box-shadow: 0 1px 4px rgba(212, 175, 55, 0.5);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   z-index: 10;
+  animation: pulse-badge 2s infinite;
+}
+
+@keyframes pulse-badge {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }
 
 /* ========================= */
@@ -183,7 +199,7 @@ footer {
 }
 
 /* ========================= */
-/* RESPONSIVO - ainda mais compacto em mobile */
+/* RESPONSIVO */
 /* ========================= */
 @media (max-width: 480px) {
   .container {
@@ -196,28 +212,28 @@ footer {
   }
 
   .btn {
-    padding: 8px 12px;
-    font-size: 0.8rem;
-    min-height: 60px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    min-height: 70px;
   }
 
   .icon {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 3px;
+    width: 26px;
+    height: 26px;
+    margin-bottom: 4px;
   }
 
   .followers {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     gap: 3px;
   }
 
   .followers-svg {
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
   }
 
   .links {
-    gap: 6px;
+    gap: 8px;
   }
 }

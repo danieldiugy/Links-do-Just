@@ -275,3 +275,13 @@ document.addEventListener("keydown", e => {
         document.querySelectorAll(".modal.active").forEach(m => fecharModal(m.id));
     }
 });
+// Atualiza contagem de seguidores (valores fixos para teste — depois podes usar API)
+document.addEventListener("DOMContentLoaded", () => {
+  // ... teu código atual ...
+
+  // Contagem de seguidores (exemplo fixo — muda para os teus números reais)
+  document.getElementById("twitch-followers").textContent = "12.4K";
+  document.getElementById("instagram-followers").textContent = "8.7K";
+  document.getElementById("tiktok-followers").textContent = "45.2K";
+  // Se tiveres mais TikTok, adiciona os IDs correspondentes
+});

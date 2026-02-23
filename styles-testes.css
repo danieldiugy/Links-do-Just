@@ -469,3 +469,23 @@ footer {
 .giveaway-card.terminated .overlay {
   background: linear-gradient(to top, rgba(255,0,0,0.4), rgba(0,0,0,0.85));
 }
+.followers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #cccccc;
+  opacity: 0.9;
+}
+
+.followers-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+.followers-count {
+  font-weight: 600;
+}

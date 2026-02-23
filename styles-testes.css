@@ -88,11 +88,11 @@ h1 {
   gap: 10px;
 }
 
-/* Botões compactos, ícone à esquerda, texto no meio */
+/* Botões: ícone à esquerda, texto no centro vertical */
 .btn {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: center; /* Alinha tudo verticalmente no centro */
   justify-content: flex-start;
   padding: 12px 20px;
   background: rgba(20, 20, 20, 0.6);
@@ -131,8 +131,8 @@ h1 {
   color: #ffffff;
 }
 
-/* Texto centralizado verticalmente ao lado do ícone */
-.btn-text {
+/* Texto no centro vertical (ao lado do ícone) */
+.btn > span:not(.icon):not(.followers) {
   flex: 1;
   text-align: left;
 }
@@ -147,7 +147,7 @@ h1 {
   font-size: 0.7rem;
   font-weight: 500;
   color: #cccccc;
-  margin-left: auto; /* Alinha à direita, se quiseres; ou remove para ficar ao lado do texto */
+  margin-left: auto; /* Alinha à direita */
   opacity: 0.9;
 }
 

@@ -106,25 +106,18 @@ function verificarLiveTwitch() {
   fetch('https://decapi.me/twitch/uptime/just99c')
     .then(response => response.text())
     .then(status => {
-      console.log('Resposta DecAPI (uptime):', status.trim());
       const liveText = document.querySelector('#twitch-btn .btn-text');
-      const liveDot = document.querySelector('#twitch-btn .live-dot');
       const statusLower = status.trim().toLowerCase();
 
       if (statusLower.includes('offline') || statusLower === '') {
         liveText.innerHTML = '<span class="live-dot"></span> Live às 22h';
-        liveDot.classList.remove('pulse');
       } else {
-        liveText.innerHTML = '<span class="live-dot"></span> EM LIVE';
-        liveDot.classList.add('pulse');
+        liveText.innerHTML = '<span class="live-dot pulse"></span> EM LIVE';
       }
     })
-    .catch(error => {
-      console.error('Erro ao verificar live com DecAPI:', error);
+    .catch(() => {
       const liveText = document.querySelector('#twitch-btn .btn-text');
-      const liveDot = document.querySelector('#twitch-btn .live-dot');
       liveText.innerHTML = '<span class="live-dot"></span> Live às 22h';
-      liveDot.classList.remove('pulse');
     });
 }
 

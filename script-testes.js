@@ -41,12 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
 // 3. ATUALIZAR SEGUIDORES (SVG + número com ponto + "+")
 // ────────────────────────────────────────────────
 function atualizarSeguidores() {
-    // Twitch
+    // Twitch (valor fixo aproximado - muda para o teu real)
     const twitchFollowers = 29700; // 29.7K → "29.700+"
     adicionarSeguidores('twitch-followers', twitchFollowers);
 
-    // Instagram
-    const instagramFollowers = 184525; // 184.525 → "184.525+"
+    // Instagram - Atualizado para 18.000+
+    const instagramFollowers = 18000; // Mostra "18.000+"
     adicionarSeguidores('instagram-followers', instagramFollowers);
 
     // TikTok @just99c

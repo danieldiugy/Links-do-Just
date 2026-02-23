@@ -58,7 +58,7 @@ function atualizarSeguidores() {
     adicionarSeguidores('tiktok2-followers', tiktok2Followers);
 
     // TikTok @livesdojust
-    const tiktok3Followers = 15000; // 15K → "15.000+"
+    const tiktok3Followers = 500; // 500 → "500+"
     adicionarSeguidores('tiktok3-followers', tiktok3Followers);
 
     // YouTube @just99500

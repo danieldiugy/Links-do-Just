@@ -24,7 +24,7 @@ if (particulasContainer) {
 }
 
 // ────────────────────────────────────────────────
-// 2. DOM READY + ANO + SEGUIDORES + LIVE
+// 2. DOM READY + ATUALIZA ANO + SEGUIDORES + LIVE
 // ────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
     const elementoAno = document.getElementById("year");
@@ -42,23 +42,23 @@ document.addEventListener("DOMContentLoaded", () => {
 // ────────────────────────────────────────────────
 function atualizarSeguidores() {
     // Twitch (valor fixo aproximado - muda para o teu real)
-    const twitchFollowers = 29000; // 29.7K → "29.000+"
+    const twitchFollowers = 29700; // 29.7K → "29.000+"
     adicionarSeguidores('twitch-followers', twitchFollowers);
 
-    // Instagram (valor fixo aproximado - muda para o teu real)
-    const instagramFollowers = 18000; // 184.525 → "184.000+"
+    // Instagram
+    const instagramFollowers = 184525; // 184.525 → "184.000+"
     adicionarSeguidores('instagram-followers', instagramFollowers);
 
-    // TikTok @just99c (valor fixo aproximado)
-    const tiktok1Followers = 181000; // 181.9K → "181.000+"
+    // TikTok @just99c
+    const tiktok1Followers = 181900; // 181.9K → "181.000+"
     adicionarSeguidores('tiktok1-followers', tiktok1Followers);
 
-    // TikTok @maisdojust (valor fixo aproximado)
-    const tiktok2Followers = 800; // 883 → "800+"
+    // TikTok @maisdojust
+    const tiktok2Followers = 883; // 883 → "800+"
     adicionarSeguidores('tiktok2-followers', tiktok2Followers);
 
-    // TikTok @livesdojust (valor fixo aproximado)
-    const tiktok3Followers = 500; // 15K → "15.000+"
+    // TikTok @livesdojust
+    const tiktok3Followers = 15000; // 15K → "15.000+"
     adicionarSeguidores('tiktok3-followers', tiktok3Followers);
 }
 
@@ -95,25 +95,36 @@ function adicionarSeguidores(id, count) {
 }
 
 // ────────────────────────────────────────────────
-// 4. DETECÇÃO DE LIVE NA TWITCH COM DECAPI
+// 4. DETECÇÃO DE LIVE NA TWITCH COM DECAPI (corrigida e com debug)
 // ────────────────────────────────────────────────
 function verificarLiveTwitch() {
   fetch('https://decapi.me/twitch/uptime/just99c')
     .then(response => response.text())
     .then(status => {
+      console.log('Resposta DecAPI (uptime):', status.trim()); // Debug para ver o que retorna
+
       const liveText = document.querySelector('#twitch-btn .btn-text');
       const liveDot = document.querySelector('#twitch-btn .live-dot');
 
-      if (status.trim() !== 'Offline' && status.trim() !== '') {
-        liveText.innerHTML = '<span class="live-dot"></span> EM LIVE';
-        liveDot.classList.add('pulse');
-      } else {
+      const statusLower = status.trim().toLowerCase();
+
+      if (statusLower.includes('offline') || statusLower === '') {
+        // Offline
         liveText.innerHTML = '<span class="live-dot"></span> Live às 22h';
         liveDot.classList.remove('pulse');
+      } else {
+        // Online
+        liveText.innerHTML = '<span class="live-dot"></span> EM LIVE';
+        liveDot.classList.add('pulse');
       }
     })
     .catch(error => {
       console.error('Erro ao verificar live com DecAPI:', error);
+      // Fallback: mantém "Live às 22h" se der erro
+      const liveText = document.querySelector('#twitch-btn .btn-text');
+      const liveDot = document.querySelector('#twitch-btn .live-dot');
+      liveText.innerHTML = '<span class="live-dot"></span> Live às 22h';
+      liveDot.classList.remove('pulse');
     });
 }
 

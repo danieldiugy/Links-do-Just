@@ -503,3 +503,19 @@
   transform: scale(1.05);
   transition: 0.2s ease;
 }
+.followers-corner {
+  position: absolute;
+  bottom: 8px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.followers-corner svg {
+  width: 14px;
+  height: 14px;
+}

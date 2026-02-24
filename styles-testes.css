@@ -182,6 +182,7 @@ h1 {
   opacity: 0.9;
   pointer-events: none;
   z-index: 1;
+  transition: opacity 0.2s ease;
 }
 .followers-badge svg {
   width: 13px;
@@ -204,6 +205,12 @@ h1 {
 
 .btn:hover .followers-badge {
   opacity: 1;
+}
+
+/* ✅ MELHORIA: esconder seguidores no Twitch quando está live */
+#twitch-btn.live-active > .followers-badge {
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
 /* ========================= */

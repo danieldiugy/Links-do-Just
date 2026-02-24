@@ -1,471 +1,505 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Inter', system-ui, sans-serif;
-  min-height: 100vh;
-  color: #ffffff;
-  background: linear-gradient(135deg, #000000 0%, #0d0d0d 100%);
-  overflow-x: hidden;
-  position: relative;
-}
-/* ========================= */
-/* PARTÍCULAS */
-/* ========================= */
-.particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-}
-.particle {
-  position: absolute;
-  background: rgba(255, 215, 0, 0.6);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: float linear infinite;
-  box-shadow:
-    0 0 12px rgba(255, 215, 0, 0.5),
-    0 0 20px rgba(255, 215, 0, 0.3);
-}
-@keyframes float {
-  0% { transform: translateY(100vh) scale(0.2); opacity: 0; }
-  10% { opacity: 0.9; }
-  90% { opacity: 0.9; }
-  100% { transform: translateY(-20vh) scale(0.4); opacity: 0; }
-}
-/* ========================= */
-/* CONTAINER */
-/* ========================= */
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  position: relative;
-  z-index: 1;
-}
-/* ========================= */
-/* AVATAR */
-/* ========================= */
-.avatar {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  border: 2px solid #d4af37;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 20px;
-  box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
-}
-/* Azul apenas na página giveaways */
-.giveaways-page .avatar {
-  border: 2px solid #1e90ff;
-  box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
-}
-/* ========================= */
-/* TÍTULO */
-/* ========================= */
-h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 60px;
-  color: #ffffff;
-  text-shadow: 0 2px 12px rgba(212, 175, 55, 0.5);
-}
-.giveaways-page h1 {
-  text-shadow: 0 2px 12px rgba(30, 144, 255, 0.5);
-}
-/* ========================= */
-/* LINKS */
-/* ========================= */
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-/* ========================= */
-/* BOTÕES NORMAIS */
-/* ========================= */
-.btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 22px 50px;
-  background: rgba(20, 20, 20, 0.6);
-  border: 2px solid #d4af37;
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-}
-.btn:hover {
-  background: rgba(40, 40, 40, 0.8);
-  transform: translateY(-4px);
-  box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
-  border-color: #ffd700;
-}
-.giveaways-page .btn {
-  border: 1px solid #1e90ff;
-}
-/* Partículas azuis na página Giveaways */
-.giveaways-page .particle {
-  background: rgba(30, 144, 255, 0.8);
-  box-shadow:
-    0 0 20px rgba(30, 144, 255, 0.9),
-    0 0 40px rgba(30, 144, 255, 0.6),
-    0 0 60px rgba(30, 144, 255, 0.3);
-}
-.giveaways-page .btn:hover {
-  border-color: #3aa0ff;
-  box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
-}
-/* ========================= */
-/* ICONES */
-/* ========================= */
-.icon {
-  position: absolute;
-  left: 20px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.icon svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  color: #ffffff;
-}
-/* ========================= */
-/* GIVEAWAY CARDS */
-/* ========================= */
-.giveaway-card {
-  position: relative;
-  display: block;
-  height: 220px;
-  border: 2px solid #1e90ff;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #0f0f0f;
-  text-decoration: none;
-  color: #ffffff;
-  transition: 0.3s ease;
-}
-.giveaway-card:visited {
-  color: #ffffff;
-}
-.giveaway-card:hover {
-  color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(30,144,255,0.4);
-}
-.giveaway-card:active {
-  color: #ffffff;
-}
-.giveaway-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 20px;
-  pointer-events: none;
-}
-.overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
-  text-align: center;
-  font-weight: 700;
-  font-size: 0.9rem;
-  pointer-events: none;
-}
-/* BADGES - Destaque ajustado (mais pequeno e equilibrado) */
-.badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  font-size: 0.75rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  color: white;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
-  z-index: 5;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-}
-
-.giveaway-card:hover .badge {
-  transform: scale(1.08);
-  box-shadow: 0 6px 15px rgba(255,255,255,0.15);
-}
-
-.badge.on {
-  background: #00ff66;
-  animation: pulse-soft 2.5s infinite ease-in-out;
-  box-shadow: 0 0 18px rgba(0,255,102,0.7);
-}
-
-.badge.off {
-  background: #ff3333;
-  box-shadow: 0 0 22px rgba(255,51,51,0.8);
-}
-
-@keyframes pulse-soft {
-  0% { box-shadow: 0 0 8px rgba(0,255,102,0.5), 0 0 16px rgba(0,255,102,0.3); }
-  50% { box-shadow: 0 0 18px rgba(0,255,102,0.9), 0 0 28px rgba(0,255,102,0.6); }
-  100% { box-shadow: 0 0 8px rgba(0,255,102,0.5), 0 0 16px rgba(0,255,102,0.3); }
-}
-/* ========================= */
-/* FOOTER */
-/* ========================= */
-footer {
-  text-align: center;
-  margin-top: 48px;
-  font-size: 0.85rem;
-  color: #777777;
-}
-/* ========================= */
-/* RESPONSIVO */
-/* ========================= */
-@media (max-width: 768px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+    color: #ffffff;
+    background: linear-gradient(135deg, #000000 0%, #0d0d0d 100%);
+    overflow-x: hidden;
+    position: relative;
+  }
+  /* ========================= */
+  /* PARTÍCULAS */
+  /* ========================= */
+  .particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .particle {
+    position: absolute;
+    background: rgba(255, 215, 0, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: float linear infinite;
+    box-shadow:
+      0 0 12px rgba(255, 215, 0, 0.5),
+      0 0 20px rgba(255, 215, 0, 0.3);
+  }
+  @keyframes float {
+    0% { transform: translateY(100vh) scale(0.2); opacity: 0; }
+    10% { opacity: 0.9; }
+    90% { opacity: 0.9; }
+    100% { transform: translateY(-20vh) scale(0.4); opacity: 0; }
+  }
+  /* ========================= */
+  /* CONTAINER */
+  /* ========================= */
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+  }
+  /* ========================= */
+  /* AVATAR */
+  /* ========================= */
+  .avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 2px solid #d4af37;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 20px;
+    box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
+  }
+  /* Azul apenas na página giveaways */
+  .giveaways-page .avatar {
+    border: 2px solid #1e90ff;
+    box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
+  }
+  /* ========================= */
+  /* TÍTULO */
+  /* ========================= */
   h1 {
-    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+    color: #ffffff;
+    text-shadow: 0 2px 12px rgba(212, 175, 55, 0.5);
   }
+  .giveaways-page h1 {
+    text-shadow: 0 2px 12px rgba(30, 144, 255, 0.5);
+  }
+  /* ========================= */
+  /* LINKS */
+  /* ========================= */
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  /* ========================= */
+  /* BOTÕES NORMAIS */
+  /* ========================= */
   .btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 50px;
+    background: rgba(20, 20, 20, 0.6);
+    border: 2px solid #d4af37;
+    color: #ffffff;
     font-size: 1rem;
+    font-weight: 700;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
   }
-}
+  .btn:hover {
+    background: rgba(40, 40, 40, 0.8);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
+    border-color: #ffd700;
+  }
+  .giveaways-page .btn {
+    border: 1px solid #1e90ff;
+  }
+  /* Partículas azuis na página Giveaways */
+  .giveaways-page .particle {
+    background: rgba(30, 144, 255, 0.8);
+    box-shadow:
+      0 0 20px rgba(30, 144, 255, 0.9),
+      0 0 40px rgba(30, 144, 255, 0.6),
+      0 0 60px rgba(30, 144, 255, 0.3);
+  }
+  .giveaways-page .btn:hover {
+    border-color: #3aa0ff;
+    box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
+  }
+  /* ========================= */
+  /* ICONES */
+  /* ========================= */
+  .icon {
+    position: absolute;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: #ffffff;
+  }
+  /* ========================= */
+  /* GIVEAWAY CARDS */
+  /* ========================= */
+  .giveaway-card {
+    position: relative;
+    display: block;
+    height: 220px;
+    border: 2px solid #1e90ff;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #0f0f0f;
+    text-decoration: none;
+    color: #ffffff;
+    transition: 0.3s ease;
+  }
+  .giveaway-card:visited {
+    color: #ffffff;
+  }
+  .giveaway-card:hover {
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(30,144,255,0.4);
+  }
+  .giveaway-card:active {
+    color: #ffffff;
+  }
+  .giveaway-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+    pointer-events: none;
+  }
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    pointer-events: none;
+  }
+  /* BADGES - Destaque ajustado (mais pequeno e equilibrado) */
+  .badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: white;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+    z-index: 5;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+  }
+
+  .giveaway-card:hover .badge {
+    transform: scale(1.08);
+    box-shadow: 0 6px 15px rgba(255,255,255,0.15);
+  }
+
+  .badge.on {
+    background: #00ff66;
+    animation: pulse-soft 2.5s infinite ease-in-out;
+    box-shadow: 0 0 18px rgba(0,255,102,0.7);
+  }
+
+  .badge.off {
+    background: #ff3333;
+    box-shadow: 0 0 22px rgba(255,51,51,0.8);
+  }
+
+  @keyframes pulse-soft {
+    0% { box-shadow: 0 0 8px rgba(0,255,102,0.5), 0 0 16px rgba(0,255,102,0.3); }
+    50% { box-shadow: 0 0 18px rgba(0,255,102,0.9), 0 0 28px rgba(0,255,102,0.6); }
+    100% { box-shadow: 0 0 8px rgba(0,255,102,0.5), 0 0 16px rgba(0,255,102,0.3); }
+  }
+  /* ========================= */
+  /* FOOTER */
+  /* ========================= */
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    font-size: 0.85rem;
+    color: #777777;
+  }
+  /* ========================= */
+  /* RESPONSIVO */
+  /* ========================= */
+  @media (max-width: 768px) {
+    h1 {
+      margin-bottom: 30px;
+    }
+    .btn {
+      font-size: 1rem;
+    }
+  }
+  /* ========================= */
+  /* INFO BUTTON */
+  /* ========================= */
+  .info-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 26px;
+    height: 26px;
+    background: #1e90ff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    z-index: 5;
+    transition: 0.3s;
+  }
+  .info-btn:hover {
+    background: #3aa0ff;
+    transform: scale(1.1);
+  }
+  /* ========================= */
+  /* MODAL - Ajustes para imagem ficar dentro da box */
+  /* ========================= */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  .modal.active {
+    display: flex;
+  }
+  .modal-content {
+    position: relative;
+    background: #111;
+    padding: 30px 20px; /* Reduzi padding lateral para dar mais espaço */
+    border-radius: 12px;
+    width: 90%;
+    max-width: 420px; /* Aumentei ligeiramente a largura máxima */
+    max-height: 90vh; /* Limita a altura total do modal */
+    overflow-y: auto; /* Scroll se o conteúdo for muito longo */
+    text-align: center;
+    box-shadow: 0 0 25px rgba(30,144,255,0.4);
+    animation: fadeIn 0.3s ease;
+  }
+  .modal-content h2 {
+    margin-bottom: 15px;
+  }
+  .close-modal {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  /* IMAGEM NO MODAL - Corrigido para ficar dentro da box */
+  .modal-img {
+    width: 100%;
+    max-height: 220px; /* Aumentado de 180px para caber melhor */
+    object-fit: contain; /* Mantém proporção sem distorcer */
+    margin-bottom: 20px;
+    border-radius: 8px;
+    display: block;
+    background: #222; /* Fundo escuro caso imagem não preencha */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  /* ========================= */
+  /* BOTÃO PARTICIPAR */
+  /* ========================= */
+  .participar-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #00c853;
+    color: white;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .participar-btn:hover {
+    background: #00e676;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(0,200,83,0.6);
+  }
+  .participar-btn.disabled {
+    background: #555;
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.7;
+  }
+  .participar-btn.disabled:hover {
+    transform: none;
+    background: #555;
+  }
+  @keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(0,200,83,0.8); }
+    70% { box-shadow: 0 0 0 15px rgba(0,200,83,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,200,83,0); }
+  }
+  .modal-content p {
+    margin: 6px 0;
+  }
+  .modal-content .winner {
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  .modal-content .descricao {
+    margin-top: 2px;
+    margin-bottom: 14px;
+    opacity: 0.85;
+  }
+  /* ========================= */
+  /* TWITCH LIVE EFFECT */
+  /* ========================= */
+
+  .btn.live-active {
+    border-color: #ff0000 !important;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+    animation: pulse-live 1.5s infinite;
+  }
+
+  @keyframes pulse-live {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.8);
+    }
+    70% {
+      box-shadow: 0 0 0 18px rgba(255, 0, 0, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+    }
+  }
+  /* ========================= */
+  /* BADGE LIVE TIME */
+  /* ========================= */
+
+  .live-time-badge {
+    position: absolute;
+    right: 18px;
+    padding: 6px 10px;
+    background: #ff0000;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 999px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+    animation: pulse-live-badge 2s infinite;
+  }
+
+  @keyframes pulse-live-badge {
+    0% { box-shadow: 0 0 6px rgba(255,0,0,0.6); }
+    50% { box-shadow: 0 0 14px rgba(255,0,0,0.9); }
+    100% { box-shadow: 0 0 6px rgba(255,0,0,0.6); }
+  }
+  /* ========================= */
+  /* LIVE RED DOT */
+  /* ========================= */
+
+  .live-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .live-circle {
+    width: 10px;
+    height: 10px;
+    background: #ff0000;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+    animation: live-dot-pulse 1.4s infinite;
+  }
+
+  @keyframes live-dot-pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
+    }
+    50% {
+      transform: scale(1.3);
+      box-shadow: 0 0 14px rgba(255, 0, 0, 1);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
+    }
+  }
+  .giveaway-card.terminated {
+    opacity: 0.85;
+    border-color: #ff3333;
+  }
+
+  .giveaway-card.terminated img {
+    filter: grayscale(70%) contrast(80%);
+  }
+
+  .giveaway-card.terminated .overlay {
+    background: linear-gradient(to top, rgba(255,0,0,0.4), rgba(0,0,0,0.85));
+  }
+  /* ========================= */
+/* FOLLOWERS COUNT */
 /* ========================= */
-/* INFO BUTTON */
-/* ========================= */
-.info-btn {
+
+.followers {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 26px;
-  height: 26px;
-  background: #1e90ff;
-  color: white;
-  border-radius: 50%;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.followers-icon {
+  width: 16px;
+  height: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 0.8rem;
-  cursor: pointer;
-  z-index: 5;
-  transition: 0.3s;
 }
-.info-btn:hover {
-  background: #3aa0ff;
-  transform: scale(1.1);
-}
-/* ========================= */
-/* MODAL - Ajustes para imagem ficar dentro da box */
-/* ========================= */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
+
+.followers-icon svg {
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(8px);
-  background: rgba(0,0,0,0.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-.modal.active {
-  display: flex;
-}
-.modal-content {
-  position: relative;
-  background: #111;
-  padding: 30px 20px; /* Reduzi padding lateral para dar mais espaço */
-  border-radius: 12px;
-  width: 90%;
-  max-width: 420px; /* Aumentei ligeiramente a largura máxima */
-  max-height: 90vh; /* Limita a altura total do modal */
-  overflow-y: auto; /* Scroll se o conteúdo for muito longo */
-  text-align: center;
-  box-shadow: 0 0 25px rgba(30,144,255,0.4);
-  animation: fadeIn 0.3s ease;
-}
-.modal-content h2 {
-  margin-bottom: 15px;
-}
-.close-modal {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-/* IMAGEM NO MODAL - Corrigido para ficar dentro da box */
-.modal-img {
-  width: 100%;
-  max-height: 220px; /* Aumentado de 180px para caber melhor */
-  object-fit: contain; /* Mantém proporção sem distorcer */
-  margin-bottom: 20px;
-  border-radius: 8px;
-  display: block;
-  background: #222; /* Fundo escuro caso imagem não preencha */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-}
-/* ========================= */
-/* BOTÃO PARTICIPAR */
-/* ========================= */
-.participar-btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: #00c853;
-  color: white;
-  font-weight: 700;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-.participar-btn:hover {
-  background: #00e676;
-  transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(0,200,83,0.6);
-}
-.participar-btn.disabled {
-  background: #555;
-  cursor: not-allowed;
-  box-shadow: none;
-  opacity: 0.7;
-}
-.participar-btn.disabled:hover {
-  transform: none;
-  background: #555;
-}
-@keyframes pulse-green {
-  0% { box-shadow: 0 0 0 0 rgba(0,200,83,0.8); }
-  70% { box-shadow: 0 0 0 15px rgba(0,200,83,0); }
-  100% { box-shadow: 0 0 0 0 rgba(0,200,83,0); }
-}
-.modal-content p {
-  margin: 6px 0;
-}
-.modal-content .winner {
-  margin-top: 10px;
-  font-weight: 600;
-}
-.modal-content .descricao {
-  margin-top: 2px;
-  margin-bottom: 14px;
-  opacity: 0.85;
-}
-/* ========================= */
-/* TWITCH LIVE EFFECT */
-/* ========================= */
-
-.btn.live-active {
-  border-color: #ff0000 !important;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
-  animation: pulse-live 1.5s infinite;
 }
 
-@keyframes pulse-live {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.8);
-  }
-  70% {
-    box-shadow: 0 0 0 18px rgba(255, 0, 0, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
-  }
-}
-/* ========================= */
-/* BADGE LIVE TIME */
-/* ========================= */
-
-.live-time-badge {
-  position: absolute;
-  right: 18px;
-  padding: 6px 10px;
-  background: #ff0000;
-  color: white;
-  font-size: 0.75rem;
-  font-weight: 700;
-  border-radius: 999px;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
-  animation: pulse-live-badge 2s infinite;
-}
-
-@keyframes pulse-live-badge {
-  0% { box-shadow: 0 0 6px rgba(255,0,0,0.6); }
-  50% { box-shadow: 0 0 14px rgba(255,0,0,0.9); }
-  100% { box-shadow: 0 0 6px rgba(255,0,0,0.6); }
-}
-/* ========================= */
-/* LIVE RED DOT */
-/* ========================= */
-
-.live-indicator {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.live-circle {
-  width: 10px;
-  height: 10px;
-  background: #ff0000;
-  border-radius: 50%;
-  box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
-  animation: live-dot-pulse 1.4s infinite;
-}
-
-@keyframes live-dot-pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
-  }
-  50% {
-    transform: scale(1.3);
-    box-shadow: 0 0 14px rgba(255, 0, 0, 1);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
-  }
-}
-.giveaway-card.terminated {
-  opacity: 0.85;
-  border-color: #ff3333;
-}
-
-.giveaway-card.terminated img {
-  filter: grayscale(70%) contrast(80%);
-}
-
-.giveaway-card.terminated .overlay {
-  background: linear-gradient(to top, rgba(255,0,0,0.4), rgba(0,0,0,0.85));
+/* Pequeno efeito hover */
+.btn:hover .followers {
+  opacity: 1;
+  transform: scale(1.05);
+  transition: 0.2s ease;
 }

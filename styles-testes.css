@@ -79,6 +79,24 @@ h1 {
   pointer-events: none;
 }
 
+.followers {
+  position: absolute;
+  right: 18px;
+  bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.followers svg {
+  width: 14px;
+  height: 14px;
+}
+
 /* DIREITA */
 
 .followers-right {
@@ -94,4 +112,3 @@ h1 {
 .followers-right svg {
   width: 15px;
   height: 15px;
-}

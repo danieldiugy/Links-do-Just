@@ -554,3 +554,21 @@ footer {
 #twitch-btn.live-active .followers-badge {
   pointer-events: none !important;
 }
+/* Badge "NOVO" nos botões */
+.new-badge {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #00c853;
+  color: #ffffff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  line-height: 1;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(0, 200, 83, 0.35);
+  pointer-events: none;
+  z-index: 3;
+}

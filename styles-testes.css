@@ -544,3 +544,13 @@ footer {
 .giveaway-card.terminated .overlay {
   background: linear-gradient(to top, rgba(255,0,0,0.4), rgba(0,0,0,0.85));
 }
+/* Esconder seguidores Twitch quando está live (regra reforçada) */
+#twitch-btn.live-active .followers-badge,
+#twitch-btn.live-active .followers-badge * {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+#twitch-btn.live-active .followers-badge {
+  pointer-events: none !important;
+}

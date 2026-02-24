@@ -65,7 +65,6 @@ body {
   margin: 0 auto 20px;
   box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
 }
-/* Azul apenas na página giveaways */
 .giveaways-page .avatar {
   border: 2px solid #1e90ff;
   box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
@@ -125,7 +124,6 @@ h1 {
 .giveaways-page .btn {
   border: 1px solid #1e90ff;
 }
-/* Partículas azuis na página Giveaways */
 .giveaways-page .particle {
   background: rgba(30, 144, 255, 0.8);
   box-shadow:
@@ -157,7 +155,7 @@ h1 {
   color: #ffffff;
 }
 
-/* label normal dos botões (para manter centro limpo) */
+/* label normal dos botões */
 .btn-label {
   display: inline-flex;
   align-items: center;
@@ -167,8 +165,31 @@ h1 {
 
 /* ========================= */
 /* FOLLOWERS BADGE */
-/* FORÇADO AO CANTO DIREITO INFERIOR */
 /* ========================= */
+/* Regras normais */
+.followers-badge {
+  position: absolute;
+  right: 14px;
+  bottom: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 1;
+}
+.followers-badge svg {
+  width: 13px;
+  height: 13px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+/* BLOQUEIO ANTI-CONFLITO (se existir .btn span { ... } noutro ficheiro) */
 .btn > .followers-badge {
   position: absolute !important;
   right: 14px !important;
@@ -176,30 +197,11 @@ h1 {
   left: auto !important;
   top: auto !important;
   transform: none !important;
-
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 4px !important;
-
-  font-size: 0.72rem !important;
-  font-weight: 600 !important;
-  line-height: 1 !important;
-  white-space: nowrap !important;
-
-  opacity: 0.9;
-  pointer-events: none;
-  z-index: 1;
+  margin: 0 !important;
+  float: none !important;
 }
 
-.btn > .followers-badge svg {
-  width: 13px !important;
-  height: 13px !important;
-  flex: 0 0 auto;
-  display: block;
-}
-
-.btn:hover > .followers-badge {
+.btn:hover .followers-badge {
   opacity: 1;
 }
 
@@ -247,7 +249,6 @@ h1 {
   font-size: 0.9rem;
   pointer-events: none;
 }
-/* BADGES - Destaque ajustado */
 .badge {
   position: absolute;
   top: 12px;
@@ -304,16 +305,14 @@ footer {
   .btn {
     font-size: 1rem;
   }
-
-  .btn > .followers-badge {
-    right: 12px !important;
-    bottom: 5px !important;
-    font-size: 0.68rem !important;
+  .followers-badge {
+    right: 12px;
+    bottom: 5px;
+    font-size: 0.68rem;
   }
-
-  .btn > .followers-badge svg {
-    width: 12px !important;
-    height: 12px !important;
+  .followers-badge svg {
+    width: 12px;
+    height: 12px;
   }
 }
 
@@ -456,9 +455,15 @@ footer {
   animation: pulse-live 1.5s infinite;
 }
 @keyframes pulse-live {
-  0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.8); }
-  70% { box-shadow: 0 0 0 18px rgba(255, 0, 0, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.8);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(255, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+  }
 }
 
 /* ========================= */

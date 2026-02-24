@@ -554,21 +554,29 @@ footer {
 #twitch-btn.live-active .followers-badge {
   pointer-events: none !important;
 }
-/* Badge "NOVO" nos botões */
+/* Badge "NOVO" dourada no canto superior direito */
 .new-badge {
   position: absolute;
-  top: 8px;
-  right: 10px;
-  padding: 3px 8px;
+  top: 0;
+  right: 0;
+  transform: translate(25%, -25%);
+
+  padding: 4px 8px;
   border-radius: 999px;
-  background: #00c853;
-  color: #ffffff;
+  background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
+  color: #111111;
+
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.6px;
   line-height: 1;
   text-transform: uppercase;
-  box-shadow: 0 0 10px rgba(0, 200, 83, 0.35);
+
+  border: 1px solid rgba(255, 215, 0, 0.9);
+  box-shadow:
+    0 0 10px rgba(255, 215, 0, 0.35),
+    0 3px 8px rgba(0,0,0,0.35);
+
   pointer-events: none;
-  z-index: 3;
+  z-index: 4;
 }

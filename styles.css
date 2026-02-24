@@ -11,6 +11,7 @@ body {
   overflow-x: hidden;
   position: relative;
 }
+
 /* ========================= */
 /* PARTÍCULAS */
 /* ========================= */
@@ -39,6 +40,7 @@ body {
   90% { opacity: 0.9; }
   100% { transform: translateY(-20vh) scale(0.4); opacity: 0; }
 }
+
 /* ========================= */
 /* CONTAINER */
 /* ========================= */
@@ -49,6 +51,7 @@ body {
   position: relative;
   z-index: 1;
 }
+
 /* ========================= */
 /* AVATAR */
 /* ========================= */
@@ -62,11 +65,11 @@ body {
   margin: 0 auto 20px;
   box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
 }
-/* Azul apenas na página giveaways */
 .giveaways-page .avatar {
   border: 2px solid #1e90ff;
   box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
 }
+
 /* ========================= */
 /* TÍTULO */
 /* ========================= */
@@ -81,6 +84,7 @@ h1 {
 .giveaways-page h1 {
   text-shadow: 0 2px 12px rgba(30, 144, 255, 0.5);
 }
+
 /* ========================= */
 /* LINKS */
 /* ========================= */
@@ -89,6 +93,7 @@ h1 {
   flex-direction: column;
   gap: 16px;
 }
+
 /* ========================= */
 /* BOTÕES NORMAIS */
 /* ========================= */
@@ -119,7 +124,6 @@ h1 {
 .giveaways-page .btn {
   border: 1px solid #1e90ff;
 }
-/* Partículas azuis na página Giveaways */
 .giveaways-page .particle {
   background: rgba(30, 144, 255, 0.8);
   box-shadow:
@@ -131,6 +135,7 @@ h1 {
   border-color: #3aa0ff;
   box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
 }
+
 /* ========================= */
 /* ICONES */
 /* ========================= */
@@ -149,6 +154,65 @@ h1 {
   display: block;
   color: #ffffff;
 }
+
+/* label normal dos botões */
+.btn-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* ========================= */
+/* FOLLOWERS BADGE */
+/* extremo direito + centrado verticalmente */
+/* ========================= */
+.followers-badge {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.2s ease;
+}
+.followers-badge svg {
+  width: 13px;
+  height: 13px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+/* BLOQUEIO ANTI-CONFLITO */
+.btn > .followers-badge {
+  position: absolute !important;
+  right: 14px !important;
+  top: 50% !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important;
+  float: none !important;
+}
+
+.btn:hover .followers-badge {
+  opacity: 1;
+}
+
+/* ✅ MELHORIA: esconder seguidores no Twitch quando está live */
+#twitch-btn.live-active > .followers-badge {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
 /* ========================= */
 /* GIVEAWAY CARDS */
 /* ========================= */
@@ -193,7 +257,6 @@ h1 {
   font-size: 0.9rem;
   pointer-events: none;
 }
-/* BADGES - Destaque ajustado (mais pequeno e equilibrado) */
 .badge {
   position: absolute;
   top: 12px;
@@ -211,28 +274,25 @@ h1 {
   transition: all 0.3s ease;
   box-shadow: 0 3px 10px rgba(0,0,0,0.5);
 }
-
 .giveaway-card:hover .badge {
   transform: scale(1.08);
   box-shadow: 0 6px 15px rgba(255,255,255,0.15);
 }
-
 .badge.on {
   background: #00ff66;
   animation: pulse-soft 2.5s infinite ease-in-out;
   box-shadow: 0 0 18px rgba(0,255,102,0.7);
 }
-
 .badge.off {
   background: #ff3333;
   box-shadow: 0 0 22px rgba(255,51,51,0.8);
 }
-
 @keyframes pulse-soft {
   0% { box-shadow: 0 0 8px rgba(0,255,102,0.5), 0 0 16px rgba(0,255,102,0.3); }
   50% { box-shadow: 0 0 18px rgba(0,255,102,0.9), 0 0 28px rgba(0,255,102,0.6); }
   100% { box-shadow: 0 0 8px rgba(0,255,102,0.5), 0 0 16px rgba(0,255,102,0.3); }
 }
+
 /* ========================= */
 /* FOOTER */
 /* ========================= */
@@ -242,6 +302,7 @@ footer {
   font-size: 0.85rem;
   color: #777777;
 }
+
 /* ========================= */
 /* RESPONSIVO */
 /* ========================= */
@@ -252,7 +313,22 @@ footer {
   .btn {
     font-size: 1rem;
   }
+  .followers-badge {
+    right: 12px;
+    font-size: 0.68rem;
+  }
+  .followers-badge svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .btn > .followers-badge {
+    right: 12px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
 }
+
 /* ========================= */
 /* INFO BUTTON */
 /* ========================= */
@@ -278,8 +354,9 @@ footer {
   background: #3aa0ff;
   transform: scale(1.1);
 }
+
 /* ========================= */
-/* MODAL - Ajustes para imagem ficar dentro da box */
+/* MODAL */
 /* ========================= */
 .modal {
   position: fixed;
@@ -300,12 +377,12 @@ footer {
 .modal-content {
   position: relative;
   background: #111;
-  padding: 30px 20px; /* Reduzi padding lateral para dar mais espaço */
+  padding: 30px 20px;
   border-radius: 12px;
   width: 90%;
-  max-width: 420px; /* Aumentei ligeiramente a largura máxima */
-  max-height: 90vh; /* Limita a altura total do modal */
-  overflow-y: auto; /* Scroll se o conteúdo for muito longo */
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
   text-align: center;
   box-shadow: 0 0 25px rgba(30,144,255,0.4);
   animation: fadeIn 0.3s ease;
@@ -324,17 +401,17 @@ footer {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
 }
-/* IMAGEM NO MODAL - Corrigido para ficar dentro da box */
 .modal-img {
   width: 100%;
-  max-height: 220px; /* Aumentado de 180px para caber melhor */
-  object-fit: contain; /* Mantém proporção sem distorcer */
+  max-height: 220px;
+  object-fit: contain;
   margin-bottom: 20px;
   border-radius: 8px;
   display: block;
-  background: #222; /* Fundo escuro caso imagem não preencha */
+  background: #222;
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
+
 /* ========================= */
 /* BOTÃO PARTICIPAR */
 /* ========================= */
@@ -381,16 +458,15 @@ footer {
   margin-bottom: 14px;
   opacity: 0.85;
 }
+
 /* ========================= */
 /* TWITCH LIVE EFFECT */
 /* ========================= */
-
 .btn.live-active {
   border-color: #ff0000 !important;
   box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
   animation: pulse-live 1.5s infinite;
 }
-
 @keyframes pulse-live {
   0% {
     box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.8);
@@ -402,13 +478,15 @@ footer {
     box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
   }
 }
+
 /* ========================= */
 /* BADGE LIVE TIME */
 /* ========================= */
-
 .live-time-badge {
   position: absolute;
   right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
   padding: 6px 10px;
   background: #ff0000;
   color: white;
@@ -417,23 +495,22 @@ footer {
   border-radius: 999px;
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
   animation: pulse-live-badge 2s infinite;
+  z-index: 2;
 }
-
 @keyframes pulse-live-badge {
   0% { box-shadow: 0 0 6px rgba(255,0,0,0.6); }
   50% { box-shadow: 0 0 14px rgba(255,0,0,0.9); }
   100% { box-shadow: 0 0 6px rgba(255,0,0,0.6); }
 }
+
 /* ========================= */
 /* LIVE RED DOT */
 /* ========================= */
-
 .live-indicator {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
-
 .live-circle {
   width: 10px;
   height: 10px;
@@ -442,7 +519,6 @@ footer {
   box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
   animation: live-dot-pulse 1.4s infinite;
 }
-
 @keyframes live-dot-pulse {
   0% {
     transform: scale(1);
@@ -457,15 +533,50 @@ footer {
     box-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
   }
 }
+
 .giveaway-card.terminated {
   opacity: 0.85;
   border-color: #ff3333;
 }
-
 .giveaway-card.terminated img {
   filter: grayscale(70%) contrast(80%);
 }
-
 .giveaway-card.terminated .overlay {
   background: linear-gradient(to top, rgba(255,0,0,0.4), rgba(0,0,0,0.85));
+}
+/* Esconder seguidores Twitch quando está live (regra reforçada) */
+#twitch-btn.live-active .followers-badge,
+#twitch-btn.live-active .followers-badge * {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+#twitch-btn.live-active .followers-badge {
+  pointer-events: none !important;
+}
+/* Badge "NOVO" dourada no canto superior direito */
+.new-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(25%, -25%);
+
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
+  color: #111111;
+
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  line-height: 1;
+  text-transform: uppercase;
+
+  border: 1px solid rgba(255, 215, 0, 0.9);
+  box-shadow:
+    0 0 10px rgba(255, 215, 0, 0.35),
+    0 3px 8px rgba(0,0,0,0.35);
+
+  pointer-events: none;
+  z-index: 4;
 }

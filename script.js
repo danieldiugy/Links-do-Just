@@ -180,6 +180,13 @@ function gerarCartoesEModais() {
                 overlay.className = "overlay";
                 overlay.textContent = giveaway.overlayTexto || `${giveaway.site} • ${giveaway.deposito}`;
                 cartao.appendChild(overlay);
+                // ─── TEXTO INFERIOR ESQUERDO ───
+if (giveaway.textoInferior?.trim()) {
+    const bottomLabel = document.createElement("div");
+    bottomLabel.className = "bottom-label";
+    bottomLabel.textContent = giveaway.textoInferior;
+    cartao.appendChild(bottomLabel);
+}
 
                 container.appendChild(cartao);
 

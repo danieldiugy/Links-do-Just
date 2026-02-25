@@ -580,3 +580,27 @@ footer {
   pointer-events: none;
   z-index: 4;
 }
+/* ========================= */
+/* TEXTO INFERIOR GIVEAWAY */
+/* ========================= */
+.bottom-label {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+
+  padding: 4px 10px;
+  border-radius: 999px;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  background: rgba(0,0,0,0.75);
+  color: #ffffff;
+
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.15);
+
+  z-index: 4;
+  pointer-events: none;
+}

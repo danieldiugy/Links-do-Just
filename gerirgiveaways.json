@@ -25,6 +25,7 @@
     "imagem": "assets/butterflygiveawayteste.png",
     "link": "https://linksdojust.com",
     "overlayTexto": "🏆 Terminado – Vencedor revelado"
+    "textoinferior": "csgonet.com"
   },
   {
     "id": 3,
@@ -35,5 +36,6 @@
     "codigo": "50JUST",
     "imagem": "assets/testegiveaway.png",
     "link": "https://linksdojust.com"
+    "textoinferior": "csgonet.com"
   }
 ]

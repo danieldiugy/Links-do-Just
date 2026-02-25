@@ -24,7 +24,7 @@
     "descricaoExtra": "",
     "imagem": "assets/butterflygiveawayteste.png",
     "link": "https://linksdojust.com",
-    "overlayTexto": "🏆 Terminado – Vencedor revelado"
+    "overlayTexto": "🏆 Terminado – Vencedor revelado",
     "textoinferior": "csgonet.com"
   },
   {
@@ -35,7 +35,7 @@
     "deposito": "10€",
     "codigo": "50JUST",
     "imagem": "assets/testegiveaway.png",
-    "link": "https://linksdojust.com"
+    "link": "https://linksdojust.com",
     "textoinferior": "csgonet.com"
   }
 ]

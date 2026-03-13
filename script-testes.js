@@ -54,7 +54,7 @@ async function verificarLiveTwitch() {
             twitchBtn.classList.remove("live-active");
             textoBtn.innerHTML = `
                 <span class="live-dot"></span>
-                Live às 22h
+                Twitch
             `;
             const badge = twitchBtn.querySelector(".live-time-badge");
             if (badge) badge.remove();

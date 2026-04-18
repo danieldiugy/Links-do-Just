@@ -189,7 +189,8 @@ h1 {
   height: 13px;
   display: block;
   flex: 0 0 auto;
-  color: #d4af37;
+  color: #d4af37 !important;
+  fill: #d4af37 !important;
 }
 
 /* BLOQUEIO ANTI-CONFLITO */

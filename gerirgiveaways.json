@@ -1,21 +1,21 @@
 [
   {
     "id": 1,
-    "titulo": "★ Karambit | Doppler",
+    "titulo": "LeonBet Esports",
     "status": "on",
-    "site": "teste.com",
+    "site": "leonbet.com",
     "deposito": "10€",
-    "codigo": "50JUST",
+    "codigo": "JUST",
     "requisitos": "",
     "imagem": "assets/testegiveaway.png",
     "link": "https://linksdojust.com",
-    "overlayTexto": "★ Karambit | Doppler (Factory New)",
-    "textoinferior": "csgonet.com"
+    "overlayTexto": "",
+    "textoinferior": "leonbet.com"
   },
   {
     "id": 2,
     "titulo": "Butterfly Vanilla",
-    "status": "off1",
+    "status": "off0",
     "site": "OutroSite.com",
     "deposito": "20€",
     "codigo": "50JUST",

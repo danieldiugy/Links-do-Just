@@ -165,7 +165,7 @@ function gerarCartoesEModais() {
                     link.addEventListener("click", (evento) => evento.stopPropagation());
                     const img = document.createElement("img");
                     img.src = giveaway.imagem;
-                    img.alt = `${giveaway.titulo} - Participar`;
+                    img.alt = `${giveaway.titulo} - Entrar no Site`;
                     link.appendChild(img);
                     cartao.appendChild(link);
                 } else {

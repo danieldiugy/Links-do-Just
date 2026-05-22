@@ -99,7 +99,7 @@ function gerarCartoesEModais() {
     const container = document.getElementById("giveaways-container");
     if (!container) return;
 
-    container.innerHTML = '<p style="text-align:center; color:#aaa; padding:40px 0;">A carregar giveaways...</p>';
+    container.innerHTML = '<p style="text-align:center; color:#aaa; padding:40px 0;">A carregar patrocínios...</p>';
 
     fetch('gerirgiveaways.json')
         .then(response => {
@@ -119,7 +119,7 @@ function gerarCartoesEModais() {
             if (visiveis.length === 0) {
                 container.innerHTML = `
                     <p style="text-align:center; color:#aaa; padding:60px 20px; font-size:1.2rem;">
-                        Não há giveaways neste momento
+                        Não há sponsors neste momento.
                     </p>
                 `;
                 return;

@@ -4,13 +4,13 @@
     "titulo": "LeonBet Esports",
     "status": "on",
     "site": "leonbet.com",
-    "deposito": "10€",
+    "deposito": "",
     "codigo": "JUST",
     "requisitos": "",
     "imagem": "assets/testegiveaway.png",
     "link": "https://linksdojust.com",
-    "overlayTexto": "",
-    "textoinferior": "leonbet.com"
+    "overlayTexto": "Regista-te e usa o codigo JUST para ganhares 20€ em free bet em depositos acima de 10€.",
+    "textoinferior": "Apostar em eSports"
   },
   {
     "id": 2,

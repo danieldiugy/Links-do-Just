@@ -47,8 +47,8 @@ body {
 .container {
   max-width: 600px;
   margin: 0 auto;
-  padding: 25px 20px 30px;
-  height: calc(100vh - 62px);
+  padding: 20px 20px 25px;
+  height: calc(100vh - 58px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,13 +59,13 @@ body {
 /* AVATAR */
 /* ========================= */
 .avatar {
-  width: 110px;
-  height: 110px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   border: 2px solid #d4af37;
   object-fit: cover;
   display: block;
-  margin: 0 auto 20px;
+  margin: 0 auto 15px;
   box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
 }
 .patrocinios-page .avatar {
@@ -76,10 +76,10 @@ body {
 /* TÍTULO */
 /* ========================= */
 h1 {
-  font-size: 2rem;
+  font-size: 1.95rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
   color: #ffffff;
   text-shadow: 0 2px 12px rgba(212, 175, 55, 0.5);
 }
@@ -93,23 +93,23 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  margin-top: -20px;
-  margin-bottom: 40px;
-  font-size: 0.93rem;
+  gap: 7px;
+  margin-top: -15px;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #cccccc;
 }
 .email-icon {
-  width: 19px;
-  height: 19px;
+  width: 18px;
+  height: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .email-icon svg {
-  width: 19px;
-  height: 19px;
+  width: 18px;
+  height: 18px;
   stroke: #d4af37;
   stroke-width: 2.5;
 }
@@ -122,7 +122,7 @@ h1 {
 .links {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 /* ========================= */
 /* BOTÕES NORMAIS */
@@ -132,11 +132,11 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 50px;
+  padding: 18px 40px;
   background: rgba(20, 20, 20, 0.6);
   border: 2px solid #d4af37;
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 700;
   border-radius: 10px;
   text-decoration: none;
@@ -147,19 +147,12 @@ h1 {
 }
 .btn:hover {
   background: rgba(40, 40, 40, 0.8);
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
   border-color: #ffd700;
 }
 .patrocinios-page .btn {
   border: 1px solid #1e90ff;
-}
-.patrocinios-page .particle {
-  background: rgba(30, 144, 255, 0.8);
-  box-shadow:
-    0 0 20px rgba(30, 144, 255, 0.9),
-    0 0 40px rgba(30, 144, 255, 0.6),
-    0 0 60px rgba(30, 144, 255, 0.3);
 }
 .patrocinios-page .btn:hover {
   border-color: #3aa0ff;
@@ -170,9 +163,9 @@ h1 {
 /* ========================= */
 .icon {
   position: absolute;
-  left: 20px;
-  width: 30px;
-  height: 30px;
+  left: 18px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -195,13 +188,13 @@ h1 {
 /* ========================= */
 .followers-badge {
   position: absolute;
-  right: 14px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
   line-height: 1;
   white-space: nowrap;
@@ -211,8 +204,8 @@ h1 {
   transition: opacity 0.2s ease;
 }
 .followers-badge svg {
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
   display: block;
   flex: 0 0 auto;
   color: #d4af37 !important;
@@ -221,7 +214,7 @@ h1 {
 /* BLOQUEIO ANTI-CONFLITO */
 .btn > .followers-badge {
   position: absolute !important;
-  right: 14px !important;
+  right: 12px !important;
   top: 50% !important;
   bottom: auto !important;
   left: auto !important;
@@ -640,8 +633,7 @@ footer {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
   z-index: 100;
-  padding: 14px 0;
-  transition: all 0.4s ease;
+  padding: 13px 0;
 }
 .nav-container {
   max-width: 600px;
@@ -649,13 +641,13 @@ footer {
   padding: 0 20px;
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 35px;
 }
 .nav-item {
   font-weight: 600;
-  font-size: 1.03rem;
+  font-size: 1rem;
   text-decoration: none;
-  padding: 8px 20px;
+  padding: 8px 18px;
   border-radius: 8px;
   transition: all 0.3s ease;
   position: relative;
@@ -664,7 +656,6 @@ footer {
 .nav-item:hover {
   color: #ffffff;
 }
-/* TEMA AMARELO (Index) */
 body:not(.patrocinios-page) .nav-item:hover {
   background: rgba(255, 215, 0, 0.1);
 }
@@ -682,7 +673,6 @@ body:not(.patrocinios-page) .nav-item.active:after {
   background: #d4af37;
   border-radius: 3px;
 }
-/* TEMA AZUL (Patrocínios) */
 .patrocinios-page .nav-item:hover {
   background: rgba(30, 144, 255, 0.12);
 }
@@ -702,6 +692,11 @@ body:not(.patrocinios-page) .nav-item.active:after {
 }
 /* Responsivo */
 @media (max-width: 480px) {
-  .nav-container { gap: 25px; }
-  .nav-item { font-size: 0.98rem; padding: 8px 16px; }
+  .nav-container { gap: 20px; }
+  .nav-item { font-size: 0.95rem; padding: 7px 14px; }
+  .avatar { width: 88px; height: 88px; }
+  h1 { font-size: 1.85rem; margin-bottom: 20px; }
+  .email { margin-bottom: 25px; font-size: 0.87rem; }
+  .btn { padding: 17px 35px; font-size: 0.96rem; }
+  .links { gap: 11px; }
 }

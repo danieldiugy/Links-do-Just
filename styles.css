@@ -319,43 +319,6 @@ footer {
   color: #777777;
 }
 /* ========================= */
-/* RESPONSIVO */
-/* ========================= */
-@media (max-width: 768px) {
-  body {
-    height: auto;
-    min-height: 100vh;
-    overflow: auto;
-  }
-  .container {
-    height: auto;
-    padding: 40px 20px;
-    justify-content: flex-start;
-  }
-  h1 {
-    margin-bottom: 50px;
-  }
-  .links {
-    gap: 16px;
-  }
-  .btn {
-    font-size: 1rem;
-  }
-  .followers-badge {
-    right: 12px;
-    font-size: 0.68rem;
-  }
-  .followers-badge svg {
-    width: 12px;
-    height: 12px;
-  }
-  .btn > .followers-badge {
-    right: 12px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-  }
-}
-/* ========================= */
 /* INFO BUTTON */
 /* ========================= */
 .info-btn {
@@ -472,15 +435,6 @@ footer {
 }
 .modal-content p {
   margin: 6px 0;
-}
-.modal-content .winner {
-  margin-top: 10px;
-  font-weight: 600;
-}
-.modal-content .descricao {
-  margin-top: 2px;
-  margin-bottom: 14px;
-  opacity: 0.85;
 }
 /* ========================= */
 /* TWITCH LIVE EFFECT */

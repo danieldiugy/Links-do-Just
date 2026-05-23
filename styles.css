@@ -640,44 +640,6 @@ footer {
   transition: all 0.4s ease;
 }
 
-/* TEMA AMARELO (Index) */
-body:not(.patrocinios-page) .nav-bar {
-  background: rgba(15, 15, 15, 0.96);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-}
-body:not(.patrocinios-page) .nav-item {
-  color: #aaaaaa;
-}
-body:not(.patrocinios-page) .nav-item:hover {
-  color: #ffffff;
-  background: rgba(255, 215, 0, 0.1);
-}
-body:not(.patrocinios-page) .nav-item.active {
-  color: #d4af37;
-}
-body:not(.patrocinios-page) .nav-item.active:after {
-  background: #d4af37;
-}
-
-/* TEMA AZUL (Patrocínios) */
-.patrocinios-page .nav-bar {
-  background: rgba(10, 15, 25, 0.96);
-  border-bottom: 1px solid rgba(30, 144, 255, 0.3);
-}
-.patrocinios-page .nav-item {
-  color: #aaaaaa;
-}
-.patrocinios-page .nav-item:hover {
-  color: #ffffff;
-  background: rgba(30, 144, 255, 0.12);
-}
-.patrocinios-page .nav-item.active {
-  color: #3aa0ff;
-}
-.patrocinios-page .nav-item.active:after {
-  background: #3aa0ff;
-}
-
 .nav-container {
   max-width: 600px;
   margin: 0 auto;
@@ -686,6 +648,7 @@ body:not(.patrocinios-page) .nav-item.active:after {
   justify-content: center;
   gap: 40px;
 }
+
 .nav-item {
   font-weight: 600;
   font-size: 1.03rem;
@@ -694,7 +657,53 @@ body:not(.patrocinios-page) .nav-item.active:after {
   border-radius: 8px;
   transition: all 0.3s ease;
   position: relative;
+  color: #aaaaaa;
 }
+
+/* Hover */
+.nav-item:hover {
+  color: #ffffff;
+}
+
+/* ==================== TEMA AMARELO (Index) ==================== */
+body:not(.patrocinios-page) .nav-item:hover {
+  background: rgba(255, 215, 0, 0.1);
+}
+body:not(.patrocinios-page) .nav-item.active {
+  color: #d4af37;
+}
+body:not(.patrocinios-page) .nav-item.active:after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 3px;
+  background: #d4af37;
+  border-radius: 3px;
+}
+
+/* ==================== TEMA AZUL (Patrocínios) ==================== */
+.patrocinios-page .nav-item:hover {
+  background: rgba(30, 144, 255, 0.12);
+}
+.patrocinios-page .nav-item.active {
+  color: #3aa0ff;
+}
+.patrocinios-page .nav-item.active:after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 3px;
+  background: #3aa0ff;
+  border-radius: 3px;
+}
+
+/* Responsivo */
 @media (max-width: 480px) {
   .nav-container { gap: 25px; }
   .nav-item { font-size: 0.98rem; padding: 8px 16px; }

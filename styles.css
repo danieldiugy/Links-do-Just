@@ -79,12 +79,42 @@ h1 {
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 45px;
+  margin-bottom: 35px;
   color: #ffffff;
   text-shadow: 0 2px 12px rgba(212, 175, 55, 0.5);
 }
 .patrocinios-page h1 {
   text-shadow: 0 2px 12px rgba(30, 144, 255, 0.5);
+}
+/* ========================= */
+/* EMAIL DE CONTACTO */
+/* ========================= */
+.email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: -20px;
+  margin-bottom: 40px;
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: #cccccc;
+}
+.email-icon {
+  width: 19px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.email-icon svg {
+  width: 19px;
+  height: 19px;
+  stroke: #d4af37;
+  stroke-width: 2.5;
+}
+.patrocinios-page .email-icon svg {
+  stroke: #3aa0ff;
 }
 /* ========================= */
 /* LINKS */
@@ -602,32 +632,6 @@ footer {
   );
 }
 /* ========================= */
-/* EMAIL (baixo do nome) */
-/* ========================= */
-.email {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-top: -45px;
-  margin-bottom: 35px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: #aaaaaa;
-  opacity: 0.8;
-}
-.email-icon {
-  width: 14px !important;
-  height: 14px !important;
-  flex: 0 0 14px;
-}
-.email-icon svg {
-  width: 14px !important;
-  height: 14px !important;
-  display: block;
-  fill: #d4af37 !important;
-}
-/* ========================= */
 /* BARRA DE NAVEGAÇÃO - DINÂMICA */
 /* ========================= */
 .nav-bar {
@@ -639,7 +643,6 @@ footer {
   padding: 14px 0;
   transition: all 0.4s ease;
 }
-
 .nav-container {
   max-width: 600px;
   margin: 0 auto;
@@ -648,7 +651,6 @@ footer {
   justify-content: center;
   gap: 40px;
 }
-
 .nav-item {
   font-weight: 600;
   font-size: 1.03rem;
@@ -659,13 +661,10 @@ footer {
   position: relative;
   color: #aaaaaa;
 }
-
-/* Hover */
 .nav-item:hover {
   color: #ffffff;
 }
-
-/* ==================== TEMA AMARELO (Index) ==================== */
+/* TEMA AMARELO (Index) */
 body:not(.patrocinios-page) .nav-item:hover {
   background: rgba(255, 215, 0, 0.1);
 }
@@ -683,8 +682,7 @@ body:not(.patrocinios-page) .nav-item.active:after {
   background: #d4af37;
   border-radius: 3px;
 }
-
-/* ==================== TEMA AZUL (Patrocínios) ==================== */
+/* TEMA AZUL (Patrocínios) */
 .patrocinios-page .nav-item:hover {
   background: rgba(30, 144, 255, 0.12);
 }
@@ -702,7 +700,6 @@ body:not(.patrocinios-page) .nav-item.active:after {
   background: #3aa0ff;
   border-radius: 3px;
 }
-
 /* Responsivo */
 @media (max-width: 480px) {
   .nav-container { gap: 25px; }

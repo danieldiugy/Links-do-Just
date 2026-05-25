@@ -101,7 +101,7 @@ function gerarCartoesEModais() {
 
     container.innerHTML = '<p style="text-align:center; color:#aaa; padding:40px 0;">A carregar patrocínios...</p>';
 
-    fetch('gerirgiveaways.json')
+    fetch('gerirpatrocinios.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}`);

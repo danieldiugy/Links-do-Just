@@ -146,7 +146,7 @@ function gerarCartoesEModais() {
         </p>
     `;
 
-    fetch('gerirgiveaways.json')
+    fetch('gerirgiveawaysteste.json')
 
         .then(response => {
 

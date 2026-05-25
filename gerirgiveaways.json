@@ -11,10 +11,11 @@
     "overlayTexto": "LEONBET",
     "link": "https://google.com",
     "textoinferior": "NOVO"
-  }
+  },
+
   {
     "id": 2,
-    "status": "off0",
+    "status": "off1",
     "titulo": "Giveaway Encerrado",
     "imagem": "assets/stake.png",
     "site": "Roobet",

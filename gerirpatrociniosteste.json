@@ -2,13 +2,13 @@
   {
     "id": 1,
     "status": "on",
-    "titulo": "LeonBet E-Sports",
+    "titulo": "Apostar em Counter-Strike",
     "imagem": "assets/leon.png",
     "site": "Leonbet",
     "deposito": "10€ mínimo",
     "codigo": "JUST",
     "requisitos": "Se",
-    "overlayTexto": "LEONBET",
+    "overlayTexto": "LeonBet",
     "link": "https://google.com",
     "textoinferior": "18+ "
   },

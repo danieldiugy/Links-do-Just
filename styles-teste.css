@@ -1,32 +1,29 @@
+/* =========================
+   RESET / BASE
+========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ========================= */
-/* BASE */
-/* ========================= */
-
 body {
   font-family: 'Inter', system-ui, sans-serif;
   min-height: 100vh;
   height: 100vh;
   overflow: hidden;
-  color: #ffffff;
-  background: linear-gradient(135deg, #000000 0%, #0d0d0d 100%);
   overflow-x: hidden;
   position: relative;
+  color: #ffffff;
+  background: linear-gradient(135deg, #000000 0%, #0d0d0d 100%);
 }
 
-/* ========================= */
-/* PARTÍCULAS */
-/* ========================= */
-
+/* =========================
+   PARTICLES
+========================= */
 .particles {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
@@ -45,16 +42,15 @@ body {
 }
 
 @keyframes float {
-  0% { transform: translateY(100vh) scale(0.2); opacity: 0; }
-  10% { opacity: 0.9; }
-  90% { opacity: 0.9; }
+  0%   { transform: translateY(100vh) scale(0.2); opacity: 0; }
+  10%  { opacity: 0.9; }
+  90%  { opacity: 0.9; }
   100% { transform: translateY(-20vh) scale(0.4); opacity: 0; }
 }
 
-/* ========================= */
-/* CONTAINER */
-/* ========================= */
-
+/* =========================
+   LAYOUT
+========================= */
 .container {
   max-width: 600px;
   margin: 0 auto;
@@ -67,30 +63,9 @@ body {
   z-index: 1;
 }
 
-/* ========================= */
-/* AVATAR */
-/* ========================= */
-
-.avatar {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  border: 2px solid #d4af37;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 15px;
-  box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
-}
-
-.patrocinios-page .avatar {
-  border: 2px solid #1e90ff;
-  box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
-}
-
-/* ========================= */
-/* TÍTULO */
-/* ========================= */
-
+/* =========================
+   TYPO / HEADER
+========================= */
 h1 {
   font-size: 1.95rem;
   font-weight: 700;
@@ -104,17 +79,34 @@ h1 {
   text-shadow: 0 2px 12px rgba(30, 144, 255, 0.5);
 }
 
-/* ========================= */
-/* EMAIL */
-/* ========================= */
+/* =========================
+   AVATAR
+========================= */
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 2px solid #d4af37;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 15px;
+  box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
+}
 
+.patrocinios-page .avatar {
+  border-color: #1e90ff;
+  box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
+}
+
+/* =========================
+   EMAIL
+========================= */
 .email {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
-  margin-top: -15px;
-  margin-bottom: 30px;
+  margin: -15px 0 30px;
   font-size: 0.9rem;
   font-weight: 500;
   color: #cccccc;
@@ -139,33 +131,33 @@ h1 {
   stroke: #3aa0ff;
 }
 
-/* ========================= */
-/* LINKS */
-/* ========================= */
-
+/* =========================
+   LINKS
+========================= */
 .links {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* ========================= */
-/* BOTÕES */
-/* ========================= */
-
+/* =========================
+   BUTTON BASE
+========================= */
 .btn {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 18px 40px;
+  border-radius: 10px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  text-decoration: none;
+
   background: rgba(20, 20, 20, 0.6);
   border: 2px solid #d4af37;
   color: #ffffff;
-  font-size: 0.98rem;
-  font-weight: 700;
-  border-radius: 10px;
-  text-decoration: none;
+
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -175,12 +167,12 @@ h1 {
 .btn:hover {
   background: rgba(40, 40, 40, 0.8);
   transform: translateY(-3px);
-  box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
   border-color: #ffd700;
+  box-shadow: 0 6px 8px rgba(212, 175, 55, 0.4);
 }
 
 .patrocinios-page .btn {
-  border: 1px solid #1e90ff;
+  border-color: #1e90ff;
 }
 
 .patrocinios-page .btn:hover {
@@ -188,10 +180,9 @@ h1 {
   box-shadow: 0 6px 8px rgba(30, 144, 255, 0.4);
 }
 
-/* ========================= */
-/* ÍCONES */
-/* ========================= */
-
+/* =========================
+   BUTTON CONTENT
+========================= */
 .icon {
   position: absolute;
   left: 18px;
@@ -205,7 +196,6 @@ h1 {
 .icon svg {
   width: 100%;
   height: 100%;
-  display: block;
   color: #ffffff;
 }
 
@@ -216,10 +206,9 @@ h1 {
   pointer-events: none;
 }
 
-/* ========================= */
-/* FOLLOWERS BADGE */
-/* ========================= */
-
+/* =========================
+   FOLLOWERS BADGE
+========================= */
 .followers-badge {
   position: absolute;
   right: 12px;
@@ -230,8 +219,6 @@ h1 {
   gap: 4px;
   font-size: 0.7rem;
   font-weight: 600;
-  line-height: 1;
-  white-space: nowrap;
   opacity: 0.9;
   pointer-events: none;
   z-index: 1;
@@ -241,32 +228,24 @@ h1 {
 .followers-badge svg {
   width: 12px;
   height: 12px;
-  display: block;
-  flex: 0 0 auto;
   color: #d4af37 !important;
   fill: #d4af37 !important;
-}
-
-.btn > .followers-badge {
-  position: absolute !important;
-  right: 12px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
 }
 
 .btn:hover .followers-badge {
   opacity: 1;
 }
 
-#twitch-btn.live-active > .followers-badge {
+#twitch-btn.live-active .followers-badge,
+#twitch-btn.live-active .followers-badge * {
   opacity: 0 !important;
   visibility: hidden !important;
+  pointer-events: none !important;
 }
 
-/* ========================= */
-/* GIVEAWAY CARDS */
-/* ========================= */
-
+/* =========================
+   GIVEAWAY CARD
+========================= */
 .giveaway-card {
   position: relative;
   display: block;
@@ -275,8 +254,8 @@ h1 {
   border-radius: 10px;
   overflow: hidden;
   background: #0f0f0f;
-  text-decoration: none;
   color: #ffffff;
+  text-decoration: none;
   transition: 0.3s ease;
 }
 
@@ -290,25 +269,37 @@ h1 {
   height: 100%;
   object-fit: contain;
   padding: 20px;
-  pointer-events: none;
 }
 
-/* ========================= */
-/* OVERLAY + BADGE */
-/* ========================= */
-
+/* =========================
+   GIVEAWAY OVERLAY / BADGES
+========================= */
 .overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 14px;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
   text-align: center;
   font-weight: 700;
   font-size: 0.9rem;
   pointer-events: none;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
 }
 
+.giveaway-card:not(.terminated) .overlay {
+  background: linear-gradient(to top, rgba(30,144,255,0.45), rgba(0,0,0,0.85));
+}
+
+.giveaway-card.terminated {
+  opacity: 0.85;
+  border-color: #ff3333;
+}
+
+.giveaway-card.terminated img {
+  filter: grayscale(70%) contrast(80%);
+}
+
+/* BADGE */
 .badge {
   position: absolute;
   top: 12px;
@@ -318,34 +309,38 @@ h1 {
   text-transform: uppercase;
   padding: 6px 12px;
   border-radius: 999px;
-  color: white;
+  z-index: 5;
 }
 
-/* ========================= */
-/* MODAL */
-/* ========================= */
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(8px);
+.badge.on {
+  background: #00ff66;
+  box-shadow: 0 0 18px rgba(0,255,102,0.7);
 }
 
-.modal.active {
-  display: flex;
+.badge.off {
+  background: #ff3333;
 }
 
-/* ========================= */
-/* NAVIGATION */
-/* ========================= */
+/* =========================
+   LIVE ELEMENTS
+========================= */
+.live-circle {
+  width: 10px;
+  height: 10px;
+  background: #ff0000;
+  border-radius: 50%;
+  animation: live-dot-pulse 1.4s infinite;
+}
 
+@keyframes live-dot-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* =========================
+   NAV
+========================= */
 .nav-bar {
   position: sticky;
   top: 0;
@@ -363,17 +358,13 @@ h1 {
   gap: 35px;
 }
 
-.nav-item {
-  color: #aaaaaa;
-  text-decoration: none;
-  padding: 8px 18px;
-}
-
-/* ========================= */
-/* RESPONSIVO */
-/* ========================= */
-
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 480px) {
+  .nav-container { gap: 20px; }
   .avatar { width: 88px; height: 88px; }
   h1 { font-size: 1.85rem; }
+  .btn { padding: 17px 35px; }
+  .links { gap: 11px; }
 }

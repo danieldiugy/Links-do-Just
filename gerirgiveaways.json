@@ -1,40 +1,29 @@
 [
   {
     "id": 1,
-    "titulo": "LeonBet Esports",
     "status": "off0",
-    "site": "leonbet.com",
-    "codigo": "JUST",
+    "titulo": "Giveaway Stake",
+    "imagem": "assets/stake.png",
+    "site": "Stake",
     "deposito": "10€",
-    "requisitos": "",
-    "imagem": "assets/leon.png",
-    "link": "https://linksdojust.com",
-    "overlayTexto": "Código JUST para ganhares 20€ em free-bet em depositos acima de 10€."
+    "codigo": "JUST",
+    "requisitos": "Seguir o canal",
+    "overlayTexto": "Stake • 10€ depósito",
+    "link": "https://google.com",
+    "textoinferior": "ATIVO"
   },
+
   {
     "id": 2,
-    "titulo": "Butterfly Vanilla",
     "status": "off0",
-    "site": "OutroSite.com",
-    "deposito": "20€",
-    "codigo": "50JUST",
-    "vencedor": "André (Teste)",
-    "descricao": "Este giveaway já terminou.",
-    "descricaoExtra": "",
-    "imagem": "assets/butterflygiveawayteste.png",
-    "link": "https://linksdojust.com",
-    "overlayTexto": "🏆 Terminado – Vencedor revelado",
-    "textoinferior": "csgonet.com"
-  },
-  {
-    "id": 3,
-    "titulo": "Paracord",
-    "status": "off0",
-    "site": "teste.com",
-    "deposito": "10€",
-    "codigo": "50JUST",
-    "imagem": "assets/testegiveaway.png",
-    "link": "https://linksdojust.com",
-    "textoinferior": "csgonet.com"
+    "titulo": "Giveaway Encerrado",
+    "imagem": "assets/stake.png",
+    "site": "Roobet",
+    "deposito": "5€",
+    "codigo": "JUST",
+    "requisitos": "Encerrado",
+    "overlayTexto": "Roobet • Encerrado",
+    "vencedor": "Daniel",
+    "textoinferior": "TERMINADO"
   }
 ]

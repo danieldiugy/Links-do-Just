@@ -345,14 +345,14 @@ function gerarCartoesEModais() {
                             giveaway.status === "on"
                                 ? `
                                 <div style="margin-top:24px;">
-                                    <a
-                                        href="${giveaway.link}"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="participar-btn"
-                                    >
-                                        Participar
-                                    </a>
+                           <a
+    href="${giveaway.link}"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="participar-btn"
+>
+    Apostar em CS
+</a>
                                 </div>
                                 `
                                 : ""

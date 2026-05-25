@@ -146,7 +146,7 @@ function gerarCartoesEModais() {
         </p>
     `;
 
-    fetch('gerirgiveawaysteste.json')
+    fetch('gerirpatrociniosteste.json')
 
         .then(response => {
 
@@ -169,7 +169,7 @@ function gerarCartoesEModais() {
 
                 container.innerHTML = `
                     <p style="text-align:center; color:#aaa; padding:60px 20px;">
-                        Não há sponsors neste momento.
+                        Não há sponsors agora.
                     </p>
                 `;
 

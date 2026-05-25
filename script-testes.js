@@ -206,7 +206,7 @@ function gerarCartoesEModais() {
 
                 badge.textContent =
                     giveaway.status === "on"
-                        ? "ATIVO"
+                        ? "Apostar em CS"
                         : "TERMINADO";
 
                 cartao.appendChild(badge);

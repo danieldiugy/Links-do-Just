@@ -31,9 +31,7 @@ body {
   border-radius: 50%;
   pointer-events: none;
   animation: float linear infinite;
-  box-shadow:
-    0 0 12px rgba(30, 144, 255, 0.6),
-    0 0 25px rgba(30, 144, 255, 0.4);
+  box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
 }
 @keyframes float {
   0% { transform: translateY(100vh) scale(0.2); opacity: 0; }
@@ -59,8 +57,8 @@ body {
 /* AVATAR */
 /* ========================= */
 .avatar {
-  width: 96px;
-  height: 96px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   border: 2px solid #1e90ff;
   object-fit: cover;
@@ -72,114 +70,84 @@ body {
 /* TÍTULO */
 /* ========================= */
 h1 {
-  font-size: 1.95rem;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   color: #ffffff;
   text-shadow: 0 2px 12px rgba(30, 144, 255, 0.5);
 }
 /* ========================= */
-/* EMAIL DE CONTACTO */
+/* EMAIL */
 /* ========================= */
 .email {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  margin-top: -15px;
+  gap: 8px;
   margin-bottom: 35px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #cccccc;
-}
-.email-icon {
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 0.92rem;
+  color: #bbbbbb;
 }
 .email-icon svg {
   width: 18px;
   height: 18px;
   stroke: #3aa0ff;
-  stroke-width: 2.5;
 }
 /* ========================= */
 /* SPONSOR LEONBET */
 /* ========================= */
 .sponsor-main {
-  background: rgba(20, 22, 35, 0.95);
-  border: 2px solid #00ff88;
-  border-radius: 16px;
+  background: #1a1f2e;
+  border: 3px solid #00ff88;
+  border-radius: 18px;
   padding: 40px 25px;
   text-align: center;
-  margin: 20px 0 40px 0;
-  box-shadow: 0 10px 35px rgba(0, 255, 136, 0.2);
-  transition: all 0.4s ease;
-}
-.sponsor-main:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 45px rgba(0, 255, 136, 0.35);
+  margin: 20px 0;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
 }
 .sponsor-logo {
-  width: 190px;
-  height: auto;
+  width: 200px;
   margin-bottom: 20px;
 }
 .sponsor-title {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.1rem;
   color: #00ff88;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 .sponsor-desc {
-  font-size: 1.05rem;
-  color: #bbbbbb;
-  line-height: 1.5;
+  font-size: 1.1rem;
+  color: #ddd;
   margin-bottom: 35px;
-}
-.sponsor-button-container {
-  margin: 25px 0;
+  line-height: 1.5;
 }
 .sponsor-btn {
   display: inline-block;
-  padding: 18px 55px;
-  background: linear-gradient(135deg, #00ff88, #00cc70);
-  color: #111111;
-  font-size: 1.3rem;
+  padding: 18px 60px;
+  background: linear-gradient(135deg, #00ff88, #00cc6a);
+  color: #111;
+  font-size: 1.35rem;
   font-weight: 700;
   border-radius: 12px;
   text-decoration: none;
-  box-shadow: 0 8px 30px rgba(0, 255, 136, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
   transition: all 0.3s ease;
 }
 .sponsor-btn:hover {
-  transform: translateY(-5px) scale(1.06);
+  transform: scale(1.08) translateY(-4px);
   box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
 }
 .age-warning {
-  margin-top: 30px;
-  font-size: 0.85rem;
-  color: #888888;
+  margin-top: 25px;
+  color: #888;
+  font-size: 0.9rem;
 }
 .age-warning span {
-  color: #ff4444;
-  font-weight: 700;
-  margin-right: 6px;
+  color: #ff5555;
+  font-weight: bold;
 }
 /* ========================= */
-/* FOOTER */
-/* ========================= */
-footer {
-  text-align: center;
-  margin-top: auto;
-  font-size: 0.85rem;
-  color: #777777;
-}
-/* ========================= */
-/* BARRA DE NAVEGAÇÃO */
+/* NAV BAR */
 /* ========================= */
 .nav-bar {
   position: sticky;
@@ -188,7 +156,7 @@ footer {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(30, 144, 255, 0.3);
   z-index: 100;
-  padding: 13px 0;
+  padding: 14px 0;
 }
 .nav-container {
   max-width: 600px;
@@ -196,21 +164,15 @@ footer {
   padding: 0 20px;
   display: flex;
   justify-content: center;
-  gap: 35px;
+  gap: 40px;
 }
 .nav-item {
+  color: #aaa;
   font-weight: 600;
-  font-size: 1rem;
+  padding: 8px 20px;
   text-decoration: none;
-  padding: 8px 18px;
   border-radius: 8px;
-  transition: all 0.3s ease;
   position: relative;
-  color: #aaaaaa;
-}
-.nav-item:hover {
-  color: #ffffff;
-  background: rgba(30, 144, 255, 0.12);
 }
 .nav-item.active {
   color: #3aa0ff;
@@ -218,19 +180,19 @@ footer {
 .nav-item.active:after {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -4px;
   left: 50%;
   transform: translateX(-50%);
-  width: 40%;
+  width: 45%;
   height: 3px;
   background: #3aa0ff;
-  border-radius: 3px;
 }
-/* Responsivo */
-@media (max-width: 480px) {
-  .nav-container { gap: 20px; }
-  .nav-item { font-size: 0.95rem; padding: 7px 14px; }
-  .avatar { width: 88px; height: 88px; }
-  h1 { font-size: 1.85rem; margin-bottom: 20px; }
-  .email { margin-bottom: 25px; font-size: 0.87rem; }
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+footer {
+  text-align: center;
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: #777;
 }

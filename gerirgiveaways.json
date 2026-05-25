@@ -17,12 +17,12 @@
     "id": 2,
     "status": "off0",
     "titulo": "Giveaway Encerrado",
-    "imagem": "assets/stake.png",
-    "site": "Roobet",
+    "imagem": "assets/leon.png",
+    "site": "Leonbet",
     "deposito": "5€",
     "codigo": "JUST",
     "requisitos": "Encerrado",
-    "overlayTexto": "Roobet • Encerrado",
+    "overlayTexto": "Leonbet • Encerrado",
     "vencedor": "Daniel",
     "textoinferior": "TERMINADO"
   }

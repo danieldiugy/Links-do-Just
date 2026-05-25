@@ -117,7 +117,7 @@ async function verificarLiveTwitch() {
 
 function gerarCartoesEModais() {
 
-    const container = document.getElementById("giveaways-container");
+    const container = document.getElementById("patrocinios-container");
     if (!container) return;
 
     container.innerHTML = `

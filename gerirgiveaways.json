@@ -1,17 +1,18 @@
 [
   {
     "id": 1,
-    "status": "off0",
-    "titulo": "Giveaway Stake",
-    "imagem": "assets/stake.png",
-    "site": "Stake",
-    "deposito": "10€",
+    "status": "on",
+    "titulo": "LEONBET",
+    "imagem": "assets/leonbet.png",
+    "site": "Leonbet",
+    "deposito": "10€ mínimo",
     "codigo": "JUST",
-    "requisitos": "Seguir o canal",
-    "overlayTexto": "Stake • 10€ depósito",
+    "requisitos": "Se",
+    "overlayTexto": "LEONBET",
     "link": "https://google.com",
-    "textoinferior": "ATIVO"
-  },
+    "textoinferior": "NOVO"
+  }
+]
 
   {
     "id": 2,

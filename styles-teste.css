@@ -734,3 +734,156 @@ body:not(.patrocinios-page) .nav-item.active:after {
   0% { left: -60%; }
   100% { left: 120%; }
 }
+/* ========================= */
+/* SPONSOR CARD - CS2 STYLE */
+/* ========================= */
+.sponsor-main {
+  position: relative;
+  width: 100%;
+  padding: 38px 26px;
+  border-radius: 18px;
+
+  background: radial-gradient(
+      circle at top,
+      rgba(255, 140, 0, 0.15),
+      transparent 55%
+    ),
+    linear-gradient(145deg, #0b0b0b, #111111);
+
+  border: 1px solid rgba(255, 140, 0, 0.35);
+
+  text-align: center;
+  overflow: hidden;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 0 25px rgba(255, 140, 0, 0.12),
+    0 10px 45px rgba(0, 0, 0, 0.7);
+
+  transition: all 0.35s ease;
+}
+
+/* glow animado em volta */
+.sponsor-main::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 140, 0, 0.4),
+    transparent
+  );
+  filter: blur(14px);
+  opacity: 0.6;
+  animation: sponsorGlow 4s linear infinite;
+  z-index: 0;
+}
+
+/* hover “premium esports” */
+.sponsor-main:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: rgba(255, 180, 60, 0.7);
+
+  box-shadow:
+    0 0 40px rgba(255, 140, 0, 0.25),
+    0 15px 60px rgba(0, 0, 0, 0.8);
+}
+
+/* LOGO */
+.sponsor-logo {
+  width: 140px;
+  margin-bottom: 18px;
+
+  filter: drop-shadow(0 0 18px rgba(255, 140, 0, 0.35));
+
+  animation: floatLogo 4s ease-in-out infinite;
+}
+
+/* TITULO */
+.sponsor-title {
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #ffffff;
+
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 0 12px rgba(255, 140, 0, 0.25);
+}
+
+/* DESCRIÇÃO */
+.sponsor-desc {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #cfcfcf;
+
+  margin-bottom: 26px;
+}
+
+/* BOTÃO (mantém mas melhora look CS) */
+.sponsor-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 34px;
+  border-radius: 10px;
+
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  color: #111;
+
+  background: linear-gradient(135deg, #ff9a1f, #ff5a00);
+
+  box-shadow:
+    0 0 20px rgba(255, 120, 0, 0.35),
+    0 8px 25px rgba(0, 0, 0, 0.6);
+
+  transition: all 0.25s ease;
+}
+
+.sponsor-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 0 30px rgba(255, 140, 0, 0.5),
+    0 12px 35px rgba(0, 0, 0, 0.75);
+}
+
+/* 18+ badge melhorado */
+.age-warning span {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  background: rgba(255, 60, 0, 0.15);
+  border: 1px solid rgba(255, 80, 0, 0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ff6a00;
+  font-weight: 900;
+
+  box-shadow: 0 0 18px rgba(255, 80, 0, 0.2);
+}
+
+/* ========================= */
+/* ANIMAÇÕES */
+/* ========================= */
+@keyframes sponsorGlow {
+  0% { transform: translateX(-40%) rotate(0deg); }
+  100% { transform: translateX(40%) rotate(360deg); }
+}
+
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}

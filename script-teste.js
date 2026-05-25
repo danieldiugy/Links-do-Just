@@ -193,7 +193,7 @@ function gerarCartoesEModais() {
                 btn.target = "_blank";
                 btn.rel = "noopener noreferrer";
                 btn.className = "sponsor-btn";
-                btn.textContent = "APOSTAR EM CS";
+                btn.textContent = "AGARRAR BÓNUS";
                 btn.addEventListener("click", e => e.stopPropagation());
                 card.appendChild(btn);
 

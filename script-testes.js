@@ -99,7 +99,7 @@ function gerarCartoesEModais() {
     const container = document.getElementById("giveaways-container");
     if (!container) return;
 
-    container.innerHTML = '<p style="text-align:center; color:#aaa; padding:40px 0;">A carregar giveaways...</p>';
+    container.innerHTML = '<p style="text-align:center; color:#aaa; padding:40px 0;">A carregar patrocínios...</p>';
 
     fetch('gerirgiveaways.json')
         .then(response => {
@@ -119,7 +119,7 @@ function gerarCartoesEModais() {
             if (visiveis.length === 0) {
                 container.innerHTML = `
                     <p style="text-align:center; color:#aaa; padding:60px 20px; font-size:1.2rem;">
-                        Não há giveaways neste momento
+                        Não há sponsors neste momento.
                     </p>
                 `;
                 return;
@@ -165,7 +165,7 @@ function gerarCartoesEModais() {
                     link.addEventListener("click", (evento) => evento.stopPropagation());
                     const img = document.createElement("img");
                     img.src = giveaway.imagem;
-                    img.alt = `${giveaway.titulo} - Participar`;
+                    img.alt = `${giveaway.titulo} - Entrar no Site`;
                     link.appendChild(img);
                     cartao.appendChild(link);
                 } else {
@@ -180,6 +180,13 @@ function gerarCartoesEModais() {
                 overlay.className = "overlay";
                 overlay.textContent = giveaway.overlayTexto || `${giveaway.site} • ${giveaway.deposito}`;
                 cartao.appendChild(overlay);
+                // ─── TEXTO INFERIOR ESQUERDO ───
+if (giveaway.textoinferior?.trim()) {
+    const bottomLabel = document.createElement("div");
+    bottomLabel.className = "bottom-label";
+    bottomLabel.textContent = giveaway.textoinferior;
+    cartao.appendChild(bottomLabel);
+}
 
                 container.appendChild(cartao);
 

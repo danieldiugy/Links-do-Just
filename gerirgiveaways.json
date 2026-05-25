@@ -2,7 +2,7 @@
   {
     "id": 1,
     "status": "on",
-    "titulo": "LEONBET",
+    "titulo": "LeonBet E-Sports",
     "imagem": "assets/leon.png",
     "site": "Leonbet",
     "deposito": "10€ mínimo",
@@ -10,7 +10,7 @@
     "requisitos": "Se",
     "overlayTexto": "LEONBET",
     "link": "https://google.com",
-    "textoinferior": "NOVO"
+    "textoinferior": "18+ "
   },
 
   {

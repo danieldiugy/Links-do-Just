@@ -3,7 +3,7 @@
     "id": 1,
     "status": "on",
     "titulo": "LEONBET",
-    "imagem": "assets/leonbet.png",
+    "imagem": "assets/leon.png",
     "site": "Leonbet",
     "deposito": "10€ mínimo",
     "codigo": "JUST",
@@ -15,7 +15,7 @@
 
   {
     "id": 2,
-    "status": "off1",
+    "status": "off0",
     "titulo": "Giveaway Encerrado",
     "imagem": "assets/stake.png",
     "site": "Roobet",

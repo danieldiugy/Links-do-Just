@@ -13,17 +13,17 @@
     "textoinferior": "18+ "
   },
 
+[
   {
     "id": 2,
-    "status": "off0",
-    "titulo": "Giveaway Encerrado",
-    "imagem": "assets/leon.png",
-    "site": "Leonbet",
-    "deposito": "5€",
+    "status": "on",
+    "titulo": "Trocar Skins",
+    "imagem": "assets/skinsmonkey.png",
+    "site": "SkinsMonkey",
+    "deposito": "10€ mínimo",
     "codigo": "JUST",
-    "requisitos": "Encerrado",
-    "overlayTexto": "Leonbet • Encerrado",
-    "vencedor": "Daniel",
-    "textoinferior": "TERMINADO"
-  }
-]
+    "requisitos": "Se",
+    "overlayTexto": "SkinsMonkey",
+    "link": "www.google.com",
+    "textoinferior": "18+ "
+  },

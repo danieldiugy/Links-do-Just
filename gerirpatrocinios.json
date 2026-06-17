@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "status": "on",
+    "status": "off0",
     "titulo": "Apostar em Counter-Strike",
     "imagem": "assets/skinravelogo.webp",
     "site": "SkinRave",
@@ -16,7 +16,7 @@
 [
   {
     "id": 2,
-    "status": "on",
+    "status": "off0",
     "titulo": "Trocar Skins",
     "imagem": "assets/skinsmonkeylogo.png",
     "site": "SkinsMonkey",

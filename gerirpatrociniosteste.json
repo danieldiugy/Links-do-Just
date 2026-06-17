@@ -3,13 +3,13 @@
     "id": 1,
     "status": "on",
     "titulo": "Apostar em Counter-Strike",
-    "imagem": "assets/leon3.png",
-    "site": "Leonbet",
+    "imagem": "assets/skinrave1.png",
+    "site": "SkinRave",
     "deposito": "10€ mínimo",
     "codigo": "JUST",
     "requisitos": "Se",
-    "overlayTexto": "LeonBet",
-    "link": "https://google.com",
+    "overlayTexto": "SkinRave",
+    "link": "https://skinrave.gg/en?r=JUST",
     "textoinferior": "18+ "
   },
 

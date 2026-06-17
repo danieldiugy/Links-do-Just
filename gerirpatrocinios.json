@@ -10,10 +10,8 @@
     "requisitos": "Se",
     "overlayTexto": "SkinRave",
     "link": "https://skinrave.gg/en?r=JUST",
-    "textoinferior": "18+ "
+    "textoinferior": "18+"
   },
-
-[
   {
     "id": 2,
     "status": "on",
@@ -24,6 +22,7 @@
     "codigo": "JUST",
     "requisitos": "Se",
     "overlayTexto": "SkinsMonkey",
-    "link": "www.google.com",
-    "textoinferior": "18+ "
+    "link": "https://www.google.com",
+    "textoinferior": "18+"
   }
+]

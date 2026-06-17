@@ -691,16 +691,3 @@ body:not(.patrocinios-page) .nav-item.active:after {
   z-index: 5;
   transition: 0.3s;
 }
-/* Corrige imagem dentro do link do sponsor */
-.giveaway-card > a {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.giveaway-card > a img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}

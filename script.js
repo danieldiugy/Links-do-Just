@@ -132,29 +132,6 @@ function gerarCartoesEModais() {
                 return 0;
             });
 
-            ordenados.forEach(giveaway => {
-               
-
-
-
-                // ─── CARTÃO ───
-cartao.className = `ofertas-card ${giveaway.status !== "on" ? "terminated" : ""}`;
-cartao.href = giveaway.status === "on" ? giveaway.link : "#";
-cartao.target = giveaway.status === "on" ? "_blank" : "";
-cartao.rel = "noopener noreferrer";
-                cartao.className = `ofertas-card ${giveaway.status !== "on" ? "terminated" : ""}`;
-                cartao.style.cursor = "pointer";
-                cartao.addEventListener("click", (evento) => {
-                    if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {
-                        abrirModal(`modal-${giveaway.id}`);
-                    }
-                });
-
-
-
-
-
-        // ─── IMAGEM / LINK ───
 ordenados.forEach(giveaway => {
 
     // ─── CARD ───
@@ -165,7 +142,7 @@ ordenados.forEach(giveaway => {
     cartao.rel = "noopener noreferrer";
 
     if (giveaway.status !== "on") {
-        cartao.style.pointerEvents = "none"; // evita clique em encerrado
+        cartao.style.pointerEvents = "none";
     }
 
     // ─── IMAGEM ───
@@ -189,11 +166,12 @@ ordenados.forEach(giveaway => {
 
     const sub = document.createElement("div");
     sub.className = "ofertas-sub";
-    sub.textContent = `• ${giveaway.deposito}`;
+
+    // ⚠️ aqui removi o site azul duplicado
+    sub.textContent = `${giveaway.deposito}`;
 
     content.appendChild(title);
     content.appendChild(sub);
-
     cartao.appendChild(content);
 
     // ─── OVERLAY ───
@@ -203,7 +181,9 @@ ordenados.forEach(giveaway => {
 
     cartao.appendChild(overlay);
 
+    // ─── APPEND FINAL ───
     container.appendChild(cartao);
+});
 
     // ─── MODAL (mantém igual) ───
     const modal = document.createElement("div");

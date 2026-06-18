@@ -231,83 +231,160 @@ h1 {
   visibility: hidden !important;
 }
 /* ========================= */
-/* GIVEAWAY CARDS */
+/* GIVEAWAY CARDS - NOVA VERSÃO */
 /* ========================= */
 .giveaway-card {
-  position: relative;
-  display: block;
-  height: 220px;
-  border: 2px solid #1e90ff;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #0f0f0f;
-  text-decoration: none;
-  color: #ffffff;
-  transition: 0.3s ease;
+    position: relative;
+    height: 260px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(30, 144, 255, 0.3);
+    background: #0a1620;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
-.giveaway-card:visited {
-  color: #ffffff;
-}
+
 .giveaway-card:hover {
-  color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(30,144,255,0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(30, 144, 255, 0.35);
+    border-color: #3aa0ff;
 }
-.giveaway-card:active {
-  color: #ffffff;
-}
+
 .giveaway-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 20px;
-  pointer-events: none;
+    width: 100%;
+    height: 168px;
+    object-fit: contain;
+    background: #050d14;
+    padding: 18px;
+    transition: transform 0.4s ease;
+    z-index: 1;
 }
+
+.giveaway-card:hover img {
+    transform: scale(1.04);
+}
+
+/* Overlay melhorado */
 .overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
-  text-align: center;
-  font-weight: 700;
-  font-size: 0.9rem;
-  pointer-events: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 18px 16px 16px;
+    background: linear-gradient(to top, rgba(5, 13, 20, 0.95), rgba(10, 22, 32, 0.7));
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    z-index: 2;
+    pointer-events: none;
 }
+
+/* Badge ATIVO / TERMINADO */
 .badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  font-size: 0.75rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  color: white;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
-  z-index: 5;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    font-size: 0.73rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    color: white;
+    z-index: 10;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.5);
 }
-.giveaway-card:hover .badge {
-  transform: scale(1.08);
-  box-shadow: 0 6px 15px rgba(255,255,255,0.15);
-}
+
 .badge.on {
-  background: #00ff66;
-  animation: pulse-soft 2.5s infinite ease-in-out;
-  box-shadow: 0 0 18px rgba(0,255,102,0.7);
+    background: linear-gradient(90deg, #00ff88, #00cc66);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+    animation: pulse-active 2.2s infinite;
 }
+
 .badge.off {
-  background: #ff3333;
-  box-shadow: 0 0 22px rgba(255,51,51,0.8);
+    background: #ff3366;
+    box-shadow: 0 0 15px rgba(255, 51, 102, 0.7);
 }
-@keyframes pulse-soft {
-  0% { box-shadow: 0 0 8px rgba(0,255,102,0.5), 0 0 16px rgba(0,255,102,0.3); }
-  50% { box-shadow: 0 0 18px rgba(0,255,102,0.9), 0 0 28px rgba(0,255,102,0.6); }
-  100% { box-shadow: 0 0 8px rgba(0,255,102,0.5), 0 0 16px rgba(0,255,102,0.3); }
+
+@keyframes pulse-active {
+    0%, 100% { box-shadow: 0 0 15px rgba(0, 255, 136, 0.6); }
+    50% { box-shadow: 0 0 25px rgba(0, 255, 136, 0.9); }
+}
+
+/* Botão de info (i) */
+.info-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.info-btn:hover {
+    background: #3aa0ff;
+    transform: scale(1.1);
+    border-color: #3aa0ff;
+}
+
+/* Aviso 18+ */
+.age-warning {
+    position: absolute;
+    top: 14px;
+    right: 50px;
+    background: rgba(255, 51, 51, 0.9);
+    color: white;
+    font-size: 0.68rem;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 4px;
+    z-index: 9;
+    letter-spacing: 0.5px;
+}
+
+/* Texto inferior (ex: "Primeiro depósito") */
+.bottom-label {
+    position: absolute;
+    bottom: 58px;
+    left: 16px;
+    background: rgba(255,215,0,0.9);
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 999px;
+    z-index: 5;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Card terminado */
+.giveaway-card.terminated {
+    opacity: 0.78;
+    border-color: #551111;
+}
+
+.giveaway-card.terminated:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.giveaway-card.terminated img {
+    filter: grayscale(75%) contrast(85%);
 }
 /* ========================= */
 /* FOOTER */

@@ -168,7 +168,7 @@ h1 {
 }
 
 /* ========================= */
-/* GIVEAWAY CARDS - DESIGN FINAL */
+/* GIVEAWAY CARDS - VERSÃO ATUALIZADA */
 /* ========================= */
 .giveaway-card {
     position: relative;
@@ -215,33 +215,13 @@ h1 {
     z-index: 2;
 }
 
+/* Esconde as badges que não queres */
 .badge {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    font-size: 0.73rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1.1px;
-    padding: 6px 14px;
-    border-radius: 9999px;
-    color: white;
-    z-index: 10;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    display: none !important;
 }
 
-.badge.on {
-    background: linear-gradient(90deg, #00ff88, #00cc66);
-    animation: pulse-active 2s infinite;
-}
-
-.badge.off {
-    background: #ff3366;
-}
-
-@keyframes pulse-active {
-    0%, 100% { box-shadow: 0 0 15px rgba(0, 255, 136, 0.6); }
-    50% { box-shadow: 0 0 28px rgba(0, 255, 136, 0.85); }
+.age-warning {
+    display: none !important;
 }
 
 .info-btn {
@@ -269,19 +249,6 @@ h1 {
     transform: scale(1.12);
 }
 
-.age-warning {
-    position: absolute;
-    top: 14px;
-    right: 52px;
-    background: #ff3333;
-    color: white;
-    font-size: 0.67rem;
-    font-weight: 900;
-    padding: 3px 9px;
-    border-radius: 4px;
-    z-index: 9;
-}
-
 .bottom-label {
     position: absolute;
     bottom: 58px;
@@ -297,7 +264,7 @@ h1 {
 }
 
 .giveaway-card.terminated {
-    opacity: 0.75;
+    opacity: 0.78;
     border-color: #552222;
 }
 
@@ -308,7 +275,6 @@ h1 {
 .giveaway-card.terminated img {
     filter: grayscale(75%) contrast(85%);
 }
-
 /* ========================= */
 /* FOOTER */
 /* ========================= */

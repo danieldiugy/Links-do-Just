@@ -263,39 +263,119 @@ h1 {
 
 
 
-
+/* ========================= */
+/* OFERTAS GRID */
+/* ========================= */
+.ofertas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
 
 /* ========================= */
-/* ofertas-container CARDS - DESIGN FINAL BONITO */
+/* CARD PREMIUM SPONSOR */
 /* ========================= */
-#ofertas-container a {
+.ofertas-card {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 18px 42px;
-  margin-bottom: 12px;
-
-  border-radius: 14px;
-
-  background: #0f0f0f;
-  color: #ffffff;
-
-  font-size: 0.98rem;
-  font-weight: 700;
-
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #0b1824, #070d14);
   border: 1px solid rgba(58, 160, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
 
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+.ofertas-card:hover {
+  transform: translateY(-6px);
+  border-color: #3aa0ff;
+  box-shadow: 0 18px 45px rgba(30,144,255,0.25);
+}
 
+/* imagem */
+.ofertas-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  padding: 18px;
+  background: #050d14;
+  transition: transform 0.3s ease;
+}
+
+.ofertas-card:hover img {
+  transform: scale(1.05);
+}
+
+/* INFO AREA (texto inferior) */
+.ofertas-info {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ofertas-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.ofertas-subtitle {
+  font-size: 0.82rem;
+  color: #a0c4ff;
+}
+
+/* CTA BUTTON */
+.ofertas-btn {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 0.9rem;
   text-decoration: none;
 
-  overflow: hidden;
-
-  transition: all 0.25s ease;
-  backdrop-filter: blur(10px);
+  background: linear-gradient(90deg, #00d47a, #00b86b);
+  color: #000;
+  box-shadow: 0 6px 20px rgba(0, 212, 122, 0.25);
+  transition: 0.25s ease;
 }
+
+.ofertas-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 212, 122, 0.35);
+}
+
+/* STATUS BADGE */
+.ofertas-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  font-size: 0.65rem;
+  font-weight: 900;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.ofertas-badge.on {
+  background: #00d47a;
+  color: #000;
+}
+
+.ofertas-badge.off {
+  background: #ff3333;
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* OFF STATE */
+.ofertas-card.off {
+  opacity: 0.65;
+  filter: grayscale(60%);
+}
+
 
 
 

@@ -135,7 +135,7 @@ function gerarCartoesEModais() {
             ordenados.forEach(giveaway => {
                 // ─── CARTÃO ───
                 const cartao = document.createElement("div");
-                cartao.className = `giveaway-card ${giveaway.status === "off1" ? "terminated" : ""}`;
+                cartao.className = `ofertas-card ${giveaway.status === "off1" ? "terminated" : ""}`;
                 cartao.style.cursor = "pointer";
                 cartao.addEventListener("click", (evento) => {
                     if (!evento.target.closest(".info-btn") && !evento.target.closest("a") && !evento.target.closest("img")) {

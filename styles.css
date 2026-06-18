@@ -732,38 +732,6 @@ body:not(.patrocinios-page) .nav-item.active:after {
   .links { gap: 11px; }
 }
 /* ========================= */
-/* AVISO 18+ NO SPONSOR */
-/* ========================= */
-
-.age-warning {
-  position: absolute;
-  top: 10px;
-  right: 45px;
-  color: #ff3333;
-  font-size: 0.65rem;
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 8px rgba(255,0,0,0.5);
-  z-index: 5;
-  pointer-events: none;
-}
-/* CORREÇÃO IMAGEM SPONSOR */
-.giveaway-card > a {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.giveaway-card > a img {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  padding: 20px;
-  display: block;
-}
-/* ========================= */
 /* SPONSOR CARD NOVO */
 /* ========================= */
 
@@ -850,4 +818,127 @@ body:not(.patrocinios-page) .nav-item.active:after {
     transform:scale(1.05);
     background:#3aa0ff;
     box-shadow:0 0 20px rgba(30,144,255,.7);
+}
+/* ========================= */
+/* GIVEAWAY CARDS - VERSÃO ATUALIZADA */
+/* ========================= */
+.giveaway-card {
+    position: relative;
+    height: 260px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(30, 144, 255, 0.4);
+    background: #0a1620;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+    transition: all 0.35s cubic-bezier(0.4, 0.0, 0.2, 1);
+    cursor: pointer;
+}
+
+.giveaway-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(30, 144, 255, 0.35);
+    border-color: #3aa0ff;
+}
+
+.giveaway-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: contain;
+    background: #050d14;
+    padding: 20px;
+    transition: transform 0.4s ease;
+}
+
+.giveaway-card:hover img {
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 16px 16px;
+    background: linear-gradient(to top, rgba(5,13,20,0.98), rgba(10,22,32,0.75));
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.96rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    font-size: 0.73rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    color: white;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.badge.on {
+    background: linear-gradient(90deg, #00ff88, #00cc66);
+    animation: pulse-active 2s infinite;
+}
+
+.badge.off {
+    background: #ff3366;
+}
+
+@keyframes pulse-active {
+    0%, 100% { box-shadow: 0 0 15px rgba(0, 255, 136, 0.6); }
+    50% { box-shadow: 0 0 28px rgba(0, 255, 136, 0.85); }
+}
+
+.info-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+.info-btn:hover {
+    background: #3aa0ff;
+    transform: scale(1.12);
+}
+
+.age-warning {
+    position: absolute;
+    top: 14px;
+    right: 52px;
+    background: #ff3333;
+    color: white;
+    font-size: 0.67rem;
+    font-weight: 900;
+    padding: 3px 9px;
+    border-radius: 4px;
+    z-index: 9;
+}
+
+.giveaway-card.terminated {
+    opacity: 0.75;
+    border-color: #552222;
+}
+
+.giveaway-card.terminated:hover {
+    transform: none;
 }

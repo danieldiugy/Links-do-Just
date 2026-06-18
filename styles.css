@@ -231,7 +231,7 @@ h1 {
   visibility: hidden !important;
 }
 /* ========================= */
-/* GIVEAWAY CARDS - REDESIGN COMPLETO (Clean & Premium) */
+/* GIVEAWAY CARDS - REDESIGN CLEAN */
 /* ========================= */
 .patrocinios-page .giveaway-card {
     position: relative;
@@ -264,7 +264,7 @@ h1 {
     transform: scale(1.06);
 }
 
-/* Overlay com gradiente mais elegante */
+/* Overlay */
 .patrocinios-page .overlay {
     position: absolute;
     bottom: 0;
@@ -280,7 +280,7 @@ h1 {
     pointer-events: none;
 }
 
-/* Botão bonito dentro do card */
+/* Botão principal bonito */
 .patrocinios-page .card-btn {
     position: absolute;
     bottom: 18px;
@@ -305,7 +305,7 @@ h1 {
     background: linear-gradient(90deg, #4ab0ff, #2aa0ff);
 }
 
-/* Botão de info (i) clean */
+/* Botão info (i) */
 .patrocinios-page .info-btn {
     position: absolute;
     top: 14px;
@@ -332,9 +332,10 @@ h1 {
     border-color: #3aa0ff;
 }
 
-/* Esconde badges antigas */
+/* REMOVIDAS AS BADGES */
 .patrocinios-page .badge,
-.patrocinios-page .age-warning {
+.patrocinios-page .age-warning,
+.patrocinios-page .bottom-label {
     display: none !important;
 }
 

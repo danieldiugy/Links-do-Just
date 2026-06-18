@@ -231,83 +231,109 @@ h1 {
   visibility: hidden !important;
 }
 /* ========================= */
-/* GIVEAWAY CARDS */
+/* GIVEAWAY CARDS - APENAS PARA PÁGINA DE PATROCÍNIOS */
 /* ========================= */
-.giveaway-card {
-  position: relative;
-  display: block;
-  height: 220px;
-  border: 2px solid #1e90ff;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #0f0f0f;
-  text-decoration: none;
-  color: #ffffff;
-  transition: 0.3s ease;
+.patrocinios-page .giveaway-card {
+    position: relative;
+    height: 260px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(30, 144, 255, 0.4);
+    background: #0a1620;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
 }
-.giveaway-card:visited {
-  color: #ffffff;
+
+.patrocinios-page .giveaway-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(30, 144, 255, 0.35);
+    border-color: #3aa0ff;
 }
-.giveaway-card:hover {
-  color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(30,144,255,0.4);
+
+.patrocinios-page .giveaway-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: contain;
+    background: #050d14;
+    padding: 20px;
+    transition: transform 0.4s ease;
 }
-.giveaway-card:active {
-  color: #ffffff;
+
+.patrocinios-page .giveaway-card:hover img {
+    transform: scale(1.05);
 }
-.giveaway-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 20px;
-  pointer-events: none;
+
+.patrocinios-page .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 16px 16px;
+    background: linear-gradient(to top, rgba(5,13,20,0.98), rgba(10,22,32,0.75));
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.96rem;
+    pointer-events: none;
+    z-index: 2;
 }
-.overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
-  text-align: center;
-  font-weight: 700;
-  font-size: 0.9rem;
-  pointer-events: none;
+
+/* Esconde badge ATIVO/TERMINADO e 18+ */
+.patrocinios-page .badge,
+.patrocinios-page .age-warning {
+    display: none !important;
 }
-.badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  font-size: 0.75rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  color: white;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
-  z-index: 5;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+
+.patrocinios-page .info-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    z-index: 10;
+    transition: all 0.3s;
 }
-.giveaway-card:hover .badge {
-  transform: scale(1.08);
-  box-shadow: 0 6px 15px rgba(255,255,255,0.15);
+
+.patrocinios-page .info-btn:hover {
+    background: #3aa0ff;
+    transform: scale(1.12);
 }
-.badge.on {
-  background: #00ff66;
-  animation: pulse-soft 2.5s infinite ease-in-out;
-  box-shadow: 0 0 18px rgba(0,255,102,0.7);
+
+.patrocinios-page .bottom-label {
+    position: absolute;
+    bottom: 58px;
+    left: 16px;
+    background: rgba(255,215,0,0.9);
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 999px;
+    z-index: 5;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
-.badge.off {
-  background: #ff3333;
-  box-shadow: 0 0 22px rgba(255,51,51,0.8);
+
+.patrocinios-page .giveaway-card.terminated {
+    opacity: 0.78;
+    border-color: #552222;
 }
-@keyframes pulse-soft {
-  0% { box-shadow: 0 0 8px rgba(0,255,102,0.5), 0 0 16px rgba(0,255,102,0.3); }
-  50% { box-shadow: 0 0 18px rgba(0,255,102,0.9), 0 0 28px rgba(0,255,102,0.6); }
-  100% { box-shadow: 0 0 8px rgba(0,255,102,0.5), 0 0 16px rgba(0,255,102,0.3); }
+
+.patrocinios-page .giveaway-card.terminated:hover {
+    transform: none;
+}
+
+.patrocinios-page .giveaway-card.terminated img {
+    filter: grayscale(75%) contrast(85%);
 }
 /* ========================= */
 /* FOOTER */

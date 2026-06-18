@@ -185,6 +185,8 @@ ordenados.forEach(giveaway => {
     container.appendChild(cartao);
 });
 
+
+
     // ─── MODAL (mantém igual) ───
     const modal = document.createElement("div");
     modal.className = "modal";

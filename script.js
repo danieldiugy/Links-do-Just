@@ -142,47 +142,62 @@ function gerarCartoesEModais() {
                         abrirModal(`modal-${giveaway.id}`);
                     }
                 });
-                const botaoInfo = document.createElement("div");
-                botaoInfo.className = "info-btn";
-                botaoInfo.textContent = "i";
-                botaoInfo.addEventListener("click", (evento) => {
-                    evento.stopPropagation();
-                    abrirModal(`modal-${giveaway.id}`);
-                });
-                cartao.appendChild(botaoInfo);
 
-                if (giveaway.status === "on") {
-                    const link = document.createElement("a");
-                    link.href = giveaway.link;
-                    link.target = "_blank";
-                    link.rel = "noopener noreferrer";
-                    link.addEventListener("click", (evento) => evento.stopPropagation());
-                    const img = document.createElement("img");
-                    img.src = giveaway.imagem;
-                    img.alt = `${giveaway.titulo} - Entrar no Site`;
-                    link.appendChild(img);
-                    cartao.appendChild(link);
-                } else {
-                    const img = document.createElement("img");
-                    img.src = giveaway.imagem;
-                    img.alt = `${giveaway.titulo} - Encerrado`;
-                    img.style.filter = "grayscale(70%) contrast(80%)"; // Visual "terminado"
-                    cartao.appendChild(img);
-                }
 
-                const overlay = document.createElement("div");
-                overlay.className = "overlay";
-                overlay.textContent = giveaway.overlayTexto || `${giveaway.site} • ${giveaway.deposito}`;
-                cartao.appendChild(overlay);
-                // ─── TEXTO INFERIOR ESQUERDO ───
-if (giveaway.textoinferior?.trim()) {
-    const bottomLabel = document.createElement("div");
-    bottomLabel.className = "bottom-label";
-    bottomLabel.textContent = giveaway.textoinferior;
-    cartao.appendChild(bottomLabel);
+
+
+                
+        // ─── IMAGEM / LINK ───
+if (giveaway.status === "on") {
+    const link = document.createElement("a");
+    link.href = giveaway.link;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.addEventListener("click", (evento) => evento.stopPropagation());
+
+    const img = document.createElement("img");
+    img.src = giveaway.imagem;
+    img.alt = `${giveaway.titulo} - Entrar no Site`;
+
+    link.appendChild(img);
+    cartao.appendChild(link);
+} else {
+    const img = document.createElement("img");
+    img.src = giveaway.imagem;
+    img.alt = `${giveaway.titulo} - Encerrado`;
+    img.style.filter = "grayscale(70%) contrast(80%)";
+
+    cartao.appendChild(img);
 }
 
-                container.appendChild(cartao);
+// ─── CONTEÚDO (TÍTULO + SUB) ───
+const content = document.createElement("div");
+content.className = "ofertas-content";
+
+const title = document.createElement("div");
+title.className = "ofertas-title";
+title.textContent = giveaway.titulo;
+
+const sub = document.createElement("div");
+sub.className = "ofertas-sub";
+sub.textContent = `${giveaway.site} • ${giveaway.deposito}`;
+
+content.appendChild(title);
+content.appendChild(sub);
+cartao.appendChild(content);
+
+// ─── OVERLAY ───
+const overlay = document.createElement("div");
+overlay.className = "overlay";
+overlay.textContent = giveaway.overlayTexto || `${giveaway.site} • ${giveaway.deposito}`;
+cartao.appendChild(overlay);
+
+// ─── ADD CARD ───
+container.appendChild(cartao);
+
+
+
+
 
                 // ─── MODAL ───
                 const modal = document.createElement("div");

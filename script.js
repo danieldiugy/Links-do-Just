@@ -142,17 +142,6 @@ function gerarCartoesEModais() {
                         abrirModal(`modal-${giveaway.id}`);
                     }
                 });
-
-                const badge = document.createElement("span");
-                badge.className = `badge ${giveaway.status}`;
-                badge.textContent = giveaway.status === "on" ? "ATIVO" : "TERMINADO";
-                cartao.appendChild(badge);
-
-
-    const aviso18 = document.createElement("span");
-aviso18.className = "age-warning";
-aviso18.textContent = "18+";
-cartao.appendChild(aviso18);
                 const botaoInfo = document.createElement("div");
                 botaoInfo.className = "info-btn";
                 botaoInfo.textContent = "i";

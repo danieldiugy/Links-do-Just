@@ -370,8 +370,17 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-
-
+.ofertas-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+.ofertas-card img,
+.ofertas-card div {
+  pointer-events: none;
+}
 
 
 

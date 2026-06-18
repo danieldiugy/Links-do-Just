@@ -189,7 +189,7 @@ ordenados.forEach(giveaway => {
 
     const sub = document.createElement("div");
     sub.className = "ofertas-sub";
-    sub.textContent = `${giveaway.site} • ${giveaway.deposito}`;
+    sub.textContent = `• ${giveaway.deposito}`;
 
     content.appendChild(title);
     content.appendChild(sub);
@@ -199,7 +199,7 @@ ordenados.forEach(giveaway => {
     // ─── OVERLAY ───
     const overlay = document.createElement("div");
     overlay.className = "overlay";
-    overlay.textContent = giveaway.overlayTexto || `${giveaway.site} • ${giveaway.deposito}`;
+    overlay.textContent = giveaway.deposito;
 
     cartao.appendChild(overlay);
 

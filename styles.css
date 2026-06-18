@@ -363,6 +363,13 @@ h1 {
   opacity: 0.6;
   filter: grayscale(60%);
 }
+.ofertas-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 
 

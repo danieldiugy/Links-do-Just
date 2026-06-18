@@ -654,3 +654,164 @@ body:not(.patrocinios-page) .nav-item.active:after {
   .btn { padding: 17px 35px; font-size: 0.96rem; }
   .links { gap: 11px; }
 }
+/* ========================================= */
+/* NOVO DESIGN CARDS OFERTAS */
+/* ========================================= */
+
+.giveaway-card {
+    position: relative;
+    height: 170px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: linear-gradient(
+        120deg,
+        #061a33,
+        #0b3d91,
+        #1e90ff
+    );
+    border: 1px solid rgba(58,160,255,0.8);
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.5),
+        inset 0 0 30px rgba(30,144,255,0.25);
+    transition: .35s ease;
+}
+
+
+/* animação azul esquerda -> direita */
+
+.giveaway-card::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.25),
+        transparent
+    );
+    transform:translateX(-100%);
+    animation: cardShine 3s infinite;
+}
+
+
+@keyframes cardShine {
+
+    0% {
+        transform:translateX(-100%);
+    }
+
+    50%,100% {
+        transform:translateX(100%);
+    }
+
+}
+
+
+/* imagem/logo */
+
+.giveaway-card img {
+
+    position:absolute;
+    width:150px;
+    height:150px;
+    object-fit:contain;
+
+    right:25px;
+    top:10px;
+
+    z-index:2;
+
+    padding:0;
+
+}
+
+
+/* texto */
+
+.giveaway-card .overlay {
+
+    position:absolute;
+    left:25px;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:auto;
+
+    background:none;
+
+    text-align:left;
+
+    font-size:1.1rem;
+    font-weight:800;
+
+    z-index:3;
+
+}
+
+
+/* esconder labels antigos */
+
+.giveaway-card .bottom-label {
+    display:none;
+}
+
+
+/* botão agarrar bonus */
+
+.giveaway-card::after {
+
+    content:"AGARRAR BONUS";
+
+    position:absolute;
+
+    left:25px;
+    bottom:25px;
+
+    padding:9px 20px;
+
+    background:white;
+
+    color:#061a33;
+
+    border-radius:999px;
+
+    font-size:.75rem;
+    font-weight:900;
+
+    z-index:4;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,.35);
+
+}
+
+
+/* hover */
+
+.giveaway-card:hover {
+
+    transform:translateY(-5px) scale(1.02);
+
+    box-shadow:
+    0 15px 40px rgba(30,144,255,.45);
+
+}
+
+
+/* cards terminados */
+
+.giveaway-card.terminated {
+
+    filter: grayscale(.8);
+    opacity:.65;
+
+}
+
+.giveaway-card.terminated::after {
+
+    content:"ENCERRADO";
+
+    background:#ff3333;
+    color:white;
+
+}

@@ -277,49 +277,35 @@ h1 {
 /* ========================= */
 /* CARD PREMIUM VERTICAL */
 /* ========================= */
-.ofertas-card a {
-  margin: 10px 14px 14px;
-  padding: 12px 16px;
-
-  border-radius: 12px;
-
-  text-align: center;
-
-  font-weight: 900;
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-
-  color: #000;
-
-  background: linear-gradient(90deg, #00ff88, #00c853);
-
-  box-shadow:
-    0 0 15px rgba(0, 255, 136, 0.6),
-    0 0 35px rgba(0, 200, 83, 0.3);
-
-  text-decoration: none;
-
-  transition: all 0.25s ease;
-}
-
-.ofertas-card a:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 0 25px rgba(0, 255, 136, 0.8),
-    0 0 50px rgba(0, 200, 83, 0.5);
-}
-
-/* ========================= */
-/* IMAGEM */
-/* ========================= */
-.ofertas-card img {
+.ofertas-card {
+  position: relative;
   width: 100%;
-  height: 180px;
+  height: 170px; /* 🔥 controla tamanho real */
+  border-radius: 14px;
+
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;
+
+  background: linear-gradient(145deg, #0b0f14, #0f1722);
+  border: 1px solid rgba(58, 160, 255, 0.15);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ofertas-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(30,144,255,0.25);
+}
+.ofertas-card img {
+  width: 40%;
+  height: 100%;
   object-fit: contain;
   background: #05080d;
-  padding: 18px;
+  padding: 10px;
 }
-
 /* ========================= */
 /* INFO AREA (overlay limpo) */
 /* ========================= */
@@ -365,6 +351,21 @@ h1 {
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(0, 212, 122, 0.5);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ========================= */
 /* STATUS OFF (encerrado) */

@@ -96,7 +96,7 @@ async function verificarLiveTwitch() {
 // 4. GERA CARTÕES E MODAIS DE GIVEAWAYS (com 3 status)
 // ────────────────────────────────────────────────
 function gerarCartoesEModais() {
-    const container = document.getElementById("giveaways-container");
+    const container = document.getElementById("ofertas-container");
     if (!container) return;
 
     container.innerHTML = '<p style="text-align:center; color:#aaa; padding:40px 0;">A carregar patrocínios...</p>';

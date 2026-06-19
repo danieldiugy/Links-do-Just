@@ -537,14 +537,29 @@ cartao.appendChild(infoBtn);
 
             modal.id = `modal-${giveaway.id}`;
 
-
+const oldModal = document.getElementById(`modal-${giveaway.id}`);
+if (oldModal) oldModal.remove();
 
 let conteudoModal = `
     <span class="close-modal">×</span>
+
     <img src="${giveaway.imagem}" class="modal-img" alt="${giveaway.titulo}">
+
     <h2>${giveaway.titulo}</h2>
+
     <p><strong>Site:</strong> ${giveaway.site}</p>
+
     <p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>
+
+    ${giveaway.codigo ? `<p><strong>Código:</strong> ${giveaway.codigo}</p>` : ""}
+
+    ${giveaway.requisitos ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>` : ""}
+
+    ${giveaway.modalinfo ? `
+        <div class="modal-info">
+            ${giveaway.modalinfo}
+        </div>
+    ` : ""}
 `;
 if (giveaway.modalinfo && giveaway.modalinfo.trim() !== "") {
     conteudoModal += `

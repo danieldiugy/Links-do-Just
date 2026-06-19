@@ -539,11 +539,10 @@ if (oldModal) oldModal.remove();
 let conteudoModal = `
     <span class="close-modal">×</span>
 
-    <img src="${giveaway.imagem}" class="modal-img" alt="${giveaway.titulo}">
-
-    <h2>${giveaway.titulo}</h2>
-
-    <p><strong>Site:</strong> ${giveaway.site}</p>
+    <div class="modal-header">
+        <h2>${giveaway.titulo}</h2>
+        <div class="modal-site">${giveaway.site}</div>
+    </div>
 `;
 
 

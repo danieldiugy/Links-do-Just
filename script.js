@@ -445,7 +445,7 @@ sub.className =
 "ofertas-sub";
 
 sub.textContent =
-`•${giveaway.site}`;
+`${giveaway.site}`;
 
 
 

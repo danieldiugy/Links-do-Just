@@ -1461,36 +1461,51 @@ body:not(.patrocinios-page) .nav-item.active:after {
 /* ========================= */
 
 .info-btn {
-    position: absolute;
 
-    right: 155px; /* fica à esquerda do botão azul */
-    top: 50%;
-    transform: translateY(-50%);
+    position:absolute;
 
-    width: 34px;
-    height: 34px;
+    right:14px;
+    top:50%;
 
-    border-radius: 50%;
+    transform:translateY(-50%);
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-right:135px;
 
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.15);
+    width:32px;
+    height:32px;
 
-    color: #00a3ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    font-weight: 900;
-    font-size: 0.9rem;
+    border-radius:50%;
 
-    cursor: pointer;
+    background:rgba(58,160,255,0.15);
 
-    transition: .2s ease;
+    border:1px solid rgba(58,160,255,0.5);
 
-    z-index: 10;
+    color:#3aa0ff;
+
+    font-weight:900;
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+
+    z-index:10;
 }
 
+
+.info-btn:hover {
+
+    background:rgba(58,160,255,0.3);
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+
+}
 .info-btn:hover {
     background: rgba(0,163,255,0.15);
     border-color: rgba(0,163,255,0.5);

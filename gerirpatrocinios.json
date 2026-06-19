@@ -9,7 +9,8 @@
     "codigo": "JUST",
     "requisitos": "Se",
     "overlayTexto": "SkinRave",
-    "link": "https://skinrave.gg/en?r=JUST"
+    "link": "https://skinrave.gg/en?r=JUST",
+    "18": "true"
   },
   {
     "id": 2,
@@ -20,6 +21,7 @@
     "codigo": "JUST",
     "requisitos": "Se",
     "overlayTexto": "SkinsMonkey",
-    "link": "https://www.google.com"
+    "link": "https://www.google.com",
+    "18": "true"
   }
 ]

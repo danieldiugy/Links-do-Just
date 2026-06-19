@@ -446,12 +446,20 @@ const siteTag = document.createElement("span");
 siteTag.className = "site-tag";
 siteTag.textContent = giveaway.site;
 
-const tag18 = document.createElement("span");
-tag18.className = "tag-18";
-tag18.textContent = "18+";
-
 sub.appendChild(siteTag);
-sub.appendChild(tag18);
+
+
+if (giveaway["18"] === true) {
+
+    const tag18 = document.createElement("span");
+
+    tag18.className = "tag-18";
+
+    tag18.textContent = "18+";
+
+    sub.appendChild(tag18);
+
+}
 
 
 

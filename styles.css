@@ -461,15 +461,18 @@ h1 {
 
 
 
-/* BOTÃO */
-
 .ofertas-btn {
 
+    position:absolute;
+
+    right:14px;
+    top:50%;
+
+    transform:translateY(-50%);
 
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
 
@@ -496,22 +499,16 @@ h1 {
 
     font-weight:900;
 
-
     text-transform:uppercase;
 
 
     box-shadow:
-
         0 0 20px rgba(0,255,136,.35);
 
 
     transition:.25s ease;
 
-
-    position:relative;
-
-    z-index:2;
-
+    z-index:5;
 }
 
 

@@ -1432,3 +1432,44 @@ body:not(.patrocinios-page) .nav-item.active:after {
     object-fit: contain;
     margin-bottom: 12px;
 }
+
+/* ========================= */
+/* INFO BUTTON (i) */
+/* ========================= */
+
+.info-btn {
+    position: absolute;
+
+    right: 155px; /* fica à esquerda do botão azul */
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+
+    color: #00a3ff;
+
+    font-weight: 900;
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+
+    z-index: 10;
+}
+
+.info-btn:hover {
+    background: rgba(0,163,255,0.15);
+    border-color: rgba(0,163,255,0.5);
+    transform: translateY(-50%) scale(1.05);
+}

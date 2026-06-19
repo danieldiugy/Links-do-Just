@@ -597,33 +597,6 @@ if (giveaway.status === "on") {
 
 
 
-            if (giveaway.status === "on") {
-
-
-                conteudoModal += `
-
-                    <div style="margin-top:24px;">
-
-                        <a 
-                        href="${giveaway.link}"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="participar-btn">
-
-                        AGARRAR BÓNUS
-
-                        </a>
-
-                    </div>
-
-                `;
-
-
-            }
-
-
-
-
 
             modal.innerHTML = `
 

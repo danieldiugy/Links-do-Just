@@ -1083,3 +1083,160 @@ body:not(.patrocinios-page) .nav-item.active:after {
         rgba(58,160,255,.25);
 
 }
+/* ================================= */
+/* SPONSOR CARDS MOBILE CLEAN DESIGN */
+/* ================================= */
+
+@media (max-width:480px) {
+
+
+    .ofertas-card {
+
+        height: auto;
+        min-height: 105px;
+
+        padding: 12px;
+
+        align-items:center;
+
+    }
+
+
+
+    /* LOGO */
+
+    .ofertas-card img {
+
+        width:62px;
+        height:62px;
+
+        padding:8px;
+
+        border-radius:14px;
+
+    }
+
+
+
+
+    /* TEXTO */
+
+    .ofertas-content {
+
+        margin-left:12px;
+
+        padding-right:0;
+
+        flex:1;
+
+        min-width:0;
+
+    }
+
+
+
+    .ofertas-title {
+
+        font-size:.9rem;
+
+        white-space:nowrap;
+
+        overflow:hidden;
+
+        text-overflow:ellipsis;
+
+    }
+
+
+
+
+    .ofertas-sub {
+
+        margin-top:6px;
+
+        gap:5px;
+
+        flex-wrap:wrap;
+
+    }
+
+
+
+
+    .site-tag,
+    .tag-18 {
+
+        height:20px;
+
+        padding:0 8px;
+
+        font-size:.68rem;
+
+    }
+
+
+
+
+
+    /* BOTÃO MOBILE */
+
+    .ofertas-btn {
+
+
+        position:absolute;
+
+        right:10px;
+
+        bottom:10px;
+
+        top:auto;
+
+
+        transform:none;
+
+
+        width:auto;
+
+        min-width:95px;
+
+        height:30px;
+
+
+        padding:0 12px;
+
+
+        font-size:.62rem;
+
+
+        border-radius:999px;
+
+
+    }
+
+
+
+    .ofertas-btn:hover {
+
+        transform:none;
+
+    }
+
+
+
+
+
+    /*
+       Dá espaço para o botão
+       não ficar por cima das tags
+    */
+
+    .ofertas-content {
+
+        padding-bottom:25px;
+
+    }
+
+
+
+
+}

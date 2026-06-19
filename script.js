@@ -539,32 +539,20 @@ cartao.appendChild(infoBtn);
 
 
 
-            let conteudoModal = `
-
-                <span class="close-modal">×</span>
-
-
-                <img 
-                src="${giveaway.imagem}" 
-                class="modal-img"
-                alt="${giveaway.titulo}">
-
-
-                <h2>${giveaway.titulo}</h2>
-
-
-                <p>
-                    <strong>Site:</strong>
-                    ${giveaway.site}
-                </p>
-
-
-                <p>
-                    <strong>Depósito mínimo:</strong>
-                    ${giveaway.deposito}
-                </p>
-
-            `;
+let conteudoModal = `
+    <span class="close-modal">×</span>
+    <img src="${giveaway.imagem}" class="modal-img" alt="${giveaway.titulo}">
+    <h2>${giveaway.titulo}</h2>
+    <p><strong>Site:</strong> ${giveaway.site}</p>
+    <p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>
+`;
+if (giveaway.modalinfo && giveaway.modalinfo.trim() !== "") {
+    conteudoModal += `
+        <p class="modal-info">
+            ${giveaway.modalinfo}
+        </p>
+    `;
+}
 
 
 

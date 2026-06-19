@@ -10,7 +10,8 @@
     "requisitos": "Se",
     "overlayTexto": "SkinRave",
     "link": "https://skinrave.gg/en?r=JUST",
-    "18": true
+    "18": true,
+    "modalinfo": "<div class='modal-info'><p>🎮 Site de Counter-Strike com foco em skins e cases</p><p>📦 Inclui Case Opening e caixas diárias grátis</p><p>💰 Bónus ativo para utilizadores com depósito mínimo</p></div>"
   },
   {
     "id": 2,
@@ -22,6 +23,7 @@
     "requisitos": "Se",
     "overlayTexto": "SkinsMonkey",
     "link": "https://www.google.com",
-    "18": false
+    "18": false,
+    "modalinfo": ""
   }
 ]

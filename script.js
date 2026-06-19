@@ -548,19 +548,8 @@ let conteudoModal = `
     <h2>${giveaway.titulo}</h2>
 
     <p><strong>Site:</strong> ${giveaway.site}</p>
-
-    <p><strong>Depósito mínimo:</strong> ${giveaway.deposito}</p>
-
-    ${giveaway.codigo ? `<p><strong>Código:</strong> ${giveaway.codigo}</p>` : ""}
-
-    ${giveaway.requisitos ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>` : ""}
-
-    ${giveaway.modalinfo ? `
-        <div class="modal-info">
-            ${giveaway.modalinfo}
-        </div>
-    ` : ""}
 `;
+
 if (giveaway.modalinfo && giveaway.modalinfo.trim() !== "") {
     conteudoModal += `
         <p class="modal-info">

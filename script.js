@@ -376,7 +376,11 @@ function gerarCartoesEModais() {
             : ""
             }`;
 
+const botao = document.createElement("div");
 
+botao.className = "ofertas-btn";
+
+botao.textContent = "AGARRAR BÓNUS";
 
             if (giveaway.status === "on") {
 

@@ -447,28 +447,6 @@ h1 {
 
     display:flex;
 
-    width:max-content;
-
-    margin-top:7px;
-
-    padding:4px 10px;
-
-    border-radius:999px;
-
-    background:
-        rgba(0,255,136,.12);
-
-    border:1px solid rgba(0,255,136,.3);
-
-    color:#00ff88;
-
-    font-size:.75rem;
-
-    font-weight:700;
-    .ofertas-sub {
-
-    display:flex;
-
     align-items:center;
 
     gap:8px;
@@ -611,9 +589,7 @@ h1 {
 .site-tag {
 
     display:inline-flex;
-
     align-items:center;
-
     justify-content:center;
 
     height:22px;
@@ -639,9 +615,7 @@ h1 {
 .tag-18 {
 
     display:inline-flex;
-
     align-items:center;
-
     justify-content:center;
 
     height:22px;
@@ -662,8 +636,6 @@ h1 {
     font-weight:800;
 
 }
-
-
 
 
 

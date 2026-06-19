@@ -1506,3 +1506,33 @@ body:not(.patrocinios-page) .nav-item.active:after {
     font-size: 0.9rem;
     line-height: 1.4;
 }
+
+.modal-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 14px;
+    width: 100%;
+    height: 44px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, #00ff88, #00c96b);
+
+    color: #001b0e;
+    font-size: 0.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+
+    text-decoration: none;
+
+    box-shadow: 0 0 20px rgba(0,255,136,.35);
+
+    transition: 0.2s ease;
+}
+
+.modal-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(0,255,136,.55);
+}

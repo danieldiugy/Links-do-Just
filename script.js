@@ -543,6 +543,8 @@ let conteudoModal = `
         <h2>${giveaway.titulo}</h2>
         <div class="modal-site">${giveaway.site}</div>
     </div>
+
+    <img src="${giveaway.imagem}" class="modal-img" alt="${giveaway.titulo}">
 `;
 
 
@@ -553,7 +555,13 @@ if (giveaway.modalinfo && giveaway.modalinfo.trim() !== "") {
         </p>
     `;
 }
-
+if (giveaway.status === "on") {
+    conteudoModal += `
+        <a href="${giveaway.link}" target="_blank" class="modal-btn">
+            AGARRAR BÓNUS
+        </a>
+    `;
+}
 
 
             if (giveaway.codigo && giveaway.codigo.trim() !== "") {

@@ -550,6 +550,7 @@ let conteudoModal = `
     <p><strong>Site:</strong> ${giveaway.site}</p>
 `;
 
+
 if (giveaway.modalinfo && giveaway.modalinfo.trim() !== "") {
     conteudoModal += `
         <p class="modal-info">

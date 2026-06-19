@@ -3,52 +3,40 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+
+html {
+    width:100%;
+    min-height:100%;
+    background:#000;
+}
+
+
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  min-height: 100vh;
-  height: 100vh;
-  overflow: hidden;
-  color: #ffffff;
-  background: linear-gradient(135deg, #000000 0%, #0d0d0d 100%);
-  overflow-x: hidden;
-  position: relative;
 
+    width:100%;
+    min-height:100vh;
+    min-height:100dvh;
 
+    font-family:'Inter', system-ui, sans-serif;
 
+    color:#ffffff;
 
-}
-/* ========================= */
-/* PARTÍCULAS */
-/* ========================= */
-.particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-}
-.particle {
-  position: absolute;
-  background: rgba(255, 215, 0, 0.6);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: float linear infinite;
-  box-shadow:
-    0 0 12px rgba(255, 215, 0, 0.5),
-    0 0 20px rgba(255, 215, 0, 0.3);
-}
-@keyframes float {
-  0% { transform: translateY(100vh) scale(0.2); opacity: 0; }
-  10% { opacity: 0.9; }
-  90% { opacity: 0.9; }
-  100% { transform: translateY(-20vh) scale(0.4); opacity: 0; }
+    background:
+        linear-gradient(
+            135deg,
+            #000000 0%,
+            #0d0d0d 100%
+        );
 
+    overflow-x:hidden;
 
-
+    position:relative;
 
 }
+
+
+
 /* ========================= */
 /* CONTAINER */
 /* ========================= */
@@ -64,6 +52,42 @@ body {
   z-index: 1;
   overflow: hidden;
 }
+
+
+
+
+/* ========================= */
+/* PARTICULAS */
+/* ========================= */
+.particles {
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+
+    z-index:0;
+
+    overflow:hidden;
+
+}
+
+.particle {
+
+    position:absolute;
+
+    z-index:1;
+
+}
+
+
+
+
+
 
 
 
@@ -885,4 +909,28 @@ body:not(.patrocinios-page) .nav-item.active:after {
   .email { margin-bottom: 25px; font-size: 0.87rem; }
   .btn { padding: 17px 35px; font-size: 0.96rem; }
   .links { gap: 11px; }
+}
+
+
+@media (max-width:480px){
+
+    html,
+    body {
+
+        background:
+        linear-gradient(
+            135deg,
+            #000000 0%,
+            #0d0d0d 100%
+        );
+
+    }
+
+
+    .particles {
+
+        display:block;
+
+    }
+
 }

@@ -486,9 +486,9 @@ if (giveaway["18"] === true) {
 
 
             if (giveaway.status === "on") {
-
-                cartao.appendChild(infoBtn);
                 cartao.appendChild(botao);
+                cartao.appendChild(infoBtn);
+                
 
             }
 /* 👇 AQUI É ONDE ENTRA O PASSO 3 */

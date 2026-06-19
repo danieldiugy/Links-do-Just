@@ -520,17 +520,19 @@ h1 {
 
 .ofertas-btn:hover {
 
+    transform:translateY(-50%);
 
-    transform:scale(1.06);
-
+    background:
+        linear-gradient(
+            135deg,
+            #22ff99,
+            #00d477
+        );
 
     box-shadow:
-
-        0 0 35px rgba(0,255,136,.65);
-
+        0 0 25px rgba(0,255,136,.45);
 
 }
-
 
 
 /* encerrado */

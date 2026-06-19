@@ -442,14 +442,15 @@ function gerarCartoesEModais() {
 const sub = document.createElement("div");
 sub.className = "ofertas-sub";
 
-const siteNome = document.createElement("span");
-siteNome.textContent = giveaway.site;
+const siteTag = document.createElement("span");
+siteTag.className = "site-tag";
+siteTag.textContent = giveaway.site;
 
 const tag18 = document.createElement("span");
 tag18.className = "tag-18";
 tag18.textContent = "18+";
 
-sub.appendChild(siteNome);
+sub.appendChild(siteTag);
 sub.appendChild(tag18);
 
 

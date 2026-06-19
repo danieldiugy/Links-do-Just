@@ -445,7 +445,7 @@ h1 {
 
 .ofertas-sub {
 
-    display:inline-flex;
+    display:flex;
 
     width:max-content;
 
@@ -465,6 +465,17 @@ h1 {
     font-size:.75rem;
 
     font-weight:700;
+    .ofertas-sub {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:7px;
+
+}
 
 }
 
@@ -596,6 +607,61 @@ h1 {
 
 }
 
+
+.site-tag {
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    height:22px;
+
+    padding:0 10px;
+
+    border-radius:999px;
+
+    background:
+        rgba(0,255,136,.12);
+
+    border:1px solid rgba(0,255,136,.3);
+
+    color:#00ff88;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+}
+
+
+.tag-18 {
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    height:22px;
+
+    padding:0 10px;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,50,50,.15);
+
+    border:1px solid rgba(255,50,50,.45);
+
+    color:#ff4d4d;
+
+    font-size:.75rem;
+
+    font-weight:800;
+
+}
 
 
 

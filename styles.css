@@ -1240,3 +1240,146 @@ body:not(.patrocinios-page) .nav-item.active:after {
 
 
 }
+
+/* ========================= */
+/* CASINO MODAL PREMIUM */
+/* ========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity .25s ease, visibility .25s ease;
+
+    z-index: 9999;
+}
+
+/* quando abre */
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* animação do conteúdo */
+.modal-content {
+    background: linear-gradient(
+        145deg,
+        rgba(20, 20, 20, 0.95),
+        rgba(10, 10, 10, 0.95)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+
+    width: 92%;
+    max-width: 460px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.8),
+        inset 0 0 20px rgba(255, 255, 255, 0.03);
+
+    transform: translateY(20px) scale(0.96);
+    opacity: 0;
+
+    transition: all .28s ease;
+}
+
+/* animação ao abrir */
+.modal.active .modal-content {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* imagem */
+.modal-img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+
+    margin-bottom: 14px;
+
+    border-radius: 14px;
+
+    background: rgba(0,0,0,0.3);
+    padding: 10px;
+}
+
+/* título */
+.modal-content h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* textos */
+.modal-content p {
+    font-size: .9rem;
+    color: #cfcfcf;
+    margin-bottom: 6px;
+}
+
+/* botão */
+.participar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 18px;
+
+    height: 42px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, #00a3ff, #0077ff);
+
+    color: white;
+    font-weight: 800;
+    font-size: .8rem;
+    text-transform: uppercase;
+
+    text-decoration: none;
+
+    box-shadow: 0 0 25px rgba(0, 163, 255, 0.35);
+
+    transition: .2s ease;
+}
+
+.participar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 35px rgba(0, 163, 255, 0.55);
+}
+
+/* botão fechar */
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+
+    font-size: 22px;
+    color: #aaa;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.close-modal:hover {
+    color: white;
+}

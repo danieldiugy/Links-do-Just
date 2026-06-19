@@ -552,6 +552,49 @@ h1 {
     filter:grayscale(70%);
 
 }
+.ofertas-sub {
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    margin-top:7px;
+}
+
+
+.tag-18 {
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    height:20px;
+
+    padding:0 8px;
+
+    border-radius:6px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff3b3b,
+            #b80000
+        );
+
+    border:1px solid rgba(255,255,255,.25);
+
+    color:white;
+
+    font-size:.68rem;
+
+    font-weight:900;
+
+    letter-spacing:.5px;
+
+    box-shadow:
+        0 0 12px rgba(255,0,0,.35);
+
+}
 
 
 

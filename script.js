@@ -439,13 +439,18 @@ function gerarCartoesEModais() {
 
 
 
-       const sub = document.createElement("div");
+const sub = document.createElement("div");
+sub.className = "ofertas-sub";
 
-sub.className =
-"ofertas-sub";
+const siteNome = document.createElement("span");
+siteNome.textContent = giveaway.site;
 
-sub.textContent =
-`${giveaway.site}`;
+const tag18 = document.createElement("span");
+tag18.className = "tag-18";
+tag18.textContent = "18+";
+
+sub.appendChild(siteNome);
+sub.appendChild(tag18);
 
 
 

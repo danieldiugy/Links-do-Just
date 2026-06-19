@@ -362,9 +362,6 @@ function gerarCartoesEModais() {
         ordenados.forEach(giveaway => {
 
 
-const infoBtn = document.createElement("div");
-infoBtn.className = "info-btn";
-infoBtn.textContent = "i";
             // CARD
 
             const cartao =
@@ -473,15 +470,11 @@ if (giveaway["18"] === true) {
 
 
 
-         const botao = document.createElement("div");
+const infoBtn = document.createElement("div");
 
+infoBtn.className = "info-btn";
 
-            botao.className =
-            "ofertas-btn";
-
-
-            botao.textContent =
-            "AGARRAR BÓNUS";
+infoBtn.textContent = "i";
 
 
 

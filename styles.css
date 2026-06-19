@@ -1464,12 +1464,10 @@ body:not(.patrocinios-page) .nav-item.active:after {
 
     position:absolute;
 
-    right:14px;
+    right:55px;
     top:50%;
 
     transform:translateY(-50%);
-
-    margin-right:135px;
 
     width:32px;
     height:32px;
@@ -1491,9 +1489,7 @@ body:not(.patrocinios-page) .nav-item.active:after {
 
     cursor:pointer;
 
-    transition:.2s ease;
-
-    z-index:10;
+    z-index:20;
 }
 
 
@@ -1506,6 +1502,7 @@ body:not(.patrocinios-page) .nav-item.active:after {
         scale(1.08);
 
 }
+
 .info-btn:hover {
     background: rgba(0,163,255,0.15);
     border-color: rgba(0,163,255,0.5);

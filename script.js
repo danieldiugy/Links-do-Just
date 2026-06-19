@@ -358,14 +358,13 @@ function gerarCartoesEModais() {
 
 
 
-const infoBtn = document.createElement("div");
-infoBtn.className = "info-btn";
-infoBtn.textContent = "i";
 
         ordenados.forEach(giveaway => {
 
 
-
+const infoBtn = document.createElement("div");
+infoBtn.className = "info-btn";
+infoBtn.textContent = "i";
             // CARD
 
             const cartao =
@@ -500,9 +499,9 @@ infoBtn.addEventListener("click", (e) => {
     const modal = document.getElementById(`modal-${giveaway.id}`);
     if (!modal) return;
 
-    modal.classList.add("active");
+    const content = modal.querySelector(".modal-content");
 
-    modal.querySelector(".modal-content").innerHTML = `
+    content.innerHTML = `
         <span class="close-modal">×</span>
 
         <img src="${giveaway.imagem}" class="modal-img">
@@ -510,20 +509,17 @@ infoBtn.addEventListener("click", (e) => {
         <h2>${giveaway.titulo}</h2>
 
         <p><strong>Site:</strong> ${giveaway.site}</p>
-        <p><strong>Depósito:</strong> ${giveaway.deposito}</p>
 
-        ${giveaway.codigo ? `<p><strong>Código:</strong> ${giveaway.codigo}</p>` : ""}
-        ${giveaway.requisitos ? `<p><strong>Requisitos:</strong> ${giveaway.requisitos}</p>` : ""}
-
-        ${giveaway["18"] === "true" || giveaway["18"] === true
-            ? `<p style="color:#ff4d4d;font-weight:800;">🔞 Apenas 18+</p>`
-            : ""
-        }
+        ${giveaway.modalinfo ? `
+            <p class="modal-info">${giveaway.modalinfo}</p>
+        ` : ""}
     `;
-});
 
+    modal.classList.add("active");
+});
 /* botão i */
 cartao.appendChild(infoBtn);
+cartao.appendChild(botao);
 
 
             container.appendChild(cartao);

@@ -291,123 +291,272 @@ h1 {
 
 
 
-/* ========================= */
-/* OFERTAS CARDS PREMIUM */
-/* ========================= */
+/* ============================= */
+/* SPONSOR CARDS PREMIUM STYLE */
+/* ============================= */
+
 .ofertas {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 15px;
 }
+
 
 .ofertas-card {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+    position: relative;
+    display: flex;
+    align-items: center;
 
-  height: 110px;
-  padding: 14px;
+    width: 100%;
+    height: 105px;
 
-  border-radius: 14px;
-  background: linear-gradient(135deg, #0f0f0f, #121212);
+    padding: 12px 14px;
 
-  border: 1px solid rgba(58, 160, 255, 0.25);
+    border-radius: 18px;
 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25,25,25,0.95),
+            rgba(10,10,10,0.95)
+        );
 
-  overflow: hidden;
-  cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.08);
 
-  transition: all 0.25s ease;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.55),
+        inset 0 0 20px rgba(255,255,255,0.02);
+
+    text-decoration:none;
+    color:white;
+
+    overflow:hidden;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
 }
+
+
+/* brilho superior */
+.ofertas-card::before {
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00ff88,
+            transparent
+        );
+
+    opacity:.7;
+}
+
+
+
+/* hover */
 
 .ofertas-card:hover {
-  transform: translateY(-3px);
-  border-color: #3aa0ff;
-  box-shadow: 0 15px 35px rgba(30,144,255,0.25);
+
+    transform:translateY(-4px);
+
+    border-color:#00ff88;
+
+    box-shadow:
+        0 15px 40px rgba(0,255,136,.18),
+        0 10px 25px rgba(0,0,0,.6);
 }
 
-/* IMAGEM */
+
+
+
+
+/* LOGO */
+
 .ofertas-card img {
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-  border-radius: 10px;
-  background: #050d14;
-  padding: 8px;
+
+    width:78px;
+    height:78px;
+
+    object-fit:contain;
+
+    padding:10px;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111,
+            #050505
+        );
+
+    border:1px solid rgba(255,255,255,.1);
+
+    flex-shrink:0;
+
 }
+
+
+
+
 
 /* TEXTO */
+
 .ofertas-content {
-  display: flex;
-  flex-direction: column;
-  margin-left: 14px;
-  flex: 1;
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    margin-left:15px;
+
 }
+
 
 .ofertas-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #fff;
+
+    font-size:1rem;
+
+    font-weight:800;
+
+    color:white;
+
+    line-height:1.2;
+
 }
+
 
 .ofertas-sub {
-  font-size: 0.8rem;
-  color: #a0c4ff;
-  margin-top: 3px;
+
+    display:inline-flex;
+
+    width:max-content;
+
+    margin-top:7px;
+
+    padding:4px 10px;
+
+    border-radius:999px;
+
+    background:
+        rgba(0,255,136,.12);
+
+    border:1px solid rgba(0,255,136,.3);
+
+    color:#00ff88;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
 }
+
+
+
+
 
 /* BOTÃO */
+
 .ofertas-btn {
-  position: absolute;
-  right: 14px;
 
-  padding: 10px 16px;
-  border-radius: 999px;
 
-  background: linear-gradient(90deg, #00d47a, #00b86b);
-  color: #000;
+    display:flex;
 
-  font-size: 0.78rem;
-  font-weight: 800;
+    align-items:center;
 
-  text-decoration: none;
+    justify-content:center;
 
-  box-shadow: 0 6px 18px rgba(0,212,122,0.35);
 
-  transition: all 0.25s ease;
+    min-width:125px;
+
+    height:42px;
+
+
+    border-radius:999px;
+
+
+    background:
+        linear-gradient(
+            135deg,
+            #00ff88,
+            #00c96b
+        );
+
+
+    color:#001b0e;
+
+
+    font-size:.78rem;
+
+    font-weight:900;
+
+
+    text-transform:uppercase;
+
+
+    box-shadow:
+
+        0 0 20px rgba(0,255,136,.35);
+
+
+    transition:.25s ease;
+
+
+    position:relative;
+
+    z-index:2;
+
 }
+
+
+
 
 .ofertas-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(0,212,122,0.5);
+
+
+    transform:scale(1.06);
+
+
+    box-shadow:
+
+        0 0 35px rgba(0,255,136,.65);
+
+
 }
 
-/* TERMINADO */
+
+
+/* encerrado */
+
 .ofertas-card.terminated {
-  opacity: 0.6;
-  filter: grayscale(60%);
+
+    opacity:.55;
+
+    filter:grayscale(70%);
+
 }
-.ofertas-content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.ofertas-card {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-  width: 100%;
-}
-.ofertas-card img,
-.ofertas-card div {
-  pointer-events: none;
-}
+
+
+
+
+
 
 
 

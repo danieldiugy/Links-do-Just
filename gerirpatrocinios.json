@@ -14,7 +14,7 @@
   },
   {
     "id": 2,
-    "status": "on",
+    "status": "off",
     "titulo": "Trocar Skins",
     "imagem": "assets/skinsmonkeylogo.png",
     "site": "SkinsMonkey",

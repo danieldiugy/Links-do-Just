@@ -964,3 +964,122 @@ body:not(.patrocinios-page) .nav-item.active:after {
     }
 
 }
+
+/* ================================= */
+/* PATROCINIOS PAGE - BLUE THEME */
+/* ================================= */
+
+
+/* brilho superior do card */
+
+.patrocinios-page .ofertas-card::before {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #3aa0ff,
+            transparent
+        );
+
+}
+
+
+
+/* hover do card */
+
+.patrocinios-page .ofertas-card:hover {
+
+    border-color:#3aa0ff;
+
+    box-shadow:
+        0 15px 40px rgba(30,144,255,.20),
+        0 10px 25px rgba(0,0,0,.6);
+
+}
+
+
+
+/* tag do site */
+
+.patrocinios-page .site-tag {
+
+    background:
+        rgba(30,144,255,.15);
+
+    border-color:
+        rgba(58,160,255,.45);
+
+    color:#3aa0ff;
+
+}
+
+
+
+/* tag 18+ */
+
+.patrocinios-page .tag-18 {
+
+    background:
+        rgba(255,50,50,.15);
+
+    border-color:
+        rgba(255,50,50,.45);
+
+    color:#ff4d4d;
+
+}
+
+
+
+/* botão agarrar bonus */
+
+.patrocinios-page .ofertas-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #3aa0ff,
+            #1e90ff
+        );
+
+
+    color:white;
+
+
+    box-shadow:
+        0 0 20px rgba(30,144,255,.40);
+
+}
+
+
+
+/* hover botão */
+
+.patrocinios-page .ofertas-btn:hover {
+
+
+    background:
+        linear-gradient(
+            135deg,
+            #5bb5ff,
+            #268fff
+        );
+
+
+    box-shadow:
+
+        0 0 30px rgba(30,144,255,.65);
+
+}
+
+
+
+/* imagem/logo dos sponsors */
+
+.patrocinios-page .ofertas-card img {
+
+    border-color:
+        rgba(58,160,255,.25);
+
+}

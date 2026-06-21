@@ -596,6 +596,84 @@ h1 {
     margin-top:7px;
 }
 
+.ofertas-actions {
+
+    position:absolute;
+
+    right:14px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+/* botão informação */
+
+.info-btn {
+
+    width:32px;
+    height:32px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid #3aa0ff;
+
+    color:#3aa0ff;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    background:rgba(58,160,255,.12);
+
+    transition:.25s ease;
+
+}
+
+
+.info-btn:hover {
+
+    background:#3aa0ff;
+
+    color:#000;
+
+}
+
+
+/* ajustar botão principal */
+
+.ofertas-btn {
+
+    position:relative;
+
+    right:auto;
+    top:auto;
+
+    transform:none;
+
+}
+
+
+.ofertas-btn:hover {
+
+    transform:none;
+
+}
+
 
 .tag-18 {
 

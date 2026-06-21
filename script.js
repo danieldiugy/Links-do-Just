@@ -482,12 +482,18 @@ infoBtn.textContent = "i";
 
 
 
-            if (giveaway.status === "on") {
-                cartao.appendChild(botao);
-                cartao.appendChild(infoBtn);
-                
+        if (giveaway.status === "on") {
 
-            }
+    const actions = document.createElement("div");
+
+    actions.className = "ofertas-actions";
+
+    actions.appendChild(infoBtn);
+    actions.appendChild(botao);
+
+    cartao.appendChild(actions);
+
+}
 /* 👇 AQUI É ONDE ENTRA O PASSO 3 */
 infoBtn.addEventListener("click", (e) => {
     e.preventDefault();

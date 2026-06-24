@@ -618,29 +618,43 @@ h1 {
 
 .info-btn {
 
+    position:absolute;
+
+    right:150px;
+    top:50%;
+
+    transform:translateY(-50%);
+
     width:32px;
     height:32px;
 
-    border-radius:50%;
-
     display:flex;
-
     align-items:center;
     justify-content:center;
 
-    border:1px solid #3aa0ff;
+    border-radius:50%;
 
-    color:#3aa0ff;
+    background:#3aa0ff;
+
+    color:white;
+
+    border:none;
 
     font-size:18px;
 
-    font-weight:800;
+    font-weight:900;
 
     cursor:pointer;
 
-    background:rgba(58,160,255,.12);
+    z-index:30;
 
-    transition:.25s ease;
+    transition:.2s ease;
+}
+
+
+.info-btn:hover {
+
+    transform:translateY(-50%) scale(1.08);
 
 }
 

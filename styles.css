@@ -672,12 +672,15 @@ h1 {
 
 .ofertas-btn {
 
-    position:relative;
+    position:absolute;
 
-    right:auto;
-    top:auto;
+    right:14px;
 
-    transform:none;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    z-index:20;
 
 }
 
@@ -1054,6 +1057,28 @@ body:not(.patrocinios-page) .nav-item.active:after {
         display:block;
 
     }
+    @media(max-width:480px){
+
+    .ofertas-btn {
+
+        right:10px;
+
+        width:105px;
+
+    }
+
+
+    .info-btn {
+
+        right:125px;
+
+        width:30px;
+
+        height:30px;
+
+    }
+
+}
 
 }
 

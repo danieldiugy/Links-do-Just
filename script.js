@@ -521,8 +521,9 @@ infoBtn.addEventListener("click", (e) => {
     modal.classList.add("active");
 });
 /* botão i */
-cartao.appendChild(botao);
 cartao.appendChild(infoBtn);
+cartao.appendChild(botao);
+
 
 
 

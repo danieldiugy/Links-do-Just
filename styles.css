@@ -597,55 +597,6 @@ h1 {
 }
 
 
-/* botão informação */
-
-.info-btn {
-
-    position:absolute;
-
-    right:150px;
-    top:50%;
-
-    transform:translateY(-50%);
-
-    width:32px;
-    height:32px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:#3aa0ff;
-
-    color:white;
-
-    font-size:18px;
-
-    font-weight:900;
-
-    cursor:pointer;
-
-    z-index:30;
-
-}
-
-.info-btn:hover {
-
-    transform:translateY(-50%) scale(1.08);
-
-}
-
-
-.info-btn:hover {
-
-    background:#3aa0ff;
-
-    color:#000;
-
-}
 
 
 /* ajustar botão principal */

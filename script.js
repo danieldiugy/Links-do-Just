@@ -474,13 +474,6 @@ if (giveaway["18"] === true) {
 
 
 
-const botao = document.createElement("div");
-
-botao.className = "ofertas-btn";
-
-botao.textContent = "AGARRAR BÓNUS";
-
-
 const infoBtn = document.createElement("div");
 
 infoBtn.className = "info-btn";
@@ -488,11 +481,17 @@ infoBtn.className = "info-btn";
 infoBtn.textContent = "i";
 
 
-if (giveaway.status === "on") {
 
-    cartao.appendChild(botao);
+        if (giveaway.status === "on") {
 
-    cartao.appendChild(infoBtn);
+    const actions = document.createElement("div");
+
+    actions.className = "ofertas-actions";
+
+    actions.appendChild(infoBtn);
+    actions.appendChild(botao);
+
+    cartao.appendChild(actions);
 
 }
 /* 👇 AQUI É ONDE ENTRA O PASSO 3 */
@@ -521,6 +520,10 @@ infoBtn.addEventListener("click", (e) => {
 
     modal.classList.add("active");
 });
+/* botão i */
+cartao.appendChild(infoBtn);
+cartao.appendChild(botao);
+
 
 
 

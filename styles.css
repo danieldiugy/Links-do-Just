@@ -603,7 +603,7 @@ h1 {
 
     position:absolute;
 
-    right:150px;
+    right:155px;
     top:50%;
 
     transform:translateY(-50%);
@@ -611,24 +611,22 @@ h1 {
     width:32px;
     height:32px;
 
-    display:flex;
+    border-radius:50%;
 
+    display:flex;
     align-items:center;
     justify-content:center;
-
-    border-radius:50%;
 
     background:#3aa0ff;
 
     color:white;
 
+    font-weight:900;
     font-size:18px;
 
-    font-weight:900;
+    z-index:50;
 
     cursor:pointer;
-
-    z-index:30;
 
 }
 
@@ -655,16 +653,13 @@ h1 {
     position:absolute;
 
     right:14px;
-
     top:50%;
 
     transform:translateY(-50%);
 
-    z-index:20;
+    z-index:40;
 
 }
-
-
 .ofertas-btn:hover {
 
     transform:none;

@@ -2,28 +2,28 @@
   {
     "id": 1,
     "status": "on",
-    "titulo": "Apostar com Skins",
+    "titulo": "SkinsRave",
     "imagem": "assets/skinravelogo.webp",
     "deposito": "10€ mínimo",
-    "site": "SkinsRave",
+    "site": "Apostar com Skins",
     "codigo": "JUST",
     "requisitos": "Se",
-    "overlayTexto": "SkinRave",
+    "overlayTexto": "Apostar com Skins",
     "link": "https://skinrave.gg/en?r=JUST",
     "18": true,
     "modalinfo": "<div class='modal-info'> <p>📦 Depósitos: Dinheiro, Skins, Crypto</p><p>💰 Modos de Jogo: Coinflip, Crash, Roleta, Caixas </p></div>"
   },
   {
     "id": 2,
-    "status": "off",
-    "titulo": "Trocar Skins",
-    "imagem": "assets/skinsmonkeylogo.png",
-    "site": "SkinsMonkey",
-    "codigo": "JUST",
+    "status": "on",
+    "titulo": "Clash.GG",
+    "imagem": "assets/clashgg.webp",
+    "site": "Apostar com Skins",
+    "codigo": "JUSTJUST",
     "requisitos": "Se",
-    "overlayTexto": "SkinsMonkey",
+    "overlayTexto": "Clash",
     "link": "https://www.google.com",
-    "18": false,
+    "18": true,
     "modalinfo": ""
   }
 ]

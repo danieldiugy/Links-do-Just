@@ -330,31 +330,23 @@ function gerarCartoesEModais() {
         }
 
 
-
-        const ordenados =
-        [...visiveis].sort((a,b)=>{
+const ordenados = [...visiveis].sort((a,b)=>{
 
 
-            if (
-                a.status === "on" &&
-                b.status !== "on"
-            )
-            return -1;
+    // primeiro os ativos
+    if (a.status === "on" && b.status !== "on")
+        return -1;
 
 
-
-            if (
-                a.status !== "on" &&
-                b.status === "on"
-            )
-            return 1;
+    if (a.status !== "on" && b.status === "on")
+        return 1;
 
 
+    // depois usa a ordem do JSON
+    return (a.ordem || 999) - (b.ordem || 999);
 
-            return 0;
 
-
-        });
+});
 
 
 

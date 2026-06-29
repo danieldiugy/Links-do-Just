@@ -1,6 +1,7 @@
 [
   {
     "id": 3,
+    "ordem": 3,
     "status": "on",
     "titulo": "SkinsRave",
     "imagem": "assets/skinravelogo.webp",
@@ -15,6 +16,7 @@
   },
   {
     "id": 2,
+    "ordem": 2,
     "status": "on",
     "titulo": "Clash",
     "imagem": "assets/clashgg.webp",
@@ -28,6 +30,7 @@
   },
   {
     "id": 1,
+    "ordem": 1,
     "status": "on",
     "titulo": "AceBet",
     "imagem": "assets/acebetlogo.png",

@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": 3,
     "status": "on",
     "titulo": "SkinsRave",
     "imagem": "assets/skinravelogo.webp",
@@ -27,7 +27,7 @@
     "modalinfo": ""
   },
   {
-    "id": 3,
+    "id": 1,
     "status": "on",
     "titulo": "AceBet",
     "imagem": "assets/acebetlogo.png",

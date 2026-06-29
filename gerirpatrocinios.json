@@ -26,4 +26,17 @@
     "18": true,
     "modalinfo": ""
   }
+    {
+    "id": 3,
+    "status": "on",
+    "titulo": "AceBet",
+    "imagem": "assets/acebetlogo.png",
+    "site": "Apostar em CS",
+    "codigo": "JUSTJUST",
+    "requisitos": "Se",
+    "overlayTexto": "Clash",
+    "link": "https://acebet.co/welcome/r/justjust",
+    "18": true,
+    "modalinfo": ""
+  },
 ]

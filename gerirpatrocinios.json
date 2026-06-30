@@ -31,7 +31,7 @@
   {
     "id": 1,
     "ordem": 1,
-    "status": "on",
+    "status": "off",
     "titulo": "AceBet",
     "imagem": "assets/acebetlogo.png",
     "site": "Apostar em CS (eSports)",

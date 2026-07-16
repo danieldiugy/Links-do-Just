@@ -2,7 +2,7 @@
   {
     "id": 3,
     "ordem": 3,
-    "status": "on",
+    "status": "off",
     "titulo": "SkinsRave",
     "imagem": "assets/skinravelogo.webp",
     "deposito": "10€ mínimo",
@@ -17,7 +17,7 @@
   {
     "id": 2,
     "ordem": 2,
-    "status": "on",
+    "status": "off",
     "titulo": "Clash",
     "imagem": "assets/clashgg.webp",
     "site": "Apostar Skins",
